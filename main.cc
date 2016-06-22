@@ -107,17 +107,18 @@ void match(vector<KeyData> keyData, vector<ValueData> valueData, Mat&image) {
 	EditDistance editDistanceCalculator;
 
 	for (int i = 0; i < valueData.size(); i++) {
+		cout<<"Searching for "<<valueData[i].exactKeyText<<endl;
 		int minIndex = -1;
 		int minDistance = 9999999;
 		for (int j = 0; j < keyData.size(); j++) {
-			cout << "Comparing " << valueData[i].exactKeyText << " with "
-					<< keyData[j].text << endl;
+			//cout << "Comparing " << valueData[i].exactKeyText << " with "
+			//		<< keyData[j].text << endl;
 			int newDistance = editDistanceCalculator.lDistance(
 					valueData[i].exactKeyText.c_str(), keyData[j].text.c_str());
-			cout << "Result is " << newDistance << endl;
+			//cout << "Result is " << newDistance << endl;
 			if (minIndex == -1 || newDistance < minDistance) {
-				cout << "Was: " << minDistance;
-				cout << " Is: " << newDistance << endl;
+				//cout << "Was: " << minDistance;
+				//cout << " Is: " << newDistance << endl;
 				minIndex = j;
 				minDistance = newDistance;
 			}
@@ -130,7 +131,10 @@ void match(vector<KeyData> keyData, vector<ValueData> valueData, Mat&image) {
 			rectangle(image, keyData[minIndex].p1, keyData[minIndex].p2, color,
 					2, 8, 0);
 			rectangle(image, valueData[i].p1, valueData[i].p2, color, 2, 8, 0);
-			valueData.erase(valueData.begin() + minIndex);
+			keyData.erase(keyData.begin() + minIndex);
+		}
+		else {
+			cout<<"Count not find for "<<valueData[i].exactKeyText<<endl;
 		}
 	}
 }
