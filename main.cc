@@ -17,6 +17,7 @@
 #include "EditDistance.h"
 
 #include "csv/CSVparser.hpp"
+#include "HelperMethods.h"
 
 using namespace std;
 using namespace tesseract;
@@ -96,7 +97,8 @@ int main() {
 	finder.run();
 	//drawBoxes(finder,image);
 	match(finder.getRecognizedData(), values, image);
-	displayImage(image);
+	//displayImage(image);
+	HelperMethods::displayImageResizable(image);
 
 	return 0;
 }
