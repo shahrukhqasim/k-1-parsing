@@ -8,6 +8,6 @@ env.Append(LIBPATH = ['/usr/local/lib/', '/usr/lib/'])
 
 env.Append(LIBS=['lept', 'tesseract', 'opencv_core', 'opencv_imgproc', 'opencv_highgui', 'opencv_imgcodecs'])
 
-env.Program(target = 'executable', source = ['main.cc', 'EditDistance.cc', 'TesseractFinder.cc'])
+env.Program(target = 'executable', source = ['main.cc', 'EditDistance.cc', 'TesseractFinder.cc','csv/CSVparser.cpp'])
 
 
