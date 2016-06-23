@@ -1,7 +1,5 @@
 This is the code base for parsing K-1 forms using elastic matching
 
-You can import the project directly into eclipse CDT. Steps:
+We have switched from SCons to CMake and we are using development IDE JetBrains CLion
 
-1. Install CDT Plugin in eclipse
-2. Install SConsolidator plugin from sconsolidator.com
-3. Import from File->Import
+You can simply import the project. Make sure, you set the correct paths for libraries in CMakeLists.txt

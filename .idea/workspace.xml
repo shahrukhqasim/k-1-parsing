@@ -13,41 +13,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b1552501-336f-46e7-a2d5-8c170d8293bf" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CMakeLists.txt" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.cproject" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.project" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.sconsign.dblite" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.settings/language.settings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/EditDistance.cc" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/EditDistance.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/EditDistance.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelperMethods.cpp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelperMethods.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelperMethods.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SConstruct" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TesseractFinder.cc" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TesseractFinder.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TesseractFinder.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/csv/CSVparser.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/executable" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/form.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/form2.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/k-1-parsing result.zip" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main.cc" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/model.csv" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/0.png" afterPath="$PROJECT_DIR$/output/0.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/1.png" afterPath="$PROJECT_DIR$/output/1.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/10.png" afterPath="$PROJECT_DIR$/output/10.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/2.png" afterPath="$PROJECT_DIR$/output/2.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/3.png" afterPath="$PROJECT_DIR$/output/3.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/4.png" afterPath="$PROJECT_DIR$/output/4.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/5.png" afterPath="$PROJECT_DIR$/output/5.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/6.png" afterPath="$PROJECT_DIR$/output/6.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/7.png" afterPath="$PROJECT_DIR$/output/7.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/8.png" afterPath="$PROJECT_DIR$/output/8.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/9.png" afterPath="$PROJECT_DIR$/output/9.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/temp/displayImage.png" afterPath="$PROJECT_DIR$/temp/displayImage.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
     </list>
     <ignored path="k-1-parsing2.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -82,13 +48,6 @@
       </file>
       <file leaf-file-name="0.png" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/output/0.png">
-          <provider selected="true" editor-type-id="images">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="3_rulingsRemoved.png" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/output/3_rulingsRemoved.png">
           <provider selected="true" editor-type-id="images">
             <state />
           </provider>
@@ -132,10 +91,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="10_rulingsRemoved.png" pinned="false" current-in-tab="true">
+      <file leaf-file-name="10_rulingsRemoved.png" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/output/10_rulingsRemoved.png">
           <provider selected="true" editor-type-id="images">
             <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="4" column="86" selection-start-line="4" selection-start-column="86" selection-end-line="4" selection-end-column="86" />
+              <folding />
+            </state>
           </provider>
         </entry>
       </file>
@@ -160,6 +129,7 @@
         <option value="$PROJECT_DIR$/src/TesseractFinder.h" />
         <option value="$PROJECT_DIR$/src/main.cc" />
         <option value="$PROJECT_DIR$/src/TesseractFinder.cc" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -433,7 +403,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="18" width="1366" height="750" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24450952" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -624,6 +594,14 @@
     <entry file="file://$PROJECT_DIR$/output/10_rulingsRemoved.png">
       <provider selected="true" editor-type-id="images">
         <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="86" selection-start-line="4" selection-start-column="86" selection-end-line="4" selection-end-column="86" />
+          <folding />
+        </state>
       </provider>
     </entry>
   </component>
