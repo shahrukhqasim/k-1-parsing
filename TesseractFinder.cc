@@ -10,6 +10,8 @@ void TesseractFinder::run() {
 }
 
 void TesseractFinder::recognizeText() {
+
+	RNG rng(12345);
   cout<<"Running OCR..."<<endl;
     Pix *image = { pixRead(imagePath.c_str()) }; //the path of image
     tesseract::TessBaseAPI *api = new tesseract::TessBaseAPI();
@@ -35,6 +37,7 @@ void TesseractFinder::recognizeText() {
         int x1, y1, x2, y2;
 
         ri->BoundingBox(level, &x1, &y1, &x2, &y2);
+
 
         data.push_back({Point(x1,y1),Point(x2,y2),word});
 

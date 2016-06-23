@@ -13,7 +13,10 @@
 #include "opencv2/highgui/highgui.hpp"
 #include "opencv2/imgproc/imgproc.hpp"
 
+#include <string>
+
 using namespace cv;
+using namespace std;
 
 class HelperMethods {
 public:
@@ -22,6 +25,12 @@ public:
 	 * Displays image in @image in a resizable window with the help of programs installed on the host machine
 	 * */
 	static void displayImageResizable(const Mat&image);
+
+
+	/**
+	 * Outputs @image to file specified by @fileName
+	 * */
+	static void outputImage(const Mat&image, const string& fileName);
 
 };
 

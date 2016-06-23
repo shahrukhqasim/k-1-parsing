@@ -34,12 +34,12 @@ struct ValueData {
 void recognizeText(const string& path, vector<ValueData>&valueData);
 void match(vector<KeyData> keyData, vector<ValueData> valueData, Mat&image);
 
-void loadImage(Mat&image) {
-	image = imread("form.png", CV_LOAD_IMAGE_COLOR);   // Read the file
+void loadImage(Mat&image, string fileName) {
+	image = imread(fileName, CV_LOAD_IMAGE_COLOR);   // Read the file
 
 	if (!image.data)                              // Check for invalid input
 	{
-		cout << "Could not open or find the image" << std::endl;
+		cout << "Could not open or find the image: " <<fileName<< std::endl;
 		exit(0);
 	}
 
@@ -52,15 +52,18 @@ void displayImage(Mat&image) {
 	waitKey(0);
 }
 
-//void drawBoxes(TesseractFinder&finder, Mat&image) {
-//  for(int i=0;i<finder.plotData1.size();i++) {
-//    Point p1=finder.plotData1[i];
-//    Point p2=finder.plotData2[i];
-//    Scalar color = Scalar( rng.uniform(0, 255), rng.uniform(0,255), rng.uniform(0,255) );
+void drawBoxes(TesseractFinder&finder, Mat&image) {
+	vector<KeyData> data = finder.getRecognizedData();
+	for (int i = 0; i < data.size(); i++) {
 
-//    rectangle( image, p1, p2, color, 2, 8, 0 );
-//  }
-//}
+		Point p1 = data[i].p1;
+		Point p2 = data[i].p2;
+		Scalar color = Scalar(rng.uniform(0, 255), rng.uniform(0, 255),
+				rng.uniform(0, 255));
+
+		rectangle(image, p1, p2, color, 3, 8, 0);
+	}
+}
 
 // Page,Left,Top,Width,Height,FieldName,MappedFieldName,FieldDataType
 void process(Mat&image, vector<ValueData>&valueData) {
@@ -72,12 +75,12 @@ void process(Mat&image, vector<ValueData>&valueData) {
 	float width;
 	float height;
 
-	for(int i=0;i<file.rowCount();i++) {
-		mappedFieldName=file[i]["MappedFieldName"];
-		left=stof(file[i]["Left"]);
-		top=stof(file[i]["Top"]);
-		width=stof(file[i]["Width"]);
-		height=stof(file[i]["Height"]);
+	for (int i = 0; i < file.rowCount(); i++) {
+		mappedFieldName = file[i]["MappedFieldName"];
+		left = stof(file[i]["Left"]);
+		top = stof(file[i]["Top"]);
+		width = stof(file[i]["Width"]);
+		height = stof(file[i]["Height"]);
 
 		cout << "Read a line: " << mappedFieldName << endl;
 
@@ -88,18 +91,27 @@ void process(Mat&image, vector<ValueData>&valueData) {
 }
 
 int main() {
-	Mat image;
-	vector<ValueData> values;
-
-	loadImage(image);
-	process(image, values);
-	TesseractFinder finder("form.png");
-	finder.run();
-	//drawBoxes(finder,image);
-	match(finder.getRecognizedData(), values, image);
-	//displayImage(image);
-	HelperMethods::displayImageResizable(image);
-
+	string fileName;
+	string fileNameO;
+	for (int i = 0; i <= 10; i++) {
+		fileName = "input/";
+		fileName+=to_string(i);
+		fileName+=".png";
+		fileNameO = "output/";
+		fileNameO+=to_string(i);
+		fileNameO+=".png";
+		Mat image;
+		vector<ValueData> values;
+		loadImage(image, fileName);
+		process(image, values);
+		TesseractFinder finder(fileName);
+		finder.run();
+		drawBoxes(finder, image);
+		//match(finder.getRecognizedData(), values, image);
+		//displayImage(image);
+		//HelperMethods::displayImageResizable(image);
+		HelperMethods::outputImage(image, fileNameO);
+	}
 	return 0;
 }
 
@@ -107,7 +119,7 @@ void match(vector<KeyData> keyData, vector<ValueData> valueData, Mat&image) {
 	EditDistance editDistanceCalculator;
 
 	for (int i = 0; i < valueData.size(); i++) {
-		cout<<"Searching for "<<valueData[i].exactKeyText<<endl;
+		cout << "Searching for " << valueData[i].exactKeyText << endl;
 		int minIndex = -1;
 		int minDistance = 9999999;
 		for (int j = 0; j < keyData.size(); j++) {
@@ -132,9 +144,8 @@ void match(vector<KeyData> keyData, vector<ValueData> valueData, Mat&image) {
 					2, 8, 0);
 			rectangle(image, valueData[i].p1, valueData[i].p2, color, 2, 8, 0);
 			keyData.erase(keyData.begin() + minIndex);
-		}
-		else {
-			cout<<"Count not find for "<<valueData[i].exactKeyText<<endl;
+		} else {
+			cout << "Count not find for " << valueData[i].exactKeyText << endl;
 		}
 	}
 }
