@@ -34,6 +34,6 @@ public:
 
     static string removeFileExtension(const string &fileName);
 
-};
+    };
 
 #endif /* HELPERMETHODS_H_ */

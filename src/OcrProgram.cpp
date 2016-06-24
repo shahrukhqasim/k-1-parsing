@@ -2,15 +2,15 @@
 // Created by shahrukhqasim on 6/24/16.
 //
 
-#include "Program.h"
+#include "OcrProgram.h"
 
-Program::Program(string inputFileName, string inputFolder, string outputFolder) {
+OcrProgram::OcrProgram(string inputFileName, string inputFolder, string outputFolder) {
     this->inputFileName=inputFileName;
     this->inputFolder=inputFolder;
     this->outputFolder=outputFolder;
 }
 
-void Program::loadImage(Mat &image, string fileName, int mode) {
+void OcrProgram::loadImage(Mat &image, string fileName, int mode) {
     Mat image2 = imread(fileName, mode);   // Read the file
     if (!image2.data)                      // Check for invalid input
     {
@@ -22,15 +22,16 @@ void Program::loadImage(Mat &image, string fileName, int mode) {
 }
 
 
-void Program::run() {
+void OcrProgram::run() {
     loadImage(originalImage,inputFolder+"/"+inputFileName,0);
     doSegmentation();
     cleanImageAndWriteToDisk();
     runOcr();
+    outputToJson();
     outputResult();
 }
 
-void Program::doSegmentation() {
+void OcrProgram::doSegmentation() {
     Mat image=originalImage.clone();
 
     Preprocessor::invertImage(image);
@@ -38,9 +39,10 @@ void Program::doSegmentation() {
     Preprocessor::invertImage(image);
 }
 
-void Program::runOcr() {
+void OcrProgram::runOcr() {
     // First run OCR on the segments
     TesseractFinder finder1(outputFolder+"/"+cleanedImageFileName,segments);
+    finder1.setIteratorLevel(tesseract::RIL_WORD);
     finder1.run();
 
     Mat imageWithoutSegments=cleanedImage.clone();
@@ -56,6 +58,7 @@ void Program::runOcr() {
     HelperMethods::outputImage(imageWithoutSegments,outputFolder+"/"+withoutSegmentsImageFileName);
 
     TesseractFinder finder2(outputFolder+"/"+withoutSegmentsImageFileName);
+    finder1.setIteratorLevel(tesseract::RIL_WORD);
     finder2.run();
 
     // Now merge the results of both runs
@@ -65,7 +68,7 @@ void Program::runOcr() {
 
 }
 
-void Program::cleanImageAndWriteToDisk() {
+void OcrProgram::cleanImageAndWriteToDisk() {
     vector<Rect>boxes;
     Preprocessor::conCompFast(originalImage,boxes,1,1,0,8);
 
@@ -89,7 +92,40 @@ void Program::cleanImageAndWriteToDisk() {
     HelperMethods::outputImage(cleanedImage,outputFolder+"/"+cleanedImageFileName);
 }
 
-void Program::outputResult() {
+void OcrProgram::outputToJson() {
+    Json::Value root;
+    Json::Value pages;
+    pages["PageNumber"]=1;
+    pages["Width"]=originalImage.cols;
+    pages["Height"]=originalImage.rows;
+
+    Json::Value words;
+
+    for(int i=0;i<data.size();i++) {
+        OcrResult wordEntry=data[i];
+        string s=wordEntry.text;
+        Json::Value word;
+        Json::Value rectangle;
+        rectangle["l"]=wordEntry.p1.x;
+        rectangle["t"]=wordEntry.p1.y;
+        rectangle["r"]=wordEntry.p2.x;
+        rectangle["b"]=wordEntry.p2.x;
+        word["Value"]=s;
+        word["Region"]=rectangle;
+
+        pages["Words"][i]=word;
+    }
+
+    root["Pages"][0]=pages;
+
+    fstream outputFile(outputFolder+"/"+HelperMethods::removeFileExtension(inputFileName)+".json",ios::out);
+    outputFile<<root;
+    outputFile.close();
+}
+
+void OcrProgram::outputResult() {
+
+
     Mat image;
     cvtColor(originalImage,image,CV_GRAY2RGB);
 
@@ -104,4 +140,30 @@ void Program::outputResult() {
     }
 
     HelperMethods::outputImage(image,outputFolder+"/"+inputFileName);
+}
+
+void OcrProgram::oneToOneMatch() {
+	// TODO: Change path or something
+	csv::Parser file = csv::Parser(inputFolder+"/model.csv");
+
+	string mappedFieldName;
+	float left;
+	float top;
+	float width;
+	float height;
+
+	for (int i = 0; i < file.rowCount(); i++) {
+		mappedFieldName = file[i]["MappedFieldName"];
+		left = stof(file[i]["Left"]);
+		top = stof(file[i]["Top"]);
+		width = stof(file[i]["Width"]);
+		height = stof(file[i]["Height"]);
+
+		cout << "Read a line: " << mappedFieldName << endl;
+
+		Point tll(left * 2.777, (792 - top) * 2.777);
+		Point brr(tll.x + width * 2.777, tll.y + height * 2.777);
+
+        documentModelData.push_back( { tll, brr, mappedFieldName });
+	}
 }

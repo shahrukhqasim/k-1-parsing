@@ -44,9 +44,12 @@ private:
 
     vector<Rect>boxes;
 
+    tesseract::PageIteratorLevel iteratorLevel;
+
 public:
     TesseractFinder(const string &imagePath);
     TesseractFinder(const string &imagePath, const vector<Rect>& boxes);
+    void setIteratorLevel(tesseract::PageIteratorLevel mode);
 
     void run();
 

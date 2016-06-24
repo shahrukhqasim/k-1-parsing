@@ -4,12 +4,14 @@
 TesseractFinder::TesseractFinder(const string &imagePath) {
     this->imagePath = imagePath;
     this->mode=MODE_FULL;
+    this->iteratorLevel=tesseract::RIL_TEXTLINE;
 }
 
 TesseractFinder::TesseractFinder(const string &imagePath, const vector<Rect> &boxes) {
     this->imagePath = imagePath;
     this->boxes=boxes;
     this->mode=MODE_BOXES;
+    this->iteratorLevel=tesseract::RIL_TEXTLINE;
 }
 void TesseractFinder::run() {
     recognizeText();
@@ -17,7 +19,7 @@ void TesseractFinder::run() {
 
 void TesseractFinder::iterate(tesseract::TessBaseAPI *api) {
     tesseract::ResultIterator *ri = api->GetIterator();
-    tesseract::PageIteratorLevel level = tesseract::RIL_TEXTLINE;
+    tesseract::PageIteratorLevel level = iteratorLevel;
 
     string recognizedText;
 
@@ -87,4 +89,8 @@ void TesseractFinder::recognizeText() {
 
 vector<OcrResult> TesseractFinder::getRecognizedData() {
     return data;
+}
+
+void TesseractFinder::setIteratorLevel(tesseract::PageIteratorLevel mode) {
+    this->iteratorLevel=mode;
 }

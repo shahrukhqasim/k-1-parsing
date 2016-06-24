@@ -24,6 +24,8 @@
 #include "HelperMethods.h"
 #include "Preprocessor.h"
 
+#include "../json/json/json.h"
+
 using namespace std;
 using namespace tesseract;
 using namespace cv;
@@ -31,8 +33,13 @@ using namespace cv;
 #ifndef K_1_PARSING2_PROGRAM_H
 #define K_1_PARSING2_PROGRAM_H
 
+struct DocumentModelData {
+	Point p1;
+	Point p2;
+	string exactKeyText;
+};
 
-class Program {
+class OcrProgram {
     RNG rng=RNG(12345);
     string inputFileName;
     string inputFolder;
@@ -40,6 +47,7 @@ class Program {
     Mat cleanedImage;
     string cleanedImageFileName;
     vector<OcrResult>data;
+    vector<DocumentModelData>documentModelData;
 
     Mat originalImage;
 
@@ -47,12 +55,15 @@ class Program {
     void doSegmentation();
     void cleanImageAndWriteToDisk();
     void runOcr();
+	void outputToJson();
     void outputResult();
+    void oneToOneMatch();
+
 
     vector<Rect>segments;
 public:
     void run();
-    Program(string inputFileName, string inputFolder, string outputFolder);
+    OcrProgram(string inputFileName, string inputFolder, string outputFolder);
 };
 
 
