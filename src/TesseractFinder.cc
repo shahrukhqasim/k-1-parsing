@@ -17,7 +17,7 @@ void TesseractFinder::run() {
 
 void TesseractFinder::iterate(tesseract::TessBaseAPI *api) {
     tesseract::ResultIterator *ri = api->GetIterator();
-    tesseract::PageIteratorLevel level = tesseract::RIL_WORD;
+    tesseract::PageIteratorLevel level = tesseract::RIL_TEXTLINE;
 
     string recognizedText;
 
@@ -85,6 +85,6 @@ void TesseractFinder::recognizeText() {
     pixDestroy(&image);
 }
 
-vector<KeyData> TesseractFinder::getRecognizedData() {
+vector<OcrResult> TesseractFinder::getRecognizedData() {
     return data;
 }

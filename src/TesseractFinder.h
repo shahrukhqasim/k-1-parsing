@@ -22,7 +22,7 @@ using namespace cv;
 
 
 
-struct KeyData {
+struct OcrResult {
     Point p1;
     Point p2;
     string text;
@@ -36,7 +36,7 @@ private:
     void iterate(tesseract::TessBaseAPI *api);
     void recognizeText();
 
-    vector<KeyData> data;
+    vector<OcrResult> data;
 
     static const int MODE_FULL=0;
     static const int MODE_BOXES=1;
@@ -50,7 +50,7 @@ public:
 
     void run();
 
-    vector<KeyData> getRecognizedData();
+    vector<OcrResult> getRecognizedData();
 
 };
 
