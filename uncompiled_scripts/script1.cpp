@@ -2,7 +2,6 @@
 // Created by shahrukhqasim on 6/24/16.
 //
 
-
 void convertPdfs() {
     ifstream inputStream("/home/shahrukhqasim/Desktop/bb/All/files.txt");
     std::string str;

@@ -34,6 +34,8 @@ public:
 
     static string removeFileExtension(const string &fileName);
 
-    };
+    static bool isAlphaNumericNotSpace(char a);
+    static bool nearEqualComparison(const string&a,const string&b);
+};
 
 #endif /* HELPERMETHODS_H_ */

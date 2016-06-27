@@ -64,6 +64,7 @@ class OcrProgram {
 public:
     void run();
     OcrProgram(string inputFileName, string inputFolder, string outputFolder);
+	static void runOcrProgram();
 };
 
 

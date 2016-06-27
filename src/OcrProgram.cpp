@@ -3,6 +3,7 @@
 //
 
 #include "OcrProgram.h"
+#include "AccuracyProgram.h"
 
 OcrProgram::OcrProgram(string inputFileName, string inputFolder, string outputFolder) {
     this->inputFileName=inputFileName;
@@ -109,7 +110,7 @@ void OcrProgram::outputToJson() {
         rectangle["l"]=wordEntry.p1.x;
         rectangle["t"]=wordEntry.p1.y;
         rectangle["r"]=wordEntry.p2.x;
-        rectangle["b"]=wordEntry.p2.x;
+        rectangle["b"]=wordEntry.p2.y;
         word["Value"]=s;
         word["Region"]=rectangle;
 
@@ -166,4 +167,27 @@ void OcrProgram::oneToOneMatch() {
 
         documentModelData.push_back( { tll, brr, mappedFieldName });
 	}
+}
+
+void OcrProgram::runOcrProgram() {
+    ifstream inputStream("/home/shahrukhqasim/Desktop/bb/All/programInput/files.txt");
+    ifstream expectedJsonStream("/home/shahrukhqasim/Desktop/bb/All/expectedOutput/files.txt");
+
+    std::string str;
+    std::string str2;
+
+    // TODO: To run extensive testing on single image
+    while(getline(inputStream, str)) {
+        getline(expectedJsonStream, str2);
+        cout<<"Running on "<<str<<endl;
+
+        OcrProgram(str,"/home/shahrukhqasim/Desktop/bb/All/programInput","/home/shahrukhqasim/Desktop/bb/All/programOutput").run();
+        string programFilePath="/home/shahrukhqasim/Desktop/bb/All/programOutput/"+HelperMethods::removeFileExtension(str)+".json";
+        string expectedFilePath="/home/shahrukhqasim/Desktop/bb/All/expectedOutput/"+str2;
+        string inputImagePath="/home/shahrukhqasim/Desktop/bb/All/programInput/"+str;
+        string plotImagePath="/home/shahrukhqasim/Desktop/bb/All/plottedDataComparison/"+str;
+        AccuracyProgram(programFilePath,expectedFilePath,inputImagePath,plotImagePath).run();
+
+        cout<<"Run complete on "<<str<<endl;
+    }
 }

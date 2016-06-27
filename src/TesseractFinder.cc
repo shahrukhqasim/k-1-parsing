@@ -54,6 +54,9 @@ void TesseractFinder::recognizeText() {
     Pix *image = {pixRead(imagePath.c_str())}; //the path of image
     tesseract::TessBaseAPI *api = new tesseract::TessBaseAPI();
 
+    if (!api->SetVariable("textord_no_rejects", "1"))
+        printf("Setting variable failed!!!\n");
+
     if (api->Init(NULL, "eng")) {
         fprintf(stderr, "Could not initialize tesseract.\n");
         exit(1);

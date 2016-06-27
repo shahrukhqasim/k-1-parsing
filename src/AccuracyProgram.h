@@ -14,15 +14,19 @@ private:
     string programOutputFile;
     string expectedOutputFile;
 
+    string inputFile;
+    string comparisonFile;
+
+    Mat theImage;
+
     vector<WordEntry> tesseractOutput;
     vector<WordEntry> expectedOutput;
 public:
-    AccuracyProgram(string programOutputFile, string expectedOutputFile);
+    AccuracyProgram(string programOutputFile, string expectedOutputFilem, string inputFile, string comparisonFile);
     void run();
     static void runAccuracyTest();
-
+    static void getWords(Json::Value root,vector<WordEntry>&outputVector);
 private:
-    void getWords(Json::Value root,vector<WordEntry>&outputVector);
     void compare2(Json::Value rootProgram,Json::Value rootExpected);
     float testAccuracy();
 };

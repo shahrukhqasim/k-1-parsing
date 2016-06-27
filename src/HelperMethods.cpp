@@ -6,9 +6,8 @@
  */
 
 #include "HelperMethods.h"
-#include "union-find.h"
+#include <iostream>
 
-#include "iostream"
 
 void HelperMethods::displayImageResizable(const Mat&image) {
 	imwrite("temp/displayImage.png",image);
@@ -34,4 +33,34 @@ string HelperMethods::removeFileExtension(const string &fileName) {
 
 	std::cerr<<"Error in file name:"<<fileName<<endl;
 	exit(0);
+}
+
+bool HelperMethods::isAlphaNumericNotSpace(char a) {
+    if(a>='0'&&a<='9'||a>='A'&&a<='Z'||a>='a'&&a<='z')
+        return true;
+    return false;
+
+}
+
+bool HelperMethods::nearEqualComparison(const string&a,const string&b) {
+	string c;
+	string d;
+	for(int i=0;i<a.size();i++) {
+		if(isAlphaNumericNotSpace(a[i]))
+			c=c+a[i];
+	}
+	for(int i=0;i<b.size();i++) {
+		if(isAlphaNumericNotSpace(b[i]))
+			d=d+b[i];
+	}
+
+    for(int i=0;i<c.size();i++) {
+        if(c[i]=='\n') {
+            cout<<c<<endl;
+            assert(false);
+        }
+    }
+
+	return c==d;
+
 }

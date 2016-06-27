@@ -17,6 +17,7 @@ private:
 public:
 
     bool compare(WordEntry &expectedOutput);
+    bool equals(WordEntry &expectedOutput);
     Rect getRect();
     string getWord();
     void setRect(Rect input);

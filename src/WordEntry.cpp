@@ -14,8 +14,8 @@ bool WordEntry::compare(WordEntry &expectedOutput){
 
 
     // TODO: Fix this
-    if(true){
-        if(this->word == expectedOutput.getWord())
+    if(Jc>0.1){
+        if(HelperMethods::nearEqualComparison(this->word ,expectedOutput.getWord()) )
             return 1;
     }
 
@@ -23,6 +23,12 @@ bool WordEntry::compare(WordEntry &expectedOutput){
 
 }
 
+bool WordEntry::equals(WordEntry &expectedOutput) {
+    if(this->getRect()==expectedOutput.getRect()&&this->getWord()==expectedOutput.getWord())
+        return true;
+    else
+        return false;
+}
 
 Rect WordEntry::getRect(){
     return this->boundingBox;
