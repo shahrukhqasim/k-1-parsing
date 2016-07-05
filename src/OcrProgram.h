@@ -39,6 +39,23 @@ struct DocumentModelData {
 	string exactKeyText;
 };
 
+struct SmallDistance
+{
+	inline bool operator() (const Point& struct1, const Point& struct2)
+	{
+		return (struct1.y-struct1.x > struct2.y-struct2.x);
+	}
+};
+
+struct XFirst
+{
+	inline bool operator() (const Point& struct1, const Point& struct2)
+	{
+		return (struct1.x < struct2.x);
+	}
+};
+
+
 class OcrProgram {
     RNG rng=RNG(12345);
     string inputFileName;
@@ -64,7 +81,7 @@ class OcrProgram {
 public:
     void run();
     OcrProgram(string inputFileName, string inputFolder, string outputFolder);
-	static void runOcrProgram();
+	static void runOcrProgram(string path);
 };
 
 

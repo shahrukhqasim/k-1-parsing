@@ -36,6 +36,8 @@ public:
 
     static bool isAlphaNumericNotSpace(char a);
     static bool nearEqualComparison(const string&a,const string&b);
+
+    static std::vector<std::string> regexSplit(const std::string & s, std::string rgx_str = "\\s+");
 };
 
 #endif /* HELPERMETHODS_H_ */

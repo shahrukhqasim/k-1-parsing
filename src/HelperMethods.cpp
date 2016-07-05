@@ -7,7 +7,7 @@
 
 #include "HelperMethods.h"
 #include <iostream>
-
+#include <regex>
 
 void HelperMethods::displayImageResizable(const Mat&image) {
 	imwrite("temp/displayImage.png",image);
@@ -63,4 +63,20 @@ bool HelperMethods::nearEqualComparison(const string&a,const string&b) {
 
 	return c==d;
 
+}
+
+std::vector<std::string> HelperMethods::regexSplit(const std::string &s, string rgx_str) {
+	std::vector<std::string> elems;
+
+	std::regex rgx (rgx_str);
+
+	std::sregex_token_iterator iter(s.begin(), s.end(), rgx, -1);
+	std::sregex_token_iterator end;
+
+	while (iter != end)  {
+		elems.push_back(*iter);
+		++iter;
+	}
+
+	return elems;
 }

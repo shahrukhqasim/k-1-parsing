@@ -12,11 +12,16 @@ using namespace std;
 #define K_1_PARSING2_CONFIGUREPROGRAM_H
 
 
-class ConfigureProgram {
+class Configuration {
+private:
+    string parentPath;
+    string inputImagesPath;
+
+//    static shared_ptr<Configuration>configuration;
 public:
     static string getEnvironmentalVariable(const string& name);
-
-    static void runConfigureProgram();
+    static void configure();
+//    static shared_ptr<Configuration> getConfiguration();
 };
 
 

@@ -23,12 +23,16 @@ private:
     vector<WordEntry> expectedOutput;
 public:
     AccuracyProgram(string programOutputFile, string expectedOutputFilem, string inputFile, string comparisonFile);
-    void run();
+    float run();
     static void runAccuracyTest();
     static void getWords(Json::Value root,vector<WordEntry>&outputVector);
+    static void cleanWords(vector<WordEntry>& root);
+    static void ferjadTest();
 private:
     void compare2(Json::Value rootProgram,Json::Value rootExpected);
     float testAccuracy();
+    float accuracy;
+    bool successful;
 };
 
 

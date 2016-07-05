@@ -19,7 +19,7 @@ set(SOURCE_FILES
     src/main.cc
     src/TesseractFinder.cc
     src/TesseractFinder.h
-    src/union-find.h src/Preprocessor.cpp src/Preprocessor.h src/OcrProgram.cpp src/OcrProgram.h src/WordEntry.cpp src/WordEntry.h src/AccuracyProgram.cpp src/AccuracyProgram.h src/ConfigureProgram.cpp src/ConfigureProgram.h)
+    src/union-find.h src/Preprocessor.cpp src/Preprocessor.h src/OcrProgram.cpp src/OcrProgram.h src/WordEntry.cpp src/WordEntry.h src/AccuracyProgram.cpp src/AccuracyProgram.h src/Configuration.cpp src/Configuration.h src/LineBreaker.cpp src/LineBreaker.h)
 
 add_executable(k_1_parsing2 ${SOURCE_FILES})
 target_link_libraries(k_1_parsing2 lept tesseract opencv_core opencv_imgproc opencv_highgui opencv_imgcodecs)

@@ -19,7 +19,8 @@ void TesseractFinder::run() {
 
 void TesseractFinder::iterate(tesseract::TessBaseAPI *api) {
     tesseract::ResultIterator *ri = api->GetIterator();
-    tesseract::PageIteratorLevel level = iteratorLevel;
+    tesseract::PageIteratorLevel level=tesseract::RIL_WORD;
+//    tesseract::PageIteratorLevel level = iteratorLevel;
 
     string recognizedText;
 
@@ -62,7 +63,7 @@ void TesseractFinder::recognizeText() {
         exit(1);
     }
 
-    api->SetPageSegMode(tesseract::PSM_SPARSE_TEXT);
+    api->SetPageSegMode(tesseract::PSM_AUTO);
     api->SetImage(image);
 
     if(mode==MODE_FULL) {
