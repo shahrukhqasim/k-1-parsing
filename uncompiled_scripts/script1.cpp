@@ -290,3 +290,53 @@ void compareThem() {
         HelperMethods::outputImage(image,folderOutput+onlyName+".png");
     }
 }
+
+
+void AccuracyProgram::ferjadTest() {
+    Json::Value expected444;
+    ifstream s22("/home/shahrukhqasim/Desktop/ferjads/programOutput/1.json");
+    s22 >> expected444;
+
+
+    csv::Parser file = csv::Parser(
+            "/home/shahrukhqasim/Desktop/ferjads/programOutput/1.csv");
+
+    string word;
+    float left;
+    float top;
+    float right;
+    float bottom;
+
+    AccuracyProgram p1("", "", "/home/shahrukhqasim/Desktop/ferjads/programOutput/1.png",
+                       "/home/shahrukhqasim/Desktop/ferjads/programOutput/comparison1.png");
+
+    p1.getWords(expected444, p1.expectedOutput);
+
+    for (int i = 0; i < file.rowCount(); i++) {
+        word = file[i]["word"];
+        left = stof(file[i]["left"]);
+        top = stof(file[i]["top"]);
+        right = stof(file[i]["right"]);
+        bottom = stof(file[i]["bottom"]);
+
+        WordEntry entry;
+        entry.setRect(Rect(Point(left, top), Point(right, bottom)));
+        entry.setString(word);
+
+        p1.tesseractOutput.push_back(entry);
+    }
+
+
+    Mat image = imread(p1.inputFile, 0);
+    if (!image.data) {
+
+        cerr << "Could not read the input image file";
+        exit(0);
+    }
+    cvtColor(image, p1.theImage, CV_GRAY2RGB);
+
+    cleanWords(p1.expectedOutput);
+    cleanWords(p1.tesseractOutput);
+    cout << p1.testAccuracy();
+    HelperMethods::outputImage(p1.theImage, p1.comparisonFile);
+}

@@ -63,7 +63,7 @@ void TesseractFinder::recognizeText() {
         exit(1);
     }
 
-    api->SetPageSegMode(tesseract::PSM_AUTO);
+    api->SetPageSegMode(tesseract::PSM_SPARSE_TEXT);
     api->SetImage(image);
 
     if(mode==MODE_FULL) {
