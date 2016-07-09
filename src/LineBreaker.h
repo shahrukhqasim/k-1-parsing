@@ -8,6 +8,9 @@
 #define K_1_PARSING2_LINEBREAKER_H
 
 
+/**
+ * We are not using this class. This is suposed to do line segmentation. But it is not working well.
+ */
 class LineBreaker {
 public:
     LineBreaker(const Mat&image);

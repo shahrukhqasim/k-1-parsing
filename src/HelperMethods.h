@@ -18,6 +18,9 @@
 using namespace cv;
 using namespace std;
 
+/**
+ * This is a static class which only contains different helper methods
+ */
 class HelperMethods {
 public:
 
@@ -28,15 +31,52 @@ public:
 
 
     /**
-     * Outputs @param image to file specified by param @fileName
+     * Outputs image to a file
+     *
+     * @param[in] image represents the output image
+     * @param[in] fileName represents the output file path
+     *
      * */
     static void outputImage(const Mat &image, const string &fileName);
 
+    /**
+     * Removes file extension from its path or file name
+     *
+     * @param[in] fileName represents the file path
+     *
+     * @return the file name or path without extension text
+     *
+     * */
     static string removeFileExtension(const string &fileName);
 
+    /**
+     * To check if the character is an alpha numeric character (and not a space)
+     *
+     * @param[in] a is the character to be checked
+     *
+     * @return true if it is an alpha numeric; false otherwise
+     *
+     * */
     static bool isAlphaNumericNotSpace(char a);
+
+    /**
+     * To do a near equal (alpha-numeric) comparison
+     *
+     * @param[in] a represents first string
+     * @param[in] b represents second string
+     *
+     * @return true if both are nearly equal; false otherwise
+     *
+     * */
     static bool nearEqualComparison(const string&a,const string&b);
 
+    /**
+     * Splits a string to parts at regular expression provided
+     *
+     * @param[in] s represents the input string
+     * @param[in] rgx_str represents the regular expression. Default is whitespace
+     *
+     * */
     static std::vector<std::string> regexSplit(const std::string & s, std::string rgx_str = "\\s+");
 };
 

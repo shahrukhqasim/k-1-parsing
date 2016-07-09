@@ -2,7 +2,7 @@
 // Created by Shah Rukh Qasim on 6/25/16.
 //
 #include "OcrProgram.h"
-#include "WordEntry.h"
+#include "TextualData.h"
 
 
 #ifndef K_1_PARSING2_ACCURACYPROGRAM_H
@@ -40,12 +40,12 @@ private:
     /**
      * Data vector of OCR result
      */
-    vector<WordEntry> ocrOutput;
+    vector<TextualData> ocrOutput;
 
     /**
      * Data vector of the ground truth
      */
-    vector<WordEntry> expectedOutput;
+    vector<TextualData> expectedOutput;
 public:
     /**
      * This is a static function which runs an accuracy test on the path structure provided.
@@ -80,7 +80,7 @@ public:
      * @param[out] outputVector is the output vector which will store the results
      *
      */
-    static void getWords(Json::Value root,vector<WordEntry>&outputVector);
+    static void getWords(Json::Value root,vector<TextualData>&outputVector);
 
     /**
      * This function is static because it does not depend on any class level variables. It cleans
@@ -88,7 +88,7 @@ public:
      *
      * @param[in] root must contain the vector to the data
      */
-    static void cleanWords(vector<WordEntry>& root);
+    static void cleanWords(vector<TextualData>& root);
 private:
     /**
      * This function compares two data jsons. It then calls testAccuracy function for the real job

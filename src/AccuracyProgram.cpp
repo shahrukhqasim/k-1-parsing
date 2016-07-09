@@ -5,19 +5,21 @@
 #include "AccuracyProgram.h"
 
 float AccuracyProgram::testAccuracy() {
-    vector<WordEntry> expected2 = vector<WordEntry>(expectedOutput);
-
     int size = expectedOutput.size();
     int matches = 0;
 
     // Those elements which are found are entered into this vector
-    vector<WordEntry> found;
+    vector<TextualData> found;
 
     // Those elements from tesseract output which are matched to anything
-    vector<WordEntry> ocrMatched;
+    vector<TextualData> ocrMatched;
 
+
+    // Go through OCR output
     for (int i = 0; i < ocrOutput.size(); i++) {
+        // Go through expected output (Ground Truth)
         for (int j = 0; j < expectedOutput.size(); j++) {
+            // If any matches
             if (ocrOutput[i].compare(expectedOutput[j])) {
                 // Push the found element into found vector
                 found.push_back(expectedOutput[j]);
@@ -25,17 +27,17 @@ float AccuracyProgram::testAccuracy() {
                 // Remove it from expected output. It cannot occur twice
                 expectedOutput.erase(expectedOutput.begin() + j);
 
+                // and add one to matches for accuracy figure
                 matches++;
                 break;
 
             }
         }
-
     }
 
 
     // Those elements from tesseract output which are not matched to anything
-    vector<WordEntry> notMatched;
+    vector<TextualData> notMatched;
     for (int i = 0; i < ocrOutput.size(); i++) {
         bool matched = false;
         for (int j = 0; j < ocrMatched.size(); j++) {
@@ -74,6 +76,7 @@ float AccuracyProgram::testAccuracy() {
     }
 
 
+    // Calculate accuracy percentage and return it
     if (size != 0) {
         return matches * 100.0 / size;
     }
@@ -90,9 +93,8 @@ AccuracyProgram::AccuracyProgram(string programOutputFile, string expectedOutput
     this->comparisonFile = comparisonFile;
 }
 
-void AccuracyProgram::getWords(Json::Value root, vector<WordEntry> &outputVector) {
+void AccuracyProgram::getWords(Json::Value root, vector<TextualData> &outputVector) {
     root = root["Pages"][0];
-
 
     Json::Value words = root["Words"];
     for (int i = 0; i < words.size(); i++) {
@@ -105,19 +107,20 @@ void AccuracyProgram::getWords(Json::Value root, vector<WordEntry> &outputVector
         int b = rectangle["b"].asInt();
         int r = rectangle["r"].asInt();
 
-        WordEntry entry;
+        TextualData entry;
         entry.setRect(Rect(l, t, r - l, b - t));
-        entry.setString(value);
+        entry.setText(value);
         outputVector.push_back(entry);
     }
 }
 
-void AccuracyProgram::cleanWords(vector<WordEntry> &root) {
-    vector<WordEntry> words2;
+void AccuracyProgram::cleanWords(vector<TextualData> &root) {
+    vector<TextualData> words2;
     for (int i = 0; i < root.size(); i++) {
-        WordEntry word = root[i];
-        string w = word.getWord();
+        TextualData word = root[i];
+        string w = word.getText();
         bool isVerified = false;
+        // TODO: Change it use regular expressions
         for (int i = 0; i < w.size(); i++) {
             if (HelperMethods::isAlphaNumericNotSpace(w[i])) {
                 isVerified = true;
@@ -134,9 +137,11 @@ void AccuracyProgram::cleanWords(vector<WordEntry> &root) {
 
 
 void AccuracyProgram::compare2(Json::Value rootProgram, Json::Value rootExpected) {
+    // Get words from the JSON file
     getWords(rootProgram, ocrOutput);
     getWords(rootExpected, expectedOutput);
 
+    // If there is no expected output, then there is no comparison
     if (expectedOutput.size() == 0) {
         successful = false;
     }
@@ -144,10 +149,11 @@ void AccuracyProgram::compare2(Json::Value rootProgram, Json::Value rootExpected
         successful = true;
     }
 
-
+    // Remove all data entries which do not contain alpha numeric characters
     cleanWords(expectedOutput);
     cout << ocrOutput.size() << " " << expectedOutput.size() << endl;
 
+    // Run the actual test
     accuracy = testAccuracy();
     cout << "Accuracy is " << accuracy << endl;
 }
@@ -168,7 +174,7 @@ void AccuracyProgram::runAccuracyTest(string path) {
     ifstream inputStream2(path+"expectedOutput/files.txt");
 
     //This file.txt contains list of program input images and should be in programInput folder
-    ifstream inputStream3(path+"FineReader/programInput/files.txt");
+    ifstream inputStream3(path+"programInput/files.txt");
 
     // Strings to read files line by line
     std::string lineOcrResult; // To read file names of OCR output JSON files
@@ -200,6 +206,8 @@ void AccuracyProgram::runAccuracyTest(string path) {
         string plotImagePath = plotOutputFolder + lineProgramInputImages;
         string programFilePath = outputFolder + "/" + lineOcrResult;
         string expectedFilePath = expectedFolder + "/" + lineGroundTruth;
+
+        cout<<inputImagePath<<endl;
 
         cout << "Running on " << programFilePath << endl;
 

@@ -22,18 +22,38 @@ using namespace cv;
 
 
 
+/**
+ * Contains an OCR result entry.
+ * TODO: change it to TextualData class
+ */
 struct OcrResult {
     Point p1;
     Point p2;
     string text;
 };
 
+/**
+ * This class represents a tesseract OCR job
+ */
 class TesseractFinder {
 private:
+    /**
+     * The path of the input image
+     */
     string imagePath;
 
 
+    /**
+     * To extract results from a tesseract job
+     *
+     * @param[in] api represents pointer to the TesseractBaseAPI from which recognition was done
+     */
     void iterate(tesseract::TessBaseAPI *api);
+
+
+    /**
+     * Run OCR
+     */
     void recognizeText();
 
     vector<OcrResult> data;
@@ -42,17 +62,39 @@ private:
     static const int MODE_BOXES=1;
     int mode;
 
+    /**
+     * Segment boxes, if it is a segmented image
+     */
     vector<Rect>boxes;
 
-    tesseract::PageIteratorLevel iteratorLevel;
-
 public:
+    /**
+     * If it is an unsegmented image
+     *
+     * @param[in] imagePath represents the input image file path on which OCR will run
+     *
+     */
     TesseractFinder(const string &imagePath);
-    TesseractFinder(const string &imagePath, const vector<Rect>& boxes);
-    void setIteratorLevel(tesseract::PageIteratorLevel mode);
 
+    /**
+     * If it is a segmented image
+     *
+     * @param[in] imagePath represents the input image path on which OCR will run
+     *
+     * boxes contain the segments
+     */
+    TesseractFinder(const string &imagePath, const vector<Rect>& boxes);
+
+    /**
+     * Run OCR
+     */
     void run();
 
+    /**
+     * To retrieve results
+     *
+     * @return the reconized data
+     */
     vector<OcrResult> getRecognizedData();
 
 };
