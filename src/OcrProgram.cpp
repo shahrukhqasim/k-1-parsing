@@ -53,7 +53,7 @@ void OcrProgram::doSegmentation() {
     // Invert black and white colors
     Preprocessor::invertImage(image);
 
-    // Compute big black connnected components and store the result in segments
+    // Compute big black connected components and store the result in segments
     // These have to be the rulings
     Preprocessor::conCompFast(image,segments,0.5,0.5,1024,4);
 }
@@ -81,15 +81,15 @@ void OcrProgram::runOcr() {
 
     // Now merge the results of both runs
     data=finder1.getRecognizedData();
-    cout<<"SIze is "<<data.size()<<endl;
+    cout<<"Size is "<<data.size()<<endl;
     vector<OcrResult>data2=finder2.getRecognizedData();
     data.insert(data.end(), data2.begin(), data2.end());
 
 
     // This will segment any missing sentences and remove leading and training white
     // spaces using regular expressions. It will also remove any leading or trailing "\n"
-    // Note that "\n" is not a whitespace character but rather a texual thing
-    // that tesseract ouputs occasionally
+    // Note that "\n" is not a whitespace character but rather a textual thing
+    // that tesseract outputs occasionally
     vector<OcrResult> data3;
     // Remove leading and trailing whitespaces
     for(OcrResult& result : data) {
@@ -130,18 +130,12 @@ void OcrProgram::cleanImageAndWriteToDisk() {
 
 //    cleanedImage=originalImage.clone();
 
-    // Make a new image matrix in which textual connected components will be copied
-    cleanedImage=Mat(originalImage.rows,originalImage.cols, originalImage.type());
-
-    // For white color
-    const Scalar whiteColor(255,255,255);
-
-    // Fill the new image with white
-    rectangle(cleanedImage,Rect(0,0,cleanedImage.cols,cleanedImage.rows),whiteColor,CV_FILLED,8,0);
+    // Make a new image matrix in which textual connected components will be copied and fill it with white color
+    cleanedImage=Mat(originalImage.rows,originalImage.cols, originalImage.type(),Scalar(255,255,255));
 
     // Run through all the connected components
     for(int i=0;i<boxes.size();i++) {
-        // Get the current omponent
+        // Get the current component
         Rect box=boxes[i];
 
         // If the connected component is small enough to be a textual data, copy it to the cleaned image
@@ -249,7 +243,7 @@ void OcrProgram::runOcrProgram(string path) {
     std::string imageFileNameLine;
 
     // Contains the name of the ground truth file of the test case (JSON)
-    std::string expectedOuputFileNameLine;
+    std::string expectedOutputFileNameLine;
 
     // For calculation of average, to store sum and num
     double accuracySum=0;
@@ -258,7 +252,7 @@ void OcrProgram::runOcrProgram(string path) {
     // Read each input image file name from stream to string line by line
     while(getline(imageFilesInputStream, imageFileNameLine)) {
         // There should be equal number of Ground Truth files. So read them as well
-        getline(expectedFilesInputStream, expectedOuputFileNameLine);
+        getline(expectedFilesInputStream, expectedOutputFileNameLine);
 
         cout<<"Running on "<<imageFileNameLine<<endl;
 
@@ -267,11 +261,11 @@ void OcrProgram::runOcrProgram(string path) {
 
         // Now put the path in these variables
         string programJsonFilePath=path+"programOutput/"+HelperMethods::removeFileExtension(imageFileNameLine)+".json";
-        string expectedJsonFilePath=path+"expectedOutput/"+expectedOuputFileNameLine;
+        string expectedJsonFilePath=path+"expectedOutput/"+expectedOutputFileNameLine;
         string inputImagePath=path+"programInput/"+imageFileNameLine;
         string plotImagePath=path+"plottedDataComparison/"+imageFileNameLine;
 
-        // And run teh accuracy test
+        // And run the accuracy test
         float newAccuracy=AccuracyProgram(programJsonFilePath,expectedJsonFilePath,inputImagePath,plotImagePath).run();
 
         // If the accuracy is zero, there must be something wrong otherwise add it to compute average
