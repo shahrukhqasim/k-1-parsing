@@ -133,7 +133,7 @@ void OcrProgram::cleanImageAndWriteToDisk() {
     // Make a new image matrix in which textual connected components will be copied
     cleanedImage=Mat(originalImage.rows,originalImage.cols, originalImage.type());
 
-    // For white color
+    // For white colorRed
     const Scalar whiteColor(255,255,255);
 
     // Fill the new image with white

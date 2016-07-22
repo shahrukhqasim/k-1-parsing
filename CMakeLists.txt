@@ -16,10 +16,9 @@ set(SOURCE_FILES
     src/EditDistance.h
     src/HelperMethods.cpp
     src/HelperMethods.h
-    src/main.cc
     src/TesseractFinder.cc
     src/TesseractFinder.h
-    src/union-find.h src/Preprocessor.cpp src/Preprocessor.h src/OcrProgram.cpp src/OcrProgram.h src/TextualData.cpp src/TextualData.h src/AccuracyProgram.cpp src/AccuracyProgram.h src/LineBreaker.cpp src/LineBreaker.h)
+    src/union-find.h src/Preprocessor.cpp src/Preprocessor.h src/OcrProgram.cpp src/OcrProgram.h src/TextualData.cpp src/TextualData.h src/AccuracyProgram.cpp src/AccuracyProgram.h src/LineBreaker.cpp src/LineBreaker.h src/main.cc src/Processor.cpp src/Processor.h)
 
 add_executable(k_1_parsing2 ${SOURCE_FILES})
 target_link_libraries(k_1_parsing2 lept tesseract opencv_core opencv_imgproc opencv_highgui opencv_imgcodecs)

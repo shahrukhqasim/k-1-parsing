@@ -39,14 +39,14 @@ public:
     /**
      * Get the rectangle of thie entry
      */
-    Rect getRect();
+    Rect getRect() const;
 
     /**
      * Get the text of this entry
      *
      * @return the text
      */
-    string getText();
+    string getText() const;
 
     /**
      * Sets the text of this entry
@@ -61,6 +61,8 @@ public:
      * @param[in] input represents the new text
      */
     void setText(string input);
+
+    TextualData operator | (const TextualData& second)const;
 
 };
 

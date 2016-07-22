@@ -29,11 +29,11 @@ bool TextualData::equals(TextualData &expectedOutput) {
         return false;
 }
 
-Rect TextualData::getRect(){
+Rect TextualData::getRect() const{
     return this->boundingBox;
 }
 
-string TextualData::getText(){
+string TextualData::getText() const{
     return this->text;
 }
 
@@ -43,4 +43,11 @@ void TextualData::setRect(Rect input){
 
 void TextualData::setText(string input){
     text=input;
+}
+
+TextualData TextualData::operator|(const TextualData &second) const {
+    TextualData d;
+    d.setText(getText()+" "+second.getText());
+    d.setRect(getRect()|second.getRect());
+    return d;
 }

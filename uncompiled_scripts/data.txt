@@ -1,0 +1,13 @@
+
+        if(regex_match(elemBoxes[i].getText(),regex("^.*[Pp]art(\\s?)[1\\|Ii][1\\|Ii][1\\|Ii].*$"))) {
+            cout<<elemBoxes[i].getText()<<endl;
+            p3 = true;
+        }
+        else if(regex_match(elemBoxes[i].getText(),regex("^.*[Pp]art(\\s?)[1\\|Ii][1\\|Ii].*$"))) {
+            cout<<elemBoxes[i].getText()<<endl;
+            p2 = true;
+        }
+        else if(regex_match(elemBoxes[i].getText(),regex("^.*[Pp]art(\\s?)[1\\|Ii].*$"))) {
+            cout<<elemBoxes[i].getText()<<endl;
+            p1 = true;
+        }

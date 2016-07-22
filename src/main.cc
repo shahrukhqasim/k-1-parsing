@@ -12,7 +12,8 @@ using namespace tesseract;
 using namespace cv;
 
 #include "AccuracyProgram.h"
-
+#include "Processor.h"
+#include <algorithm>
 
 /**
  * This function prints arguments help
@@ -57,6 +58,10 @@ int main(int argc, char**argv) {
         OcrProgram::runOcrProgram(path);
 
     }
+    else if(job==string("-p")) {
+        Processor::runProcessorProgram(path);
+
+    }
     else {
         cout<<"Error in argument 1. It can either be -p or -a"<<endl;
     }
@@ -64,5 +69,3 @@ int main(int argc, char**argv) {
 
 	return 0;
 }
-
-
