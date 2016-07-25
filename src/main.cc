@@ -13,6 +13,7 @@ using namespace cv;
 
 #include "AccuracyProgram.h"
 #include "Processor.h"
+#include "Model/ModelBuilder.h"
 #include <algorithm>
 
 /**
@@ -36,7 +37,7 @@ void printHelp() {
  *
  * @return insignificant. Will return 0 in most cases.
  */
-int main(int argc, char**argv) {
+int main2(int argc, char**argv) {
 
     if(argc!=3) {
         cout<<"Error in arguments."<<endl;
@@ -68,4 +69,10 @@ int main(int argc, char**argv) {
 
 
 	return 0;
+}
+
+int main() {
+    ModelBuilder::start();
+
+    return 0;
 }
