@@ -12,6 +12,8 @@
 #include <leptonica/allheaders.h>
 #include <functional>
 #include <memory>
+#include <unordered_map>
+#include <unordered_set>
 
 #ifndef K_1_PARSING2_NODE_H
 #define K_1_PARSING2_NODE_H
@@ -24,6 +26,19 @@ using namespace std;
  */
 class Node {
 public:
+
+    static int lastId;
+
+    /**
+     * Represents the ID of this node. Can be used to refer from the other nodes.
+     */
+    int id;
+
+    /**
+     * Constructs a Node. Will also take care of hierarchy
+     */
+    Node(bool incrementId=true);
+
     /**
      * Rectangular region of the model (x,y,width,height)
      */
@@ -39,6 +54,15 @@ public:
     vector<std::function<bool(const Node&n)>> rules;
 
     /**
+     * Used to IO of document mode. The key in the super map represents the function
+     * name and the vector represents what the function applies to.
+     *
+     * For example, you can set isBelow:3,4,5 which will specify
+     * that this node is below nodes with ids 3,4 and 5.
+     */
+    unordered_map<string, unordered_set<int>> rulesModel;
+
+    /**
      * Represents the subnodes of current node
      */
     vector<shared_ptr<Node>>subNodes;
@@ -49,6 +73,5 @@ public:
     virtual ~Node();
 
 };
-
 
 #endif //K_1_PARSING2_NODE_H
