@@ -18,11 +18,11 @@ using namespace cv;
  * This function prints arguments help
  */
 void printHelp() {
-    cout<<"Argument 1 should either be -a or -o to run only accuracy test or OCR+accuracy test respectively."<<endl<<endl;
-    cout<<" * You need to give path of a directory as an agument which must contin these folders:\n"
-                  " * 1. programInput - should contain input images and files.txt which must contains names (not path) of input images files\n"
-                  " * 2. expectedOutput - should contain the JSON files of expected output and files.txt which must contain names (not paths) of these JSON files. The order should match with (1)\n"
-                  " * 3. programOutput - empty for OCR+Accuracy test. And for accuracy test, should contain JSON files containing output of OCR. There should also be a ocrJsonFiles.txt file in the folder hich specifies the JSON output files.\n"
+    cout<<"Argument 1 should either be -a (to run only accuracy test) or -o (to run OCR + Accuracy Test)."<<endl<<endl;
+    cout<<" * You need to give path of a directory as an argument which must contain these 4 folders:\n"
+		" * 1. programInput - should contain input images and files.txt (containing names (not paths) of input images)\n"
+		" * 2. expectedOutput - should contain the JSON files of expected output and files.txt (containing names (not paths) of these JSON files). The order should match with (1)\n"
+                  " * 3. programOutput - empty for OCR + Accuracy Test. For Accuracy Test, should contain JSON files containing output of OCR. There should also be a ocrJsonFiles.txt file in the folder specifying the JSON output files.\n"
                   " * 4. plottedDataComparison - an empty folder. Output is written to it. The files that are already there will be overwritten.";
     cout<<endl<<"All files.txt should contain consecutive filenames. First document has to appear at the top and so on"<<endl;
 }
@@ -43,9 +43,9 @@ int main(int argc, char**argv) {
         exit(0);
     }
 
-    // Firt argument is always -o or -a. If it is -o, we have to run OCR Job+Accuracy Job
+    // First argument is always -o or -a. If it is -o, we have to run OCR Job + Accuracy Job
     string job=argv[1];
-    // Second argument is the path to the parent directory. Which must contain various folders
+    // Second argument is the path to the parent directory, containing the various folders
     string path=argv[2];
 
 
@@ -64,5 +64,3 @@ int main(int argc, char**argv) {
 
 	return 0;
 }
-
-

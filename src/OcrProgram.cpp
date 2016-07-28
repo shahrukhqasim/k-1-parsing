@@ -141,7 +141,7 @@ void OcrProgram::cleanImageAndWriteToDisk() {
 
     // Run through all the connected components
     for(int i=0;i<boxes.size();i++) {
-        // Get the current omponent
+        // Get the current component
         Rect box=boxes[i];
 
         // If the connected component is small enough to be a textual data, copy it to the cleaned image
