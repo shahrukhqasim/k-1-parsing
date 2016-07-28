@@ -14,6 +14,10 @@ public:
      * The text of this node
      */
     string text;
+    /**
+     * The text of this node
+     */
+    string textAssigned;
 
     /**
      * Constructs this node

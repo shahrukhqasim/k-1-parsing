@@ -12,21 +12,21 @@ using namespace tesseract;
 using namespace cv;
 
 #include "AccuracyProgram.h"
-#include "Processor.h"
+#include "Processor2.h"
 #include "Model/ModelBuilder.h"
-#include <algorithm>
 
 /**
  * This function prints arguments help
  */
 void printHelp() {
-    cout<<"Argument 1 should either be -a or -o to run only accuracy test or OCR+accuracy test respectively."<<endl<<endl;
-    cout<<" * You need to give path of a directory as an agument which must contin these folders:\n"
+    cout<<"Argument 1 should either be -a, -o, -p or -m to run only accuracy test, OCR+accuracy test, processing program or model builder programs respectively respectively."<<endl<<endl;
+    cout<<" * In case of first two You need to give path of a directory as an agument which must contin these folders:\n"
                   " * 1. programInput - should contain input images and files.txt which must contains names (not path) of input images files\n"
                   " * 2. expectedOutput - should contain the JSON files of expected output and files.txt which must contain names (not paths) of these JSON files. The order should match with (1)\n"
                   " * 3. programOutput - empty for OCR+Accuracy test. And for accuracy test, should contain JSON files containing output of OCR. There should also be a ocrJsonFiles.txt file in the folder hich specifies the JSON output files.\n"
                   " * 4. plottedDataComparison - an empty folder. Output is written to it. The files that are already there will be overwritten.";
     cout<<endl<<"All files.txt should contain consecutive filenames. First document has to appear at the top and so on"<<endl;
+    // TODO: Show prompt for processing program and and model builder program
 }
 
 
@@ -37,7 +37,7 @@ void printHelp() {
  *
  * @return insignificant. Will return 0 in most cases.
  */
-int main2(int argc, char**argv) {
+int main(int argc, char**argv) {
 
     if(argc!=3) {
         cout<<"Error in arguments."<<endl;
@@ -60,7 +60,11 @@ int main2(int argc, char**argv) {
 
     }
     else if(job==string("-p")) {
-        Processor::runProcessorProgram(path);
+        Processor2::runProcessorProgram(path);
+
+    }
+    else if(job==string("-m")) {
+        ModelBuilder::runModelBuilderProgram(path);
 
     }
     else {
@@ -69,10 +73,4 @@ int main2(int argc, char**argv) {
 
 
 	return 0;
-}
-
-int main() {
-    ModelBuilder::start();
-
-    return 0;
 }

@@ -13,7 +13,7 @@ Node::~Node() {
 Node::Node(bool incrementId) {
     if(incrementId) {
         lastId++;
-        this->id=lastId;
+        this->id=to_string(lastId);
     }
 
 }

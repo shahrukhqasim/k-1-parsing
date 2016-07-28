@@ -19,20 +19,10 @@ using namespace std;
 class ModelBuilder {
 
     shared_ptr<Node> document;
-    shared_ptr<Node> header1;
-    shared_ptr<Node> header2;
-    shared_ptr<Node> part1;
-    shared_ptr<Node> part2;
-    shared_ptr<Node> part3;
 
 public:
-    static void start();
-    void execute();
-    void buildHeader1();
-    void buildHeader2();
-    void buildPart1();
-    void buildPart2();
-    void buildPart3();
+    static void runModelBuilderProgram(string path);
+    shared_ptr<Node> execute(string path);
 
     /**
      * Converts document model to JSON format recursively
@@ -40,17 +30,9 @@ public:
      * @param[out] jsonOutput represents the output JSON value
      * @param[in] model represents the input model
      */
-    void convertToJson(Json::Value& jsonOutput, const shared_ptr<Node>&model);
+    static void convertToJson(Json::Value& jsonOutput, const shared_ptr<Node>&model);
 
-
-    /**
-     * Converts a cv::Point to a string
-     *
-     * @param p is the cv::Point to be converted
-     *
-     * @return the string representation of the point
-     */
-    string pointToString(const Point&p);
+private:
 
 
     /**
@@ -81,11 +63,32 @@ public:
      */
     void isLeftTo(shared_ptr<Node>a,shared_ptr<Node>b);
 
+
     /**
-     * Converts recursive tree ids to in-order format
-     * @param node denotes the parent node to read and modify (sub nodes will be edited)
+     * Processes a statement of of Form Definition Language
+     *
+     * @param statement
+     * @param lineNumber
      */
-    void orderIds(shared_ptr<Node>node, int currentId=1);
+    void processStatement(string statement, int lineNumber);
+
+    /**
+     * Creates a tree hierarchy specified by the hierarchy vector
+     *
+     * @param[in] hierarchy is the hierarchy vector
+     * @return the last node in the hierarchy
+     */
+    shared_ptr<Node>createHierarchy(vector<string>&hierarchy);
+
+    /**
+     * From the tree, finds the node specified by IDs hierarchy vector. First
+     * element is topmost parent and last is the node itself.
+     *
+     * @param[in] hierarchy is the vector of hierarchy
+     *
+     * @return The node. nullptr if node was not found
+     */
+    shared_ptr<Node>findNode(const vector<string>&hierarchy);
 };
 
 

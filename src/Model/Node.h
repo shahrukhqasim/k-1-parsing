@@ -32,7 +32,7 @@ public:
     /**
      * Represents the ID of this node. Can be used to refer from the other nodes.
      */
-    int id;
+    string id;
 
     /**
      * Constructs a Node. Will also take care of hierarchy
@@ -43,6 +43,11 @@ public:
      * Rectangular region of the model (x,y,width,height)
      */
     Rect region;
+
+    /**
+     * Indicates if the region has been defined or not
+     */
+    bool regionDefined=false;
 
     /**
      * Vector of functions to specify rules e.g. it should be left to specific node or top of it etc
@@ -60,12 +65,12 @@ public:
      * For example, you can set isBelow:3,4,5 which will specify
      * that this node is below nodes with ids 3,4 and 5.
      */
-    unordered_map<string, unordered_set<int>> rulesModel;
+    unordered_map<string, unordered_set<string>> rulesModel;
 
     /**
      * Represents the subnodes of current node
      */
-    vector<shared_ptr<Node>>subNodes;
+    unordered_map<string, shared_ptr<Node>>subNodes;
 
     /**
      * Only to specify a virtual class
