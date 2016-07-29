@@ -196,7 +196,7 @@ private:
 
     string findTextWithRulesOnlyRightMost(vector<std::function<bool(const TextualData &d)>> rules,
                                           const vector<TextualData> &data);
-
+public:
 
     /**
      * Checks if one rect is below another

@@ -14,6 +14,9 @@
 #include <memory>
 #include <unordered_map>
 #include <unordered_set>
+#include "../TextualData.h"
+
+
 
 #ifndef K_1_PARSING2_NODE_H
 #define K_1_PARSING2_NODE_H
@@ -56,7 +59,7 @@ public:
      *
      * The function will return true if the rule is matched otherwise false
      */
-    vector<std::function<bool(const Node&n)>> rules;
+    vector<std::function<bool(const TextualData&n)>> rules;
 
     /**
      * Used to IO of document mode. The key in the super map represents the function

@@ -32,6 +32,17 @@ public:
      */
     static void convertToJson(Json::Value& jsonOutput, const shared_ptr<Node>&model);
 
+    /**
+     * From the tree, finds the node specified by IDs hierarchy vector. First
+     * element is topmost parent and last is the node itself.
+     *
+     * @param[in] hierarchy is the vector of hierarchy
+     * @param[in] theNode is the root node
+     *
+     * @return The node. nullptr if node was not found
+     */
+    static shared_ptr<Node>findNode(const vector<string>&hierarchy, shared_ptr<Node>theNode);
+
 private:
 
 

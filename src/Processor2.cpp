@@ -24,6 +24,8 @@ void Processor2::execute() {
     ModelBuilder builder;
     documentNode=builder.execute("/home/shahrukhqasim/Desktop/model.mdl");
     processHeader1();
+    processPart1();
+    processPart3();
 
     Json::Value output;
     ModelBuilder::convertToJson(output,documentNode);
@@ -81,21 +83,30 @@ string Processor2::findTextWithRulesOnlyRightMost(vector<std::function<bool(cons
 }
 
 void Processor2::processHeader1() {
-    shared_ptr<Node>header1Node=documentNode->subNodes["HEADER_1"];
-    Mapper(header1Data,header1Node).execute();
-
+    shared_ptr<Node>header1Node=documentNode->subNodes["DOCUMENT"]->subNodes["HEADER_1"];
+    Mapper mapper(header1Data, header1Node,documentNode);
+    mapper.executeTextFields();
+    mapper.executeInputFields();
 }
 
 void Processor2::processHeader2() {
 }
 
 void Processor2::processPart1() {
+    shared_ptr<Node>part1Node=documentNode->subNodes["DOCUMENT"]->subNodes["PART_1"];
+    Mapper mapper(part1Data, part1Node,documentNode);
+    mapper.executeTextFields();
+    mapper.executeInputFields();
 }
 
 void Processor2::processPart2() {
 }
 
 void Processor2::processPart3() {
+    shared_ptr<Node>part3Node=documentNode->subNodes["DOCUMENT"]->subNodes["PART_3"];
+    Mapper mapper(part3Data, part3Node,documentNode);
+    mapper.executeTextFields();
+//    mapper.executeInputFields();
 }
 
 TextualData Processor2::extractTextualDataType1(string key) {

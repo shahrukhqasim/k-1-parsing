@@ -30,7 +30,7 @@ shared_ptr<Node> ModelBuilder::execute(string path) {
     convertToJson(output, document->subNodes["DOCUMENT"]);
 //    cout<<output;
 
-    return document->subNodes["DOCUMENT"];
+    return document;
 }
 
 void ModelBuilder::processStatement(string statement, int lineNumber) {
@@ -88,7 +88,7 @@ void ModelBuilder::processStatement(string statement, int lineNumber) {
             string myId=hierarchy[hierarchy.size()-1];
             shared_ptr<TextNode>newNode=shared_ptr<TextNode>(new TextNode(fields[3]));
             parentNode->subNodes[myId]=newNode;
-            newNode->id=myId;
+            newNode->id=id;
         }
         else if(type=="INPUT") {
             // Create parent hierarchy
@@ -110,7 +110,7 @@ void ModelBuilder::processStatement(string statement, int lineNumber) {
 
             shared_ptr<InputNode>newNode=shared_ptr<InputNode>(new InputNode(type));
             parentNode->subNodes[myId]=newNode;
-            newNode->id=myId;
+            newNode->id=id;
         }
         else if(type=="INPUT") {
             // Create parent hierarchy
@@ -132,7 +132,7 @@ void ModelBuilder::processStatement(string statement, int lineNumber) {
 
             shared_ptr<InputNode>newNode=shared_ptr<InputNode>(new InputNode(type));
             parentNode->subNodes[myId]=newNode;
-            newNode->id=myId;
+            newNode->id=id;
         }
         else if(type=="TABLE") {
             // Create parent hierarchy
@@ -148,7 +148,7 @@ void ModelBuilder::processStatement(string statement, int lineNumber) {
             newNode->numCols=numCols;
 
             parentNode->subNodes[myId]=newNode;
-            newNode->id=myId;
+            newNode->id=id;
         }
     }
     else if(fields[0]=="RULE") {
@@ -163,17 +163,27 @@ void ModelBuilder::processStatement(string statement, int lineNumber) {
         shared_ptr<Node>nodeA=findNode(hierarchyA);
         shared_ptr<Node>nodeB=findNode(hierarchyB);
 
-        if(rule=="IS_BELOW") {
-            isBelow(nodeA,nodeB);
+        if(nodeA== nullptr) {
+            cout<<"Node A not found at line: "<<lineNumber<<endl;
         }
-        else if (rule=="IS_ABOVE") {
-            isAbove(nodeA,nodeB);
+
+        if(nodeB== nullptr) {
+            cout<<"Node B not found at line: "<<lineNumber<<endl;
         }
-        else if(rule=="IS_LEFT_sTO") {
-            isLeftTo(nodeA,nodeB);
-        }
-        else if(rule=="IS_RIGHT_TO") {
-            isRightTo(nodeA,nodeB);
+        if(nodeA!= nullptr&&nodeB!= nullptr) {
+
+            if (rule == "IS_BELOW") {
+                isBelow(nodeA, nodeB);
+            }
+            else if (rule == "IS_ABOVE") {
+                isAbove(nodeA, nodeB);
+            }
+            else if (rule == "IS_LEFT_TO") {
+                isLeftTo(nodeA, nodeB);
+            }
+            else if (rule == "IS_RIGHT_TO") {
+                isRightTo(nodeA, nodeB);
+            }
         }
     }
     else if(fields[0]=="ADD_TO_TABLE") {
@@ -223,25 +233,57 @@ shared_ptr<Node> ModelBuilder::findNode(const vector<string> &hierarchy) {
     return current;
 }
 
+shared_ptr<Node> ModelBuilder::findNode(const vector<string> &hierarchy,shared_ptr<Node>theNode) {
+    shared_ptr<Node>current=theNode;
+    for(string s:hierarchy) {
+        unordered_map<string, shared_ptr<Node>>::iterator iterator1=current->subNodes.find(s);
+        if(iterator1!=current->subNodes.end()) {
+            current=iterator1->second;
+        }
+        else {
+            return nullptr;
+        }
+    }
+    return current;
+}
+
+
 shared_ptr<Node> ModelBuilder::createHierarchy(vector<string>&hierarchy) {
     shared_ptr<Node>current=document;
+
+    string absoluteId="";
+//    for_each(hierarchy.begin(),hierarchy.end(),[&] (string&s2){
+//        absoluteId+=s2+":";
+//    });
+//    if(absoluteId.length()!=0) {
+//        absoluteId=absoluteId.substr(0,absoluteId.length()-1);
+//    }
+//
+//    cout<<absoluteId<<endl;
+
+    absoluteId="";
     int index=0;
     for(string s:hierarchy) {
         unordered_map<string, shared_ptr<Node>>::iterator iterator1=current->subNodes.find(s);
         if(iterator1!=current->subNodes.end()) {
             current=iterator1->second;
             index++;
+            absoluteId+=s+":";
         }
         else {
             break;
         }
     }
+
+
     for(int i=index;i<hierarchy.size();i++) {
-        string s=hierarchy[i];
         shared_ptr<Node>newNode=shared_ptr<Node>(new Node);
-        newNode->id=s;
+        string s=hierarchy[i];
+        absoluteId+=s;
+        newNode->id=absoluteId;
         current=(current->subNodes[s]=newNode);
 
+        absoluteId+=":";
     }
     return current;
 }
