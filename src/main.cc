@@ -37,7 +37,7 @@ void printHelp() {
  */
 int main(int argc, char**argv) {
 
-    if(argc!=3) {
+    if(argc!=2&&argc!=3) {
         cout<<"Error in arguments."<<endl;
         printHelp();
         exit(0);
@@ -46,14 +46,24 @@ int main(int argc, char**argv) {
     // First argument is always -o or -a. If it is -o, we have to run OCR Job + Accuracy Job
     string job=argv[1];
     // Second argument is the path to the parent directory, containing the various folders
-    string path=argv[2];
+    string path;
+    if(argc==3)
+        path=argv[2];
 
 
     // Compare the job and run the program accordingly
     if(job==string("-a")) {
+        if(argc==2) {
+            path="../data/accuracy";
+        }
+
         AccuracyProgram::runAccuracyTest(path);
     }
     else if(job==string("-o")) {
+        if(argc==2) {
+            path="../data/ocr_and_accuracy";
+        }
+
         OcrProgram::runOcrProgram(path);
 
     }
