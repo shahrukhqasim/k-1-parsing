@@ -106,7 +106,7 @@ void Processor2::processPart3() {
     shared_ptr<Node>part3Node=documentNode->subNodes["DOCUMENT"]->subNodes["PART_3"];
     Mapper mapper(part3Data, part3Node,documentNode);
     mapper.executeTextFields();
-//    mapper.executeInputFields();
+    mapper.executeInputFields();
 }
 
 TextualData Processor2::extractTextualDataType1(string key) {
