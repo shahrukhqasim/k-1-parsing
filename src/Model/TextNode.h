@@ -13,11 +13,11 @@ public:
     /**
      * The text of this node
      */
-    string text;
+    string text="";
     /**
      * The text of this node
      */
-    string textAssigned;
+    string textAssigned="";
 
     /**
      * Constructs this node

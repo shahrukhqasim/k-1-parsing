@@ -74,3 +74,32 @@ int main(int argc, char**argv) {
 
 	return 0;
 }
+
+int main2() {
+    ifstream theFile("/home/shahrukhqasim/Desktop/data.json");
+    Json::Value parsedData;
+    theFile>>parsedData;
+
+    Mat image=imread("/home/shahrukhqasim/Desktop/image.png",1);
+
+    parsedData=parsedData["Pages"][0]["Fields"];
+
+    vector<Rect>rectangles;
+
+    for(int i=0;i<parsedData.size();i++) {
+        Json::Value region=parsedData[i]["Region"];
+
+        int l=region["l"].asInt();
+        int t=region["t"].asInt();
+        int r=region["r"].asInt();
+        int b=region["b"].asInt();
+
+        rectangles.push_back(Rect(l,t,r-l,b-t));
+
+        rectangle(image,Rect(l,t,r-l,b-t) , Scalar(255,0,255), 3, 8,0);
+    }
+
+    imwrite("/home/shahrukhqasim/Desktop/ouput.png",image);
+
+    return 0;
+}

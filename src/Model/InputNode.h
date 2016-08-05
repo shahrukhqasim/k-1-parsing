@@ -29,7 +29,7 @@ public:
     /**
      * The parsed data
      */
-    string data;
+    string data="";
 
     /**
      * Constructs an InputNode
@@ -38,6 +38,7 @@ public:
      */
     InputNode(InputType inputType);
 
+    vector<string>bindedGroundTruthEntries;
 };
 
 

@@ -64,6 +64,11 @@ public:
 
     TextualData operator | (const TextualData& second)const;
 
+    // TODO: Move it to CPP
+    bool operator == (const TextualData & d)const {
+        return getText()==d.getText()&&getRect()==d.getRect();
+    }
+
 };
 
 #endif //K_1_PARSING2_WORDENTRY_H

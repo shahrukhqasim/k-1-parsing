@@ -4,33 +4,37 @@
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/src/Processor2.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/LineBreaker.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/Model/InputNode.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/Model/Node.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/Model/ModelBuilder.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/Model/TextNode.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/Model/TableNode.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/Model/TableNode.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/Model/TextNode.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Model/Node.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/Model/InputNode.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Model/RepeatInputNode.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/Model/Node.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Model/RepeatInputNode.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Model/InputNode.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Model/TableNode.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Model/MappingJob.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/Model/ModelBuilder.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Model/ModelBuilder.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Model/MappingJob.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Model/TableNode.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Model/TextNode.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/LineBreaker.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/EditDistance.cc" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/HelperMethods.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/TesseractFinder.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/AccuracyProgram.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/HelperMethods.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/Preprocessor.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/OcrProgram.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/Processor2.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/AccuracyProgram.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/Mapper.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/EditDistance.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/OcrProgram.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/AccuracyProgram.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/TextualData.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/AccuracyProgram.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/Preprocessor.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/union-find.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/Processor.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/Mapper.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Processor.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/union-find.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/TextualData.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/TesseractFinder.cc" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/Processor.h" isTestSource="false" />

@@ -23,6 +23,9 @@ public:
      */
     int numCols;
 
+    // TODO: Fix this
+    string data;
+
     /**
      * Sub-nodes of this table. Represented by a hash map from Point to the Node
      * Key = Cartesian coordiante of the the table entry number

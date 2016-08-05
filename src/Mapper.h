@@ -19,8 +19,11 @@ class Mapper {
     shared_ptr<Node>node;
     shared_ptr<Node>ultimateParent;
 
+    int width;
+    int height;
+
 public:
-    Mapper(const vector<TextualData>&data, shared_ptr<Node>node, shared_ptr<Node>ultimateParent);
+    Mapper(const vector<TextualData>&data, shared_ptr<Node>node, shared_ptr<Node>ultimateParent, int width, int height);
     Rect recursiveCallText(shared_ptr<Node> node);
     void recursiveCallInput(shared_ptr<Node> node);
     int findMinTextIndex(const vector<TextualData> &data, const string &textToFind);
@@ -29,7 +32,9 @@ public:
 
     void convertRulesToFunctions(shared_ptr<Node>theNode);
 
-    string findTextWithRules(shared_ptr<Node>node);
+    pair<string,Rect> findTextWithRules(shared_ptr<Node>node);
+    static Rect findRectFromRules(shared_ptr<Node>rModel,shared_ptr<Node>ultimateParent, int width, int height);
+
 };
 
 

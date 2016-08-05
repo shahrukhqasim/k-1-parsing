@@ -8,6 +8,7 @@
 #include "../../csv/CSVparser.hpp"
 #include "../HelperMethods.h"
 #include <fstream>
+#include "RepeatInputNode.h"
 
 void ModelBuilder::runModelBuilderProgram(string path) {
     Node::lastId=0;
@@ -112,7 +113,9 @@ void ModelBuilder::processStatement(string statement, int lineNumber) {
             parentNode->subNodes[myId]=newNode;
             newNode->id=id;
         }
-        else if(type=="INPUT") {
+        else if(type=="REPEAT_INPUT") {
+            cout<<"Repeat created"<<endl;
+
             // Create parent hierarchy
             vector<string>hierarchy2=vector<string>(hierarchy.begin(),hierarchy.end()-1);
             shared_ptr<Node>parentNode=createHierarchy(hierarchy2);
@@ -130,7 +133,7 @@ void ModelBuilder::processStatement(string statement, int lineNumber) {
                 type=InputNode::INPUT_CHECKBOX;
             }
 
-            shared_ptr<InputNode>newNode=shared_ptr<InputNode>(new InputNode(type));
+            shared_ptr<InputNode>newNode=shared_ptr<InputNode>(new RepeatInputNode(type));
             parentNode->subNodes[myId]=newNode;
             newNode->id=id;
         }
@@ -165,10 +168,12 @@ void ModelBuilder::processStatement(string statement, int lineNumber) {
 
         if(nodeA== nullptr) {
             cout<<"Node A not found at line: "<<lineNumber<<endl;
+//            assert(false);
         }
 
         if(nodeB== nullptr) {
             cout<<"Node B not found at line: "<<lineNumber<<endl;
+//            assert(false);
         }
         if(nodeA!= nullptr&&nodeB!= nullptr) {
 
@@ -215,6 +220,19 @@ void ModelBuilder::processStatement(string statement, int lineNumber) {
         else {
             cerr<<"Error at line "<<lineNumber<<": Table not found"<<endl;
         }
+    }
+    else if(fields[0]=="BIND") {
+        if(fields.size()!=3) {
+            cout<<"Error at line "<<lineNumber<<": "<<endl;
+        }
+
+        string nodeId=fields[1];
+        string bindedName=fields[2];
+
+
+        vector<string>hierarchyNode=HelperMethods::regexSplit(nodeId,"[:]");
+        shared_ptr<InputNode>node=dynamic_pointer_cast<InputNode>(findNode(hierarchyNode));
+        node->bindedGroundTruthEntries.push_back(bindedName);
 
     }
 }
@@ -322,6 +340,7 @@ void ModelBuilder::convertToJson(Json::Value &jsonOutput, const shared_ptr<Node>
         jsonOutput["type"]="tabular";
         jsonOutput["num_rows"]=tModel->numRows;
         jsonOutput["num_cols"]=tModel->numCols;
+        jsonOutput["data"]=tModel->data;
 
         Json::Value tableEntries;
         for_each(tModel->tableEntries.begin(),tModel->tableEntries.end(), [&] (pair<string,shared_ptr<Node>> kv) {

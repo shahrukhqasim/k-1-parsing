@@ -23,8 +23,16 @@
 #include <functional>
 #include "Model/Node.h"
 
+#include "Model/InputNode.h"
+
 #ifndef K_1_PARSING2_PROCESSOR2_H
 #define K_1_PARSING2_PROCESSOR2_H
+
+
+struct GroundTruth {
+    Rect rect;
+    string value;
+};
 
 
 /**
@@ -92,6 +100,17 @@ private:
      * Represents the x coordinate where the form was divided into two parts
      */
     int xDivisionCoordinate;
+
+    vector<pair<string,Rect>>mappedGround;
+    vector<pair<string,Rect>>mappedGroundP1;
+    vector<pair<string,Rect>>mappedGroundP2;
+    vector<pair<string,Rect>>mappedGroundP3;
+    vector<pair<string,Rect>>mappedGroundH1;
+    vector<pair<string,Rect>>mappedGroundH2;
+
+    unordered_map<string,GroundTruth>groundTruth;
+
+    RNG rng;
 
 public:
     /**
@@ -196,6 +215,20 @@ private:
 
     string findTextWithRulesOnlyRightMost(vector<std::function<bool(const TextualData &d)>> rules,
                                           const vector<TextualData> &data);
+
+
+    void outputDataToJson();
+    void recursiveInputFieldsToJson(shared_ptr<Node>node);
+    Json::Value outputJson;
+    int lastIndexJson=0;
+
+    void outputBindingLine(shared_ptr<Node>node,Rect region);
+
+
+    int accuracyTests=0;
+    int testsPassed=0;
+    void testAccuracy(shared_ptr<InputNode>node);
+
 public:
 
     /**
