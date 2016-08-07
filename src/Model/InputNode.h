@@ -38,6 +38,12 @@ public:
      */
     InputNode(InputType inputType);
 
+    /**
+     * The binded gound truth fields.
+     *
+     * First string represent the value
+     * Second bool represents whether it is taken or not
+     */
     vector<string>bindedGroundTruthEntries;
 };
 

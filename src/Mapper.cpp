@@ -6,6 +6,7 @@
 #include "Model/ModelBuilder.h"
 #include "Processor2.h"
 #include "Model/RepeatInputNode.h"
+#include "Model/MappingJob.h"
 
 namespace std {
     template<>
@@ -97,72 +98,15 @@ void Mapper::recursiveCallInput(shared_ptr<Node> node) {
     else if (dynamic_pointer_cast<RepeatInputNode>(node) != nullptr) {
         shared_ptr<RepeatInputNode> rModel = dynamic_pointer_cast<RepeatInputNode>(node);
 
-        cout << "Repeat here" << endl;
+//        cout << "Repeat here" << endl;
 
-        int left = -1;
-        int top = -1;
-        int right = -1;
-        int bottom = -1;
+        Rect r=MappingJob(ultimateParent,node->id,width,height).map();
 
-
-        for_each(rModel->rulesModel.begin(), rModel->rulesModel.end(), [&](pair<string, unordered_set<string>> alpha) {
-            if (alpha.first == "is_below") {
-                shared_ptr<Node> theNode = ModelBuilder::findNode(
-                        HelperMethods::regexSplit(*(alpha.second.begin()), "[:]"), ultimateParent);
-                if (theNode->regionDefined) {
-                    if (top == -1 || (top < theNode->region.y + theNode->region.height && top != -1))
-                        top = theNode->region.y + theNode->region.height;
-                }
-                cout << "::" << theNode->id << endl;
-                cout << theNode->region << endl;
-                cout << (dynamic_pointer_cast<TextNode>(theNode))->textAssigned << endl;
-            }
-
-            else if (alpha.first == "is_above") {
-                shared_ptr<Node> theNode = ModelBuilder::findNode(
-                        HelperMethods::regexSplit(*(alpha.second.begin()), "[:]"), ultimateParent);
-                if (theNode->regionDefined) {
-                    if (bottom == -1 || (bottom > theNode->region.y && top != -1))
-                        bottom = theNode->region.y;
-                }
-            }
-
-            else if (alpha.first == "is_right_to") {
-                shared_ptr<Node> theNode = ModelBuilder::findNode(
-                        HelperMethods::regexSplit(*(alpha.second.begin()), "[:]"), ultimateParent);
-                if (theNode->regionDefined) {
-                    if (left == -1 || left < (theNode->region.x + theNode->region.width && top != -1))
-                        left = theNode->region.x + theNode->region.width;
-                }
-            }
-
-            else if (alpha.first == "is_left_to") {
-                shared_ptr<Node> theNode = ModelBuilder::findNode(
-                        HelperMethods::regexSplit(*(alpha.second.begin()), "[:]"), ultimateParent);
-                if (theNode->regionDefined) {
-                    if (right == -1 || (right > theNode->region.x && top != -1))
-                        right = theNode->region.x;
-                }
-            }
-        });
-        if (left == -1)
-            left = 0;
-        if (top == -1)
-            top = 0;
-        if (right == -1)
-            right = width - 1;
-        if (bottom == -1)
-            bottom = height - 1;
-
-
-        Rect r(left, top, right - left, bottom - top);
-
-        
 
         vector<TextualData> croppedTextualData;
         for_each(data.begin(), data.end(), [&](TextualData &d) {
             if ((r & d.getRect()).area() == d.getRect().area()) {
-                cout << d.getText() << endl;
+//                cout << d.getText() << endl;
                 croppedTextualData.push_back(d);
             }
         });
@@ -182,7 +126,7 @@ void Mapper::recursiveCallInput(shared_ptr<Node> node) {
         int rowValue = 0;
         for_each(croppedTextualData.begin(), croppedTextualData.end(), [&](TextualData alpha) {
             if (dataX[alpha].second == -1) {
-                cout << "Data " << alpha.getText() << endl;
+//                cout << "Data " << alpha.getText() << endl;
                 dataX[alpha].second = rowValue;
                 // Both of the coordinates are defined, find all matching columns
                 for_each(dataX.begin(), dataX.end(), [&](pair<TextualData, pair<int, int>> beta) {
@@ -209,7 +153,7 @@ void Mapper::recursiveCallInput(shared_ptr<Node> node) {
                 for_each(dataX.begin(), dataX.end(), [&](pair<TextualData, pair<int, int>> beta) {
                     if ((Rect(beta.first.getRect().x, 0, beta.first.getRect().width, 10) &
                          Rect(alpha.getRect().x, 0, alpha.getRect().width, 10)).area() != 0) {
-                        cout << "Merging " << beta.first.getText() << " with " << alpha.getText() << endl;
+//                        cout << "Merging " << beta.first.getText() << " with " << alpha.getText() << endl;
                         dataX[beta.first].first = colValue;
                     }
                 });
@@ -220,8 +164,8 @@ void Mapper::recursiveCallInput(shared_ptr<Node> node) {
         string dx = "";
 
         for_each(dataX.begin(), dataX.end(), [&](pair<TextualData, pair<int, int>> alpha) {
-            cout << "Assigned to " << alpha.first.getText() << " value " << alpha.second.first << ","
-                 << alpha.second.second << endl;
+//            cout << "Assigned to " << alpha.first.getText() << " value " << alpha.second.first << ","
+//                 << alpha.second.second << endl;
             dx += string("(");
             dx += to_string(alpha.second.first);
             dx += string(",");
@@ -236,8 +180,8 @@ void Mapper::recursiveCallInput(shared_ptr<Node> node) {
         string dx2 = "";
 
         for_each(dataX.begin(), dataX.end(), [&](pair<TextualData, pair<int, int>> alpha) {
-            cout << "Assigned to " << alpha.first.getText() << " value " << alpha.second.first << ","
-                 << alpha.second.second << endl;
+//            cout << "Assigned to " << alpha.first.getText() << " value " << alpha.second.first << ","
+//                 << alpha.second.second << endl;
             dx2 += alpha.first.getText() + "|";
         });
 
@@ -245,6 +189,7 @@ void Mapper::recursiveCallInput(shared_ptr<Node> node) {
             dx2=dx2.substr(0,dx2.length()-1);
         }
 
+//        rModel->region=r;
         rModel->dataCoordinates = dx;
         rModel->data = dx2;
 
@@ -259,7 +204,7 @@ void Mapper::recursiveCallInput(shared_ptr<Node> node) {
             string textExtracted = oup.first;
             iModel->data = textExtracted;
             iModel->region = oup.second;
-            cout << iModel->id << ": " << iModel->data << endl;
+//            cout << iModel->id << ": " << iModel->data << endl;
         }
     }
     else if (dynamic_pointer_cast<TableNode>(node) != nullptr) {
@@ -279,9 +224,9 @@ void Mapper::recursiveCallInput(shared_ptr<Node> node) {
                     if (top == -1 || (top < theNode->region.y + theNode->region.height && top != -1))
                         top = theNode->region.y + theNode->region.height;
                 }
-                cout << "::" << theNode->id << endl;
-                cout << theNode->region << endl;
-                cout << (dynamic_pointer_cast<TextNode>(theNode))->textAssigned << endl;
+//                cout << "::" << theNode->id << endl;
+//                cout << theNode->region << endl;
+//                cout << (dynamic_pointer_cast<TextNode>(theNode))->textAssigned << endl;
             }
 
             else if (alpha.first == "is_above") {
@@ -320,16 +265,16 @@ void Mapper::recursiveCallInput(shared_ptr<Node> node) {
         if (bottom == -1)
             bottom = height - 1;
 
-        cout << left << " " << top << " " << right << " " << bottom << endl;
-        cout << width << " " << height << endl;
+//        cout << left << " " << top << " " << right << " " << bottom << endl;
+//        cout << width << " " << height << endl;
         Rect r(left, top, right - left, bottom - top);
 
-        cout << "R=" << r << endl;
+//        cout << "R=" << r << endl;
 
         vector<TextualData> croppedTextualData;
         for_each(data.begin(), data.end(), [&](TextualData &d) {
             if ((r & d.getRect()).area() != 0) {
-                cout << d.getText() << endl;
+//                cout << d.getText() << endl;
                 croppedTextualData.push_back(d);
             }
         });
@@ -349,13 +294,13 @@ void Mapper::recursiveCallInput(shared_ptr<Node> node) {
         int rowValue = 0;
         for_each(croppedTextualData.begin(), croppedTextualData.end(), [&](TextualData alpha) {
             if (dataX[alpha].second == -1) {
-                cout << "Data " << alpha.getText() << endl;
+//                cout << "Data " << alpha.getText() << endl;
                 dataX[alpha].second = rowValue;
                 // Both of the coordinates are defined, find all matching columns
                 for_each(dataX.begin(), dataX.end(), [&](pair<TextualData, pair<int, int>> beta) {
                     if ((Rect(beta.first.getRect().y, 0, beta.first.getRect().height, 10) &
                          Rect(alpha.getRect().y, 0, alpha.getRect().height, 10)).area() != 0) {
-                        cout << "Merging " << beta.first.getText() << " with " << alpha.getText() << endl;
+//                        cout << "Merging " << beta.first.getText() << " with " << alpha.getText() << endl;
                         dataX[beta.first].second = rowValue;
                     }
                 });
@@ -372,13 +317,13 @@ void Mapper::recursiveCallInput(shared_ptr<Node> node) {
         int colValue = 0;
         for_each(croppedTextualData.begin(), croppedTextualData.end(), [&](TextualData alpha) {
             if (dataX[alpha].first == -1) {
-                cout << "Data " << alpha.getText() << endl;
+//                cout << "Data " << alpha.getText() << endl;
                 dataX[alpha].first = colValue;
                 // Both of the coordinates are defined, find all matching columns
                 for_each(dataX.begin(), dataX.end(), [&](pair<TextualData, pair<int, int>> beta) {
                     if ((Rect(beta.first.getRect().x, 0, beta.first.getRect().width, 10) &
                          Rect(alpha.getRect().x, 0, alpha.getRect().width, 10)).area() != 0) {
-                        cout << "Merging " << beta.first.getText() << " with " << alpha.getText() << endl;
+//                        cout << "Merging " << beta.first.getText() << " with " << alpha.getText() << endl;
                         dataX[beta.first].first = colValue;
                     }
                 });
@@ -414,16 +359,24 @@ void Mapper::recursiveCallInput(shared_ptr<Node> node) {
         });
 
         for_each(dataX.begin(), dataX.end(), [&](pair<TextualData, pair<int, int>> alpha) {
-            cout << "Assigned to " << alpha.first.getText() << " value " << alpha.second.first << ","
-                 << alpha.second.second << endl;
+//            cout << "Assigned to " << alpha.first.getText() << " value " << alpha.second.first << ","
+//                 << alpha.second.second << endl;
         });
 
 
         string dx = "";
 
         for_each(dataX.begin(), dataX.end(), [&](pair<TextualData, pair<int, int>> alpha) {
-            cout << "Assigned to " << alpha.first.getText() << " value " << alpha.second.first << ","
-                 << alpha.second.second << endl;
+//            cout << "Assigned to " << alpha.first.getText() << " value " << alpha.second.first << ","
+//                 << alpha.second.second << endl;
+            string coordinateString;
+
+            coordinateString += string("(");
+            coordinateString += to_string(alpha.second.first);
+            coordinateString += string(",");
+            coordinateString += to_string(alpha.second.second);
+            coordinateString += string(")");
+
             dx += string("(");
             dx += to_string(alpha.second.first);
             dx += string(",");
@@ -431,7 +384,21 @@ void Mapper::recursiveCallInput(shared_ptr<Node> node) {
             dx += string(")");
             dx += string("=>");
             dx += alpha.first.getText() + "\n";
+
+//            cout<<"Finding "<<coordinateString<<endl;
+            if(tModel->tableEntries.find(coordinateString)!=tModel->tableEntries.end()) {
+                shared_ptr<Node>nx=tModel->tableEntries[coordinateString];
+                if(dynamic_pointer_cast<InputNode>(nx)!= nullptr) {
+                    shared_ptr<InputNode>nx2=dynamic_pointer_cast<InputNode>(nx);
+//                    cout<<"SETTING "<<coordinateString<<" to "<<alpha.first.getText()<<endl;
+                    nx2->data+=alpha.first.getText();
+                }
+            }
+
         });
+
+
+
 
         tModel->data = dx;
 

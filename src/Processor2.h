@@ -32,6 +32,9 @@
 struct GroundTruth {
     Rect rect;
     string value;
+    bool taken=false;
+public:
+    GroundTruth(const Rect &rect, const string &value);
 };
 
 
@@ -44,7 +47,9 @@ private:
     string textFilePath;
     string groundTruthFilePath;
     string outputFolder;
-    String outputFileName;
+    string outputFileName;
+    string modelFilePath;
+
 
     /**
      * 3 channel colored matrix of the input form
@@ -61,12 +66,6 @@ private:
      * OCR merged words
      */
     vector<TextualData> mergedWords;
-
-    /**
-     * Ground truth fields values
-     */
-    vector<TextualData> fields;
-
 
     /**
      * Represent the line data of Part 1 text
@@ -108,7 +107,7 @@ private:
     vector<pair<string,Rect>>mappedGroundH1;
     vector<pair<string,Rect>>mappedGroundH2;
 
-    unordered_map<string,GroundTruth>groundTruth;
+    unordered_map<string,shared_ptr<GroundTruth>>groundTruth;
 
     RNG rng;
 
@@ -119,16 +118,17 @@ public:
      * @param[in] imageFilePath represents the image of the form
      * @param[in] textFilePath represents the json file path of the OCR result
      * @param[in] groundTruthFilePath represents the groundTruth values
+     * @param[in] modelFilePath represents the groundTruth values
      * @param[in] outputFolder represents the folder where to write results. File name will be picked from the last argument
      * @param[in] outputFileName represents the file name on basis on which, to write the output
      */
-    Processor2(const string &imageFilePath, const string &textFilePath, const string &groundTruthFilePath,
+    Processor2(const string &imageFilePath, const string &textFilePath, const string &groundTruthFilePath, const string&modelFilePath,
               const string &outputFolder, const string &outputFileName);
 
     /**
      * Executes the job
      */
-    void execute();
+    float execute();
 
     /**
      * Reads field values from the JSON file.

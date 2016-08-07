@@ -114,7 +114,7 @@ void ModelBuilder::processStatement(string statement, int lineNumber) {
             newNode->id=id;
         }
         else if(type=="REPEAT_INPUT") {
-            cout<<"Repeat created"<<endl;
+//            cout<<"Repeat created"<<endl;
 
             // Create parent hierarchy
             vector<string>hierarchy2=vector<string>(hierarchy.begin(),hierarchy.end()-1);
@@ -232,6 +232,9 @@ void ModelBuilder::processStatement(string statement, int lineNumber) {
 
         vector<string>hierarchyNode=HelperMethods::regexSplit(nodeId,"[:]");
         shared_ptr<InputNode>node=dynamic_pointer_cast<InputNode>(findNode(hierarchyNode));
+
+
+//        node->bindedGroundTruthEntries.push_back(shared_ptr<pair<string,bool>>(new pair<string,bool>(bindedName,false)));
         node->bindedGroundTruthEntries.push_back(bindedName);
 
     }

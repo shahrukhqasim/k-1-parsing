@@ -10,26 +10,27 @@
 #include "Model/MappingJob.h"
 
 
-Processor2::Processor2(const string &imageFilePath, const string &textFilePath, const string &groundTruthFilePath,
+Processor2::Processor2(const string &imageFilePath, const string &textFilePath, const string &groundTruthFilePath,const string&modelFilePath,
                        const string &outputFolder, const string &outputFileName) {
     this->imageFilePath = imageFilePath;
     this->textFilePath = textFilePath;
     this->groundTruthFilePath = groundTruthFilePath;
+    this->modelFilePath=modelFilePath;
     this->outputFolder = outputFolder;
     this->outputFileName = outputFileName;
 }
 
 
-void Processor2::execute() {
+float Processor2::execute() {
     readData();
     divideIntoParts();
     ModelBuilder builder;
-    documentNode = builder.execute("/home/shahrukhqasim/Desktop/model.mdl");
+    documentNode = builder.execute(modelFilePath);
 
 
     Json::Value output2;
     ModelBuilder::convertToJson(output2, documentNode);
-    cout << output2;
+//    cout << output2;
 
     processHeader1();
     processPart1();
@@ -37,11 +38,38 @@ void Processor2::execute() {
     processPart3();
     outputDataToJson();
 
-    Json::Value output;
-    ModelBuilder::convertToJson(output, documentNode);
-    cout << output;
+//    Json::Value output;
+//    ModelBuilder::convertToJson(output, documentNode);
+//    cout << output;
 
-    cout<<"\nAccuracy figure="<<(100.0*testsPassed/(float)accuracyTests)<<endl;
+    int tests=0;
+    int testsPassed=0;
+//    for_each(groundTruth.begin(),groundTruth.end(),[&] (pair<string,shared_ptr<GroundTruth>>x){
+//        tests++;
+//        const char*testX=x.first.c_str();
+//        if(x.second->taken||x.second->value.length()==0)
+//            testsPassed++;
+//    });
+
+    for(auto x:groundTruth) {
+        if(x.second->value.compare("True")==0||x.second->value.compare("False")==0) {
+            continue;
+        }
+
+        tests++;
+        const char*testX=x.first.c_str();
+        if(x.second->taken||x.second->value.length()==0)
+            testsPassed++;
+
+    }
+
+    accuracyTests=tests;
+    this->testsPassed=testsPassed;
+
+    if(accuracyTests!=0)
+        return (100.0*this->testsPassed/(float)accuracyTests);
+    else
+        return 0;
 }
 
 bool Processor2::isBelow(const Rect &a, const Rect &b) {
@@ -187,44 +215,61 @@ void Processor2::outputBindingLine(shared_ptr<Node> node, Rect region) {
 }
 
 void Processor2::testAccuracy(shared_ptr<InputNode> node) {
-    if(node->data.length()==0)
+//    cout<<"Figure="<<node->bindedGroundTruthEntries.size()<<endl;
+    if(node->data.length()==0) {
         return;
+    }
     bool doBreak=false;
     bool matched=false;
     accuracyTests++;
-//    cout<<"Figure="<<node->bindedGroundTruthEntries.size()<<endl;
+
+    int bindedIndexLoop=0;
     for(auto i:node->bindedGroundTruthEntries) {
-        GroundTruth g=groundTruth[i];
-        vector<string>values=HelperMethods::regexSplit(g.value,"[|]");
+
+        if(groundTruth.find(i)==groundTruth.end())
+            continue;
+        shared_ptr<GroundTruth> g=groundTruth[i];
+
+
+        if(g==nullptr||g->taken)
+            continue;
+
+        vector<string>values=HelperMethods::regexSplit(node->data,"[|]");
+
+        if(values.size()>0) {
+//            cout<<"HELPPPPP";
+//            cout<<node)<<endl;
+        }
 
         for(auto x:values) {
-            if (HelperMethods::nearEqualComparison(x, node->data)) {
+            if (HelperMethods::nearEqualComparison(g->value, x)) {
                 Scalar randomColor=Scalar((int)rng%256,(int)rng%256,(int)rng%256);
 
-                rectangle(image, g.rect , randomColor, 3, 8, 0);
+                rectangle(image, g->rect , randomColor, 3, 8, 0);
                 rectangle(image, node->region , randomColor, 3, 8, 0);
 
-                cout << "Passed:" << node->id << endl;
+                putText(image,node->data,g->rect.tl(),1,2,randomColor);
+
+                g->taken=true;
+
+//                cout << "Passed:" << node->id << endl;
 
 
                 testsPassed++;
-                matched=true;
-                doBreak=true;
+                return;
             }
         }
         if(doBreak)
             break;
     }
-    if(!matched)
-        cout << "Not Passed:" << node->id << endl;
+//    if(!matched);
+//        cout << "Not Passed:" << node->id<<" - "<<node->data << endl;
 }
 
 void Processor2::recursiveInputFieldsToJson(shared_ptr<Node> node) {
     if (dynamic_pointer_cast<InputNode>(node) != nullptr) {
 //        cout << "Running on: " << node->id << endl;
         shared_ptr<InputNode> iModel = dynamic_pointer_cast<InputNode>(node);
-
-        Mat image2 = image.clone();
 
         Json::Value value;
         value["Id"] = iModel->id;
@@ -240,11 +285,13 @@ void Processor2::recursiveInputFieldsToJson(shared_ptr<Node> node) {
 
         Rect regionX = MappingJob(documentNode, iModel->id, image.cols, image.rows).map();
 
+//        if(((int)iModel->id.find("TABLE"))>=0)
+//            cout<<"Testing for a TABLEEEEEE "<<iModel->id<<" - "<<iModel->bindedGroundTruthEntries.size()<<" - "<<iModel->data<<endl;
         testAccuracy(iModel);
 
-//        outputBindingLine(iModel, regionX);
+//            outputBindingLine(iModel, regionX);
 
-//        cout<<"DEFINE "<<iModel->id+"_CODE REPEAT_INPUT ALPHA_NUMERIC"<<endl;
+        Mat image2=image.clone();
 
 //        if(((int)iModel->id.find("PART_1"))>=0) {
 //            rectangle(image2, regionX , Scalar(0, 255, 0), 3, 8, 0);
@@ -259,12 +306,21 @@ void Processor2::recursiveInputFieldsToJson(shared_ptr<Node> node) {
 //            destroyWindow(iModel->id);
 //        }
 
-        image2.deallocate();
-
         outputJson["Pages"][0]["Fields"][lastIndexJson++] = value;
     }
+    if (dynamic_pointer_cast<TableNode>(node) != nullptr) {
+        shared_ptr<TableNode> tModel = dynamic_pointer_cast<TableNode>(node);
 
-    if (node->subNodes.size() != 0) {
+        if (tModel->tableEntries.size() != 0) {
+            for_each(tModel->tableEntries.begin(), tModel->tableEntries.end(), [&](pair<string, shared_ptr<Node>> current) {
+                recursiveInputFieldsToJson(current.second);
+            });
+        }
+
+    }
+
+
+        if (node->subNodes.size() != 0) {
         for_each(node->subNodes.begin(), node->subNodes.end(), [&](pair<string, shared_ptr<Node>> current) {
             recursiveInputFieldsToJson(current.second);
         });
@@ -473,7 +529,8 @@ void Processor2::getFieldValues(Json::Value root, vector<TextualData> &outputVec
 
 void Processor2::readData() {
 
-    ifstream theFile("/home/shahrukhqasim/Desktop/data.json");
+    cout<<groundTruthFilePath<<endl;
+    ifstream theFile(groundTruthFilePath);
     Json::Value parsedData;
     theFile >> parsedData;
 
@@ -494,7 +551,9 @@ void Processor2::readData() {
         mappedGround.push_back(pair<string, Rect>(name, Rect(l, t, r - l, b - t)));
 
 
-        groundTruth[name]={Rect(l, t, r - l, b - t),value};
+//        cout<<"Inserting "<<name<<endl;
+        //{Rect(l, t, r - l, b - t),value}
+        groundTruth[name]=shared_ptr<GroundTruth>(new GroundTruth(Rect(l, t, r - l, b - t),value));
 
     }
 
@@ -508,13 +567,6 @@ void Processor2::readData() {
     ifstream jsonOcrWordsStream(textFilePath);
     jsonOcrWordsStream >> jsonWords;
     AccuracyProgram::getWords(jsonWords, words);
-
-
-    // Read the ground truth field values
-    Json::Value jsonFields;
-    ifstream jsonFieldsStream(groundTruthFilePath);
-    jsonFieldsStream >> jsonFields;
-    AccuracyProgram::getWords(jsonFields, fields);
 }
 
 void Processor2::mergeWordBoxes(const vector<TextualData> &words, vector<TextualData> &elemBoxes) {
@@ -592,8 +644,12 @@ void Processor2::runProcessorProgram(string parentPath) {
     string imageFile;
     string jsonFile;
     string groundTruthFile;
+    string modelFilePath=parentPath+"model.mdl";
 
     string outputFolder = parentPath + "output/";
+
+    float accuracySum=0;
+    int num=0;
 
     while (getline(streamImageFilesList, imageFile)) {
         getline(streamJsonFilesList, jsonFile);
@@ -605,14 +661,20 @@ void Processor2::runProcessorProgram(string parentPath) {
         jsonFile = parentPath + "text/" + jsonFile;
         groundTruthFile = parentPath + "groundTruth/" + groundTruthFile;
 
-//        cout << imageFile << endl;
+        cout << imageFile << endl;
 
-        Processor2(imageFile, jsonFile, groundTruthFile, outputFolder, workFile).execute();
-//        cout<<endl;
+        float x=Processor2(imageFile, jsonFile, groundTruthFile, modelFilePath, outputFolder, workFile).execute();
+        accuracySum+=x;
+        num++;
 
-//        run(imageFile, jsonFile, directory + "/output/", workFile);
-        break;
+        cout<<"Accuracy is "<<x<<endl;
+
+//        break;
 
     }
 
+    cout<<"Average accuracy "<<accuracySum/num;
+
 }
+
+GroundTruth::GroundTruth(const Rect &rect, const string &value) : rect(rect), value(value) {}
