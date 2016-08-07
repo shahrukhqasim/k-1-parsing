@@ -1,0 +1,902 @@
+{
+	"Pages" : 
+	[
+		{
+			"Fields" : 
+			[
+				{
+					"Id" : "DOCUMENT:PART_3:GROUP_20:OTHER_INFORMATION:INPUT_CODE",
+					"Region" : 
+					{
+						"b" : 0,
+						"l" : 0,
+						"r" : 0,
+						"t" : 0
+					},
+					"Value" : "V|B|A"
+				},
+				{
+					"Id" : "DOCUMENT:PART_3:GROUP_20:OTHER_INFORMATION:INPUT",
+					"Region" : 
+					{
+						"b" : 0,
+						"l" : 0,
+						"r" : 0,
+						"t" : 0
+					},
+					"Value" : "126,761.|25,329.|547,288."
+				},
+				{
+					"Id" : "DOCUMENT:PART_3:GROUP_18:TAX_EXEMPT:INPUT_CODE",
+					"Region" : 
+					{
+						"b" : 0,
+						"l" : 0,
+						"r" : 0,
+						"t" : 0
+					},
+					"Value" : ""
+				},
+				{
+					"Id" : "DOCUMENT:PART_3:GROUP_18:TAX_EXEMPT:INPUT",
+					"Region" : 
+					{
+						"b" : 0,
+						"l" : 0,
+						"r" : 0,
+						"t" : 0
+					},
+					"Value" : ""
+				},
+				{
+					"Id" : "DOCUMENT:PART_3:GROUP_7:ROYALTIES:INPUT_CODE",
+					"Region" : 
+					{
+						"b" : 0,
+						"l" : 0,
+						"r" : 0,
+						"t" : 0
+					},
+					"Value" : ""
+				},
+				{
+					"Id" : "DOCUMENT:PART_3:GROUP_7:ROYALTIES:INPUT",
+					"Region" : 
+					{
+						"b" : 0,
+						"l" : 0,
+						"r" : 0,
+						"t" : 0
+					},
+					"Value" : ""
+				},
+				{
+					"Id" : "DOCUMENT:PART_3:GROUP_6A:ORDINARY_DIVIDENTS:INPUT_CODE",
+					"Region" : 
+					{
+						"b" : 0,
+						"l" : 0,
+						"r" : 0,
+						"t" : 0
+					},
+					"Value" : "*"
+				},
+				{
+					"Id" : "DOCUMENT:PART_3:GROUP_6A:ORDINARY_DIVIDENTS:INPUT",
+					"Region" : 
+					{
+						"b" : 0,
+						"l" : 0,
+						"r" : 0,
+						"t" : 0
+					},
+					"Value" : ".|93,850"
+				},
+				{
+					"Id" : "DOCUMENT:PART_3:GROUP_19:DISTRIBUTIONS:INPUT_CODE",
+					"Region" : 
+					{
+						"b" : 0,
+						"l" : 0,
+						"r" : 0,
+						"t" : 0
+					},
+					"Value" : "A"
+				},
+				{
+					"Id" : "DOCUMENT:PART_3:GROUP_19:DISTRIBUTIONS:INPUT",
+					"Region" : 
+					{
+						"b" : 0,
+						"l" : 0,
+						"r" : 0,
+						"t" : 0
+					},
+					"Value" : "1,102,665."
+				},
+				{
+					"Id" : "DOCUMENT:PART_3:GROUP_6B:QUALIFIED_DIVIDENTS:INPUT_CODE",
+					"Region" : 
+					{
+						"b" : 0,
+						"l" : 0,
+						"r" : 0,
+						"t" : 0
+					},
+					"Value" : "*"
+				},
+				{
+					"Id" : "DOCUMENT:PART_3:GROUP_6B:QUALIFIED_DIVIDENTS:INPUT",
+					"Region" : 
+					{
+						"b" : 0,
+						"l" : 0,
+						"r" : 0,
+						"t" : 0
+					},
+					"Value" : "88,398."
+				},
+				{
+					"Id" : "DOCUMENT:PART_3:GROUP_13:OTHER_DEDUCTIONS:INPUT_CODE",
+					"Region" : 
+					{
+						"b" : 0,
+						"l" : 0,
+						"r" : 0,
+						"t" : 0
+					},
+					"Value" : "K*|H"
+				},
+				{
+					"Id" : "DOCUMENT:PART_3:GROUP_13:OTHER_DEDUCTIONS:INPUT",
+					"Region" : 
+					{
+						"b" : 0,
+						"l" : 0,
+						"r" : 0,
+						"t" : 0
+					},
+					"Value" : "25,329.|82,276."
+				},
+				{
+					"Id" : "DOCUMENT:PART_3:GROUP_5:INTEREST_INCOME:INPUT_CODE",
+					"Region" : 
+					{
+						"b" : 0,
+						"l" : 0,
+						"r" : 0,
+						"t" : 0
+					},
+					"Value" : "*"
+				},
+				{
+					"Id" : "DOCUMENT:PART_3:GROUP_5:INTEREST_INCOME:INPUT",
+					"Region" : 
+					{
+						"b" : 0,
+						"l" : 0,
+						"r" : 0,
+						"t" : 0
+					},
+					"Value" : "*|453,438."
+				},
+				{
+					"Id" : "DOCUMENT:PART_3:GROUP_11:OTHER_INCOME:INPUT_CODE",
+					"Region" : 
+					{
+						"b" : 0,
+						"l" : 0,
+						"r" : 0,
+						"t" : 0
+					},
+					"Value" : "F*"
+				},
+				{
+					"Id" : "DOCUMENT:PART_3:GROUP_11:OTHER_INCOME:INPUT",
+					"Region" : 
+					{
+						"b" : 0,
+						"l" : 0,
+						"r" : 0,
+						"t" : 0
+					},
+					"Value" : "STMT"
+				},
+				{
+					"Id" : "DOCUMENT:PART_3:GROUP_3:OTHER_RENTAL_INCOME:INPUT_CODE",
+					"Region" : 
+					{
+						"b" : 0,
+						"l" : 0,
+						"r" : 0,
+						"t" : 0
+					},
+					"Value" : ""
+				},
+				{
+					"Id" : "DOCUMENT:PART_3:GROUP_3:OTHER_RENTAL_INCOME:INPUT",
+					"Region" : 
+					{
+						"b" : 0,
+						"l" : 0,
+						"r" : 0,
+						"t" : 0
+					},
+					"Value" : ""
+				},
+				{
+					"Id" : "DOCUMENT:PART_3:GROUP_4:GUARANTEED_PAYMENTS:INPUT_CODE",
+					"Region" : 
+					{
+						"b" : 0,
+						"l" : 0,
+						"r" : 0,
+						"t" : 0
+					},
+					"Value" : ""
+				},
+				{
+					"Id" : "DOCUMENT:PART_3:GROUP_4:GUARANTEED_PAYMENTS:INPUT",
+					"Region" : 
+					{
+						"b" : 0,
+						"l" : 0,
+						"r" : 0,
+						"t" : 0
+					},
+					"Value" : ""
+				},
+				{
+					"Id" : "DOCUMENT:PART_3:GROUP_10:NET_SECTION:INPUT_CODE",
+					"Region" : 
+					{
+						"b" : 0,
+						"l" : 0,
+						"r" : 0,
+						"t" : 0
+					},
+					"Value" : ""
+				},
+				{
+					"Id" : "DOCUMENT:PART_3:GROUP_10:NET_SECTION:INPUT",
+					"Region" : 
+					{
+						"b" : 0,
+						"l" : 0,
+						"r" : 0,
+						"t" : 0
+					},
+					"Value" : ""
+				},
+				{
+					"Id" : "DOCUMENT:PART_3:GROUP_14:SELF_EMPLOYMENT:INPUT_CODE",
+					"Region" : 
+					{
+						"b" : 0,
+						"l" : 0,
+						"r" : 0,
+						"t" : 0
+					},
+					"Value" : ""
+				},
+				{
+					"Id" : "DOCUMENT:PART_3:GROUP_14:SELF_EMPLOYMENT:INPUT",
+					"Region" : 
+					{
+						"b" : 0,
+						"l" : 0,
+						"r" : 0,
+						"t" : 0
+					},
+					"Value" : ""
+				},
+				{
+					"Id" : "DOCUMENT:PART_3:GROUP_2:NET_RENTAL_REAL_ESTATE_INCOME:INPUT_CODE",
+					"Region" : 
+					{
+						"b" : 0,
+						"l" : 0,
+						"r" : 0,
+						"t" : 0
+					},
+					"Value" : ""
+				},
+				{
+					"Id" : "DOCUMENT:PART_3:GROUP_2:NET_RENTAL_REAL_ESTATE_INCOME:INPUT",
+					"Region" : 
+					{
+						"b" : 0,
+						"l" : 0,
+						"r" : 0,
+						"t" : 0
+					},
+					"Value" : ""
+				},
+				{
+					"Id" : "DOCUMENT:PART_3:GROUP_8:NET_SHORTTERM_CAPITAL:INPUT_CODE",
+					"Region" : 
+					{
+						"b" : 0,
+						"l" : 0,
+						"r" : 0,
+						"t" : 0
+					},
+					"Value" : "*"
+				},
+				{
+					"Id" : "DOCUMENT:PART_3:GROUP_8:NET_SHORTTERM_CAPITAL:INPUT",
+					"Region" : 
+					{
+						"b" : 0,
+						"l" : 0,
+						"r" : 0,
+						"t" : 0
+					},
+					"Value" : "*|-13,319."
+				},
+				{
+					"Id" : "DOCUMENT:PART_3:GROUP_9A:NET_LONG_TERM:INPUT_CODE",
+					"Region" : 
+					{
+						"b" : 0,
+						"l" : 0,
+						"r" : 0,
+						"t" : 0
+					},
+					"Value" : "*"
+				},
+				{
+					"Id" : "DOCUMENT:PART_3:GROUP_9A:NET_LONG_TERM:INPUT",
+					"Region" : 
+					{
+						"b" : 0,
+						"l" : 0,
+						"r" : 0,
+						"t" : 0
+					},
+					"Value" : "895,002."
+				},
+				{
+					"Id" : "DOCUMENT:PART_3:GROUP_9B:COLLECTIBLES_28:INPUT_CODE",
+					"Region" : 
+					{
+						"b" : 0,
+						"l" : 0,
+						"r" : 0,
+						"t" : 0
+					},
+					"Value" : ""
+				},
+				{
+					"Id" : "DOCUMENT:PART_3:GROUP_9B:COLLECTIBLES_28:INPUT",
+					"Region" : 
+					{
+						"b" : 0,
+						"l" : 0,
+						"r" : 0,
+						"t" : 0
+					},
+					"Value" : ""
+				},
+				{
+					"Id" : "DOCUMENT:PART_3:GROUP_9C:UNRECAPTURED:INPUT_CODE",
+					"Region" : 
+					{
+						"b" : 0,
+						"l" : 0,
+						"r" : 0,
+						"t" : 0
+					},
+					"Value" : ""
+				},
+				{
+					"Id" : "DOCUMENT:PART_3:GROUP_9C:UNRECAPTURED:INPUT",
+					"Region" : 
+					{
+						"b" : 0,
+						"l" : 0,
+						"r" : 0,
+						"t" : 0
+					},
+					"Value" : ""
+				},
+				{
+					"Id" : "DOCUMENT:PART_3:GROUP_12:SECTION_179_DEDUCTION:INPUT_CODE",
+					"Region" : 
+					{
+						"b" : 0,
+						"l" : 0,
+						"r" : 0,
+						"t" : 0
+					},
+					"Value" : ""
+				},
+				{
+					"Id" : "DOCUMENT:PART_3:GROUP_12:SECTION_179_DEDUCTION:INPUT",
+					"Region" : 
+					{
+						"b" : 0,
+						"l" : 0,
+						"r" : 0,
+						"t" : 0
+					},
+					"Value" : ""
+				},
+				{
+					"Id" : "DOCUMENT:PART_3:GROUP_1:ORDINARY_BUSINESS:INPUT_CODE",
+					"Region" : 
+					{
+						"b" : 0,
+						"l" : 0,
+						"r" : 0,
+						"t" : 0
+					},
+					"Value" : ""
+				},
+				{
+					"Id" : "DOCUMENT:PART_3:GROUP_1:ORDINARY_BUSINESS:INPUT",
+					"Region" : 
+					{
+						"b" : 0,
+						"l" : 0,
+						"r" : 0,
+						"t" : 0
+					},
+					"Value" : ""
+				},
+				{
+					"Id" : "DOCUMENT:PART_3:GROUP_15:CREDITS:INPUT_CODE",
+					"Region" : 
+					{
+						"b" : 0,
+						"l" : 0,
+						"r" : 0,
+						"t" : 0
+					},
+					"Value" : ""
+				},
+				{
+					"Id" : "DOCUMENT:PART_3:GROUP_15:CREDITS:INPUT",
+					"Region" : 
+					{
+						"b" : 0,
+						"l" : 0,
+						"r" : 0,
+						"t" : 0
+					},
+					"Value" : ""
+				},
+				{
+					"Id" : "DOCUMENT:PART_3:GROUP_16:FOREIGN_TRANSACTIONS:INPUT_CODE",
+					"Region" : 
+					{
+						"b" : 0,
+						"l" : 0,
+						"r" : 0,
+						"t" : 0
+					},
+					"Value" : "G|D|C|B"
+				},
+				{
+					"Id" : "DOCUMENT:PART_3:GROUP_16:FOREIGN_TRANSACTIONS:INPUT",
+					"Region" : 
+					{
+						"b" : 0,
+						"l" : 0,
+						"r" : 0,
+						"t" : 0
+					},
+					"Value" : "82,276.|131,576.|881,683.|1,375/484."
+				},
+				{
+					"Id" : "DOCUMENT:PART_3:GROUP_17:ALTERNATIVE_MINIMUM:INPUT_CODE",
+					"Region" : 
+					{
+						"b" : 0,
+						"l" : 0,
+						"r" : 0,
+						"t" : 0
+					},
+					"Value" : ""
+				},
+				{
+					"Id" : "DOCUMENT:PART_3:GROUP_17:ALTERNATIVE_MINIMUM:INPUT",
+					"Region" : 
+					{
+						"b" : 0,
+						"l" : 0,
+						"r" : 0,
+						"t" : 0
+					},
+					"Value" : ""
+				},
+				{
+					"Id" : "DOCUMENT:PART_1:GROUP_D:PTP:INPUT",
+					"Region" : 
+					{
+						"b" : 0,
+						"l" : 0,
+						"r" : 0,
+						"t" : 0
+					},
+					"Value" : ""
+				},
+				{
+					"Id" : "DOCUMENT:PART_1:GROUP_B:PARTNERSHIPS_NAME:INPUT",
+					"Region" : 
+					{
+						"b" : 0,
+						"l" : 0,
+						"r" : 0,
+						"t" : 0
+					},
+					"Value" : ""
+				},
+				{
+					"Id" : "DOCUMENT:PART_1:GROUP_A:PARTNERSHIPS_EMPLOYER:INPUT",
+					"Region" : 
+					{
+						"b" : 0,
+						"l" : 0,
+						"r" : 0,
+						"t" : 0
+					},
+					"Value" : ""
+				},
+				{
+					"Id" : "DOCUMENT:PART_1:GROUP_C:IRS:INPUT",
+					"Region" : 
+					{
+						"b" : 1143,
+						"l" : 158,
+						"r" : 277,
+						"t" : 1119
+					},
+					"Value" : " OGDEN"
+				},
+				{
+					"Id" : "DOCUMENT:HEADER_1:YEAR_BEGINNING:INPUT",
+					"Region" : 
+					{
+						"b" : 0,
+						"l" : 0,
+						"r" : 0,
+						"t" : 0
+					},
+					"Value" : ""
+				},
+				{
+					"Id" : "DOCUMENT:HEADER_1:ENDING:INPUT",
+					"Region" : 
+					{
+						"b" : 0,
+						"l" : 0,
+						"r" : 0,
+						"t" : 0
+					},
+					"Value" : ""
+				},
+				{
+					"Id" : "DOCUMENT:HEADER_1:20:INPUT",
+					"Region" : 
+					{
+						"b" : 401,
+						"l" : 1173,
+						"r" : 1260,
+						"t" : 395
+					},
+					"Value" : " , _"
+				},
+				{
+					"Id" : "DOCUMENT:PART_2:GROUP_K:PARTNER_LIABILITY:RECOURSE:INPUT",
+					"Region" : 
+					{
+						"b" : 2443,
+						"l" : 750,
+						"r" : 763,
+						"t" : 2418
+					},
+					"Value" : " $"
+				},
+				{
+					"Id" : "DOCUMENT:PART_2:GROUP_K:PARTNER_LIABILITY:QUALIFIED_NONRECOURSE:INPUT",
+					"Region" : 
+					{
+						"b" : 2395,
+						"l" : 661,
+						"r" : 763,
+						"t" : 2368
+					},
+					"Value" : " . . . $"
+				},
+				{
+					"Id" : "DOCUMENT:PART_2:GROUP_K:PARTNER_LIABILITY:NONRECOURSE:INPUT",
+					"Region" : 
+					{
+						"b" : 2345,
+						"l" : 750,
+						"r" : 1234,
+						"t" : 2318
+					},
+					"Value" : " $ 1,090,049."
+				},
+				{
+					"Id" : "DOCUMENT:PART_2:GROUP_G:LIMITEDPARTNER:INPUT",
+					"Region" : 
+					{
+						"b" : 0,
+						"l" : 0,
+						"r" : 0,
+						"t" : 0
+					},
+					"Value" : ""
+				},
+				{
+					"Id" : "DOCUMENT:PART_2:GROUP_G:GENERALPARTNER:INPUT",
+					"Region" : 
+					{
+						"b" : 0,
+						"l" : 0,
+						"r" : 0,
+						"t" : 0
+					},
+					"Value" : ""
+				},
+				{
+					"Id" : "DOCUMENT:PART_2:GROUP_I1:TYPE_ENTITY_PARTNER:INPUT",
+					"Region" : 
+					{
+						"b" : 1894,
+						"l" : 920,
+						"r" : 1103,
+						"t" : 1877
+					},
+					"Value" : " partnership"
+				},
+				{
+					"Id" : "DOCUMENT:PART_2:GROUP_E:PARTNERID:INPUT",
+					"Region" : 
+					{
+						"b" : 0,
+						"l" : 0,
+						"r" : 0,
+						"t" : 0
+					},
+					"Value" : ""
+				},
+				{
+					"Id" : "DOCUMENT:PART_2:GROUP_F:PARTNERNAME:INPUT",
+					"Region" : 
+					{
+						"b" : 0,
+						"l" : 0,
+						"r" : 0,
+						"t" : 0
+					},
+					"Value" : ""
+				},
+				{
+					"Id" : "DOCUMENT:PART_2:GROUP_M:PARTNER_CONTRIB_GAIN_LOSS:NO:INPUT",
+					"Region" : 
+					{
+						"b" : 0,
+						"l" : 0,
+						"r" : 0,
+						"t" : 0
+					},
+					"Value" : ""
+				},
+				{
+					"Id" : "DOCUMENT:PART_2:GROUP_M:PARTNER_CONTRIB_GAIN_LOSS:YES:INPUT",
+					"Region" : 
+					{
+						"b" : 0,
+						"l" : 0,
+						"r" : 0,
+						"t" : 0
+					},
+					"Value" : ""
+				},
+				{
+					"Id" : "TABLE1:CAPITAL_ENDING_INPUT",
+					"Region" : 
+					{
+						"b" : 0,
+						"l" : 0,
+						"r" : 0,
+						"t" : 0
+					},
+					"Value" : "%"
+				},
+				{
+					"Id" : "TABLE1:LOSS_ENDING_INPUT",
+					"Region" : 
+					{
+						"b" : 0,
+						"l" : 0,
+						"r" : 0,
+						"t" : 0
+					},
+					"Value" : "%"
+				},
+				{
+					"Id" : "TABLE1:CAPITAL_BEGINNING_INPUT",
+					"Region" : 
+					{
+						"b" : 0,
+						"l" : 0,
+						"r" : 0,
+						"t" : 0
+					},
+					"Value" : "0.607167"
+				},
+				{
+					"Id" : "TABLE1:PROFIT_BEGINNING_INPUT",
+					"Region" : 
+					{
+						"b" : 0,
+						"l" : 0,
+						"r" : 0,
+						"t" : 0
+					},
+					"Value" : "0.666667"
+				},
+				{
+					"Id" : "TABLE1:LOSS_BEGINNING_INPUT",
+					"Region" : 
+					{
+						"b" : 0,
+						"l" : 0,
+						"r" : 0,
+						"t" : 0
+					},
+					"Value" : "0.666667"
+				},
+				{
+					"Id" : "TABLE1:PROFIT_ENDING_INPUT",
+					"Region" : 
+					{
+						"b" : 0,
+						"l" : 0,
+						"r" : 0,
+						"t" : 0
+					},
+					"Value" : "%"
+				},
+				{
+					"Id" : "DOCUMENT:PART_2:GROUP_H:FOREIGNPARTNER:INPUT",
+					"Region" : 
+					{
+						"b" : 0,
+						"l" : 0,
+						"r" : 0,
+						"t" : 0
+					},
+					"Value" : ""
+				},
+				{
+					"Id" : "DOCUMENT:PART_2:GROUP_H:DOMESTICPARTNER:INPUT",
+					"Region" : 
+					{
+						"b" : 0,
+						"l" : 0,
+						"r" : 0,
+						"t" : 0
+					},
+					"Value" : ""
+				},
+				{
+					"Id" : "DOCUMENT:PART_2:GROUP_I2:RETIREMENTPLAN:INPUT",
+					"Region" : 
+					{
+						"b" : 0,
+						"l" : 0,
+						"r" : 0,
+						"t" : 0
+					},
+					"Value" : ""
+				},
+				{
+					"Id" : "DOCUMENT:PART_2:GROUP_L:SECTION704:INPUT",
+					"Region" : 
+					{
+						"b" : 0,
+						"l" : 0,
+						"r" : 0,
+						"t" : 0
+					},
+					"Value" : ""
+				},
+				{
+					"Id" : "DOCUMENT:PART_2:GROUP_L:GAAP:INPUT",
+					"Region" : 
+					{
+						"b" : 0,
+						"l" : 0,
+						"r" : 0,
+						"t" : 0
+					},
+					"Value" : ""
+				},
+				{
+					"Id" : "DOCUMENT:PART_2:GROUP_L:PARTNER_CAPITAL:CURRENT_YEAR:INPUT",
+					"Region" : 
+					{
+						"b" : 2696,
+						"l" : 661,
+						"r" : 1204,
+						"t" : 2668
+					},
+					"Value" : " . . . $ 1,048,929."
+				},
+				{
+					"Id" : "DOCUMENT:PART_2:GROUP_L:PARTNER_CAPITAL:CAPITAL_DURING_YEAR:INPUT",
+					"Region" : 
+					{
+						"b" : 2646,
+						"l" : 721,
+						"r" : 1204,
+						"t" : 2618
+					},
+					"Value" : " . $ 2,120,079."
+				},
+				{
+					"Id" : "DOCUMENT:PART_2:GROUP_L:PARTNER_CAPITAL:BEGINNING:INPUT",
+					"Region" : 
+					{
+						"b" : 2596,
+						"l" : 601,
+						"r" : 1204,
+						"t" : 2568
+					},
+					"Value" : " . . . $ 6,579,805."
+				},
+				{
+					"Id" : "DOCUMENT:PART_2:GROUP_L:WITHDRAWAL_CONTRIBUTION:INPUT",
+					"Region" : 
+					{
+						"b" : 2750,
+						"l" : 750,
+						"r" : 1234,
+						"t" : 2708
+					},
+					"Value" : " $ [ 1,102,665. )"
+				},
+				{
+					"Id" : "DOCUMENT:PART_2:GROUP_L:ENDING_CAPITAL_ACCOUNT:INPUT",
+					"Region" : 
+					{
+						"b" : 2797,
+						"l" : 541,
+						"r" : 1203,
+						"t" : 2767
+					},
+					"Value" : " . . $ 8,646,148."
+				},
+				{
+					"Id" : "DOCUMENT:PART_2:GROUP_L:OTHER:INPUT1",
+					"Region" : 
+					{
+						"b" : 0,
+						"l" : 0,
+						"r" : 0,
+						"t" : 0
+					},
+					"Value" : ""
+				},
+				{
+					"Id" : "DOCUMENT:PART_2:GROUP_L:TAXBASIS:INPUT",
+					"Region" : 
+					{
+						"b" : 0,
+						"l" : 0,
+						"r" : 0,
+						"t" : 0
+					},
+					"Value" : ""
+				}
+			],
+			"PageNumber" : 1
+		}
+	]
+}
