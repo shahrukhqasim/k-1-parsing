@@ -30,8 +30,7 @@ float Processor2::execute() {
 
 
     Json::Value output2;
-    ModelBuilder::convertToJson(output2, documentNode);
-//    cout << output2;
+
 
     processHeader1();
     processPart1();
@@ -51,6 +50,13 @@ float Processor2::execute() {
 //        if(x.second->taken||x.second->value.length()==0)
 //            testsPassed++;
 //    });
+
+    ofstream outputTree(outputFolder+"/"+outputFileName+"_tree.json");
+    ModelBuilder::convertToJson(output2, documentNode->subNodes["DOCUMENT"]);
+    outputTree<<output2;
+    outputTree.flush();
+    outputTree.close();
+
 
     for (auto x:groundTruth) {
         if (x.second->value.compare("True") == 0 || x.second->value.compare("False") == 0) {
@@ -112,58 +118,30 @@ bool Processor2::isRightTo(const Rect &a, const Rect &b) {
 }
 
 string
-        Processor2::findTextWithRules(vector < std::function < bool( const
-TextualData &)>> rules,
-const vector <TextualData> &data
-) {
+Processor2::findTextWithRules(vector<std::function<bool(const TextualData &)>> rules, const vector<TextualData> &data) {
+    string text = "";
+    for_each(data.begin(), data.end(), [&](const TextualData &currentData) {
+        bool ruleMatched = true;
+        for_each(rules.begin(), rules.end(), [&](std::function<bool(const TextualData &)> currentRule) {
+            ruleMatched = ruleMatched & currentRule(currentData);
+        });
+        if (ruleMatched) {
+            text += " " + currentData.getText();
 
-string text = "";
-for_each(data
-.
+        }
+    });
 
-begin(), data
-
-.
-
-end(),
-
-[&](
-const TextualData &currentData
-) {
-bool ruleMatched = true;
-for_each(rules
-.
-
-begin(), rules
-
-.
-
-end(),
-
-[&](std::function<bool(
-const TextualData &)> currentRule) {
-ruleMatched = ruleMatched & currentRule(currentData);
-});
-if (ruleMatched) {
-text += " " + currentData.
-
-getText();
-
-}
-});
-
-return
-text;
+    return text;
 }
 
-string Processor2::findTextWithRulesOnlyRightMost(vector < std::function < bool( const
-TextualData &)>> rules,
-const vector <TextualData> &data
+string Processor2::findTextWithRulesOnlyRightMost(vector<std::function<bool(const
+                                                                            TextualData &)>> rules,
+                                                  const vector<TextualData> &data
 ) {
 }
 
 void Processor2::processHeader1() {
-    shared_ptr <Node> header1Node = documentNode->subNodes["DOCUMENT"]->subNodes["HEADER_1"];
+    shared_ptr<Node> header1Node = documentNode->subNodes["DOCUMENT"]->subNodes["HEADER_1"];
     Mapper mapper(header1Data, header1Node, documentNode, image.cols, image.rows);
     mapper.executeTextFields();
     mapper.executeInputFields();
@@ -173,14 +151,14 @@ void Processor2::processHeader2() {
 }
 
 void Processor2::processPart1() {
-    shared_ptr <Node> part1Node = documentNode->subNodes["DOCUMENT"]->subNodes["PART_1"];
+    shared_ptr<Node> part1Node = documentNode->subNodes["DOCUMENT"]->subNodes["PART_1"];
     Mapper mapper(part1Data, part1Node, documentNode, image.cols, image.rows);
     mapper.executeTextFields();
     mapper.executeInputFields();
 }
 
 void Processor2::processPart2() {
-    shared_ptr <Node> part2Node = documentNode->subNodes["DOCUMENT"]->subNodes["PART_2"];
+    shared_ptr<Node> part2Node = documentNode->subNodes["DOCUMENT"]->subNodes["PART_2"];
     Mapper mapper(part2Data, part2Node, documentNode, image.cols, image.rows);
     mapper.executeTextFields();
     mapper.executeInputFields();
@@ -189,7 +167,7 @@ void Processor2::processPart2() {
 }
 
 void Processor2::processPart3() {
-    shared_ptr <Node> part3Node = documentNode->subNodes["DOCUMENT"]->subNodes["PART_3"];
+    shared_ptr<Node> part3Node = documentNode->subNodes["DOCUMENT"]->subNodes["PART_3"];
     Mapper mapper(part3Data, part3Node, documentNode, image.cols, image.rows);
     mapper.executeTextFields();
     mapper.executeInputFields();
@@ -208,7 +186,7 @@ void Processor2::outputDataToJson() {
     outputStream << outputJson;
 }
 
-void Processor2::outputBindingLine(shared_ptr <Node> node, Rect region) {
+void Processor2::outputBindingLine(shared_ptr<Node> node, Rect region) {
 //    cout<<"Finding binding"<<mappedGround.size()<<endl;
 
 
@@ -254,7 +232,7 @@ void Processor2::outputBindingLine(shared_ptr <Node> node, Rect region) {
     }
 }
 
-void Processor2::testAccuracy(shared_ptr <InputNode> node) {
+void Processor2::testAccuracy(shared_ptr<InputNode> node) {
 //    cout<<"Figure="<<node->bindedGroundTruthEntries.size()<<endl;
 
 //     Check only alpha numeric stuff
@@ -272,30 +250,81 @@ void Processor2::testAccuracy(shared_ptr <InputNode> node) {
     accuracyTests++;
 
 
-    vector <string> values = HelperMethods::regexSplit(node->data, "[|]");
+    vector<string> values = HelperMethods::regexSplit(node->data, "[|]");
 
     for (string j:values) {
         for (auto i:node->bindedGroundTruthEntries) {
             if (groundTruth.find(i) == groundTruth.end())
                 continue;
-            shared_ptr <GroundTruth> g = groundTruth[i];
+            shared_ptr<GroundTruth> g = groundTruth[i];
 
 
             if (g == nullptr || g->taken)
                 continue;
 
-            if(HelperMethods::nearEqualComparison(g->value,j)) {
+            if (HelperMethods::nearEqualComparison(g->value, j)) {
+
+                Scalar randomColor = Scalar((int) rng % 256, (int) rng % 256, (int) rng % 256);
+
+                rectangle(image, g->rect, randomColor, 3, 8, 0);
+                rectangle(image, node->region, randomColor, 3, 8, 0);
+
+                putText(image, j, g->rect.tl(), 1, 2, randomColor);
+
                 g->taken = true;
                 break;
             }
         }
     }
+
+//    int bindedIndexLoop = 0;
+//    for (auto i:node->bindedGroundTruthEntries) {
+//
+//        if (groundTruth.find(i) == groundTruth.end())
+//            continue;
+//        shared_ptr<GroundTruth> g = groundTruth[i];
+//
+//
+//        if (g == nullptr || g->taken)
+//            continue;
+//
+////        cout<<node->data<<endl;
+//        vector<string> values = HelperMethods::regexSplit(node->data, "[|]");
+//
+//        if (values.size() > 0) {
+////            cout<<"HELPPPPP";
+////            cout<<node)<<endl;
+//        }
+
+//        for (auto x:values) {
+//            if (HelperMethods::nearEqualComparison(g->value, x)) {
+//                Scalar randomColor = Scalar((int) rng % 256, (int) rng % 256, (int) rng % 256);
+//
+////                rectangle(image, g->rect , randomColor, 3, 8, 0);
+////                rectangle(image, node->region , randomColor, 3, 8, 0);
+////
+////                putText(image,node->data,g->rect.tl(),1,2,randomColor);
+//
+//                g->taken = true;
+//
+////                cout << "Passed:" << node->id << endl;
+//
+//
+//                testsPassed++;
+//                return;
+//            }
+//        }
+//        if (doBreak)
+//            break;
+//    }
+//    if(!matched);
+//        cout << "Not Passed:" << node->id<<" - "<<node->data << endl;
 }
 
-void Processor2::recursiveInputFieldsToJson(shared_ptr <Node> node) {
+void Processor2::recursiveInputFieldsToJson(shared_ptr<Node> node) {
     if (dynamic_pointer_cast<InputNode>(node) != nullptr) {
 //        cout << "Running on: " << node->id << endl;
-        shared_ptr <InputNode> iModel = dynamic_pointer_cast<InputNode>(node);
+        shared_ptr<InputNode> iModel = dynamic_pointer_cast<InputNode>(node);
 
         Json::Value value;
         value["Id"] = iModel->id;
@@ -312,25 +341,26 @@ void Processor2::recursiveInputFieldsToJson(shared_ptr <Node> node) {
         Rect regionX = MappingJob(documentNode, iModel->id, image.cols, image.rows).map();
 
 
-        testAccuracy(iModel);
+        if (groundTruthFilePath.length() != 0)
+            testAccuracy(iModel);
 
         Mat image2 = image.clone();
 
         outputJson["Pages"][0]["Fields"][lastIndexJson++] = value;
     }
     if (dynamic_pointer_cast<TableNode>(node) != nullptr) {
-        shared_ptr <TableNode> tModel = dynamic_pointer_cast<TableNode>(node);
+        shared_ptr<TableNode> tModel = dynamic_pointer_cast<TableNode>(node);
 
         if (tModel->tableEntries.size() != 0) {
             for_each(tModel->tableEntries.begin(), tModel->tableEntries.end(),
-                     [&](pair <string, shared_ptr<Node>> current) {
+                     [&](pair<string, shared_ptr<Node>> current) {
                          recursiveInputFieldsToJson(current.second);
                      });
         }
     }
 
     if (node->subNodes.size() != 0) {
-        for_each(node->subNodes.begin(), node->subNodes.end(), [&](pair <string, shared_ptr<Node>> current) {
+        for_each(node->subNodes.begin(), node->subNodes.end(), [&](pair<string, shared_ptr<Node>> current) {
             recursiveInputFieldsToJson(current.second);
         });
     }
@@ -393,12 +423,12 @@ void Processor2::divideIntoParts() {
     line(image, Point(shallowProjectionIndex, 0), Point(shallowProjectionIndex, image.rows - 1), Scalar(0, 255, 0), 7,
          8, 0);
 
-    vector <TextualData> leftBoxes;
-    vector <TextualData> rightBoxes;
+    vector<TextualData> leftBoxes;
+    vector<TextualData> rightBoxes;
 
 
-    vector <pair<string, Rect>> mappedGroundL;
-    vector <pair<string, Rect>> mappedGroundR;
+    vector<pair<string, Rect>> mappedGroundL;
+    vector<pair<string, Rect>> mappedGroundR;
 
     for (int i = 0; i < mergedWords.size(); i++) {
         TextualData box = mergedWords[i];
@@ -412,7 +442,7 @@ void Processor2::divideIntoParts() {
 
 
     for (int i = 0; i < mappedGround.size(); i++) {
-        pair <string, Rect> box = mappedGround[i];
+        pair<string, Rect> box = mappedGround[i];
         if (shallowProjectionIndex - box.second.x > box.second.width / 2) {
             mappedGroundL.push_back(box);
         }
@@ -472,7 +502,7 @@ void Processor2::divideIntoParts() {
         // Search in left boxes which are below indexPart1 and above indexPart2: Add them to part 1
         // Search in left boxes which are below indexPart2: Add them to part 2
         for (int i = 0; i < mappedGroundL.size(); i++) {
-            pair <string, Rect> current = mappedGroundL[i];
+            pair<string, Rect> current = mappedGroundL[i];
 
             // TODO: Change 10 offset to something dynamic
             if ((current.second.y) >= part2TextualData.getRect().y - 10) {
@@ -489,7 +519,7 @@ void Processor2::divideIntoParts() {
 
         // Search in right boxes which are below indexPart3: Add them to part 3
         for (int i = 0; i < mappedGroundR.size(); i++) {
-            pair <string, Rect> current = mappedGroundR[i];
+            pair<string, Rect> current = mappedGroundR[i];
             if (current.second.y >= part3TextualData.getRect().y) {
                 mappedGroundP3.push_back(current);
             }
@@ -513,7 +543,7 @@ void Processor2::divideIntoParts() {
 
 }
 
-void Processor2::getFieldValues(Json::Value root, vector <TextualData> &outputVector) {
+void Processor2::getFieldValues(Json::Value root, vector<TextualData> &outputVector) {
 
     root = root["Pages"][0];
 
@@ -538,32 +568,34 @@ void Processor2::getFieldValues(Json::Value root, vector <TextualData> &outputVe
 
 void Processor2::readData() {
 
-    cout << groundTruthFilePath << endl;
-    ifstream theFile(groundTruthFilePath);
-    Json::Value parsedData;
-    theFile >> parsedData;
+    if (groundTruthFilePath.length() != 0) {
+        cout << groundTruthFilePath << endl;
+        ifstream theFile(groundTruthFilePath);
+        Json::Value parsedData;
+        theFile >> parsedData;
 
-    parsedData = parsedData["Pages"][0]["Fields"];
+        parsedData = parsedData["Pages"][0]["Fields"];
 
-    vector <Rect> rectangles;
+        vector<Rect> rectangles;
 
-    for (int i = 0; i < parsedData.size(); i++) {
-        Json::Value region = parsedData[i]["Region"];
-        string name = parsedData[i]["Name"].asString();
-        string value = parsedData[i]["Value"].asString();
+        for (int i = 0; i < parsedData.size(); i++) {
+            Json::Value region = parsedData[i]["Region"];
+            string name = parsedData[i]["Name"].asString();
+            string value = parsedData[i]["Value"].asString();
 
-        int l = region["l"].asInt();
-        int t = region["t"].asInt();
-        int r = region["r"].asInt();
-        int b = region["b"].asInt();
+            int l = region["l"].asInt();
+            int t = region["t"].asInt();
+            int r = region["r"].asInt();
+            int b = region["b"].asInt();
 
-        mappedGround.push_back(pair<string, Rect>(name, Rect(l, t, r - l, b - t)));
+            mappedGround.push_back(pair<string, Rect>(name, Rect(l, t, r - l, b - t)));
 
 
 //        cout<<"Inserting "<<name<<endl;
-        //{Rect(l, t, r - l, b - t),value}
-        groundTruth[name] = shared_ptr<GroundTruth>(new GroundTruth(Rect(l, t, r - l, b - t), value));
+            //{Rect(l, t, r - l, b - t),value}
+            groundTruth[name] = shared_ptr<GroundTruth>(new GroundTruth(Rect(l, t, r - l, b - t), value));
 
+        }
     }
 
     // Read the input image
@@ -578,7 +610,7 @@ void Processor2::readData() {
     AccuracyProgram::getWords(jsonWords, words);
 }
 
-void Processor2::mergeWordBoxes(const vector <TextualData> &words, vector <TextualData> &elemBoxes) {
+void Processor2::mergeWordBoxes(const vector<TextualData> &words, vector<TextualData> &elemBoxes) {
     // Merge the words extracted from Tesseract to obtain text-lines. The logic used for text-line extraction
     // is to merge two consecutive words if they overlap along the y-axis, and the gap between them is smaller
     // than the height of the shorter word.
@@ -618,7 +650,7 @@ void Processor2::mergeWordBoxes(const vector <TextualData> &words, vector <Textu
 
 }
 
-int Processor2::findMinTextIndex(const vector <TextualData> &data, const string &textToFind) {
+int Processor2::findMinTextIndex(const vector<TextualData> &data, const string &textToFind) {
     int minDistance = 99999999;
     int minIndex = -1;
     for (int i = 0; i < data.size(); i++) {
@@ -634,7 +666,7 @@ int Processor2::findMinTextIndex(const vector <TextualData> &data, const string 
     return minIndex;
 }
 
-void Processor2::drawBoxes(Mat &image, const vector <TextualData> &data, const Scalar &color) {
+void Processor2::drawBoxes(Mat &image, const vector<TextualData> &data, const Scalar &color) {
     for (int i = 0; i < data.size(); i++) {
         rectangle(image, data[i].getRect(), color, 3, 8, 0);
     }
@@ -668,7 +700,8 @@ void Processor2::runProcessorProgram(string parentPath) {
 
         imageFile = parentPath + "images/" + imageFile;
         jsonFile = parentPath + "text/" + jsonFile;
-        groundTruthFile = parentPath + "groundTruth/" + groundTruthFile;
+        if (groundTruthFile.length() != 0)
+            groundTruthFile = parentPath + "groundTruth/" + groundTruthFile;
 
         cout << imageFile << endl;
 
@@ -676,13 +709,15 @@ void Processor2::runProcessorProgram(string parentPath) {
         accuracySum += x;
         num++;
 
-        cout << "Accuracy is " << x << endl;
+        if (groundTruthFile.length() != 0)
+            cout << "Accuracy is " << x << endl;
 
 //        break;
 
     }
 
-    cout << "Average accuracy " << accuracySum / num;
+    if (groundTruthFile.length() != 0)
+        cout << "Average accuracy " << accuracySum / num;
 
 }
 
