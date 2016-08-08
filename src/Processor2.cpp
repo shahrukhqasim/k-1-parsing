@@ -180,7 +180,8 @@ void Processor2::outputDataToJson() {
 
     recursiveInputFieldsToJson(documentNode->subNodes["DOCUMENT"]);
 
-    imwrite(outputFolder + outputFileName + "_output.png", image);
+    if(groundTruthFilePath.length()!=0)
+        imwrite(outputFolder + outputFileName + "_output.png", image);
 
     ofstream outputStream(outputFolder + outputFileName + "_extracted.json");
     outputStream << outputJson;
