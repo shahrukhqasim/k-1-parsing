@@ -27,9 +27,9 @@ void printHelp() {
                   "\t * 4. plottedDataComparison - an empty folder. Output is written to it. The files that are already there will be overwritten.\n\n";
     cout<<" * In case of -m, you must give path of mdl file as second argument"<<endl<<endl;
     cout<<" * In case of -p, you must give path as second argument of a folder which contains these directories:\n";
-    cout<<"\t * 2. images - should contain png files of the document images along with files.txt which must contain names (not path) of the image files"<<endl;
-    cout<<"\t * 3. output - an empty folder which will get the output. Existing files will be overwritten"<<endl;
-    cout<<"\t * 4. text - a file which must contain OCR output of the document in JSON agreed upon format"<<endl<<endl;
+    cout<<"\t * 1. images - should contain png files of the document images along with files.txt which must contain names (not path) of the image files"<<endl;
+    cout<<"\t * 2. output - an empty folder which will get the output. Existing files will be overwritten"<<endl;
+    cout<<"\t * 3. text - a file which must contain OCR output of the document in JSON agreed upon format"<<endl<<endl;
     cout<<" * In case of -e, you must give path as second argument of a folder which contains these directories:\n";
     cout<<"\t * 1. groundTruth - should contain JSON files of the ground truth in the agreed upon format along with files.txt which must contain names (not path) of the JSON ground truth files"<<endl;
     cout<<"\t * 2. images - should contain png files of the document images along with files.txt which must contain names (not path) of the image files"<<endl;
