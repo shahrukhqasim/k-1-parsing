@@ -178,11 +178,20 @@ void Mapper::recursiveCallInput(shared_ptr<Node> node) {
 
 
         string dx2 = "";
+        Rect regionX;
+        bool regionXDef;
 
         for_each(dataX.begin(), dataX.end(), [&](pair<TextualData, pair<int, int>> alpha) {
 //            cout << "Assigned to " << alpha.first.getText() << " value " << alpha.second.first << ","
 //                 << alpha.second.second << endl;
             dx2 += alpha.first.getText() + "|";
+
+            if(!regionXDef) {
+                regionX=alpha.first.getRect();
+                regionXDef=true;
+            }
+            else
+                regionX=alpha.first.getRect()|regionX;
         });
 
         if(dx2[dx2.length()-1]=='|') {
@@ -192,6 +201,8 @@ void Mapper::recursiveCallInput(shared_ptr<Node> node) {
 //        rModel->region=r;
         rModel->dataCoordinates = dx;
         rModel->data = dx2;
+        rModel->regionDefined=true;
+        rModel->region=regionX;
 
 
     }

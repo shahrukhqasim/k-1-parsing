@@ -51,9 +51,9 @@ float Processor2::execute() {
 //            testsPassed++;
 //    });
 
-    ofstream outputTree(outputFolder+"/"+outputFileName+"_tree.json");
+    ofstream outputTree(outputFolder + "/" + outputFileName + "_tree.json");
     ModelBuilder::convertToJson(output2, documentNode->subNodes["DOCUMENT"]);
-    outputTree<<output2;
+    outputTree << output2;
     outputTree.flush();
     outputTree.close();
 
@@ -180,8 +180,7 @@ void Processor2::outputDataToJson() {
 
     recursiveInputFieldsToJson(documentNode->subNodes["DOCUMENT"]);
 
-    if(groundTruthFilePath.length()!=0)
-        imwrite(outputFolder + outputFileName + "_output.png", image);
+    imwrite(outputFolder + outputFileName + "_output.png", image);
 
     ofstream outputStream(outputFolder + outputFileName + "_extracted.json");
     outputStream << outputJson;
@@ -251,6 +250,7 @@ void Processor2::testAccuracy(shared_ptr<InputNode> node) {
     accuracyTests++;
 
 
+
     vector<string> values = HelperMethods::regexSplit(node->data, "[|]");
 
     for (string j:values) {
@@ -262,14 +262,26 @@ void Processor2::testAccuracy(shared_ptr<InputNode> node) {
 
             if (g == nullptr || g->taken)
                 continue;
-
             if (HelperMethods::nearEqualComparison(g->value, j)) {
 
-                Scalar randomColor = Scalar((int) rng % 256, (int) rng % 256, (int) rng % 256);
+                Scalar randomColor = randomColors[(int) rng % 5];//Scalar((int) rng % 256, (int) rng % 256, (int) rng % 256);
 
                 rectangle(image, g->rect, randomColor, 3, 8, 0);
-                rectangle(image, node->region, randomColor, 3, 8, 0);
 
+//                vector<string> hierarchy = HelperMethods::regexSplit(node->id, "[:]");
+//                if (hierarchy.size() != 0) {
+//                    hierarchy = vector<string>(hierarchy.begin(), hierarchy.end() - 1);
+//                    shared_ptr<Node> foundNode = ModelBuilder::findNode(hierarchy, documentNode);
+//                    if (foundNode != nullptr) {
+//                        if (foundNode->regionDefined) {
+//                            rectangle(image, foundNode->region, randomColor, 3, 8, 0);
+//                            rectangle(image, node->region, randomColor, 3, 8, 0);
+//                        }
+//                    }
+//                }
+
+
+//                rectangle(image, node->region, randomColor, 3, 8, 0);
                 putText(image, j, g->rect.tl(), 1, 2, randomColor);
 
                 g->taken = true;
@@ -550,7 +562,6 @@ void Processor2::getFieldValues(Json::Value root, vector<TextualData> &outputVec
 
     Json::Value words = root["Fields"];
     for (int i = 0; i < words.size(); i++) {
-        cout << "I am here" << endl;
         Json::Value word = words[i];
         string value = word["Value"].asString();
         Json::Value rectangle = word["Region"];
@@ -683,7 +694,7 @@ void Processor2::runProcessorProgram(string parentPath, bool evaluate) {
     fstream streamJsonFilesList(parentPath + "text/files.txt");
     fstream streamGroundTruthFilesList;
 
-    if(evaluate)
+    if (evaluate)
         streamGroundTruthFilesList.open(parentPath + "groundTruth/files.txt");
 
     string imageFile;
@@ -698,13 +709,13 @@ void Processor2::runProcessorProgram(string parentPath, bool evaluate) {
 
     while (getline(streamImageFilesList, imageFile)) {
         getline(streamJsonFilesList, jsonFile);
-        groundTruthFile="";
-        if(evaluate)
+        groundTruthFile = "";
+        if (evaluate)
             getline(streamGroundTruthFilesList, groundTruthFile);
 
         cout << imageFile << endl;
-        if(groundTruthFile.length()==0&&evaluate) {
-            cerr<<"Ground truth not found"<<endl;
+        if (groundTruthFile.length() == 0 && evaluate) {
+            cerr << "Ground truth not found" << endl;
         }
 
         string workFile = HelperMethods::removeFileExtension(imageFile);
