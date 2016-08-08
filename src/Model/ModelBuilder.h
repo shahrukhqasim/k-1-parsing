@@ -18,10 +18,26 @@ using namespace std;
 
 class ModelBuilder {
 
+    /**
+     * When the program is executed, this field will contain smart pointer to the top level node
+     */
     shared_ptr<Node> document;
 
 public:
+    /**
+     * Runs ModelBuilder on MDL file parovided and outputs the hierarchy to console
+     *
+     * @param path is the path to MDL file
+     */
     static void runModelBuilderProgram(string path);
+
+    /**
+     * Executes ModelBuilder on the MDL file path provided and returns pointer to the top level parent node which contains the complete hierarchy
+     *
+     * @param[in] path is the complete path of the MDL file
+     *
+     * @return smart pointer the top level node
+     */
     shared_ptr<Node> execute(string path);
 
     /**

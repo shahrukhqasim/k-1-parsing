@@ -20,12 +20,18 @@ using namespace cv;
  */
 void printHelp() {
     cout<<"Argument 1 should either be -a, -o, -p or -m to run only accuracy test, OCR+accuracy test, processing program or model builder programs respectively respectively."<<endl<<endl;
-    cout<<" * In case of first two You need to give path of a directory as an agument which must contin these folders:\n"
-                  " * 1. programInput - should contain input images and files.txt which must contains names (not path) of input images files\n"
-                  " * 2. expectedOutput - should contain the JSON files of expected output and files.txt which must contain names (not paths) of these JSON files. The order should match with (1)\n"
-                  " * 3. programOutput - empty for OCR+Accuracy test. And for accuracy test, should contain JSON files containing output of OCR. There should also be a ocrJsonFiles.txt file in the folder hich specifies the JSON output files.\n"
-                  " * 4. plottedDataComparison - an empty folder. Output is written to it. The files that are already there will be overwritten.";
-    cout<<endl<<"All files.txt should contain consecutive filenames. First document has to appear at the top and so on"<<endl;
+    cout<<" * In case of -a or -o you need to give path of a directory as second argument which must contin these folders:\n"
+                  "\t * 1. programInput - should contain input images and files.txt which must contains names (not path) of input images files\n"
+                  "\t * 2. expectedOutput - should contain the JSON files of expected output and files.txt which must contain names (not paths) of these JSON files. The order should match with (1)\n"
+                  "\t * 3. programOutput - empty for OCR+Accuracy test. And for accuracy test, should contain JSON files containing output of OCR. There should also be a ocrJsonFiles.txt file in the folder hich specifies the JSON output files.\n"
+                  "\t * 4. plottedDataComparison - an empty folder. Output is written to it. The files that are already there will be overwritten.\n\n";
+    cout<<" * In case of -m, you must give path of mdl file as second argument"<<endl<<endl;
+    cout<<" * In case of -p, you must give path as second argument of a folder which contains these directories:\n";
+    cout<<"\t * 1. groundTruth - should contain JSON files of the ground truth in the agreed upon format along with files.txt which must contain names (not path) of the JSON ground truth files"<<endl;
+    cout<<"\t * 2. images - should contain png files of the document images along with files.txt which must contain names (not path) of the image files"<<endl;
+    cout<<"\t * 3. output - an empty folder which will get the output. Existing files will be overwritten"<<endl;
+    cout<<"\t * 4. text - a file which must contain OCR output of the document in JSON agreed upon format"<<endl;
+    cout<<endl<<endl<<"All files.txt should contain consecutive filenames. First document has to appear at the top and so on"<<endl;
     // TODO: Show prompt for processing program and and model builder program
 }
 
@@ -61,45 +67,15 @@ int main(int argc, char**argv) {
     }
     else if(job==string("-p")) {
         Processor2::runProcessorProgram(path);
-
     }
     else if(job==string("-m")) {
         ModelBuilder::runModelBuilderProgram(path);
 
     }
     else {
-        cout<<"Error in argument 1. It can either be -p or -a"<<endl;
+        cout<<"Error in argument 1. It can either be -a, -o, -p or -m"<<endl;
     }
 
 
 	return 0;
-}
-
-int main2() {
-    ifstream theFile("/home/shahrukhqasim/Desktop/data.json");
-    Json::Value parsedData;
-    theFile>>parsedData;
-
-    Mat image=imread("/home/shahrukhqasim/Desktop/image.png",1);
-
-    parsedData=parsedData["Pages"][0]["Fields"];
-
-    vector<Rect>rectangles;
-
-    for(int i=0;i<parsedData.size();i++) {
-        Json::Value region=parsedData[i]["Region"];
-
-        int l=region["l"].asInt();
-        int t=region["t"].asInt();
-        int r=region["r"].asInt();
-        int b=region["b"].asInt();
-
-        rectangles.push_back(Rect(l,t,r-l,b-t));
-
-        rectangle(image,Rect(l,t,r-l,b-t) , Scalar(255,0,255), 3, 8,0);
-    }
-
-    imwrite("/home/shahrukhqasim/Desktop/ouput.png",image);
-
-    return 0;
 }

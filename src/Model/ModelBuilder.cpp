@@ -12,7 +12,11 @@
 
 void ModelBuilder::runModelBuilderProgram(string path) {
     Node::lastId=0;
-    ModelBuilder().execute(path);
+    shared_ptr<Node>document=ModelBuilder().execute(path);
+
+    Json::Value output;
+    convertToJson(output, document->subNodes["DOCUMENT"]);
+    cout<<output;
 }
 
 shared_ptr<Node> ModelBuilder::execute(string path) {
@@ -27,9 +31,6 @@ shared_ptr<Node> ModelBuilder::execute(string path) {
         lineNumber++;
     }
 
-    Json::Value output;
-    convertToJson(output, document->subNodes["DOCUMENT"]);
-//    cout<<output;
 
     return document;
 }
