@@ -81,7 +81,17 @@ function element_to_obj($element) {
       // $w=array("x1"=>$x1,"x2"=>$x2,"y1"=>$y1,"y2"=>$y2);
       array_push($json,$attrs); }
   }
+
+  preg_match("/<Page ID=\"Page1\" PHYSICAL_IMG_NR=\"(\d+)\" HEIGHT=\"(\d+)\" WIDTH=\"(\d+)\">/", $element, $matches);
+
   $pages=array();
+
+  if(isset($matches[1]))
+    $pages[0]["PageNumber"]=$matches[1];
+  if(isset($matches[2]))
+    $pages[0]["Height"]=$matches[2];
+  if(isset($matches[3]))
+    $pages[0]["Width"]=$matches[3];
   $pages[0]["Words"]=$json;
   $every["Pages"]=$pages;
 
