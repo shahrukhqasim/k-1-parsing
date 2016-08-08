@@ -232,6 +232,28 @@ void Processor2::outputBindingLine(shared_ptr<Node> node, Rect region) {
     }
 }
 
+void Processor2::visualize(shared_ptr<Node> node) {
+
+    if(dynamic_pointer_cast<InputNode>(node)) {
+        shared_ptr<InputNode>iModel=dynamic_pointer_cast<InputNode>(node);
+
+        if ((int) (node->id.find("TABLE")) >= 0)
+            return;
+        vector<string> hierarchy = HelperMethods::regexSplit(node->id, "[:]");
+        if (hierarchy.size() != 0) {
+            hierarchy = vector<string>(hierarchy.begin(), hierarchy.end() - 1);
+            shared_ptr<Node> foundNode = ModelBuilder::findNode(hierarchy, documentNode);
+            if (foundNode != nullptr) {
+                if (foundNode->regionDefined) {
+                    Scalar randomColor = randomColors[(int) rng % 5];
+                    rectangle(image, foundNode->region, randomColor, 3, 8, 0);
+                    putText(image, iModel->data, foundNode->region.br(), 1, 2, randomColor, 2);
+                }
+            }
+        }
+    }
+}
+
 void Processor2::testAccuracy(shared_ptr<InputNode> node) {
 //    cout<<"Figure="<<node->bindedGroundTruthEntries.size()<<endl;
 
@@ -266,7 +288,7 @@ void Processor2::testAccuracy(shared_ptr<InputNode> node) {
 
                 Scalar randomColor = randomColors[(int) rng % 5];//Scalar((int) rng % 256, (int) rng % 256, (int) rng % 256);
 
-                rectangle(image, g->rect, randomColor, 3, 8, 0);
+//                rectangle(image, g->rect, randomColor, 3, 8, 0);
 
 //                vector<string> hierarchy = HelperMethods::regexSplit(node->id, "[:]");
 //                if (hierarchy.size() != 0) {
@@ -282,7 +304,7 @@ void Processor2::testAccuracy(shared_ptr<InputNode> node) {
 
 
 //                rectangle(image, node->region, randomColor, 3, 8, 0);
-                putText(image, j, g->rect.tl(), 1, 2, randomColor);
+//                putText(image, j, g->rect.tl(), 1, 2, randomColor);
 
                 g->taken = true;
                 break;
@@ -356,6 +378,7 @@ void Processor2::recursiveInputFieldsToJson(shared_ptr<Node> node) {
 
         if (groundTruthFilePath.length() != 0)
             testAccuracy(iModel);
+        visualize(iModel);
 
         Mat image2 = image.clone();
 

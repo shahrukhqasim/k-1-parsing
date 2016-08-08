@@ -233,6 +233,7 @@ private:
     int accuracyTests=0;
     int testsPassed=0;
     void testAccuracy(shared_ptr<InputNode>node);
+    void visualize(shared_ptr<Node>node);
 
 public:
 

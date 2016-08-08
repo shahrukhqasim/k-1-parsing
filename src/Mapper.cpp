@@ -185,13 +185,14 @@ void Mapper::recursiveCallInput(shared_ptr<Node> node) {
 //            cout << "Assigned to " << alpha.first.getText() << " value " << alpha.second.first << ","
 //                 << alpha.second.second << endl;
             dx2 += alpha.first.getText() + "|";
-
-            if(!regionXDef) {
-                regionX=alpha.first.getRect();
-                regionXDef=true;
+            if(alpha.first.getRect().x!=0&&alpha.first.getRect().y!=0) {
+                if (!regionXDef) {
+                    regionX = alpha.first.getRect();
+                    regionXDef = true;
+                }
+                else
+                    regionX = alpha.first.getRect() | regionX;
             }
-            else
-                regionX=alpha.first.getRect()|regionX;
         });
 
         if(dx2[dx2.length()-1]=='|') {
