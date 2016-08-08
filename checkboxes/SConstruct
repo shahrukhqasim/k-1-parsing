@@ -1,0 +1,12 @@
+import os
+
+env = Environment(CC = 'gcc',  CCFLAGS = '-g -O2')
+
+env.Append(CPPPATH = ['/usr/local/include/'])
+
+env.Append(LIBPATH = ['/usr/local/lib/', '/usr/lib/'])
+
+env.Append(LIBS=['opencv_core', 'opencv_imgproc', 'opencv_highgui', 'opencv_imgcodecs', 'opencv_objdetect'])
+
+env.Program(target = 'detect-checkboxes', source = ['main-detect-checkboxes.cc',  'checkbox.cc', 'concomp.cc'])
+
