@@ -19,7 +19,7 @@ using namespace cv;
  * This function prints arguments help
  */
 void printHelp() {
-    cout<<"Argument 1 should either be -a, -o, -p or -m to run only accuracy test, OCR+accuracy test, processing program or model builder programs respectively respectively."<<endl<<endl;
+    cout<<"Argument 1 should either be -a, -o, -e, -p or -m to run only accuracy test, OCR+accuracy test, processing evaluation program, processing program or model builder programs respectively respectively."<<endl<<endl;
     cout<<" * In case of -a or -o you need to give path of a directory as second argument which must contin these folders:\n"
                   "\t * 1. programInput - should contain input images and files.txt which must contains names (not path) of input images files\n"
                   "\t * 2. expectedOutput - should contain the JSON files of expected output and files.txt which must contain names (not paths) of these JSON files. The order should match with (1)\n"
@@ -27,6 +27,10 @@ void printHelp() {
                   "\t * 4. plottedDataComparison - an empty folder. Output is written to it. The files that are already there will be overwritten.\n\n";
     cout<<" * In case of -m, you must give path of mdl file as second argument"<<endl<<endl;
     cout<<" * In case of -p, you must give path as second argument of a folder which contains these directories:\n";
+    cout<<"\t * 2. images - should contain png files of the document images along with files.txt which must contain names (not path) of the image files"<<endl;
+    cout<<"\t * 3. output - an empty folder which will get the output. Existing files will be overwritten"<<endl;
+    cout<<"\t * 4. text - a file which must contain OCR output of the document in JSON agreed upon format"<<endl<<endl;
+    cout<<" * In case of -e, you must give path as second argument of a folder which contains these directories:\n";
     cout<<"\t * 1. groundTruth - should contain JSON files of the ground truth in the agreed upon format along with files.txt which must contain names (not path) of the JSON ground truth files"<<endl;
     cout<<"\t * 2. images - should contain png files of the document images along with files.txt which must contain names (not path) of the image files"<<endl;
     cout<<"\t * 3. output - an empty folder which will get the output. Existing files will be overwritten"<<endl;
@@ -66,7 +70,10 @@ int main(int argc, char**argv) {
 
     }
     else if(job==string("-p")) {
-        Processor2::runProcessorProgram(path);
+        Processor2::runProcessorProgram(path,false);
+    }
+    else if(job==string("-e")) {
+        Processor2::runProcessorProgram(path,true);
     }
     else if(job==string("-m")) {
         ModelBuilder::runModelBuilderProgram(path);

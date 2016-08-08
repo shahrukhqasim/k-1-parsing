@@ -672,7 +672,7 @@ void Processor2::drawBoxes(Mat &image, const vector<TextualData> &data, const Sc
     }
 }
 
-void Processor2::runProcessorProgram(string parentPath) {
+void Processor2::runProcessorProgram(string parentPath, bool evaluate) {
     if (parentPath[parentPath.length() - 1] != '/')
         parentPath = parentPath + "/";
 
@@ -680,7 +680,10 @@ void Processor2::runProcessorProgram(string parentPath) {
 
     fstream streamImageFilesList(parentPath + "images/files.txt");
     fstream streamJsonFilesList(parentPath + "text/files.txt");
-    fstream streamGroundTruthFilesList(parentPath + "groundTruth/files.txt");
+    fstream streamGroundTruthFilesList;
+
+    if(evaluate)
+        streamGroundTruthFilesList.open(parentPath + "groundTruth/files.txt");
 
     string imageFile;
     string jsonFile;
@@ -694,7 +697,14 @@ void Processor2::runProcessorProgram(string parentPath) {
 
     while (getline(streamImageFilesList, imageFile)) {
         getline(streamJsonFilesList, jsonFile);
-        getline(streamGroundTruthFilesList, groundTruthFile);
+        groundTruthFile="";
+        if(evaluate)
+            getline(streamGroundTruthFilesList, groundTruthFile);
+
+        cout << imageFile << endl;
+        if(groundTruthFile.length()==0&&evaluate) {
+            cerr<<"Ground truth not found"<<endl;
+        }
 
         string workFile = HelperMethods::removeFileExtension(imageFile);
 
@@ -703,7 +713,6 @@ void Processor2::runProcessorProgram(string parentPath) {
         if (groundTruthFile.length() != 0)
             groundTruthFile = parentPath + "groundTruth/" + groundTruthFile;
 
-        cout << imageFile << endl;
 
         float x = Processor2(imageFile, jsonFile, groundTruthFile, modelFilePath, outputFolder, workFile).execute();
         accuracySum += x;

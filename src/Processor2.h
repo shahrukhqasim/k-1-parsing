@@ -168,8 +168,11 @@ public:
 
     /**
      * Build this program parameters from command line argument directory and run it on batch data
+     *
+     * @param parentPath is the path of the parent folder which must contain the sub directories
+     * @param evaluate set it to true if there is ground truth available otherwise false
      */
-    static void runProcessorProgram(string parentPath);
+    static void runProcessorProgram(string parentPath, bool evaluate);
 
 private:
     /**
