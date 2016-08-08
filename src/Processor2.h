@@ -51,7 +51,7 @@ private:
     string modelFilePath;
 
 
-    Scalar randomColors[5]={Scalar(102,255,102),Scalar(0,0,255),Scalar(0,255,0),Scalar(255,0,102),Scalar(0,0,128)};
+    Scalar randomColors[5]={Scalar(0,168,102),Scalar(0,0,255),Scalar(255,0,0),Scalar(255,0,102),Scalar(128,0,255)};
 
     /**
      * 3 channel colored matrix of the input form

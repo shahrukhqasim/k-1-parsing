@@ -245,7 +245,7 @@ void Processor2::visualize(shared_ptr<Node> node) {
             shared_ptr<Node> foundNode = ModelBuilder::findNode(hierarchy, documentNode);
             if (foundNode != nullptr) {
                 if (foundNode->regionDefined) {
-                    Scalar randomColor = randomColors[(int) rng % 5];
+                    Scalar randomColor=randomColors[((unsigned int) rng) % 5];
                     rectangle(image, foundNode->region, randomColor, 3, 8, 0);
                     putText(image, iModel->data, foundNode->region.br(), 1, 2, randomColor, 2);
                 }
@@ -656,7 +656,7 @@ void Processor2::mergeWordBoxes(const vector<TextualData> &words, vector<Textual
         TextualData currWord = words[i];
         if (!newElem) {
             int hGap = currWord.getRect().x - prevWord.getRect().x - prevWord.getRect().width;
-            int hGapThresh = min(currWord.getRect().height, prevWord.getRect().height);
+            int hGapThresh = max(currWord.getRect().height, prevWord.getRect().height);
             bool vOverlap = false;
             if (((currWord.getRect().y <= prevWord.getRect().y) &&
                  (currWord.getRect().y + currWord.getRect().height > prevWord.getRect().y)) ||
