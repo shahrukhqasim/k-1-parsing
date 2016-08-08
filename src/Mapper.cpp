@@ -41,8 +41,16 @@ int Mapper::findMinTextIndex(const vector<TextualData> &data, const string &text
     int minDistance = 99999999;
     int minIndex = -1;
     for (int i = 0; i < data.size(); i++) {
+        string dataCurrent=data[i].getText();
+        string dataCurrent2;
+
+        for(int i=0;i<dataCurrent.size();i++) {
+            if(HelperMethods::isAlphaNumericNotSpace(dataCurrent[i]))
+                dataCurrent2+=dataCurrent[i];
+        }
+
         EditDistance editDistance;
-        int newDistance = editDistance.lDistance(data[i].getText().c_str(),
+        int newDistance = editDistance.lDistance(dataCurrent2.c_str(),
                                                  textToFind.c_str());
         if (newDistance < minDistance) {
             minDistance = newDistance;
@@ -439,6 +447,8 @@ Rect Mapper::recursiveCallText(shared_ptr<Node> node) {
         if (minIndex != -1) {
             node->region = data[minIndex].getRect();
             tNode->textAssigned = data[minIndex].getText();
+
+//            cout<<"Assigning "<<tNode->textAssigned<<" to "<<tNode->text<<" : "<<tNode->id<<endl;
             rectangle = node->region;
             taken.push_back(data[minIndex]);
 //        cout<<"Assigning to: "<<tNode->id<<" "<<data[minIndex].getRect()<<endl;
