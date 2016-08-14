@@ -1,7 +1,3 @@
-//
-// Created by Shah Rukh Qasim on 6/24/16.
-//
-
 #include <iostream>
 
 #include "stdio.h"
@@ -20,15 +16,13 @@
 #include "TesseractFinder.h"
 #include "EditDistance.h"
 
-#include "../csv/CSVparser.hpp"
+#include "../csv/CSVparser.h"
 #include "HelperMethods.h"
 #include "Preprocessor.h"
 
 #include "../json/json/json.h"
 
-using namespace std;
-using namespace tesseract;
-using namespace cv;
+
 
 #ifndef K_1_PARSING2_PROGRAM_H
 #define K_1_PARSING2_PROGRAM_H
@@ -60,43 +54,43 @@ class OcrProgram {
 	/**
 	 * A Random Numbers Generator
 	 */
-    RNG rng=RNG(12345);
+    cv::RNG rng= cv::RNG(12345);
 
 	/**
 	 * Only file name of the input image
 	 */
-    string inputFileName;
+    std::string inputFileName;
 
 	/**
 	 * Path of the input image folder
 	 */
-    string inputFolder;
+    std::string inputFolder;
 
 	/**
 	 * Path of the output folder (which will contain JSON files and program output images
 	 */
-    string outputFolder;
+    std::string outputFolder;
 
 	/**
 	 * Will contain the cleanedImage (without segmentation
 	 */
-    Mat cleanedImage;
+    cv::Mat cleanedImage;
 
 	/**
 	 * Will contain only name of the cleaned file. Cleaned file will be in output folder
 	 */
-    string cleanedImageFileName;
+    std::string cleanedImageFileName;
 
 	/**
 	 * Result of the OCR job
 	 */
-    vector<OcrResult>data;
-//    vector<DocumentModelData>documentModelData;
+    std::vector<OcrResult>data;
+//    std::vector<DocumentModelData>documentModelData;
 
 	/**
 	 * Matrix of the original untouched image
 	 */
-    Mat originalImage;
+    cv::Mat originalImage;
 
 	/**
 	 * Loads an image and binarizes it using binarizeShafait
@@ -106,7 +100,7 @@ class OcrProgram {
 	 * @param[in] mode shows file loading mode. Which is same as mode
 	 * 				imread. 0 for greyscale and 1 for colored image
 	 */
-    void loadBinaryImage(Mat &image, string fileName, int mode);
+    void loadBinaryImage(cv::Mat &image, std::string fileName, int mode);
 
 	/**
 	 * This function does segmentation and stores the result in segments member field
@@ -142,9 +136,9 @@ class OcrProgram {
 
 
 	/**
-	 * This vector contains segments of the file using simple segmentation algorithms
+	 * This std::vector contains segments of the file using simple segmentation algorithms
 	 */
-    vector<Rect>segments;
+    std::vector<cv::Rect>segments;
 public:
     void run();
 
@@ -155,7 +149,7 @@ public:
 	 * @param[in] inputFolder contains the complete or relative path of the folder which contains input image
 	 * @param[in] outputFolder contains the complete or relative path of the folder on which OCR results will be written
 	 */
-    OcrProgram(string inputFileName, string inputFolder, string outputFolder);
+    OcrProgram(std::string inputFileName, std::string inputFolder, std::string outputFolder);
 
 	/**
 	 * This is a static function which runs complete test on the path provided. And also
@@ -163,7 +157,7 @@ public:
 	 *
 	 * @param[in] path is the complete or relative path of the root folder
 	 */
-	static void runOcrProgram(string path);
+    static void runOcrProgram(std::string path);
 };
 
 

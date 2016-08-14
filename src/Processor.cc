@@ -1,11 +1,8 @@
-//
-// Created by shahrukhqasim on 7/17/16.
-//
-
 #include "Processor.h"
 #include "AccuracyProgram.h"
 #include <functional>
-
+using namespace cv;
+using namespace std;
 
 Processor::Processor(const string &imageFilePath, const string &textFilePath, const string &groundTruthFilePath,
                      const string &outputFolder, const string &outputFileName) {

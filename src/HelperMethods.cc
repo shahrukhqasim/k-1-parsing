@@ -1,13 +1,8 @@
-/*
- * HelperMethods.cpp
- *
- *  Created on: Jun 22, 2016
- *      Author: Shah Rukh Qasim
- */
-
 #include "HelperMethods.h"
 #include <iostream>
 #include <regex>
+using namespace cv;
+using namespace std;
 
 void HelperMethods::displayImageResizable(const Mat&image) {
 	imwrite("temp/displayImage.png",image);
@@ -47,11 +42,11 @@ bool HelperMethods::nearEqualComparison(const string&a,const string&b) {
 	string d;
 	for(int i=0;i<a.size();i++) {
 		if(isAlphaNumericNotSpace(a[i]))
-			c=c+a[i];
+			c+=a[i];
 	}
 	for(int i=0;i<b.size();i++) {
 		if(isAlphaNumericNotSpace(b[i]))
-			d=d+b[i];
+			d+=b[i];
 	}
 
     for(int i=0;i<c.size();i++) {

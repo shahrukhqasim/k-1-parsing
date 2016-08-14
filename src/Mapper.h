@@ -1,7 +1,3 @@
-//
-// Created by shahrukhqasim on 7/28/16.
-//
-
 #include "TextualData.h"
 #include "Model/Node.h"
 #include "Model/TextNode.h"
@@ -13,27 +9,27 @@
 
 
 class Mapper {
-    vector<TextualData>data;
-    vector<TextualData>taken;
+    std::vector<TextualData>data;
+    std::vector<TextualData>taken;
 
-    shared_ptr<Node>node;
-    shared_ptr<Node>ultimateParent;
+    std::shared_ptr<Node>node;
+    std::shared_ptr<Node>ultimateParent;
 
     int width;
     int height;
 
 public:
-    Mapper(const vector<TextualData>&data, shared_ptr<Node>node, shared_ptr<Node>ultimateParent, int width, int height);
-    Rect recursiveCallText(shared_ptr<Node> node);
-    void recursiveCallInput(shared_ptr<Node> node);
-    int findMinTextIndex(const vector<TextualData> &data, const string &textToFind);
+    Mapper(const std::vector<TextualData>&data, std::shared_ptr<Node>node, std::shared_ptr<Node>ultimateParent, int width, int height);
+    cv::Rect recursiveCallText(std::shared_ptr<Node> node);
+    void recursiveCallInput(std::shared_ptr<Node> node);
+    int findMinTextIndex(const std::vector<TextualData> &data, const std::string &textToFind);
     void executeTextFields();
     void executeInputFields();
 
-    void convertRulesToFunctions(shared_ptr<Node>theNode);
+    void convertRulesToFunctions(std::shared_ptr<Node>theNode);
 
-    pair<string,Rect> findTextWithRules(shared_ptr<Node>node);
-    static Rect findRectFromRules(shared_ptr<Node>rModel,shared_ptr<Node>ultimateParent, int width, int height);
+    std::pair<std::string, cv::Rect> findTextWithRules(std::shared_ptr<Node>node);
+    static cv::Rect findRectFromRules(std::shared_ptr<Node>rModel,std::shared_ptr<Node>ultimateParent, int width, int height);
 
 };
 

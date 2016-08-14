@@ -1,9 +1,10 @@
-//
-// Created by shahrukhqasim on 8/5/16.
-//
 
 #include "MappingJob.h"
 #include "ModelBuilder.h"
+
+using namespace cv;
+using namespace std;
+
 
 MappingJob::MappingJob(const shared_ptr<Node> &ultimateParent, const string &nodeId, int width, int height)
         : ultimateParent(ultimateParent), nodeId(nodeId), width(width), height(height) {}

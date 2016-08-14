@@ -1,6 +1,3 @@
-//
-// Created by Talha Rehman on 6/24/16.
-//
 #include "OcrProgram.h"
 
 #ifndef K_1_PARSING2_WORDENTRY_H
@@ -8,15 +5,15 @@
 
 
 /**
- * This class represents a text segment defined by its string and bounding box
+ * This class represents a text segment defined by its std::string and bounding box
  * */
 class TextualData {
 
 private:
     // The bounding box rectangle
-    Rect boundingBox;
+    cv::Rect boundingBox;
     // The text
-    string text;
+    std::string text;
 
 public:
 
@@ -39,28 +36,28 @@ public:
     /**
      * Get the rectangle of thie entry
      */
-    Rect getRect() const;
+    cv::Rect getRect() const;
 
     /**
      * Get the text of this entry
      *
      * @return the text
      */
-    string getText() const;
+    std::string getText() const;
 
     /**
      * Sets the text of this entry
      *
      * @param[in] input represents the new rectangle
      */
-    void setRect(Rect input);
+    void setRect(cv::Rect input);
 
     /**
      * Sets the text of thie entry
      *
      * @param[in] input represents the new text
      */
-    void setText(string input);
+    void setText(std::string input);
 
     TextualData operator | (const TextualData& second)const;
 

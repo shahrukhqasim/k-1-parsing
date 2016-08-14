@@ -1,8 +1,6 @@
-//
-// Created by Shah Rukh Qasim on 6/23/16.
-//
-
 #include "Preprocessor.h"
+using namespace cv;
+
 void Preprocessor::conCompFast(cv::Mat &img, std::vector<cv::Rect> &rboxes, float max_x, float max_y, float min_area, int type) {
     cv::Mat labelImg = cv::Mat::zeros(img.rows, img.cols, CV_64F);
     int label = 0;

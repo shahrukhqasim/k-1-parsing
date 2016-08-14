@@ -8,18 +8,12 @@
 // Tesseract headers
 #include <tesseract/baseapi.h>
 #include <leptonica/allheaders.h>
-#include <leptonica/allheaders.h>
-#include <leptonica/allheaders.h>
+
 // OpenCV
 #include "opencv2/core/core.hpp"
 #include "opencv2/highgui/highgui.hpp"
 #include "opencv2/imgproc/imgproc.hpp"
-#include <leptonica/allheaders.h>
 #include <vector>
-
-using namespace std;
-using namespace cv;
-
 
 
 /**
@@ -27,9 +21,9 @@ using namespace cv;
  * TODO: change it to TextualData class
  */
 struct OcrResult {
-    Point p1;
-    Point p2;
-    string text;
+    cv::Point p1;
+    cv::Point p2;
+    std::string text;
 };
 
 /**
@@ -40,7 +34,7 @@ private:
     /**
      * The path of the input image
      */
-    string imagePath;
+    std::string imagePath;
 
 
     /**
@@ -56,7 +50,7 @@ private:
      */
     void recognizeText();
 
-    vector<OcrResult> data;
+    std::vector<OcrResult> data;
 
     static const int MODE_FULL=0;
     static const int MODE_BOXES=1;
@@ -65,7 +59,7 @@ private:
     /**
      * Segment boxes, if it is a segmented image
      */
-    vector<Rect>boxes;
+    std::vector<cv::Rect>boxes;
 
 public:
     /**
@@ -74,7 +68,7 @@ public:
      * @param[in] imagePath represents the input image file path on which OCR will run
      *
      */
-    TesseractFinder(const string &imagePath);
+    TesseractFinder(const std::string &imagePath);
 
     /**
      * If it is a segmented image
@@ -83,7 +77,7 @@ public:
      *
      * boxes contain the segments
      */
-    TesseractFinder(const string &imagePath, const vector<Rect>& boxes);
+    TesseractFinder(const std::string &imagePath, const std::vector<cv::Rect>& boxes);
 
     /**
      * Run OCR
@@ -95,7 +89,7 @@ public:
      *
      * @return the reconized data
      */
-    vector<OcrResult> getRecognizedData();
+    std::vector<OcrResult> getRecognizedData();
 
 };
 

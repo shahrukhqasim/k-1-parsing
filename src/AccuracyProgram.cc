@@ -1,8 +1,6 @@
-//
-// Created by shahrukhqasim on 6/25/16.
-//
-
 #include "AccuracyProgram.h"
+using namespace cv;
+using namespace std;
 
 float AccuracyProgram::testAccuracy() {
     int size = expectedOutput.size();
@@ -35,7 +33,6 @@ float AccuracyProgram::testAccuracy() {
         }
     }
 
-
     // Those elements from tesseract output which are not matched to anything
     vector<TextualData> notMatched;
     for (int i = 0; i < ocrOutput.size(); i++) {
@@ -52,7 +49,7 @@ float AccuracyProgram::testAccuracy() {
     }
 
 
-    // Now expectedOutput contains not found elements and found vector contains found elements
+    // Now expectedOutput contains the elements not found and found vector contains the found elements
     // Moreover ocrMatched vector contains those elements which were not matched to anything
     // when compared
 
@@ -63,7 +60,7 @@ float AccuracyProgram::testAccuracy() {
     }
 
 
-//     Then draw all the not found elements of expected output in red
+    //Then draw all the not found elements of expected output in red
     Scalar red(0, 0, 255);
     for (int i = 0; i < expectedOutput.size(); i++) {
         rectangle(theImage, expectedOutput[i].getRect(), red, 3, 8, 0);
@@ -192,7 +189,7 @@ void AccuracyProgram::runAccuracyTest(string path) {
     // To calculate average, will contain number of successful tests (where accuracy!=0)
     int num = 0;
 
-    // To calcualte average, will contain sum of accuracy percentage of successful tests (where accuracy!=0)
+    // To calculate average, will contain sum of accuracy percentage of successful tests (where accuracy!=0)
     float sum = 0;
 
     // Read all lines from ground truth
@@ -247,10 +244,9 @@ float AccuracyProgram::run() {
     expectedStream >> rootExpected;
 
 
-    // Read the image file in gray scale
+    // Read the image file in grayscale
     Mat image = imread(inputFile, 0);
     if (!image.data) {
-
         cerr << "Could not read the input image file";
         exit(0);
     }

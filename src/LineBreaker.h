@@ -1,7 +1,3 @@
-//
-// Created by Talha Rehman on 7/1/16.
-//
-
 #include "OcrProgram.h"
 
 #ifndef K_1_PARSING2_LINEBREAKER_H
@@ -13,20 +9,20 @@
  */
 class LineBreaker {
 public:
-    LineBreaker(const Mat&image);
+    LineBreaker(const cv::Mat&image);
     void run();
-    void getResult(vector<Rect>&result);
+    void getResult(std::vector<cv::Rect>&result);
 private:
-    double calculateMean(vector<int>value);
-    void projectionProfile(Mat& input, vector<int>& P);
-    void cropImage(Mat& input, Mat& output, vector<Rect>& rboxes);
-    void distanceBwBoxes(vector<Rect>& rboxes, vector<int>& dist);
-    void cleanBoxes(vector<Rect>& rboxes, vector<int>& areaofCC);
-    void sortBoxes(vector<Rect>& output);
-    void mergeBoxes(vector<Rect>& rboxes, vector<int>& dist );
+    double calculateMean(std::vector<int>value);
+    void projectionProfile(cv::Mat& input, std::vector<int>& P);
+    void cropImage(cv::Mat& input, cv::Mat& output, std::vector<cv::Rect>& rboxes);
+    void distanceBwBoxes(std::vector<cv::Rect>& rboxes, std::vector<int>& dist);
+    void cleanBoxes(std::vector<cv::Rect>& rboxes, std::vector<int>& areaofCC);
+    void sortBoxes(std::vector<cv::Rect>& output);
+    void mergeBoxes(std::vector<cv::Rect>& rboxes, std::vector<int>& dist );
     void conCompFast(cv::Mat &img, std::vector<cv::Rect> &rboxes, int type,std::vector<int>& areaofConComp);
-    vector<Rect> rboxes;
-    Mat img;
+    std::vector<cv::Rect> rboxes;
+    cv::Mat img;
 };
 
 

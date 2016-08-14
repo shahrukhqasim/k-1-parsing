@@ -1,11 +1,3 @@
-/*
- * HelperMethods.h
- *
- *  Created on: Jun 22, 2016
- *      Author: Shah Rukh Qasim
- */
-
-
 #include "opencv2/core/core.hpp"
 #include "opencv2/highgui/highgui.hpp"
 #include "opencv2/imgproc/imgproc.hpp"
@@ -15,8 +7,6 @@
 #define HELPERMETHODS_H_
 
 
-using namespace cv;
-using namespace std;
 
 /**
  * This is a static class which only contains different helper methods
@@ -27,7 +17,7 @@ public:
     /**
      * Displays image in @image in a resizable window with the help of programs installed on the host machine
      * */
-    static void displayImageResizable(const Mat &image);
+    static void displayImageResizable(const cv::Mat &image);
 
 
     /**
@@ -37,7 +27,7 @@ public:
      * @param[in] fileName represents the output file path
      *
      * */
-    static void outputImage(const Mat &image, const string &fileName);
+    static void outputImage(const cv::Mat &image, const std::string &fileName);
 
     /**
      * Removes file extension from its path or file name
@@ -47,7 +37,7 @@ public:
      * @return the file name or path without extension text
      *
      * */
-    static string removeFileExtension(const string &fileName);
+    static std::string removeFileExtension(const std::string &fileName);
 
     /**
      * To check if the character is an alpha numeric character (and not a space)
@@ -62,18 +52,18 @@ public:
     /**
      * To do a near equal (alpha-numeric) comparison
      *
-     * @param[in] a represents first string
-     * @param[in] b represents second string
+     * @param[in] a represents first std::string
+     * @param[in] b represents second std::string
      *
      * @return true if both are nearly equal; false otherwise
      *
      * */
-    static bool nearEqualComparison(const string&a,const string&b);
+    static bool nearEqualComparison(const std::string&a,const std::string&b);
 
     /**
-     * Splits a string to parts at regular expression provided
+     * Splits a std::string to parts at regular expression provided
      *
-     * @param[in] s represents the input string
+     * @param[in] s represents the input std::string
      * @param[in] rgx_str represents the regular expression. Default is whitespace
      *
      * */

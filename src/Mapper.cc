@@ -1,12 +1,11 @@
-//
-// Created by shahrukhqasim on 7/28/16.
-//
-
 #include "Mapper.h"
 #include "Model/ModelBuilder.h"
 #include "Processor2.h"
 #include "Model/RepeatInputNode.h"
 #include "Model/MappingJob.h"
+
+using namespace std;
+using namespace cv;
 
 namespace std {
     template<>
@@ -203,8 +202,10 @@ void Mapper::recursiveCallInput(shared_ptr<Node> node) {
             }
         });
 
-        if(dx2[dx2.length()-1]=='|') {
-            dx2=dx2.substr(0,dx2.length()-1);
+        if (dx2.length() > 0) {
+            if (dx2[dx2.length() - 1] == '|') {
+                dx2 = dx2.substr(0, dx2.length() - 1);
+            }
         }
 
 //        rModel->region=r;
@@ -447,8 +448,6 @@ Rect Mapper::recursiveCallText(shared_ptr<Node> node) {
         if (minIndex != -1) {
             node->region = data[minIndex].getRect();
             tNode->textAssigned = data[minIndex].getText();
-
-//            cout<<"Assigning "<<tNode->textAssigned<<" to "<<tNode->text<<" : "<<tNode->id<<endl;
             rectangle = node->region;
             taken.push_back(data[minIndex]);
 //        cout<<"Assigning to: "<<tNode->id<<" "<<data[minIndex].getRect()<<endl;

@@ -1,7 +1,3 @@
-//
-// Created by Shah Rukh Qasim on 7/17/16.
-//
-
 #include <iostream>
 
 #include "stdio.h"
@@ -15,7 +11,7 @@
 #include "opencv2/highgui/highgui.hpp"
 #include "opencv2/imgproc/imgproc.hpp"
 
-#include "../csv/CSVparser.hpp"
+#include "../csv/CSVparser.h"
 #include "HelperMethods.h"
 #include "Preprocessor.h"
 #include "TextualData.h"
@@ -29,48 +25,48 @@
  */
 class Processor {
 private:
-    string imageFilePath;
-    string textFilePath;
-    string groundTruthFilePath;
-    string outputFolder;
-    String outputFileName;
+    std::string imageFilePath;
+    std::string textFilePath;
+    std::string groundTruthFilePath;
+    std::string outputFolder;
+    std::string outputFileName;
 
     /**
      * 3 channel colored matrix of the input form
      */
-    Mat image;
+    cv::Mat image;
 
     /**
      * OCR words
      */
-    vector<TextualData> words;
+    std::vector<TextualData> words;
 
 
     /**
      * OCR merged words
      */
-    vector<TextualData> mergedWords;
+    std::vector<TextualData> mergedWords;
 
     /**
      * Ground truth fields values
      */
-    vector<TextualData> fields;
+    std::vector<TextualData> fields;
 
 
     /**
      * Represent the line data of Part 1 text
      */
-    vector<TextualData>part1Data;
+    std::vector<TextualData>part1Data;
 
     /**
      * Represent the line data of Part 2 text
      */
-    vector<TextualData>part2Data;
+    std::vector<TextualData>part2Data;
 
     /**
      * Represent the line data of Part 3 text
      */
-    vector<TextualData>part3Data;
+    std::vector<TextualData>part3Data;
 
 
     /**
@@ -88,8 +84,8 @@ public:
      * @param[in] outputFolder represents the folder where to write results. File name will be picked from the last argument
      * @param[in] outputFileName represents the file name on basis on which, to write the output
      */
-    Processor(const string &imageFilePath, const string &textFilePath, const string &groundTruthFilePath,
-              const string &outputFolder, const string &outputFileName);
+    Processor(const std::string &imageFilePath, const std::string &textFilePath, const std::string &groundTruthFilePath,
+              const std::string &outputFolder, const std::string &outputFileName);
 
     /**
      * Executes the job
@@ -100,9 +96,9 @@ public:
      * Reads field values from the JSON file.
      *
      * @param[in] root represents the JSON of the field values data
-     * @param[out] outputVector represents the vector in which the data will be stored as return
+     * @param[out] outputVector represents the std::vector in which the data will be stored as return
      */
-    static void getFieldValues(Json::Value root, vector<TextualData> &outputVector);
+    static void getFieldValues(Json::Value root, std::vector<TextualData> &outputVector);
 
     /**
      * Searches in data to find the closest match to textToFind
@@ -110,9 +106,9 @@ public:
      * @param[in] data represents the text to search in
      * @param[in] textToFind represents the text which we have to search
      *
-     * @return -1 if data is empty. Index in vector if found
+     * @return -1 if data is empty. Index in std::vector if found
      */
-    static int findMinTextIndex(const vector<TextualData>&data,const string & textToFind);
+    static int findMinTextIndex(const std::vector<TextualData>&data,const std::string & textToFind);
 
     /**
      * Draws boxes on image
@@ -122,7 +118,7 @@ public:
      * @param[in] color is the color in which to draw
      *
      */
-    static void drawBoxes(Mat &image, const vector<TextualData> &data, const Scalar &color);
+    static void drawBoxes(cv::Mat &image, const std::vector<TextualData> &data, const cv::Scalar &color);
 
     /**
      * Merges words from words into elemBoxes
@@ -130,12 +126,12 @@ public:
      * @param[in] words represent the input words
      * @param[out] elemBoxes represent the resultant elements
      */
-    void mergeWordBoxes(const vector<TextualData>&words,vector<TextualData>&elemBoxes);
+    void mergeWordBoxes(const std::vector<TextualData>&words,std::vector<TextualData>&elemBoxes);
 
     /**
      * Build this program parameters from command line argument directory and run it on batch data
      */
-    static void runProcessorProgram(string parentPath);
+    static void runProcessorProgram(std::string parentPath);
 
 private:
     /**
@@ -163,14 +159,14 @@ private:
      */
     void processPart3();
 
-    TextualData extractTextualDataType1(string key);
-    TextualData extractTextualDataType2(string key);
-    TextualData extractTextualDataType3(string key);
+    TextualData extractTextualDataType1(std::string key);
+    TextualData extractTextualDataType2(std::string key);
+    TextualData extractTextualDataType3(std::string key);
 
-    string findTextWithRules(vector<std::function<bool(const TextualData&d)>>rules, const vector<TextualData>&data);
+    std::string findTextWithRules(std::vector<std::function<bool(const TextualData&d)>>rules, const std::vector<TextualData>&data);
 
-    string findTextWithRulesOnlyRightMost(vector<std::function<bool(const TextualData &d)>> rules,
-                                          const vector<TextualData> &data);
+    std::string findTextWithRulesOnlyRightMost(std::vector<std::function<bool(const TextualData &d)>> rules,
+                                          const std::vector<TextualData> &data);
 
 
     /**
@@ -181,7 +177,7 @@ private:
      *
      * @return true if a is below b and false otherwise
      */
-    static bool isBelow(const Rect& a, const Rect& b);
+    static bool isBelow(const cv::Rect& a, const cv::Rect& b);
 
 
     /**
@@ -192,7 +188,7 @@ private:
      *
      * @return true if a is above b and false otherwise
      */
-    static bool isAbove(const Rect& a, const Rect& b);
+    static bool isAbove(const cv::Rect& a, const cv::Rect& b);
 
 
 
@@ -204,7 +200,7 @@ private:
      *
      * @return true if a is left to b and false otherwise
      */
-    static bool isLeftTo(const Rect& a, const Rect& b);
+    static bool isLeftTo(const cv::Rect& a, const cv::Rect& b);
 
 
 
@@ -216,7 +212,7 @@ private:
      *
      * @return true if a is right to b and false otherwise
      */
-    static bool isRightTo(const Rect& a, const Rect& b);
+    static bool isRightTo(const cv::Rect& a, const cv::Rect& b);
 
 
 };

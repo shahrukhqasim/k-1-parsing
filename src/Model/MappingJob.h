@@ -1,6 +1,3 @@
-//
-// Created by shahrukhqasim on 8/5/16.
-//
 
 #include "Node.h"
 
@@ -9,17 +6,17 @@
 
 
 class MappingJob {
-    shared_ptr<Node>ultimateParent;
-    Rect lastRect;
-    string nodeId;
+    std::shared_ptr<Node>ultimateParent;
+    cv::Rect lastRect;
+    std::string nodeId;
     int width;
     int height;
 public:
-    MappingJob(const shared_ptr<Node> &ultimateParent, const string &nodeId, int width, int height);
+    MappingJob(const std::shared_ptr<Node> &ultimateParent, const std::string &nodeId, int width, int height);
 
-    Rect map();
+    cv::Rect map();
 private:
-    void recursive(shared_ptr<Node> node);
+    void recursive(std::shared_ptr<Node> node);
 };
 
 

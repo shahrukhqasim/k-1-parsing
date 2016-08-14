@@ -1,6 +1,3 @@
-//
-// Created by shahrukhqasim on 8/3/16.
-//
 
 #include "InputNode.h"
 
@@ -12,7 +9,7 @@ class RepeatInputNode : public InputNode{
 public:
     RepeatInputNode(InputType inputType);
 
-    string dataCoordinates;
+    std::string dataCoordinates;
 };
 
 

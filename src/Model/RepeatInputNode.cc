@@ -1,6 +1,3 @@
-//
-// Created by shahrukhqasim on 8/3/16.
-//
 
 #include "RepeatInputNode.h"
 

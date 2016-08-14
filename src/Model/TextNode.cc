@@ -1,9 +1,7 @@
-//
-// Created by Shah Rukh Qasim on 7/25/16.
-//
 
 #include "TextNode.h"
 
+using namespace std;
 
 TextNode::TextNode(const string &text) {
     this->text=text;

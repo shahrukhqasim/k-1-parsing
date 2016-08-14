@@ -1,6 +1,3 @@
-//
-// Created by Shah Rukh Qasim on 7/25/16.
-//
 
 // Tesseract headers
 #include <tesseract/baseapi.h>
@@ -9,7 +6,7 @@
 #include "opencv2/core/core.hpp"
 #include "opencv2/highgui/highgui.hpp"
 #include "opencv2/imgproc/imgproc.hpp"
-#include <leptonica/allheaders.h>
+
 #include <functional>
 #include <memory>
 #include <unordered_map>
@@ -21,8 +18,7 @@
 #ifndef K_1_PARSING2_NODE_H
 #define K_1_PARSING2_NODE_H
 
-using namespace cv;
-using namespace std;
+
 
 /**
  * This class represents a Document Model node.
@@ -35,7 +31,7 @@ public:
     /**
      * Represents the ID of this node. Can be used to refer from the other nodes.
      */
-    string id;
+    std::string id;
 
     /**
      * Constructs a Node. Will also take care of hierarchy
@@ -45,7 +41,7 @@ public:
     /**
      * Rectangular region of the model (x,y,width,height)
      */
-    Rect region;
+    cv::Rect region;
 
     /**
      * Indicates if the region has been defined or not
@@ -59,21 +55,21 @@ public:
      *
      * The function will return true if the rule is matched otherwise false
      */
-    vector<std::function<bool(const TextualData&n)>> rules;
+    std::vector<std::function<bool(const TextualData&n)>> rules;
 
     /**
      * Used to IO of document mode. The key in the super map represents the function
-     * name and the vector represents what the function applies to.
+     * name and the std::vector represents what the function applies to.
      *
      * For example, you can set isBelow:3,4,5 which will specify
      * that this node is below nodes with ids 3,4 and 5.
      */
-    unordered_map<string, unordered_set<string>> rulesModel;
+    std::unordered_map<std::string, std::unordered_set<std::string>> rulesModel;
 
     /**
      * Represents the subnodes of current node
      */
-    unordered_map<string, shared_ptr<Node>>subNodes;
+    std::unordered_map<std::string, std::shared_ptr<Node>>subNodes;
 
     /**
      * Only to specify a virtual class

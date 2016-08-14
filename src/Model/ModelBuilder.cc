@@ -1,14 +1,13 @@
-//
-// Created by Shah Rukh Qasim on 7/25/16.
-//
 
 #include "ModelBuilder.h"
 #include "TableNode.h"
 
-#include "../../csv/CSVparser.hpp"
+#include "../../csv/CSVparser.h"
 #include "../HelperMethods.h"
 #include <fstream>
 #include "RepeatInputNode.h"
+
+using namespace std;
 
 void ModelBuilder::runModelBuilderProgram(string path) {
     Node::lastId=0;

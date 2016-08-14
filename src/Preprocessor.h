@@ -1,19 +1,12 @@
-//
-// Created by Shah Rukh Qasim on 6/23/16.
-//
-
 #include "opencv2/core/core.hpp"
 #include "opencv2/highgui/highgui.hpp"
 #include "opencv2/imgproc/imgproc.hpp"
 #include <string>
-#include "union-find.h"
+#include "UnionFind.h"
 
 
 #ifndef K_1_PARSING2_PREPROCESSOR_H
 #define K_1_PARSING2_PREPROCESSOR_H
-
-using namespace std;
-using namespace cv;
 
 
 class Preprocessor {
@@ -55,7 +48,7 @@ public:
     /**
      * Inverts colors of 8-bit @image
      */
-    static void invertImage(Mat&image);
+    static void invertImage(cv::Mat &image);
 };
 
 

@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-project(k_1_parsing2)
+project(k1_parsing)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -std=c++0x -lpthread")
 
@@ -7,18 +7,50 @@ link_directories(/usr/local/lib/ /usr/lib/)
 include_directories(/usr/local/include/)
 
 set(SOURCE_FILES
-        csv/CSVparser.cpp
-        csv/CSVparser.hpp
-        json/jsoncpp.cpp
-        json/json/json.h
-        json/json/json-forwards.h
-        src/EditDistance.cc
-        src/EditDistance.h
-        src/HelperMethods.cpp
-        src/HelperMethods.h
-        src/TesseractFinder.cc
-        src/TesseractFinder.h
-        src/union-find.h src/Preprocessor.cpp src/Preprocessor.h src/OcrProgram.cpp src/OcrProgram.h src/TextualData.cpp src/TextualData.h src/AccuracyProgram.cpp src/AccuracyProgram.h src/LineBreaker.cpp src/LineBreaker.h src/main.cc src/Processor.cpp src/Processor.h src/Model/ModelBuilder.cpp src/Model/ModelBuilder.h src/Model/Node.cpp src/Model/Node.h src/Model/TextNode.cpp src/Model/TextNode.h src/Model/InputNode.cpp src/Model/InputNode.h src/Model/TableNode.cpp src/Model/TableNode.h src/Processor2.cpp src/Processor2.h src/Mapper.cpp src/Mapper.h src/Model/RepeatInputNode.cpp src/Model/RepeatInputNode.h src/Model/MappingJob.cpp src/Model/MappingJob.h)
+    csv/CSVparser.cc
+    csv/CSVparser.h
+    json/jsoncpp.cc
+    json/json/json.h
+    json/json/json-forwards.h
+    src/EditDistance.cc
+    src/EditDistance.h
+    src/HelperMethods.cc
+    src/HelperMethods.h
+    src/main.cc
+    src/TesseractFinder.cc
+    src/TesseractFinder.h
+    src/UnionFind.h
+    src/Preprocessor.cc
+    src/Preprocessor.h
+    src/OcrProgram.cc
+    src/OcrProgram.h
+    src/TextualData.cc
+    src/TextualData.h
+    src/AccuracyProgram.cc
+    src/AccuracyProgram.h
+    src/LineBreaker.cc
+    src/LineBreaker.h
+    src/Processor.cc 
+    src/Processor.h 
+    src/Processor2.cc 
+    src/Processor2.h 
+    src/Mapper.cc 
+    src/Mapper.h 
+    src/Model/ModelBuilder.cc 
+    src/Model/ModelBuilder.h 
+    src/Model/Node.cc 
+    src/Model/Node.h 
+    src/Model/TextNode.cc 
+    src/Model/TextNode.h 
+    src/Model/InputNode.cc 
+    src/Model/InputNode.h 
+    src/Model/TableNode.cc 
+    src/Model/TableNode.h 
+    src/Model/RepeatInputNode.cc 
+    src/Model/RepeatInputNode.h 
+    src/Model/MappingJob.cc 
+    src/Model/MappingJob.h)
 
-add_executable(k_1_parsing2 ${SOURCE_FILES})
-target_link_libraries(k_1_parsing2 lept tesseract opencv_core opencv_imgproc opencv_highgui opencv_imgcodecs)
+
+add_executable(k1_parsing ${SOURCE_FILES})
+target_link_libraries(k1_parsing lept tesseract opencv_core opencv_imgproc opencv_highgui opencv_imgcodecs)

@@ -1,8 +1,6 @@
-//
-// Created by shahrukhqasim on 6/24/16.
-//
-
 #include "TextualData.h"
+using namespace std;
+using namespace cv;
 
 bool TextualData::compare(TextualData &expectedOutput){
 

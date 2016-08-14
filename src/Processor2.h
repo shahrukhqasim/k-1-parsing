@@ -1,6 +1,3 @@
-//
-// Created by shahrukhqasim on 7/28/16.
-//
 
 
 #include <iostream>
@@ -16,7 +13,7 @@
 #include "opencv2/highgui/highgui.hpp"
 #include "opencv2/imgproc/imgproc.hpp"
 
-#include "../csv/CSVparser.hpp"
+#include "../csv/CSVparser.h"
 #include "HelperMethods.h"
 #include "Preprocessor.h"
 #include "TextualData.h"
@@ -30,11 +27,11 @@
 
 
 struct GroundTruth {
-    Rect rect;
-    string value;
+    cv::Rect rect;
+    std::string value;
     bool taken=false;
 public:
-    GroundTruth(const Rect &rect, const string &value);
+    GroundTruth(const cv::Rect &rect, const std::string &value);
 };
 
 
@@ -43,58 +40,58 @@ public:
  */
 class Processor2 {
 private:
-    string imageFilePath;
-    string textFilePath;
-    string groundTruthFilePath;
-    string outputFolder;
-    string outputFileName;
-    string modelFilePath;
+    std::string imageFilePath;
+    std::string textFilePath;
+    std::string groundTruthFilePath;
+    std::string outputFolder;
+    std::string outputFileName;
+    std::string modelFilePath;
 
 
-    Scalar randomColors[5]={Scalar(0,168,102),Scalar(0,0,255),Scalar(255,0,0),Scalar(255,0,102),Scalar(128,0,255)};
+    cv::Scalar randomColors[5]={cv::Scalar(0,168,102),cv::Scalar(0,0,255),cv::Scalar(255,0,0),cv::Scalar(255,0,102),cv::Scalar(128,0,255)};
 
     /**
      * 3 channel colored matrix of the input form
      */
-    Mat image;
+    cv::Mat image;
 
     /**
      * OCR words
      */
-    vector<TextualData> words;
+    std::vector<TextualData> words;
 
 
     /**
      * OCR merged words
      */
-    vector<TextualData> mergedWords;
+    std::vector<TextualData> mergedWords;
 
     /**
      * Represent the line data of Part 1 text
      */
-    vector<TextualData>part1Data;
+    std::vector<TextualData>part1Data;
 
     /**
      * Represent the line data of Part 2 text
      */
-    vector<TextualData>part2Data;
+    std::vector<TextualData>part2Data;
 
     /**
      * Represent the line data of Part 3 text
      */
-    vector<TextualData>part3Data;
+    std::vector<TextualData>part3Data;
 
     /**
      * Represent the line data of header 1 text
      */
-    vector<TextualData>header1Data;
+    std::vector<TextualData>header1Data;
 
     /**
      * Represent the line data of header 1 text
      */
-    vector<TextualData>header2Data;
+    std::vector<TextualData>header2Data;
 
-    shared_ptr<Node>documentNode;
+    std::shared_ptr<Node>documentNode;
 
 
     /**
@@ -102,16 +99,16 @@ private:
      */
     int xDivisionCoordinate;
 
-    vector<pair<string,Rect>>mappedGround;
-    vector<pair<string,Rect>>mappedGroundP1;
-    vector<pair<string,Rect>>mappedGroundP2;
-    vector<pair<string,Rect>>mappedGroundP3;
-    vector<pair<string,Rect>>mappedGroundH1;
-    vector<pair<string,Rect>>mappedGroundH2;
+    std::vector<std::pair<std::string, cv::Rect>>mappedGround;
+    std::vector<std::pair<std::string, cv::Rect>>mappedGroundP1;
+    std::vector<std::pair<std::string, cv::Rect>>mappedGroundP2;
+    std::vector<std::pair<std::string, cv::Rect>>mappedGroundP3;
+    std::vector<std::pair<std::string, cv::Rect>>mappedGroundH1;
+    std::vector<std::pair<std::string, cv::Rect>>mappedGroundH2;
 
-    unordered_map<string,shared_ptr<GroundTruth>>groundTruth;
+    std::unordered_map<std::string, std::shared_ptr<GroundTruth>>groundTruth;
 
-    RNG rng;
+    cv::RNG rng;
 
 public:
     /**
@@ -124,8 +121,8 @@ public:
      * @param[in] outputFolder represents the folder where to write results. File name will be picked from the last argument
      * @param[in] outputFileName represents the file name on basis on which, to write the output
      */
-    Processor2(const string &imageFilePath, const string &textFilePath, const string &groundTruthFilePath, const string&modelFilePath,
-              const string &outputFolder, const string &outputFileName);
+    Processor2(const std::string &imageFilePath, const std::string &textFilePath, const std::string &groundTruthFilePath, const std::string&modelFilePath,
+              const std::string &outputFolder, const std::string &outputFileName);
 
     /**
      * Executes the job
@@ -136,9 +133,9 @@ public:
      * Reads field values from the JSON file.
      *
      * @param[in] root represents the JSON of the field values data
-     * @param[out] outputVector represents the vector in which the data will be stored as return
+     * @param[out] outputVector represents the std::vector in which the data will be stored as return
      */
-    static void getFieldValues(Json::Value root, vector<TextualData> &outputVector);
+    static void getFieldValues(Json::Value root, std::vector<TextualData> &outputVector);
 
     /**
      * Searches in data to find the closest match to textToFind
@@ -146,9 +143,9 @@ public:
      * @param[in] data represents the text to search in
      * @param[in] textToFind represents the text which we have to search
      *
-     * @return -1 if data is empty. Index in vector if found
+     * @return -1 if data is empty. Index in std::vector if found
      */
-    static int findMinTextIndex(const vector<TextualData>&data,const string & textToFind);
+    static int findMinTextIndex(const std::vector<TextualData>&data,const std::string & textToFind);
 
     /**
      * Draws boxes on image
@@ -158,7 +155,7 @@ public:
      * @param[in] color is the color in which to draw
      *
      */
-    static void drawBoxes(Mat &image, const vector<TextualData> &data, const Scalar &color);
+    static void drawBoxes(cv::Mat &image, const std::vector<TextualData> &data, const cv::Scalar &color);
 
     /**
      * Merges words from words into elemBoxes
@@ -166,7 +163,7 @@ public:
      * @param[in] words represent the input words
      * @param[out] elemBoxes represent the resultant elements
      */
-    void mergeWordBoxes(const vector<TextualData>&words,vector<TextualData>&elemBoxes);
+    void mergeWordBoxes(const std::vector<TextualData>&words, std::vector<TextualData>&elemBoxes);
 
     /**
      * Build this program parameters from command line argument directory and run it on batch data
@@ -174,7 +171,7 @@ public:
      * @param parentPath is the path of the parent folder which must contain the sub directories
      * @param evaluate set it to true if there is ground truth available otherwise false
      */
-    static void runProcessorProgram(string parentPath, bool evaluate);
+    static void runProcessorProgram(std::string parentPath, bool evaluate);
 
 private:
     /**
@@ -212,28 +209,28 @@ private:
      */
     void processPart3();
 
-    TextualData extractTextualDataType1(string key);
-    TextualData extractTextualDataType2(string key);
-    TextualData extractTextualDataType3(string key);
+    TextualData extractTextualDataType1(std::string key);
+    TextualData extractTextualDataType2(std::string key);
+    TextualData extractTextualDataType3(std::string key);
 
-    string findTextWithRules(vector<std::function<bool(const TextualData&d)>>rules, const vector<TextualData>&data);
+    std::string findTextWithRules(std::vector<std::function<bool(const TextualData&d)>>rules, const std::vector<TextualData>&data);
 
-    string findTextWithRulesOnlyRightMost(vector<std::function<bool(const TextualData &d)>> rules,
-                                          const vector<TextualData> &data);
+    std::string findTextWithRulesOnlyRightMost(std::vector<std::function<bool(const TextualData &d)>> rules,
+                                          const std::vector<TextualData> &data);
 
 
     void outputDataToJson();
-    void recursiveInputFieldsToJson(shared_ptr<Node>node);
+    void recursiveInputFieldsToJson(std::shared_ptr<Node>node);
     Json::Value outputJson;
     int lastIndexJson=0;
 
-    void outputBindingLine(shared_ptr<Node>node,Rect region);
+    void outputBindingLine(std::shared_ptr<Node>node, cv::Rect region);
 
 
     int accuracyTests=0;
     int testsPassed=0;
-    void testAccuracy(shared_ptr<InputNode>node);
-    void visualize(shared_ptr<Node>node);
+    void testAccuracy(std::shared_ptr<InputNode>node);
+    void visualize(std::shared_ptr<Node>node);
 
 public:
 
@@ -245,7 +242,7 @@ public:
      *
      * @return true if a is below b and false otherwise
      */
-    static bool isBelow(const Rect& a, const Rect& b);
+    static bool isBelow(const cv::Rect& a, const cv::Rect& b);
 
 
     /**
@@ -256,7 +253,7 @@ public:
      *
      * @return true if a is above b and false otherwise
      */
-    static bool isAbove(const Rect& a, const Rect& b);
+    static bool isAbove(const cv::Rect& a, const cv::Rect& b);
 
 
 
@@ -268,7 +265,7 @@ public:
      *
      * @return true if a is left to b and false otherwise
      */
-    static bool isLeftTo(const Rect& a, const Rect& b);
+    static bool isLeftTo(const cv::Rect& a, const cv::Rect& b);
 
 
 
@@ -280,7 +277,7 @@ public:
      *
      * @return true if a is right to b and false otherwise
      */
-    static bool isRightTo(const Rect& a, const Rect& b);
+    static bool isRightTo(const cv::Rect& a, const cv::Rect& b);
 
 
 };

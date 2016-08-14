@@ -1,6 +1,3 @@
-//
-// Created by Shah Rukh Qasim on 7/25/16.
-//
 
 #include "Node.h"
 
@@ -13,11 +10,11 @@ public:
     /**
      * The text of this node
      */
-    string text="";
+    std::string text="";
     /**
      * The text of this node
      */
-    string textAssigned="";
+    std::string textAssigned="";
 
     /**
      * Constructs this node
@@ -25,7 +22,7 @@ public:
      * @param[in] text represents the text to initialize with
      *
      */
-    TextNode(const string& text);
+    TextNode(const std::string& text);
 
 };
 

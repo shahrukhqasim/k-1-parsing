@@ -1,4 +1,7 @@
 #include "TesseractFinder.h"
+using namespace std;
+using namespace cv;
+
 
 
 TesseractFinder::TesseractFinder(const string &imagePath) {

@@ -1,6 +1,3 @@
-//
-// Created by shahrukhqasim on 7/25/16.
-//
 #include "Node.h"
 #include <unordered_map>
 #include <memory>
@@ -24,7 +21,7 @@ public:
     int numCols;
 
     // TODO: Fix this
-    string data;
+    std::string data;
 
     /**
      * Sub-nodes of this table. Represented by a hash map from Point to the Node
@@ -35,7 +32,7 @@ public:
      * WARNING! Do not use subNodes with it it will not recognize tabular structure
      *
      */
-    unordered_map<string,shared_ptr<Node>>tableEntries;
+    std::unordered_map<std::string, std::shared_ptr<Node>>tableEntries;
 
 };
 

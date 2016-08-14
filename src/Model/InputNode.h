@@ -1,6 +1,3 @@
-//
-// Created by shahrukhqasim on 7/25/16.
-//
 
 #include "Node.h"
 
@@ -29,7 +26,7 @@ public:
     /**
      * The parsed data
      */
-    string data="";
+    std::string data="";
 
     /**
      * Constructs an InputNode
@@ -41,10 +38,10 @@ public:
     /**
      * The binded gound truth fields.
      *
-     * First string represent the value
+     * First std::string represent the value
      * Second bool represents whether it is taken or not
      */
-    vector<string>bindedGroundTruthEntries;
+    std::vector<std::string>bindedGroundTruthEntries;
 };
 
 

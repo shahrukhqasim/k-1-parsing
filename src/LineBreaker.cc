@@ -1,8 +1,6 @@
-//
-// Created by Talha Rehman on 7/1/16.
-//
-
 #include "LineBreaker.h"
+using namespace std;
+using namespace cv;
 
 
 

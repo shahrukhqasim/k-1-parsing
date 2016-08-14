@@ -1,12 +1,10 @@
-//
-// Created by shahrukhqasim on 6/24/16.
-//
-
 #include "OcrProgram.h"
 #include "AccuracyProgram.h"
 #include "LineBreaker.h"
 
 #include "regex"
+using namespace std;
+using namespace cv;
 
 OcrProgram::OcrProgram(string inputFileName, string inputFolder, string outputFolder) {
     this->inputFileName=inputFileName;
@@ -14,7 +12,7 @@ OcrProgram::OcrProgram(string inputFileName, string inputFolder, string outputFo
     this->outputFolder=outputFolder;
 }
 
-void OcrProgram::loadBinaryImage(Mat &image, string fileName, int mode) {
+void OcrProgram::loadBinaryImage(cv::Mat &image, string fileName, int mode) {
     Mat image2 = imread(fileName, mode);   // Read the file
     if (!image2.data)                      // Check for invalid input
     {
@@ -133,7 +131,7 @@ void OcrProgram::cleanImageAndWriteToDisk() {
     // Make a new image matrix in which textual connected components will be copied
     cleanedImage=Mat(originalImage.rows,originalImage.cols, originalImage.type());
 
-    // For white colorRed
+    // For white color
     const Scalar whiteColor(255,255,255);
 
     // Fill the new image with white
@@ -141,7 +139,7 @@ void OcrProgram::cleanImageAndWriteToDisk() {
 
     // Run through all the connected components
     for(int i=0;i<boxes.size();i++) {
-        // Get the current omponent
+        // Get the current component
         Rect box=boxes[i];
 
         // If the connected component is small enough to be a textual data, copy it to the cleaned image

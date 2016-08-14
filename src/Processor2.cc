@@ -1,6 +1,3 @@
-//
-// Created by shahrukhqasim on 7/28/16.
-//
 
 #include "Processor2.h"
 #include "AccuracyProgram.h"
@@ -8,7 +5,8 @@
 #include "Mapper.h"
 #include "Model/RepeatInputNode.h"
 #include "Model/MappingJob.h"
-
+using namespace std;
+using namespace cv;
 
 Processor2::Processor2(const string &imageFilePath, const string &textFilePath, const string &groundTruthFilePath,
                        const string &modelFilePath,
@@ -138,6 +136,7 @@ string Processor2::findTextWithRulesOnlyRightMost(vector<std::function<bool(cons
                                                                             TextualData &)>> rules,
                                                   const vector<TextualData> &data
 ) {
+    return NULL;
 }
 
 void Processor2::processHeader1() {

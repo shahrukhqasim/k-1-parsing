@@ -1,11 +1,3 @@
-//  main.cpp
-//  Project_ocr
-//
-//  Created by Talha Rehman on 3/2/16.
-
-
-
-
 #include "opencv2/highgui/highgui.hpp"
 #include <iostream>
 #include "stdio.h"
@@ -39,21 +31,21 @@ void mergeBoxes(vector<Rect>&, vector<int>&);
 
 int test( int argc, const char** argv ){
 
-    string path="/Users/talha/Desktop/result.png";
+    string path="../data/result.png";
 
     Mat binarizedImg;
 
     //load input image
 
-    Mat img = imread("/Users/talha/Desktop/test.png", CV_LOAD_IMAGE_UNCHANGED); //read the image data in the file "MyPic.JPG" and store it in 'img'
+    Mat img = imread("../data/test.png", CV_LOAD_IMAGE_UNCHANGED); //read the image data in the file "MyPic.JPG" and store it in 'img'
 
 
 
     //rescaling the image
-    float m_ReceiptWidth=1200;
+    float targetWidth=1200;
     int imWidth = img.cols;
     Mat rescaledImg;
-    double scale = m_ReceiptWidth / imWidth;
+    double scale = targetWidth / imWidth;
     resize(img, rescaledImg, Size(), scale, scale, INTER_LANCZOS4);
 
     img=rescaledImg;

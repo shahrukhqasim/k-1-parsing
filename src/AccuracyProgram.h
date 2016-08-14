@@ -1,6 +1,3 @@
-//
-// Created by Shah Rukh Qasim on 6/25/16.
-//
 #include "OcrProgram.h"
 #include "TextualData.h"
 
@@ -14,45 +11,45 @@ private:
     /**
      * Contains the complete path of the OCR program output JSON file
      */
-    string programOutputFile;
+    std::string programOutputFile;
 
     /**
      * Contains the complete path of the grouth truth JSON file
      */
-    string expectedOutputFile;
+    std::string expectedOutputFile;
 
     /**
      * Contains complete path of the input image file (on which OCR was run)
      */
-    string inputFile;
+    std::string inputFile;
 
     /**
      * Contains complete path of the plotted image file (output)
      */
-    string comparisonFile;
+    std::string comparisonFile;
 
     /**
      * The input image is loaded into memory for plotting purposes.
      * Image is loaded from inputFile path
      */
-    Mat theImage;
+    cv::Mat theImage;
 
     /**
-     * Data vector of OCR result
+     * Data std::vector of OCR result
      */
-    vector<TextualData> ocrOutput;
+    std::vector<TextualData> ocrOutput;
 
     /**
-     * Data vector of the ground truth
+     * Data std::vector of the ground truth
      */
-    vector<TextualData> expectedOutput;
+    std::vector<TextualData> expectedOutput;
 public:
     /**
      * This is a static function which runs an accuracy test on the path structure provided.
      *
      * @param[in] path The path to the root directory which can either end with / or not
      */
-    static void runAccuracyTest(string path);
+    static void runAccuracyTest(std::string path);
 
     /**
      * This is the constructor of the AccuracyTest case
@@ -62,7 +59,7 @@ public:
      * @param[in] inputFile must contain the complete path (or relative) of input image on which the OCR was run (for plotting purposes)
      * @param[in] comparisonFile must contain the complete path (or relative) of the comparison file to be generated
      */
-    AccuracyProgram(string programOutputFile, string expectedOutputFilem, string inputFile, string comparisonFile);
+    AccuracyProgram(std::string programOutputFile, std::string expectedOutputFilem, std::string inputFile, std::string comparisonFile);
 
     /**
      * This runs the test case (data is already provided in the constructor)
@@ -73,22 +70,22 @@ public:
 
     /**
      * This function is static because it does not depend on any class level variables. root
-     * must contain the JSON of the text (string and bounding box) on the agreed upon
+     * must contain the JSON of the text (std::string and bounding box) on the agreed upon
      * format of the grouth truth
      *
      * @param[in] root must containt he JSON
-     * @param[out] outputVector is the output vector which will store the results
+     * @param[out] outputVector is the output std::vector which will store the results
      *
      */
-    static void getWords(Json::Value root,vector<TextualData>&outputVector);
+    static void getWords(Json::Value root,std::vector<TextualData>&outputVector);
 
     /**
      * This function is static because it does not depend on any class level variables. It cleans
      * data from any non-alpha numeric data
      *
-     * @param[in] root must contain the vector to the data
+     * @param[in] root must contain the std::vector to the data
      */
-    static void cleanWords(vector<TextualData>& root);
+    static void cleanWords(std::vector<TextualData>& root);
 private:
     /**
      * This function compares two data jsons. It then calls testAccuracy function for the real job

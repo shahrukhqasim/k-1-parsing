@@ -63,9 +63,17 @@ int main(int argc, char**argv) {
 
     // Compare the job and run the program accordingly
     if(job==string("-a")) {
+        if(argc==2) {
+            path="../data/accuracy";
+        }
+
         AccuracyProgram::runAccuracyTest(path);
     }
     else if(job==string("-o")) {
+        if(argc==2) {
+            path="../data/ocr_and_accuracy";
+        }
+
         OcrProgram::runOcrProgram(path);
 
     }
