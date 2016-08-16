@@ -1,6 +1,5 @@
 #include "OcrProgram.h"
 #include "AccuracyProgram.h"
-#include "LineBreaker.h"
 
 #include "regex"
 using namespace std;
