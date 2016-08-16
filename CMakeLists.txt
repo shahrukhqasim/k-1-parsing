@@ -28,14 +28,12 @@ set(SOURCE_FILES
     src/TextualData.h
     src/AccuracyProgram.cc
     src/AccuracyProgram.h
-    src/Processor.cc 
-    src/Processor.h 
-    src/Processor2.cc 
+        src/Processor2.cc
     src/Processor2.h 
     src/Mapper.cc 
-    src/Mapper.h 
-    src/Model/ModelBuilder.cc 
-    src/Model/ModelBuilder.h 
+    src/Mapper.h
+        src/Model/ModelParser.cc
+        src/Model/ModelParser.h
     src/Model/Node.cc 
     src/Model/Node.h 
     src/Model/TextNode.cc 

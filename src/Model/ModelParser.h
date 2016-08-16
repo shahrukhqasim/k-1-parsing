@@ -28,7 +28,7 @@ public:
     static void runModelBuilderProgram(std::string path);
 
     /**
-     * Executes ModelBuilder on the MDL file path provided and returns pointer to the top level parent node which contains the complete hierarchy
+     * Executes ModelParser on the MDL file path provided and returns pointer to the top level parent node which contains the complete hierarchy
      *
      * @param[in] path is the complete path of the MDL file
      *
