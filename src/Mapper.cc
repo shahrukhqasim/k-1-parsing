@@ -186,7 +186,7 @@ void Mapper::recursiveCallInput(shared_ptr<Node> node) {
 
         string dx2 = "";
         Rect regionX;
-        bool regionXDef;
+        bool regionXDef=false;
 
         vector<TextualData>dataVector;
 
@@ -195,7 +195,7 @@ void Mapper::recursiveCallInput(shared_ptr<Node> node) {
 //            cout << "Assigned to " << alpha.first.getText() << " value " << alpha.second.first << ","
 //                 << alpha.second.second << endl;
             //dx2 += alpha.first.getText() + "|";
-            if(alpha.first.getRect().x!=0&&alpha.first.getRect().y!=0) {
+            if(!(alpha.first.getRect().x==0||alpha.first.getRect().y==0)) {
                 if (!regionXDef) {
                     regionX = alpha.first.getRect();
                     regionXDef = true;
