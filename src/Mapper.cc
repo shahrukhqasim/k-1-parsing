@@ -428,6 +428,8 @@ void Mapper::recursiveCallInput(shared_ptr<Node> node) {
                     shared_ptr<InputNode>nx2=dynamic_pointer_cast<InputNode>(nx);
 //                    cout<<"SETTING "<<coordinateString<<" to "<<alpha.first.getText()<<endl;
                     nx2->data+=alpha.first.getText();
+                    nx2->region=alpha.first.getRect();
+                    nx2->regionDefined=true;
                 }
             }
 

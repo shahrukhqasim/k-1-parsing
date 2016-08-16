@@ -155,6 +155,8 @@ void Processor2::outputDataToJson() {
     outputJson = Json::Value();
     outputJson["Pages"][0] = Json::Value();
     outputJson["Pages"][0]["PageNumber"] = 1;
+    outputJson["Pages"][0]["Width"] = image.cols;
+    outputJson["Pages"][0]["Height"] = image.rows;
 
     recursiveInputFieldsToJson(documentNode->subNodes["DOCUMENT"]);
 
@@ -273,7 +275,7 @@ void Processor2::testAccuracy(shared_ptr<InputNode> node) {
 //                    hierarchy = vector<string>(hierarchy.begin(), hierarchy.end() - 1);
 //                    shared_ptr<Node> foundNode = ModelParser::findNode(hierarchy, documentNode);
 //                    if (foundNode != nullptr) {
-//                        if (foundNode->regionDefined) {
+//                        if (foundNode->M) {
 //                            rectangle(image, foundNode->region, randomColor, 3, 8, 0);
 //                            rectangle(image, node->region, randomColor, 3, 8, 0);
 //                        }
