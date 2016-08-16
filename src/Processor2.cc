@@ -160,7 +160,7 @@ void Processor2::outputDataToJson() {
 
     imwrite(outputFolder + outputFileName + "_output.png", image);
 
-    ofstream outputStream(outputFolder + outputFileName + ".json");
+    ofstream outputStream(outputFolder + outputFileName + ".fields.json");
     outputStream << outputJson;
 }
 
