@@ -239,6 +239,7 @@ void Mapper::recursiveCallInput(shared_ptr<Node> node) {
             string textExtracted = oup.first;
             iModel->data = textExtracted;
             iModel->region = oup.second;
+            iModel->regionDefined = oup.first.size()==0?false:true;
 //            cout << iModel->id << ": " << iModel->data << endl;
         }
     }
