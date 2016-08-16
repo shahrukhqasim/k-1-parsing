@@ -41,8 +41,6 @@ public:
      */
     InputNode(InputType inputType);
 
-
-
     /**
      * The binded gound truth fields.
      *

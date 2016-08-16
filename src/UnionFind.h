@@ -1,15 +1,3 @@
-/** 
- * @file union-find.h 
- * This file contains an implementation of the UnionFind data structure 
- * that helps in efficiently finding connected components in just two 
- * passes through an image. 
- * 
- * @author Faisal Shafait (faisalshafait@gmail.com)  
- * 
- * @version 0.1  
- * 
- */ 
- 
 #ifndef UNIONFIND_H 
 #define UNIONFIND_H 
  
