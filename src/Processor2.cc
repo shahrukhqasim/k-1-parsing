@@ -26,35 +26,14 @@ float Processor2::execute() {
     ModelParser builder;
     documentNode = builder.execute(modelFilePath);
 
-
-    Json::Value output2;
-
-
     processHeader1();
     processPart1();
     processPart2();
     processPart3();
     outputDataToJson();
 
-//    Json::Value output;
-//    ModelParser::convertToJson(output, documentNode);
-//    cout << output;
-
     int tests = 0;
     int testsPassed = 0;
-//    for_each(groundTruth.begin(),groundTruth.end(),[&] (pair<string,shared_ptr<GroundTruth>>x){
-//        tests++;
-//        const char*testX=x.first.c_str();
-//        if(x.second->taken||x.second->value.length()==0)
-//            testsPassed++;
-//    });
-
-    ofstream outputTree(outputFolder + "/" + outputFileName + "_tree.json");
-    ModelParser::convertToJson(output2, documentNode->subNodes["DOCUMENT"]);
-    outputTree << output2;
-    outputTree.flush();
-    outputTree.close();
-
 
     for (auto x:groundTruth) {
         if (x.second->value.compare("True") == 0 || x.second->value.compare("False") == 0) {
@@ -181,7 +160,7 @@ void Processor2::outputDataToJson() {
 
     imwrite(outputFolder + outputFileName + "_output.png", image);
 
-    ofstream outputStream(outputFolder + outputFileName + "_extracted.json");
+    ofstream outputStream(outputFolder + outputFileName + ".json");
     outputStream << outputJson;
 }
 
