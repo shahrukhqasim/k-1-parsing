@@ -552,9 +552,13 @@ void Processor2::divideIntoParts() {
         drawBoxes(image, header2Data, Scalar(255, 0, 255));
     }
 
-    // Output the file
-    string fileName = outputFileName + "_divided.png";
-    imwrite(outputFolder + fileName, image);
+#ifdef PROCESSOR_DEBUG_ON
+    {
+        // Output the file
+        string fileName = outputFileName + "_divided.png";
+        imwrite(outputFolder + fileName, image);
+    }
+#endif
 
 }
 
