@@ -32,8 +32,8 @@ int *EditDistance::getCellPointer (int *pOrigin, int col, int row, int nCols)
 // Get the contents of the specified cell in the matrix
 //*****************************************************
 
-int EditDistance::getAt (int *pOrigin, int col, int row, int nCols)
-{
+int EditDistance::getAt (int *pOrigin, int col, int row, int nCols) {
+
 int *pCell;
 
   pCell = getCellPointer (pOrigin, col, row, nCols);
