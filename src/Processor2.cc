@@ -344,11 +344,12 @@ void Processor2::recursiveInputFieldsToJson(shared_ptr<Node> node) {
         value["Name"] = iModel->descriptiveName;
         value["Value"] = iModel->data;
 
+
         Json::Value region;
-        region["l"] = iModel->region.x;
-        region["t"] = iModel->region.y;
-        region["r"] = iModel->region.x + iModel->region.width;
-        region["b"] = iModel->region.y + iModel->region.height;
+        region["l"] = iModel->regionDefined?iModel->region.x:-1;
+        region["t"] = iModel->regionDefined?iModel->region.y:-1;
+        region["r"] = iModel->regionDefined?iModel->region.x + iModel->region.width:-1;
+        region["b"] = iModel->regionDefined?iModel->region.y + iModel->region.height:-1;
 
         value["Region"] = region;
 

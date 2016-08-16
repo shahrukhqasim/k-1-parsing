@@ -225,7 +225,7 @@ void Mapper::recursiveCallInput(shared_ptr<Node> node) {
 //        rModel->region=r;
         rModel->dataCoordinates = dx;
         rModel->data = dx2;
-        rModel->regionDefined=true;
+        rModel->regionDefined=dataVector.size()!=0?true:false;
         rModel->region=regionX;
 
 
