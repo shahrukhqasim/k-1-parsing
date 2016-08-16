@@ -1,6 +1,7 @@
 #include "EditDistance.h"
 #include <string.h>
-#include <malloc.h>
+#include <stdlib.h> 
+#include <string.h>
 
 //****************************
 // Get minimum of three values

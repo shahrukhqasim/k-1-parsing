@@ -112,6 +112,11 @@ void ModelBuilder::processStatement(string statement, int lineNumber) {
             shared_ptr<InputNode>newNode=shared_ptr<InputNode>(new InputNode(type));
             parentNode->subNodes[myId]=newNode;
             newNode->id=id;
+
+            if(fields.size()==5)
+                newNode->descriptiveName=fields[4];
+
+
         }
         else if(type=="REPEAT_INPUT") {
 //            cout<<"Repeat created"<<endl;
@@ -136,6 +141,10 @@ void ModelBuilder::processStatement(string statement, int lineNumber) {
             shared_ptr<InputNode>newNode=shared_ptr<InputNode>(new RepeatInputNode(type));
             parentNode->subNodes[myId]=newNode;
             newNode->id=id;
+
+            if(fields.size()==5)
+                newNode->descriptiveName=fields[4];
+
         }
         else if(type=="TABLE") {
             // Create parent hierarchy

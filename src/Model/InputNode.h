@@ -18,6 +18,12 @@ public:
         INPUT_CHECKBOX /** If the input is checkbox */
     };
 
+
+   /**
+    * User-friendly description of input field
+    */
+    std::string descriptiveName;
+
     /**
      * The input type of the current node
      */
@@ -34,6 +40,8 @@ public:
      * @param[in] inputType represents the inputType to make
      */
     InputNode(InputType inputType);
+
+
 
     /**
      * The binded gound truth fields.
