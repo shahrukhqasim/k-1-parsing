@@ -1,6 +1,6 @@
 
 #include "MappingJob.h"
-#include "ModelBuilder.h"
+#include "ModelParser.h"
 
 using namespace cv;
 using namespace std;
@@ -32,7 +32,7 @@ void MappingJob::recursive(shared_ptr<Node> node) {
         for_each(node->rulesModel.begin(), node->rulesModel.end(),
                  [&](pair<string, unordered_set<string>> alpha) {
                      if (alpha.first == "is_below") {
-                         shared_ptr<Node> theNode = ModelBuilder::findNode(
+                         shared_ptr<Node> theNode = ModelParser::findNode(
                                  HelperMethods::regexSplit(*(alpha.second.begin()), "[:]"), ultimateParent);
                          if (theNode->regionDefined) {
                              if (top < theNode->region.y + theNode->region.height)
@@ -41,7 +41,7 @@ void MappingJob::recursive(shared_ptr<Node> node) {
                      }
 
                      else if (alpha.first == "is_above") {
-                         shared_ptr<Node> theNode = ModelBuilder::findNode(
+                         shared_ptr<Node> theNode = ModelParser::findNode(
                                  HelperMethods::regexSplit(*(alpha.second.begin()), "[:]"), ultimateParent);
                          if (theNode->regionDefined) {
                              if (bottom > theNode->region.y)
@@ -50,7 +50,7 @@ void MappingJob::recursive(shared_ptr<Node> node) {
                      }
 
                      else if (alpha.first == "is_right_to") {
-                         shared_ptr<Node> theNode = ModelBuilder::findNode(
+                         shared_ptr<Node> theNode = ModelParser::findNode(
                                  HelperMethods::regexSplit(*(alpha.second.begin()), "[:]"), ultimateParent);
                          if (theNode->regionDefined) {
                              if (left < (theNode->region.x + theNode->region.width))
@@ -59,7 +59,7 @@ void MappingJob::recursive(shared_ptr<Node> node) {
                      }
 
                      else if (alpha.first == "is_left_to") {
-                         shared_ptr<Node> theNode = ModelBuilder::findNode(
+                         shared_ptr<Node> theNode = ModelParser::findNode(
                                  HelperMethods::regexSplit(*(alpha.second.begin()), "[:]"), ultimateParent);
                          if (theNode->regionDefined) {
                              if (right > theNode->region.x)

@@ -22,7 +22,7 @@
     <ClCompile Include="Model\MappingJob.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Model\ModelBuilder.cc">
+    <ClCompile Include="Model\ModelParser.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Model\Node.cc">
@@ -90,7 +90,7 @@
     <ClInclude Include="Model\MappingJob.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Model\ModelBuilder.h">
+    <ClInclude Include="Model\ModelParser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="OcrProgram.h">

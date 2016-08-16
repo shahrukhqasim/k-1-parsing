@@ -1,7 +1,7 @@
 
 #include "Processor2.h"
 #include "AccuracyProgram.h"
-#include "Model/ModelBuilder.h"
+#include "Model/ModelParser.h"
 #include "Mapper.h"
 #include "Model/RepeatInputNode.h"
 #include "Model/MappingJob.h"
@@ -23,7 +23,7 @@ Processor2::Processor2(const string &imageFilePath, const string &textFilePath, 
 float Processor2::execute() {
     readData();
     divideIntoParts();
-    ModelBuilder builder;
+    ModelParser builder;
     documentNode = builder.execute(modelFilePath);
 
 
@@ -37,7 +37,7 @@ float Processor2::execute() {
     outputDataToJson();
 
 //    Json::Value output;
-//    ModelBuilder::convertToJson(output, documentNode);
+//    ModelParser::convertToJson(output, documentNode);
 //    cout << output;
 
     int tests = 0;
@@ -50,7 +50,7 @@ float Processor2::execute() {
 //    });
 
     ofstream outputTree(outputFolder + "/" + outputFileName + "_tree.json");
-    ModelBuilder::convertToJson(output2, documentNode->subNodes["DOCUMENT"]);
+    ModelParser::convertToJson(output2, documentNode->subNodes["DOCUMENT"]);
     outputTree << output2;
     outputTree.flush();
     outputTree.close();
@@ -241,7 +241,7 @@ void Processor2::visualize(shared_ptr<Node> node) {
         vector<string> hierarchy = HelperMethods::regexSplit(node->id, "[:]");
         if (hierarchy.size() != 0) {
             hierarchy = vector<string>(hierarchy.begin(), hierarchy.end() - 1);
-            shared_ptr<Node> foundNode = ModelBuilder::findNode(hierarchy, documentNode);
+            shared_ptr<Node> foundNode = ModelParser::findNode(hierarchy, documentNode);
             if (foundNode != nullptr) {
                 if (foundNode->regionDefined) {
                     Scalar randomColor=randomColors[((unsigned int) rng) % 5];
@@ -292,7 +292,7 @@ void Processor2::testAccuracy(shared_ptr<InputNode> node) {
 //                vector<string> hierarchy = HelperMethods::regexSplit(node->id, "[:]");
 //                if (hierarchy.size() != 0) {
 //                    hierarchy = vector<string>(hierarchy.begin(), hierarchy.end() - 1);
-//                    shared_ptr<Node> foundNode = ModelBuilder::findNode(hierarchy, documentNode);
+//                    shared_ptr<Node> foundNode = ModelParser::findNode(hierarchy, documentNode);
 //                    if (foundNode != nullptr) {
 //                        if (foundNode->regionDefined) {
 //                            rectangle(image, foundNode->region, randomColor, 3, 8, 0);

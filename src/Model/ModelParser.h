@@ -12,7 +12,7 @@
 
 
 
-class ModelBuilder {
+class ModelParser {
 
     /**
      * When the program is executed, this field will contain smart pointer to the top level node
@@ -21,7 +21,7 @@ class ModelBuilder {
 
 public:
     /**
-     * Runs ModelBuilder on MDL file parovided and outputs the hierarchy to console
+     * Runs ModelParser on MDL file parovided and outputs the hierarchy to console
      *
      * @param path is the path to MDL file
      */

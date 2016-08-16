@@ -160,7 +160,7 @@ copy /Y ..\..\Externals\bin\liblept172.dll $(OutDir)</Command>
     <ClInclude Include="Processor.h" />
     <ClInclude Include="Processor2.h" />
     <ClInclude Include="Mapper.h" />
-    <ClInclude Include="Model\ModelBuilder.h" />
+    <ClInclude Include="Model\ModelParser.h" />
     <ClInclude Include="Model\Node.h" />
     <ClInclude Include="Model\TextNode.h" />
     <ClInclude Include="Model\InputNode.h" />
@@ -181,7 +181,7 @@ copy /Y ..\..\Externals\bin\liblept172.dll $(OutDir)</Command>
     <ClCompile Include="Processor.cc" />
     <ClCompile Include="Processor2.cc" />
     <ClCompile Include="Mapper.cc" />
-    <ClCompile Include="Model\ModelBuilder.cc" />
+    <ClCompile Include="Model\ModelParser.cc" />
     <ClCompile Include="Model\Node.cc" />
     <ClCompile Include="Model\TextNode.cc" />
     <ClCompile Include="Model\InputNode.cc" />

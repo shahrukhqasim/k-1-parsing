@@ -13,7 +13,7 @@ using namespace cv;
 
 #include "AccuracyProgram.h"
 #include "Processor2.h"
-#include "Model/ModelBuilder.h"
+#include "Model/ModelParser.h"
 
 /**
  * This function prints arguments help
@@ -84,7 +84,7 @@ int main(int argc, char**argv) {
         Processor2::runProcessorProgram(path,true);
     }
     else if(job==string("-m")) {
-        ModelBuilder::runModelBuilderProgram(path);
+        ModelParser::runModelBuilderProgram(path);
 
     }
     else {

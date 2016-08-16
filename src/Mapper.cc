@@ -1,5 +1,5 @@
 #include "Mapper.h"
-#include "Model/ModelBuilder.h"
+#include "Model/ModelParser.h"
 #include "Processor2.h"
 #include "Model/RepeatInputNode.h"
 #include "Model/MappingJob.h"
@@ -239,7 +239,7 @@ void Mapper::recursiveCallInput(shared_ptr<Node> node) {
 
         for_each(tModel->rulesModel.begin(), tModel->rulesModel.end(), [&](pair<string, unordered_set<string>> alpha) {
             if (alpha.first == "is_below") {
-                shared_ptr<Node> theNode = ModelBuilder::findNode(
+                shared_ptr<Node> theNode = ModelParser::findNode(
                         HelperMethods::regexSplit(*(alpha.second.begin()), "[:]"), ultimateParent);
                 if (theNode->regionDefined) {
                     if (top == -1 || (top < theNode->region.y + theNode->region.height && top != -1))
@@ -251,7 +251,7 @@ void Mapper::recursiveCallInput(shared_ptr<Node> node) {
             }
 
             else if (alpha.first == "is_above") {
-                shared_ptr<Node> theNode = ModelBuilder::findNode(
+                shared_ptr<Node> theNode = ModelParser::findNode(
                         HelperMethods::regexSplit(*(alpha.second.begin()), "[:]"), ultimateParent);
                 if (theNode->regionDefined) {
                     if (bottom == -1 || (bottom > theNode->region.y && top != -1))
@@ -260,7 +260,7 @@ void Mapper::recursiveCallInput(shared_ptr<Node> node) {
             }
 
             else if (alpha.first == "is_right_to") {
-                shared_ptr<Node> theNode = ModelBuilder::findNode(
+                shared_ptr<Node> theNode = ModelParser::findNode(
                         HelperMethods::regexSplit(*(alpha.second.begin()), "[:]"), ultimateParent);
                 if (theNode->regionDefined) {
                     if (left == -1 || left < (theNode->region.x + theNode->region.width && top != -1))
@@ -269,7 +269,7 @@ void Mapper::recursiveCallInput(shared_ptr<Node> node) {
             }
 
             else if (alpha.first == "is_left_to") {
-                shared_ptr<Node> theNode = ModelBuilder::findNode(
+                shared_ptr<Node> theNode = ModelParser::findNode(
                         HelperMethods::regexSplit(*(alpha.second.begin()), "[:]"), ultimateParent);
                 if (theNode->regionDefined) {
                     if (right == -1 || (right > theNode->region.x && top != -1))
@@ -511,14 +511,14 @@ Rect Mapper::recursiveCallText(shared_ptr<Node> node) {
     return rectangle;
 }
 
-// TODO: Move this function to ModelBuilder
+// TODO: Move this function to ModelParser
 void Mapper::convertRulesToFunctions(shared_ptr<Node> theNode) {
     for_each(theNode->rulesModel.begin(), theNode->rulesModel.end(), [&](pair<string, unordered_set<string>> thePair) {
         if (thePair.first == "is_below") {
             unordered_set<string> value = thePair.second;
             for_each(value.begin(), value.end(), [&](const string &x) {
                 vector<string> hierarchy = HelperMethods::regexSplit(x, "[:]");
-                shared_ptr<Node> second = ModelBuilder::findNode(hierarchy, ultimateParent);
+                shared_ptr<Node> second = ModelParser::findNode(hierarchy, ultimateParent);
                 if (second->regionDefined) {
                     theNode->rules.push_back([=](const TextualData &third) -> bool {
 //                        cout << "Is below: " << second->id;
@@ -533,7 +533,7 @@ void Mapper::convertRulesToFunctions(shared_ptr<Node> theNode) {
             unordered_set<string> value = thePair.second;
             for_each(value.begin(), value.end(), [&](const string &x) {
                 vector<string> hierarchy = HelperMethods::regexSplit(x, "[:]");
-                shared_ptr<Node> second = ModelBuilder::findNode(hierarchy, ultimateParent);
+                shared_ptr<Node> second = ModelParser::findNode(hierarchy, ultimateParent);
                 if (second->regionDefined) {
                     theNode->rules.push_back([=](const TextualData &third) -> bool {
 //                        cout << "Is above: " << second->id<<" "<<second->region;
@@ -548,7 +548,7 @@ void Mapper::convertRulesToFunctions(shared_ptr<Node> theNode) {
             unordered_set<string> value = thePair.second;
             for_each(value.begin(), value.end(), [&](const string &x) {
                 vector<string> hierarchy = HelperMethods::regexSplit(x, "[:]");
-                shared_ptr<Node> second = ModelBuilder::findNode(hierarchy, ultimateParent);
+                shared_ptr<Node> second = ModelParser::findNode(hierarchy, ultimateParent);
                 if (second->regionDefined) {
                     theNode->rules.push_back([=](const TextualData &third) -> bool {
 //                        cout << "Is left to: " << second->id;
@@ -562,7 +562,7 @@ void Mapper::convertRulesToFunctions(shared_ptr<Node> theNode) {
             unordered_set<string> value = thePair.second;
             for_each(value.begin(), value.end(), [&](const string &x) {
                 vector<string> hierarchy = HelperMethods::regexSplit(x, "[:]");
-                shared_ptr<Node> second = ModelBuilder::findNode(hierarchy, ultimateParent);
+                shared_ptr<Node> second = ModelParser::findNode(hierarchy, ultimateParent);
                 if (second->regionDefined) {
                     theNode->rules.push_back([=](const TextualData &third) -> bool {
 //                        cout << "Is right to: " << second->id;
@@ -587,7 +587,7 @@ Rect Mapper::findRectFromRules(shared_ptr<Node> rModel, shared_ptr<Node> ultimat
 
     for_each(rModel->rulesModel.begin(), rModel->rulesModel.end(), [&](pair<string, unordered_set<string>> alpha) {
         if (alpha.first == "is_below") {
-            shared_ptr<Node> theNode = ModelBuilder::findNode(
+            shared_ptr<Node> theNode = ModelParser::findNode(
                     HelperMethods::regexSplit(*(alpha.second.begin()), "[:]"), ultimateParent);
             if (theNode->regionDefined) {
                 if (top == -1 || (top < theNode->region.y + theNode->region.height && top != -1))
@@ -596,7 +596,7 @@ Rect Mapper::findRectFromRules(shared_ptr<Node> rModel, shared_ptr<Node> ultimat
         }
 
         else if (alpha.first == "is_above") {
-            shared_ptr<Node> theNode = ModelBuilder::findNode(
+            shared_ptr<Node> theNode = ModelParser::findNode(
                     HelperMethods::regexSplit(*(alpha.second.begin()), "[:]"), ultimateParent);
             if (theNode->regionDefined) {
                 if (bottom == -1 || (bottom > theNode->region.y && top != -1))
@@ -605,7 +605,7 @@ Rect Mapper::findRectFromRules(shared_ptr<Node> rModel, shared_ptr<Node> ultimat
         }
 
         else if (alpha.first == "is_right_to") {
-            shared_ptr<Node> theNode = ModelBuilder::findNode(
+            shared_ptr<Node> theNode = ModelParser::findNode(
                     HelperMethods::regexSplit(*(alpha.second.begin()), "[:]"), ultimateParent);
             if (theNode->regionDefined) {
                 if (left == -1 || left < (theNode->region.x + theNode->region.width && top != -1))
@@ -614,7 +614,7 @@ Rect Mapper::findRectFromRules(shared_ptr<Node> rModel, shared_ptr<Node> ultimat
         }
 
         else if (alpha.first == "is_left_to") {
-            shared_ptr<Node> theNode = ModelBuilder::findNode(
+            shared_ptr<Node> theNode = ModelParser::findNode(
                     HelperMethods::regexSplit(*(alpha.second.begin()), "[:]"), ultimateParent);
             if (theNode->regionDefined) {
                 if (right == -1 || (right > theNode->region.x && top != -1))
