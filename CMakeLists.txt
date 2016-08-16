@@ -28,8 +28,6 @@ set(SOURCE_FILES
     src/TextualData.h
     src/AccuracyProgram.cc
     src/AccuracyProgram.h
-    src/LineBreaker.cc
-    src/LineBreaker.h
     src/Processor.cc 
     src/Processor.h 
     src/Processor2.cc 
