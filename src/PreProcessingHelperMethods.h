@@ -9,7 +9,7 @@
 #define K_1_PARSING2_PREPROCESSOR_H
 
 
-class Preprocessor {
+class PreProcessingHelperMethods {
 public:
     /**
      * This function uses union find structures to build connected components

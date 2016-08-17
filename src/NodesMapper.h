@@ -1,14 +1,14 @@
-#include "DataTypes/TextualData.h"
-#include "DataTypes/Model/Node.h"
-#include "DataTypes/Model/TextNode.h"
-#include "DataTypes/Model/InputNode.h"
-#include "DataTypes/Model/TableNode.h"
+#include "data_types/TextualData.h"
+#include "data_types/model/Node.h"
+#include "data_types/model/TextNode.h"
+#include "data_types/model/InputNode.h"
+#include "data_types/model/TableNode.h"
 
 #ifndef K_1_PARSING2_MAPPER_H
 #define K_1_PARSING2_MAPPER_H
 
 
-class Mapper {
+class NodesMapper {
     std::vector<TextualData>data;
     std::vector<TextualData>taken;
 
@@ -19,7 +19,7 @@ class Mapper {
     int height;
 
 public:
-    Mapper(const std::vector<TextualData>&data, std::shared_ptr<Node>node, std::shared_ptr<Node>ultimateParent, int width, int height);
+    NodesMapper(const std::vector<TextualData>&data, std::shared_ptr<Node>node, std::shared_ptr<Node>ultimateParent, int width, int height);
     cv::Rect recursiveCallText(std::shared_ptr<Node> node);
     void recursiveCallInput(std::shared_ptr<Node> node);
     int findMinTextIndex(const std::vector<TextualData> &data, const std::string &textToFind);

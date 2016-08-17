@@ -1,4 +1,4 @@
-#include "EditDistance.h"
+#include "EditDistanceFinder.h"
 #include <string.h>
 #include <stdlib.h> 
 #include <string.h>
@@ -7,7 +7,7 @@
 // Get minimum of three values
 //****************************
 
-int EditDistance::minimum (int a, int b, int c) {
+int EditDistanceFinder::minimum (int a, int b, int c) {
   int mi;
   mi = a;
   if (b < mi) {
@@ -23,7 +23,7 @@ int EditDistance::minimum (int a, int b, int c) {
 // Get a pointer to the specified cell of the matrix
 //**************************************************
 
-int *EditDistance::getCellPointer (int *pOrigin, int col, int row, int nCols)
+int *EditDistanceFinder::getCellPointer (int *pOrigin, int col, int row, int nCols)
 {
   return pOrigin + col + (row * (nCols + 1));
 }
@@ -32,7 +32,7 @@ int *EditDistance::getCellPointer (int *pOrigin, int col, int row, int nCols)
 // Get the contents of the specified cell in the matrix
 //*****************************************************
 
-int EditDistance::getAt (int *pOrigin, int col, int row, int nCols) {
+int EditDistanceFinder::getAt (int *pOrigin, int col, int row, int nCols) {
 
 int *pCell;
 
@@ -45,7 +45,7 @@ int *pCell;
 // Fill the specified cell in the matrix with the value x
 //*******************************************************
 
-void EditDistance::putAt (int *pOrigin, int col, int row, int nCols, int x)
+void EditDistanceFinder::putAt (int *pOrigin, int col, int row, int nCols, int x)
 {
 int *pCell;
 
@@ -58,7 +58,7 @@ int *pCell;
 // Compute Levenshtein distance
 //*****************************
 
-int EditDistance::lDistance (char const*s, char const *t)
+int EditDistanceFinder::lDistance (char const*s, char const *t)
 {
 int *d; // pointer to matrix
 int n; // length of s

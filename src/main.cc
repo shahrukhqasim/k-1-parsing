@@ -12,7 +12,7 @@ using namespace tesseract;
 using namespace cv;
 
 #include "OcrEvaluation.h"
-#include "Processor2.h"
+#include "FieldsExtracter.h"
 #include "DocumentModel.h"
 
 /**
@@ -37,6 +37,20 @@ void printHelp() {
     cout<<"\t * 4. text - a file which must contain OCR output of the document in JSON agreed upon format"<<endl;
     cout<<endl<<endl<<"All files.txt should contain consecutive filenames. First document has to appear at the top and so on"<<endl;
     // TODO: Show prompt for processing program and and model builder program
+}
+
+/**
+ * Runs ModelParser on MDL file parovided and outputs the hierarchy to console
+ *
+ * @param path is the path to MDL file
+ */
+void runDocumentModelBuilder(string path) {
+    Node::lastId=0;
+    shared_ptr<Node>document= DocumentModel().loadModelFromFile(path);
+
+    Json::Value output;
+    DocumentModel::convertToJson(output, document->subNodes["DOCUMENT"]);
+    cout<<output;
 }
 
 
@@ -78,13 +92,13 @@ int main(int argc, char**argv) {
 
     }
     else if(job==string("-p")) {
-        Processor2::runProcessorProgram(path,false);
+        FieldsExtracter::runProcessorProgram(path,false);
     }
     else if(job==string("-e")) {
-        Processor2::runProcessorProgram(path,true);
+        FieldsExtracter::runProcessorProgram(path,true);
     }
     else if(job==string("-m")) {
-        DocumentModel::runModelParserProgram(path);
+        runDocumentModelBuilder(path);
 
     }
     else {

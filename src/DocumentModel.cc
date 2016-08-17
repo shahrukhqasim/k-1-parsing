@@ -1,22 +1,13 @@
 
 #include "DocumentModel.h"
-#include "DataTypes/Model/TableNode.h"
+#include "data_types/model/TableNode.h"
 
 #include "../csv/CSVparser.h"
 #include "HelperMethods.h"
 #include <fstream>
-#include "DataTypes/Model/RepeatInputNode.h"
+#include "data_types/model/RepeatInputNode.h"
 
 using namespace std;
-
-void DocumentModel::runModelParserProgram(string path) {
-    Node::lastId=0;
-    shared_ptr<Node>document= DocumentModel().loadModelFromFile(path);
-
-    Json::Value output;
-    convertToJson(output, document->subNodes["DOCUMENT"]);
-    cout<<output;
-}
 
 shared_ptr<Node> DocumentModel::loadModelFromFile(string filePath) {
     document=shared_ptr<Node>(new Node);

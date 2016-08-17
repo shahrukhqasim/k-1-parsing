@@ -1,7 +1,7 @@
-#include "Mapper.h"
+#include "NodesMapper.h"
 #include "DocumentModel.h"
-#include "Processor2.h"
-#include "DataTypes/Model/RepeatInputNode.h"
+#include "FieldsExtracter.h"
+#include "data_types/model/RepeatInputNode.h"
 #include "MappingJob.h"
 
 using namespace std;
@@ -19,7 +19,7 @@ namespace std {
     };
 }
 
-Mapper::Mapper(const vector<TextualData> &data, shared_ptr<Node> node, shared_ptr<Node> ultimateParent, int width,
+NodesMapper::NodesMapper(const vector<TextualData> &data, shared_ptr<Node> node, shared_ptr<Node> ultimateParent, int width,
                int height) {
     this->data = data;
     this->node = node;
@@ -28,15 +28,15 @@ Mapper::Mapper(const vector<TextualData> &data, shared_ptr<Node> node, shared_pt
     this->height = height;
 }
 
-void Mapper::executeTextFields() {
+void NodesMapper::executeTextFields() {
     recursiveCallText(node);
 }
 
-void Mapper::executeInputFields() {
+void NodesMapper::executeInputFields() {
     recursiveCallInput(node);
 }
 
-int Mapper::findMinTextIndex(const vector<TextualData> &data, const string &textToFind) {
+int NodesMapper::findMinTextIndex(const vector<TextualData> &data, const string &textToFind) {
     int minDistance = 99999999;
     int minIndex = -1;
     for (int i = 0; i < data.size(); i++) {
@@ -48,7 +48,7 @@ int Mapper::findMinTextIndex(const vector<TextualData> &data, const string &text
                 dataCurrent2 += dataCurrent[i];
         }
 
-        EditDistance editDistance;
+        EditDistanceFinder editDistance;
         int newDistance = editDistance.lDistance(dataCurrent2.c_str(),
                                                  textToFind.c_str());
         if (newDistance < minDistance) {
@@ -61,7 +61,7 @@ int Mapper::findMinTextIndex(const vector<TextualData> &data, const string &text
 }
 
 
-pair<string, Rect> Mapper::findTextWithRules(shared_ptr<Node> node) {
+pair<string, Rect> NodesMapper::findTextWithRules(shared_ptr<Node> node) {
 
     string text = "";
     Rect regionFound;
@@ -95,7 +95,7 @@ pair<string, Rect> Mapper::findTextWithRules(shared_ptr<Node> node) {
 }
 
 
-void Mapper::recursiveCallInput(shared_ptr<Node> node) {
+void NodesMapper::recursiveCallInput(shared_ptr<Node> node) {
 //    Rect rectangle;
 //    bool regionAssigned;
     if (dynamic_pointer_cast<TextNode>(node) != nullptr) {
@@ -440,7 +440,7 @@ void Mapper::recursiveCallInput(shared_ptr<Node> node) {
 //    return rectangle;
 }
 
-Rect Mapper::recursiveCallText(shared_ptr<Node> node) {
+Rect NodesMapper::recursiveCallText(shared_ptr<Node> node) {
     Rect rectangle;
     bool regionAssigned;
     if (dynamic_pointer_cast<TextNode>(node) != nullptr) {
@@ -511,7 +511,7 @@ Rect Mapper::recursiveCallText(shared_ptr<Node> node) {
 }
 
 // TODO: Move this function to DocumentModel
-void Mapper::convertRulesToFunctions(shared_ptr<Node> theNode) {
+void NodesMapper::convertRulesToFunctions(shared_ptr<Node> theNode) {
     for_each(theNode->rulesModel.begin(), theNode->rulesModel.end(), [&](pair<string, unordered_set<string>> thePair) {
         if (thePair.first == "is_below") {
             unordered_set<string> value = thePair.second;
@@ -522,7 +522,7 @@ void Mapper::convertRulesToFunctions(shared_ptr<Node> theNode) {
                     theNode->rules.push_back([=](const TextualData &third) -> bool {
 //                        cout << "Is below: " << second->id;
 
-                        return Processor2::isBelow(third.getRect(), second->region);
+                        return FieldsExtracter::isBelow(third.getRect(), second->region);
                     });
                 }
             });
@@ -536,7 +536,7 @@ void Mapper::convertRulesToFunctions(shared_ptr<Node> theNode) {
                     theNode->rules.push_back([=](const TextualData &third) -> bool {
 //                        cout << "Is above: " << second->id<<" "<<second->region;
 //                    cout<<x<<endl;
-                        return Processor2::isAbove(third.getRect(), second->region);
+                        return FieldsExtracter::isAbove(third.getRect(), second->region);
                     });
                 }
             });
@@ -549,7 +549,7 @@ void Mapper::convertRulesToFunctions(shared_ptr<Node> theNode) {
                 if (second->regionDefined) {
                     theNode->rules.push_back([=](const TextualData &third) -> bool {
 //                        cout << "Is left to: " << second->id;
-                        return Processor2::isLeftTo(third.getRect(), second->region);
+                        return FieldsExtracter::isLeftTo(third.getRect(), second->region);
                     });
                 }
             });
@@ -562,7 +562,7 @@ void Mapper::convertRulesToFunctions(shared_ptr<Node> theNode) {
                 if (second->regionDefined) {
                     theNode->rules.push_back([=](const TextualData &third) -> bool {
 //                        cout << "Is right to: " << second->id;
-                        return Processor2::isRightTo(third.getRect(), second->region);
+                        return FieldsExtracter::isRightTo(third.getRect(), second->region);
                     });
                 }
             });
@@ -571,7 +571,7 @@ void Mapper::convertRulesToFunctions(shared_ptr<Node> theNode) {
     });
 }
 
-Rect Mapper::findRectFromRules(shared_ptr<Node> rModel, shared_ptr<Node> ultimateParent, int width, int height) {
+Rect NodesMapper::findRectFromRules(shared_ptr<Node> rModel, shared_ptr<Node> ultimateParent, int width, int height) {
 
     int left, top, bottom, right;
 

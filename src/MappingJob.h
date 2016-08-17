@@ -1,4 +1,4 @@
-#include "DataTypes/Model/Node.h"
+#include "data_types/model/Node.h"
 #include <memory>
 #include <functional>
 #include "opencv2/core/core.hpp"

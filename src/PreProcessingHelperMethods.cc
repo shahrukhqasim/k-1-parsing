@@ -1,7 +1,7 @@
-#include "Preprocessor.h"
+#include "PreProcessingHelperMethods.h"
 using namespace cv;
 
-void Preprocessor::conCompFast(cv::Mat &img, std::vector<cv::Rect> &rboxes, float max_x, float max_y, float min_area, int type) {
+void PreProcessingHelperMethods::conCompFast(cv::Mat &img, std::vector<cv::Rect> &rboxes, float max_x, float max_y, float min_area, int type) {
     cv::Mat labelImg = cv::Mat::zeros(img.rows, img.cols, CV_64F);
     int label = 0;
     CUnionFind *uf = new CUnionFind(img.rows*img.cols);
@@ -76,7 +76,7 @@ void Preprocessor::conCompFast(cv::Mat &img, std::vector<cv::Rect> &rboxes, floa
 }
 
 
-void Preprocessor::binarizeShafait(Mat &gray, Mat &binary, int w, double k){
+void PreProcessingHelperMethods::binarizeShafait(Mat &gray, Mat &binary, int w, double k){
     Mat sum, sumsq;
     gray.copyTo(binary);
     int half_width = w >> 1;
@@ -100,7 +100,7 @@ void Preprocessor::binarizeShafait(Mat &gray, Mat &binary, int w, double k){
     }
 }
 
-void Preprocessor::invertImage(Mat &image) {
+void PreProcessingHelperMethods::invertImage(Mat &image) {
     for(int i=0;i<image.rows;i++){
         for(int j=0;j<image.cols;j++){
             image.at<uchar>(i,j)=255-image.at<uchar>(i,j);

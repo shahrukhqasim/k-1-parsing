@@ -1,7 +1,7 @@
 #ifndef EDIT_DISTANCE_
 #define EDIT_DISTANCE_
 
-class EditDistance
+class EditDistanceFinder
 {
   public:
     int lDistance (char const *s, char const *t);

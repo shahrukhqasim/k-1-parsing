@@ -15,12 +15,12 @@
 
 #include "../csv/CSVparser.h"
 #include "HelperMethods.h"
-#include "Preprocessor.h"
-#include "DataTypes/TextualData.h"
+#include "PreProcessingHelperMethods.h"
+#include "data_types/TextualData.h"
 #include <functional>
-#include "DataTypes/Model/Node.h"
+#include "data_types/model/Node.h"
 
-#include "DataTypes/Model/InputNode.h"
+#include "data_types/model/InputNode.h"
 
 #ifndef K_1_PARSING2_PROCESSOR2_H
 #define K_1_PARSING2_PROCESSOR2_H
@@ -38,7 +38,7 @@ public:
 /**
  * This class represents the processing of text extracted from a form job.
  */
-class Processor2 {
+class FieldsExtracter {
 private:
     std::string imageFilePath;
     std::string textFilePath;
@@ -121,7 +121,7 @@ public:
      * @param[in] outputFolder represents the folder where to write results. File name will be picked from the last argument
      * @param[in] outputFileName represents the file name on basis on which, to write the output
      */
-    Processor2(const std::string &imageFilePath, const std::string &textFilePath, const std::string &groundTruthFilePath, const std::string&modelFilePath,
+    FieldsExtracter(const std::string &imageFilePath, const std::string &textFilePath, const std::string &groundTruthFilePath, const std::string&modelFilePath,
               const std::string &outputFolder, const std::string &outputFileName);
 
     /**

@@ -4,7 +4,7 @@
     <ClCompile Include="..\csv\CSVparser.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="EditDistance.cc">
+    <ClCompile Include="EditDistanceFinder.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="HelperMethods.cc">
@@ -16,7 +16,7 @@
     <ClCompile Include="..\json\jsoncpp.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Mapper.cc">
+    <ClCompile Include="NodesMapper.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Model\MappingJob.cc">
@@ -28,13 +28,13 @@
     <ClCompile Include="Model\Node.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Preprocessor.cc">
+    <ClCompile Include="PreProcessingHelperMethods.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Processor.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Processor2.cc">
+    <ClCompile Include="FieldsExtracter.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Model\RepeatInputNode.cc">
@@ -72,7 +72,7 @@
     <ClInclude Include="..\csv\CSVparser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="EditDistance.h">
+    <ClInclude Include="EditDistanceFinder.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Model\InputNode.h">
@@ -84,7 +84,7 @@
     <ClInclude Include="..\json\json\json-forwards.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Mapper.h">
+    <ClInclude Include="NodesMapper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Model\MappingJob.h">
@@ -96,10 +96,10 @@
     <ClInclude Include="OcrProgram.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Preprocessor.h">
+    <ClInclude Include="PreProcessingHelperMethods.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Processor2.h">
+    <ClInclude Include="FieldsExtracter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Model\RepeatInputNode.h">

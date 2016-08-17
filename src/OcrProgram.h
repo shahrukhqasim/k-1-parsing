@@ -14,11 +14,11 @@
 #include <leptonica/allheaders.h>
 
 #include "TesseractFinder.h"
-#include "EditDistance.h"
+#include "EditDistanceFinder.h"
 
 #include "../csv/CSVparser.h"
 #include "HelperMethods.h"
-#include "Preprocessor.h"
+#include "PreProcessingHelperMethods.h"
 
 #include "../json/json/json.h"
 

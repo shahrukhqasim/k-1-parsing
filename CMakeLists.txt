@@ -12,38 +12,38 @@ set(SOURCE_FILES
     json/jsoncpp.cc
     json/json/json.h
     json/json/json-forwards.h
-    src/EditDistance.cc
-    src/EditDistance.h
+        src/EditDistanceFinder.cc
+        src/EditDistanceFinder.h
     src/HelperMethods.cc
     src/HelperMethods.h
     src/main.cc
     src/TesseractFinder.cc
     src/TesseractFinder.h
     src/UnionFind.h
-    src/Preprocessor.cc
-    src/Preprocessor.h
+        src/PreProcessingHelperMethods.cc
+        src/PreProcessingHelperMethods.h
     src/OcrProgram.cc
     src/OcrProgram.h
-        src/DataTypes/TextualData.cc
-        src/DataTypes/TextualData.h
+        src/data_types/TextualData.cc
+        src/data_types/TextualData.h
         src/OcrEvaluation.cc
         src/OcrEvaluation.h
-        src/Processor2.cc
-    src/Processor2.h 
-    src/Mapper.cc 
-    src/Mapper.h
+        src/FieldsExtracter.cc
+        src/FieldsExtracter.h
+        src/NodesMapper.cc
+        src/NodesMapper.h
         src/DocumentModel.cc
         src/DocumentModel.h
-        src/DataTypes/Model/Node.cc
-        src/DataTypes/Model/Node.h
-        src/DataTypes/Model/TextNode.cc
-        src/DataTypes/Model/TextNode.h
-        src/DataTypes/Model/InputNode.cc
-        src/DataTypes/Model/InputNode.h
-        src/DataTypes/Model/TableNode.cc
-        src/DataTypes/Model/TableNode.h
-        src/DataTypes/Model/RepeatInputNode.cc
-        src/DataTypes/Model/RepeatInputNode.h
+        src/data_types/model/Node.cc
+        src/data_types/model/Node.h
+        src/data_types/model/TextNode.cc
+        src/data_types/model/TextNode.h
+        src/data_types/model/InputNode.cc
+        src/data_types/model/InputNode.h
+        src/data_types/model/TableNode.cc
+        src/data_types/model/TableNode.h
+        src/data_types/model/RepeatInputNode.cc
+        src/data_types/model/RepeatInputNode.h
         src/MappingJob.cpp src/MappingJob.h)
 
 

@@ -18,7 +18,7 @@ void OcrProgram::loadBinaryImage(cv::Mat &image, string fileName, int mode) {
         cout << "Could not open or find the image: " << fileName << std::endl;
         exit(0);
     }
-    Preprocessor::binarizeShafait(image2,image,100,0.5);
+    PreProcessingHelperMethods::binarizeShafait(image2,image,100,0.5);
 
 }
 
@@ -48,11 +48,11 @@ void OcrProgram::doSegmentation() {
     Mat image=originalImage.clone();
 
     // Invert black and white colors
-    Preprocessor::invertImage(image);
+    PreProcessingHelperMethods::invertImage(image);
 
     // Compute big black connnected components and store the result in segments
     // These have to be the rulings
-    Preprocessor::conCompFast(image,segments,0.5,0.5,1024,4);
+    PreProcessingHelperMethods::conCompFast(image,segments,0.5,0.5,1024,4);
 }
 
 void OcrProgram::runOcr() {
@@ -123,7 +123,7 @@ void OcrProgram::runOcr() {
 void OcrProgram::cleanImageAndWriteToDisk() {
     // Compute all black connected components
     vector<Rect>boxes;
-    Preprocessor::conCompFast(originalImage,boxes,1,1,0,8);
+    PreProcessingHelperMethods::conCompFast(originalImage,boxes,1,1,0,8);
 
 //    cleanedImage=originalImage.clone();
 

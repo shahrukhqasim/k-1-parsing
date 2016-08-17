@@ -1,12 +1,12 @@
 
-#include "Processor2.h"
+#include "FieldsExtracter.h"
 #include "OcrEvaluation.h"
 #include "DocumentModel.h"
-#include "Mapper.h"
+#include "NodesMapper.h"
 using namespace std;
 using namespace cv;
 
-Processor2::Processor2(const string &imageFilePath, const string &textFilePath, const string &groundTruthFilePath,
+FieldsExtracter::FieldsExtracter(const string &imageFilePath, const string &textFilePath, const string &groundTruthFilePath,
                        const string &modelFilePath,
                        const string &outputFolder, const string &outputFileName) {
     this->imageFilePath = imageFilePath;
@@ -18,7 +18,7 @@ Processor2::Processor2(const string &imageFilePath, const string &textFilePath, 
 }
 
 
-float Processor2::execute() {
+float FieldsExtracter::execute() {
     readData();
     divideIntoParts();
     DocumentModel builder;
@@ -63,14 +63,14 @@ float Processor2::execute() {
         return 0;
 }
 
-bool Processor2::isBelow(const Rect &a, const Rect &b) {
+bool FieldsExtracter::isBelow(const Rect &a, const Rect &b) {
     if (a.y > b.y + b.height) {
         return true;
     }
     return false;
 }
 
-bool Processor2::isAbove(const Rect &a, const Rect &b) {
+bool FieldsExtracter::isAbove(const Rect &a, const Rect &b) {
     if (a.y + a.height < b.y) {
         return true;
     }
@@ -78,14 +78,14 @@ bool Processor2::isAbove(const Rect &a, const Rect &b) {
 }
 
 
-bool Processor2::isLeftTo(const Rect &a, const Rect &b) {
+bool FieldsExtracter::isLeftTo(const Rect &a, const Rect &b) {
     if (a.x + a.width < b.x) {
         return true;
     }
     return false;
 }
 
-bool Processor2::isRightTo(const Rect &a, const Rect &b) {
+bool FieldsExtracter::isRightTo(const Rect &a, const Rect &b) {
     if (a.x > b.x + b.width) {
         return true;
     }
@@ -93,7 +93,7 @@ bool Processor2::isRightTo(const Rect &a, const Rect &b) {
 }
 
 string
-Processor2::findTextWithRules(vector<std::function<bool(const TextualData &)>> rules, const vector<TextualData> &data) {
+FieldsExtracter::findTextWithRules(vector<std::function<bool(const TextualData &)>> rules, const vector<TextualData> &data) {
     string text = "";
     for_each(data.begin(), data.end(), [&](const TextualData &currentData) {
         bool ruleMatched = true;
@@ -109,47 +109,47 @@ Processor2::findTextWithRules(vector<std::function<bool(const TextualData &)>> r
     return text;
 }
 
-string Processor2::findTextWithRulesOnlyRightMost(vector<std::function<bool(const
+string FieldsExtracter::findTextWithRulesOnlyRightMost(vector<std::function<bool(const
                                                                             TextualData &)>> rules,
                                                   const vector<TextualData> &data
 ) {
     return NULL;
 }
 
-void Processor2::processHeader1() {
+void FieldsExtracter::processHeader1() {
     shared_ptr<Node> header1Node = documentNode->subNodes["DOCUMENT"]->subNodes["HEADER_1"];
-    Mapper mapper(header1Data, header1Node, documentNode, image.cols, image.rows);
+    NodesMapper mapper(header1Data, header1Node, documentNode, image.cols, image.rows);
     mapper.executeTextFields();
     mapper.executeInputFields();
 }
 
-void Processor2::processHeader2() {
+void FieldsExtracter::processHeader2() {
 }
 
-void Processor2::processPart1() {
+void FieldsExtracter::processPart1() {
     shared_ptr<Node> part1Node = documentNode->subNodes["DOCUMENT"]->subNodes["PART_1"];
-    Mapper mapper(part1Data, part1Node, documentNode, image.cols, image.rows);
+    NodesMapper mapper(part1Data, part1Node, documentNode, image.cols, image.rows);
     mapper.executeTextFields();
     mapper.executeInputFields();
 }
 
-void Processor2::processPart2() {
+void FieldsExtracter::processPart2() {
     shared_ptr<Node> part2Node = documentNode->subNodes["DOCUMENT"]->subNodes["PART_2"];
-    Mapper mapper(part2Data, part2Node, documentNode, image.cols, image.rows);
+    NodesMapper mapper(part2Data, part2Node, documentNode, image.cols, image.rows);
     mapper.executeTextFields();
     mapper.executeInputFields();
 
     ofstream outta(outputFolder + "/");
 }
 
-void Processor2::processPart3() {
+void FieldsExtracter::processPart3() {
     shared_ptr<Node> part3Node = documentNode->subNodes["DOCUMENT"]->subNodes["PART_3"];
-    Mapper mapper(part3Data, part3Node, documentNode, image.cols, image.rows);
+    NodesMapper mapper(part3Data, part3Node, documentNode, image.cols, image.rows);
     mapper.executeTextFields();
     mapper.executeInputFields();
 }
 
-void Processor2::outputDataToJson() {
+void FieldsExtracter::outputDataToJson() {
     outputJson = Json::Value();
     outputJson["Pages"][0] = Json::Value();
     outputJson["Pages"][0]["PageNumber"] = 1;
@@ -164,7 +164,7 @@ void Processor2::outputDataToJson() {
     outputStream << outputJson;
 }
 
-void Processor2::outputBindingLine(shared_ptr<Node> node, Rect region) {
+void FieldsExtracter::outputBindingLine(shared_ptr<Node> node, Rect region) {
 //    cout<<"Finding binding"<<mappedGround.size()<<endl;
 
 
@@ -210,7 +210,7 @@ void Processor2::outputBindingLine(shared_ptr<Node> node, Rect region) {
     }
 }
 
-void Processor2::visualize(shared_ptr<Node> node) {
+void FieldsExtracter::visualize(shared_ptr<Node> node) {
 
     if(dynamic_pointer_cast<InputNode>(node)) {
         shared_ptr<InputNode>iModel=dynamic_pointer_cast<InputNode>(node);
@@ -232,7 +232,7 @@ void Processor2::visualize(shared_ptr<Node> node) {
     }
 }
 
-void Processor2::testAccuracy(shared_ptr<InputNode> node) {
+void FieldsExtracter::testAccuracy(shared_ptr<InputNode> node) {
 //    cout<<"Figure="<<node->bindedGroundTruthEntries.size()<<endl;
 
 //     Check only alpha numeric stuff
@@ -334,7 +334,7 @@ void Processor2::testAccuracy(shared_ptr<InputNode> node) {
 //        cout << "Not Passed:" << node->id<<" - "<<node->data << endl;
 }
 
-void Processor2::recursiveInputFieldsToJson(shared_ptr<Node> node) {
+void FieldsExtracter::recursiveInputFieldsToJson(shared_ptr<Node> node) {
     if (dynamic_pointer_cast<InputNode>(node) != nullptr) {
 //        cout << "Running on: " << node->id << endl;
         shared_ptr<InputNode> iModel = dynamic_pointer_cast<InputNode>(node);
@@ -379,7 +379,7 @@ void Processor2::recursiveInputFieldsToJson(shared_ptr<Node> node) {
     }
 }
 
-TextualData Processor2::extractTextualDataType1(string key) {
+TextualData FieldsExtracter::extractTextualDataType1(string key) {
     // TODO: Add 'A' etc to it as well
     int index = findMinTextIndex(part1Data, key);
     TextualData d = part1Data[index];
@@ -387,7 +387,7 @@ TextualData Processor2::extractTextualDataType1(string key) {
     return d;
 }
 
-TextualData Processor2::extractTextualDataType2(string key) {
+TextualData FieldsExtracter::extractTextualDataType2(string key) {
     // TODO: Add 'A' etc to it as well
     int index = findMinTextIndex(part2Data, key);
     TextualData d = part2Data[index];
@@ -395,7 +395,7 @@ TextualData Processor2::extractTextualDataType2(string key) {
     return d;
 }
 
-TextualData Processor2::extractTextualDataType3(string key) {
+TextualData FieldsExtracter::extractTextualDataType3(string key) {
     // TODO: Add 'A' etc to it as well
     int index = findMinTextIndex(part3Data, key);
     TextualData d = part3Data[index];
@@ -404,7 +404,7 @@ TextualData Processor2::extractTextualDataType3(string key) {
 }
 
 
-void Processor2::divideIntoParts() {
+void FieldsExtracter::divideIntoParts() {
     mergeWordBoxes(words, mergedWords);
 
     Mat image = this->image.clone();
@@ -560,7 +560,7 @@ void Processor2::divideIntoParts() {
 
 }
 
-void Processor2::getFieldValues(Json::Value root, vector<TextualData> &outputVector) {
+void FieldsExtracter::getFieldValues(Json::Value root, vector<TextualData> &outputVector) {
 
     root = root["Pages"][0];
 
@@ -582,7 +582,7 @@ void Processor2::getFieldValues(Json::Value root, vector<TextualData> &outputVec
     }
 }
 
-void Processor2::readData() {
+void FieldsExtracter::readData() {
 
     if (groundTruthFilePath.length() != 0) {
         cout << groundTruthFilePath << endl;
@@ -626,7 +626,7 @@ void Processor2::readData() {
     OcrEvaluation::getWords(jsonWords, words);
 }
 
-void Processor2::mergeWordBoxes(const vector<TextualData> &words, vector<TextualData> &elemBoxes) {
+void FieldsExtracter::mergeWordBoxes(const vector<TextualData> &words, vector<TextualData> &elemBoxes) {
     // Merge the words extracted from Tesseract to obtain text-lines. The logic used for text-line extraction
     // is to merge two consecutive words if they overlap along the y-axis, and the gap between them is smaller
     // than the height of the shorter word.
@@ -666,11 +666,11 @@ void Processor2::mergeWordBoxes(const vector<TextualData> &words, vector<Textual
 
 }
 
-int Processor2::findMinTextIndex(const vector<TextualData> &data, const string &textToFind) {
+int FieldsExtracter::findMinTextIndex(const vector<TextualData> &data, const string &textToFind) {
     int minDistance = 99999999;
     int minIndex = -1;
     for (int i = 0; i < data.size(); i++) {
-        EditDistance editDistance;
+        EditDistanceFinder editDistance;
         int newDistance = editDistance.lDistance(data[i].getText().c_str(),
                                                  textToFind.c_str());
         if (newDistance < minDistance) {
@@ -682,13 +682,13 @@ int Processor2::findMinTextIndex(const vector<TextualData> &data, const string &
     return minIndex;
 }
 
-void Processor2::drawBoxes(Mat &image, const vector<TextualData> &data, const Scalar &color) {
+void FieldsExtracter::drawBoxes(Mat &image, const vector<TextualData> &data, const Scalar &color) {
     for (int i = 0; i < data.size(); i++) {
         rectangle(image, data[i].getRect(), color, 3, 8, 0);
     }
 }
 
-void Processor2::runProcessorProgram(string parentPath, bool evaluate) {
+void FieldsExtracter::runProcessorProgram(string parentPath, bool evaluate) {
     if (parentPath[parentPath.length() - 1] != '/')
         parentPath = parentPath + "/";
 
@@ -730,7 +730,7 @@ void Processor2::runProcessorProgram(string parentPath, bool evaluate) {
             groundTruthFile = parentPath + "groundTruth/" + groundTruthFile;
 
 
-        float x = Processor2(imageFile, jsonFile, groundTruthFile, modelFilePath, outputFolder, workFile).execute();
+        float x = FieldsExtracter(imageFile, jsonFile, groundTruthFile, modelFilePath, outputFolder, workFile).execute();
         accuracySum += x;
         num++;
 

@@ -1,7 +1,7 @@
 
-#include "DataTypes/Model/Node.h"
-#include "DataTypes/Model/InputNode.h"
-#include "DataTypes/Model/TextNode.h"
+#include "data_types/model/Node.h"
+#include "data_types/model/InputNode.h"
+#include "data_types/model/TextNode.h"
 #include <memory>
 #include <iostream>
 #include "../json/json/json.h"
@@ -22,13 +22,6 @@ class DocumentModel {
     std::shared_ptr<Node> document;
 
 public:
-    /**
-     * Runs ModelParser on MDL file parovided and outputs the hierarchy to console
-     *
-     * @param path is the path to MDL file
-     */
-    static void runModelParserProgram(std::string path);
-
     /**
      * Executes ModelParser on the MDL file path provided and returns pointer to the top level parent node which contains the complete hierarchy
      *
