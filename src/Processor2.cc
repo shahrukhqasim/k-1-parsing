@@ -1,10 +1,8 @@
 
 #include "Processor2.h"
-#include "AccuracyProgram.h"
-#include "Model/ModelParser.h"
+#include "OcrEvaluation.h"
+#include "DocumentModel.h"
 #include "Mapper.h"
-#include "Model/RepeatInputNode.h"
-#include "Model/MappingJob.h"
 using namespace std;
 using namespace cv;
 
@@ -23,8 +21,8 @@ Processor2::Processor2(const string &imageFilePath, const string &textFilePath, 
 float Processor2::execute() {
     readData();
     divideIntoParts();
-    ModelParser builder;
-    documentNode = builder.execute(modelFilePath);
+    DocumentModel builder;
+    documentNode = builder.loadModelFromFile(modelFilePath);
 
     processHeader1();
     processPart1();
@@ -222,7 +220,7 @@ void Processor2::visualize(shared_ptr<Node> node) {
         vector<string> hierarchy = HelperMethods::regexSplit(node->id, "[:]");
         if (hierarchy.size() != 0) {
             hierarchy = vector<string>(hierarchy.begin(), hierarchy.end() - 1);
-            shared_ptr<Node> foundNode = ModelParser::findNode(hierarchy, documentNode);
+            shared_ptr<Node> foundNode = DocumentModel::findNode(hierarchy, documentNode);
             if (foundNode != nullptr) {
                 if (foundNode->regionDefined) {
                     Scalar randomColor=randomColors[((unsigned int) rng) % 5];
@@ -273,7 +271,7 @@ void Processor2::testAccuracy(shared_ptr<InputNode> node) {
 //                vector<string> hierarchy = HelperMethods::regexSplit(node->id, "[:]");
 //                if (hierarchy.size() != 0) {
 //                    hierarchy = vector<string>(hierarchy.begin(), hierarchy.end() - 1);
-//                    shared_ptr<Node> foundNode = ModelParser::findNode(hierarchy, documentNode);
+//                    shared_ptr<Node> foundNode = DocumentModel::findNode(hierarchy, documentNode);
 //                    if (foundNode != nullptr) {
 //                        if (foundNode->M) {
 //                            rectangle(image, foundNode->region, randomColor, 3, 8, 0);
@@ -354,9 +352,6 @@ void Processor2::recursiveInputFieldsToJson(shared_ptr<Node> node) {
         region["b"] = iModel->regionDefined?iModel->region.y + iModel->region.height:-1;
 
         value["Region"] = region;
-
-        Rect regionX = MappingJob(documentNode, iModel->id, image.cols, image.rows).map();
-
 
         if (groundTruthFilePath.length() != 0)
             testAccuracy(iModel);
@@ -628,7 +623,7 @@ void Processor2::readData() {
     Json::Value jsonWords;
     ifstream jsonOcrWordsStream(textFilePath);
     jsonOcrWordsStream >> jsonWords;
-    AccuracyProgram::getWords(jsonWords, words);
+    OcrEvaluation::getWords(jsonWords, words);
 }
 
 void Processor2::mergeWordBoxes(const vector<TextualData> &words, vector<TextualData> &elemBoxes) {

@@ -16,11 +16,11 @@
 #include "../csv/CSVparser.h"
 #include "HelperMethods.h"
 #include "Preprocessor.h"
-#include "TextualData.h"
+#include "DataTypes/TextualData.h"
 #include <functional>
-#include "Model/Node.h"
+#include "DataTypes/Model/Node.h"
 
-#include "Model/InputNode.h"
+#include "DataTypes/Model/InputNode.h"
 
 #ifndef K_1_PARSING2_PROCESSOR2_H
 #define K_1_PARSING2_PROCESSOR2_H

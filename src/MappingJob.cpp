@@ -1,10 +1,8 @@
-
 #include "MappingJob.h"
-#include "ModelParser.h"
+#include "DocumentModel.h"
 
 using namespace cv;
 using namespace std;
-
 
 MappingJob::MappingJob(const shared_ptr<Node> &ultimateParent, const string &nodeId, int width, int height)
         : ultimateParent(ultimateParent), nodeId(nodeId), width(width), height(height) {}
@@ -32,7 +30,7 @@ void MappingJob::recursive(shared_ptr<Node> node) {
         for_each(node->rulesModel.begin(), node->rulesModel.end(),
                  [&](pair<string, unordered_set<string>> alpha) {
                      if (alpha.first == "is_below") {
-                         shared_ptr<Node> theNode = ModelParser::findNode(
+                         shared_ptr<Node> theNode = DocumentModel::findNode(
                                  HelperMethods::regexSplit(*(alpha.second.begin()), "[:]"), ultimateParent);
                          if (theNode->regionDefined) {
                              if (top < theNode->region.y + theNode->region.height)
@@ -41,7 +39,7 @@ void MappingJob::recursive(shared_ptr<Node> node) {
                      }
 
                      else if (alpha.first == "is_above") {
-                         shared_ptr<Node> theNode = ModelParser::findNode(
+                         shared_ptr<Node> theNode = DocumentModel::findNode(
                                  HelperMethods::regexSplit(*(alpha.second.begin()), "[:]"), ultimateParent);
                          if (theNode->regionDefined) {
                              if (bottom > theNode->region.y)
@@ -50,7 +48,7 @@ void MappingJob::recursive(shared_ptr<Node> node) {
                      }
 
                      else if (alpha.first == "is_right_to") {
-                         shared_ptr<Node> theNode = ModelParser::findNode(
+                         shared_ptr<Node> theNode = DocumentModel::findNode(
                                  HelperMethods::regexSplit(*(alpha.second.begin()), "[:]"), ultimateParent);
                          if (theNode->regionDefined) {
                              if (left < (theNode->region.x + theNode->region.width))
@@ -59,7 +57,7 @@ void MappingJob::recursive(shared_ptr<Node> node) {
                      }
 
                      else if (alpha.first == "is_left_to") {
-                         shared_ptr<Node> theNode = ModelParser::findNode(
+                         shared_ptr<Node> theNode = DocumentModel::findNode(
                                  HelperMethods::regexSplit(*(alpha.second.begin()), "[:]"), ultimateParent);
                          if (theNode->regionDefined) {
                              if (right > theNode->region.x)

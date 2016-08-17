@@ -1,8 +1,8 @@
-#include "TextualData.h"
-#include "Model/Node.h"
-#include "Model/TextNode.h"
-#include "Model/InputNode.h"
-#include "Model/TableNode.h"
+#include "DataTypes/TextualData.h"
+#include "DataTypes/Model/Node.h"
+#include "DataTypes/Model/TextNode.h"
+#include "DataTypes/Model/InputNode.h"
+#include "DataTypes/Model/TableNode.h"
 
 #ifndef K_1_PARSING2_MAPPER_H
 #define K_1_PARSING2_MAPPER_H

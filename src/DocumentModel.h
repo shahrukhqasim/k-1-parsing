@@ -1,18 +1,20 @@
 
-#include "Node.h"
-#include "InputNode.h"
-#include "TextNode.h"
+#include "DataTypes/Model/Node.h"
+#include "DataTypes/Model/InputNode.h"
+#include "DataTypes/Model/TextNode.h"
 #include <memory>
 #include <iostream>
-#include "../../json/json/json.h"
+#include "../json/json/json.h"
 
 
 #ifndef K_1_PARSING2_MODELBUILDER_H
 #define K_1_PARSING2_MODELBUILDER_H
 
 
-
-class ModelParser {
+/**
+ * Reads an MDL file and converts it to tree-like structure for further processing
+ */
+class DocumentModel {
 
     /**
      * When the program is executed, this field will contain smart pointer to the top level node
@@ -25,16 +27,16 @@ public:
      *
      * @param path is the path to MDL file
      */
-    static void runModelBuilderProgram(std::string path);
+    static void runModelParserProgram(std::string path);
 
     /**
      * Executes ModelParser on the MDL file path provided and returns pointer to the top level parent node which contains the complete hierarchy
      *
-     * @param[in] path is the complete path of the MDL file
+     * @param[in] filePath is the complete path of the MDL file
      *
      * @return smart pointer the top level node
      */
-    std::shared_ptr<Node> execute(std::string path);
+    std::shared_ptr<Node> loadModelFromFile(std::string filePath);
 
     /**
      * Converts document model to JSON format recursively
@@ -42,7 +44,7 @@ public:
      * @param[out] jsonOutput represents the output JSON value
      * @param[in] model represents the input model
      */
-    static void convertToJson(Json::Value& jsonOutput, const std::shared_ptr<Node>&model);
+    static void convertToJson(Json::Value &jsonOutput, const std::shared_ptr<Node> &model);
 
     /**
      * From the tree, finds the node specified by IDs hierarchy std::vector. First
@@ -53,7 +55,7 @@ public:
      *
      * @return The node. nullptr if node was not found
      */
-    static std::shared_ptr<Node>findNode(const std::vector<std::string>&hierarchy, std::shared_ptr<Node>theNode);
+    static std::shared_ptr<Node> findNode(const std::vector<std::string> &hierarchy, std::shared_ptr<Node> theNode);
 
 private:
 
@@ -63,28 +65,28 @@ private:
      * @param a is first node
      * @param b is second node
      */
-    void isBelow(std::shared_ptr<Node>a, std::shared_ptr<Node>b);
+    void isBelow(std::shared_ptr<Node> a, std::shared_ptr<Node> b);
 
     /**
      * Sets the rule that a is above b in the IO model
      * @param a is first node
      * @param b is second node
      */
-    void isAbove(std::shared_ptr<Node>a, std::shared_ptr<Node>b);
+    void isAbove(std::shared_ptr<Node> a, std::shared_ptr<Node> b);
 
     /**
      * Sets the rule that a is left to b in the IO model
      * @param a is first node
      * @param b is second node
      */
-    void isRightTo(std::shared_ptr<Node>a, std::shared_ptr<Node>b);
+    void isRightTo(std::shared_ptr<Node> a, std::shared_ptr<Node> b);
 
     /**
      * Sets the rule that a is right to b in the IO model
      * @param a is first node
      * @param b is second node
      */
-    void isLeftTo(std::shared_ptr<Node>a, std::shared_ptr<Node>b);
+    void isLeftTo(std::shared_ptr<Node> a, std::shared_ptr<Node> b);
 
 
     /**
@@ -101,7 +103,7 @@ private:
      * @param[in] hierarchy is the hierarchy std::vector
      * @return the last node in the hierarchy
      */
-    std::shared_ptr<Node>createHierarchy(std::vector<std::string>&hierarchy);
+    std::shared_ptr<Node> createHierarchy(std::vector<std::string> &hierarchy);
 
     /**
      * From the tree, finds the node specified by IDs hierarchy std::vector. First
@@ -111,7 +113,7 @@ private:
      *
      * @return The node. nullptr if node was not found
      */
-    std::shared_ptr<Node>findNode(const std::vector<std::string>&hierarchy);
+    std::shared_ptr<Node> findNode(const std::vector<std::string> &hierarchy);
 };
 
 

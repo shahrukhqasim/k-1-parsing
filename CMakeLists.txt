@@ -24,28 +24,27 @@ set(SOURCE_FILES
     src/Preprocessor.h
     src/OcrProgram.cc
     src/OcrProgram.h
-    src/TextualData.cc
-    src/TextualData.h
-    src/AccuracyProgram.cc
-    src/AccuracyProgram.h
+        src/DataTypes/TextualData.cc
+        src/DataTypes/TextualData.h
+        src/OcrEvaluation.cc
+        src/OcrEvaluation.h
         src/Processor2.cc
     src/Processor2.h 
     src/Mapper.cc 
     src/Mapper.h
-        src/Model/ModelParser.cc
-        src/Model/ModelParser.h
-    src/Model/Node.cc 
-    src/Model/Node.h 
-    src/Model/TextNode.cc 
-    src/Model/TextNode.h 
-    src/Model/InputNode.cc 
-    src/Model/InputNode.h 
-    src/Model/TableNode.cc 
-    src/Model/TableNode.h 
-    src/Model/RepeatInputNode.cc 
-    src/Model/RepeatInputNode.h 
-    src/Model/MappingJob.cc 
-    src/Model/MappingJob.h)
+        src/DocumentModel.cc
+        src/DocumentModel.h
+        src/DataTypes/Model/Node.cc
+        src/DataTypes/Model/Node.h
+        src/DataTypes/Model/TextNode.cc
+        src/DataTypes/Model/TextNode.h
+        src/DataTypes/Model/InputNode.cc
+        src/DataTypes/Model/InputNode.h
+        src/DataTypes/Model/TableNode.cc
+        src/DataTypes/Model/TableNode.h
+        src/DataTypes/Model/RepeatInputNode.cc
+        src/DataTypes/Model/RepeatInputNode.h
+        src/MappingJob.cpp src/MappingJob.h)
 
 
 add_executable(k1_parsing ${SOURCE_FILES})

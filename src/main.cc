@@ -11,9 +11,9 @@ using namespace std;
 using namespace tesseract;
 using namespace cv;
 
-#include "AccuracyProgram.h"
+#include "OcrEvaluation.h"
 #include "Processor2.h"
-#include "Model/ModelParser.h"
+#include "DocumentModel.h"
 
 /**
  * This function prints arguments help
@@ -67,7 +67,7 @@ int main(int argc, char**argv) {
             path="../data/accuracy";
         }
 
-        AccuracyProgram::runAccuracyTest(path);
+        OcrEvaluation::runAccuracyTest(path);
     }
     else if(job==string("-o")) {
         if(argc==2) {
@@ -84,7 +84,7 @@ int main(int argc, char**argv) {
         Processor2::runProcessorProgram(path,true);
     }
     else if(job==string("-m")) {
-        ModelParser::runModelBuilderProgram(path);
+        DocumentModel::runModelParserProgram(path);
 
     }
     else {

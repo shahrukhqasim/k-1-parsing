@@ -1,8 +1,8 @@
-#include "AccuracyProgram.h"
+#include "OcrEvaluation.h"
 using namespace cv;
 using namespace std;
 
-float AccuracyProgram::testAccuracy() {
+float OcrEvaluation::testAccuracy() {
     int size = expectedOutput.size();
     int matches = 0;
 
@@ -82,7 +82,7 @@ float AccuracyProgram::testAccuracy() {
 }
 
 
-AccuracyProgram::AccuracyProgram(string programOutputFile, string expectedOutputFilename, string inputFile,
+OcrEvaluation::OcrEvaluation(string programOutputFile, string expectedOutputFilename, string inputFile,
                                  string comparisonFile) {
     this->programOutputFile = programOutputFile;
     this->expectedOutputFile = expectedOutputFilename;
@@ -90,7 +90,7 @@ AccuracyProgram::AccuracyProgram(string programOutputFile, string expectedOutput
     this->comparisonFile = comparisonFile;
 }
 
-void AccuracyProgram::getWords(Json::Value root, vector<TextualData> &outputVector) {
+void OcrEvaluation::getWords(Json::Value root, vector<TextualData> &outputVector) {
     root = root["Pages"][0];
 
     Json::Value words = root["Words"];
@@ -111,7 +111,7 @@ void AccuracyProgram::getWords(Json::Value root, vector<TextualData> &outputVect
     }
 }
 
-void AccuracyProgram::cleanWords(vector<TextualData> &root) {
+void OcrEvaluation::cleanWords(vector<TextualData> &root) {
     vector<TextualData> words2;
     for (int i = 0; i < root.size(); i++) {
         TextualData word = root[i];
@@ -133,7 +133,7 @@ void AccuracyProgram::cleanWords(vector<TextualData> &root) {
 }
 
 
-void AccuracyProgram::compare2(Json::Value rootProgram, Json::Value rootExpected) {
+void OcrEvaluation::compare2(Json::Value rootProgram, Json::Value rootExpected) {
     // Get words from the JSON file
     getWords(rootProgram, ocrOutput);
     getWords(rootExpected, expectedOutput);
@@ -155,7 +155,7 @@ void AccuracyProgram::compare2(Json::Value rootProgram, Json::Value rootExpected
     cout << "Accuracy is " << accuracy << endl;
 }
 
-void AccuracyProgram::runAccuracyTest(string path) {
+void OcrEvaluation::runAccuracyTest(string path) {
     // If path does not end with a '/', append one yourself
     if (path[path.length() - 1] != '/')
         path = path + '/';
@@ -208,8 +208,8 @@ void AccuracyProgram::runAccuracyTest(string path) {
 
         cout << "Running on " << programFilePath << endl;
 
-        // Now make an instance of AccuracyProgram to run test on one case
-        AccuracyProgram program(programFilePath, expectedFilePath, inputImagePath, plotImagePath);
+        // Now make an instance of OcrEvaluation to run test on one case
+        OcrEvaluation program(programFilePath, expectedFilePath, inputImagePath, plotImagePath);
 
         // Run the test and store accuracy figure
         float accuracy = program.run();
@@ -229,7 +229,7 @@ void AccuracyProgram::runAccuracyTest(string path) {
     cout << "Average accuracy=" << sum / num << " from " << num << " forms" << endl;
 }
 
-float AccuracyProgram::run() {
+float OcrEvaluation::run() {
 
     // Contains the JSON of OCR result
     Json::Value rootProgram;

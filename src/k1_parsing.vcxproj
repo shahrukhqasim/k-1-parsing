@@ -156,11 +156,11 @@ copy /Y ..\..\Externals\bin\liblept172.dll $(OutDir)</Command>
     <ClInclude Include="Preprocessor.h" />
     <ClInclude Include="OcrProgram.h" />
     <ClInclude Include="TextualData.h" />
-    <ClInclude Include="AccuracyProgram.h" />
+    <ClInclude Include="OcrEvaluation.h" />
     <ClInclude Include="Processor.h" />
     <ClInclude Include="Processor2.h" />
     <ClInclude Include="Mapper.h" />
-    <ClInclude Include="Model\ModelParser.h" />
+    <ClInclude Include="Model\DocumentModel.h" />
     <ClInclude Include="Model\Node.h" />
     <ClInclude Include="Model\TextNode.h" />
     <ClInclude Include="Model\InputNode.h" />
@@ -177,11 +177,11 @@ copy /Y ..\..\Externals\bin\liblept172.dll $(OutDir)</Command>
     <ClCompile Include="Preprocessor.cc" />
     <ClCompile Include="TesseractFinder.cc" />
     <ClCompile Include="TextualData.cc" />
-    <ClCompile Include="AccuracyProgram.cc" />
+    <ClCompile Include="OcrEvaluation.cc" />
     <ClCompile Include="Processor.cc" />
     <ClCompile Include="Processor2.cc" />
     <ClCompile Include="Mapper.cc" />
-    <ClCompile Include="Model\ModelParser.cc" />
+    <ClCompile Include="Model\DocumentModel.cc" />
     <ClCompile Include="Model\Node.cc" />
     <ClCompile Include="Model\TextNode.cc" />
     <ClCompile Include="Model\InputNode.cc" />

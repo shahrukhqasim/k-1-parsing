@@ -1,27 +1,27 @@
 
-#include "ModelParser.h"
-#include "TableNode.h"
+#include "DocumentModel.h"
+#include "DataTypes/Model/TableNode.h"
 
-#include "../../csv/CSVparser.h"
-#include "../HelperMethods.h"
+#include "../csv/CSVparser.h"
+#include "HelperMethods.h"
 #include <fstream>
-#include "RepeatInputNode.h"
+#include "DataTypes/Model/RepeatInputNode.h"
 
 using namespace std;
 
-void ModelParser::runModelBuilderProgram(string path) {
+void DocumentModel::runModelParserProgram(string path) {
     Node::lastId=0;
-    shared_ptr<Node>document=ModelParser().execute(path);
+    shared_ptr<Node>document= DocumentModel().loadModelFromFile(path);
 
     Json::Value output;
     convertToJson(output, document->subNodes["DOCUMENT"]);
     cout<<output;
 }
 
-shared_ptr<Node> ModelParser::execute(string path) {
+shared_ptr<Node> DocumentModel::loadModelFromFile(string filePath) {
     document=shared_ptr<Node>(new Node);
 
-    ifstream theFile(path);
+    ifstream theFile(filePath);
     string line;
     int lineNumber=1;
     // Line by line go through the model file
@@ -34,7 +34,7 @@ shared_ptr<Node> ModelParser::execute(string path) {
     return document;
 }
 
-void ModelParser::processStatement(string statement, int lineNumber) {
+void DocumentModel::processStatement(string statement, int lineNumber) {
     vector<string>fields;
     string s="";
     bool withInField=false;
@@ -249,7 +249,7 @@ void ModelParser::processStatement(string statement, int lineNumber) {
     }
 }
 
-shared_ptr<Node> ModelParser::findNode(const vector<string> &hierarchy) {
+shared_ptr<Node> DocumentModel::findNode(const vector<string> &hierarchy) {
     shared_ptr<Node>current=document;
     for(string s:hierarchy) {
         unordered_map<string, shared_ptr<Node>>::iterator iterator1=current->subNodes.find(s);
@@ -263,7 +263,7 @@ shared_ptr<Node> ModelParser::findNode(const vector<string> &hierarchy) {
     return current;
 }
 
-shared_ptr<Node> ModelParser::findNode(const vector<string> &hierarchy,shared_ptr<Node>theNode) {
+shared_ptr<Node> DocumentModel::findNode(const vector<string> &hierarchy,shared_ptr<Node>theNode) {
     shared_ptr<Node>current=theNode;
     for(string s:hierarchy) {
         unordered_map<string, shared_ptr<Node>>::iterator iterator1=current->subNodes.find(s);
@@ -278,7 +278,7 @@ shared_ptr<Node> ModelParser::findNode(const vector<string> &hierarchy,shared_pt
 }
 
 
-shared_ptr<Node> ModelParser::createHierarchy(vector<string>&hierarchy) {
+shared_ptr<Node> DocumentModel::createHierarchy(vector<string>&hierarchy) {
     shared_ptr<Node>current=document;
 
     string absoluteId="";
@@ -318,7 +318,7 @@ shared_ptr<Node> ModelParser::createHierarchy(vector<string>&hierarchy) {
     return current;
 }
 
-void ModelParser::convertToJson(Json::Value &jsonOutput, const shared_ptr<Node>&model) {
+void DocumentModel::convertToJson(Json::Value &jsonOutput, const shared_ptr<Node>&model) {
     if(dynamic_pointer_cast<TextNode>(model)!= nullptr) {
         shared_ptr<TextNode> tModel=dynamic_pointer_cast<TextNode>(model);
         jsonOutput["type"]="static_text";
@@ -400,7 +400,7 @@ void ModelParser::convertToJson(Json::Value &jsonOutput, const shared_ptr<Node>&
     }
 }
 
-void ModelParser::isBelow(shared_ptr<Node> a, shared_ptr<Node> b) {
+void DocumentModel::isBelow(shared_ptr<Node> a, shared_ptr<Node> b) {
 
     // Set the rule in node a
     unordered_map<string, unordered_set<string>>::const_iterator got = a->rulesModel.find ("is_below");
@@ -422,7 +422,7 @@ void ModelParser::isBelow(shared_ptr<Node> a, shared_ptr<Node> b) {
 }
 
 
-void ModelParser::isAbove(shared_ptr<Node> a, shared_ptr<Node> b) {
+void DocumentModel::isAbove(shared_ptr<Node> a, shared_ptr<Node> b) {
 
     // Set the rule in node a
     unordered_map<string, unordered_set<string>>::const_iterator got = a->rulesModel.find ("is_above");
@@ -444,7 +444,7 @@ void ModelParser::isAbove(shared_ptr<Node> a, shared_ptr<Node> b) {
 }
 
 
-void ModelParser::isRightTo(shared_ptr<Node> a, shared_ptr<Node> b) {
+void DocumentModel::isRightTo(shared_ptr<Node> a, shared_ptr<Node> b) {
 
     // Set the rule in node a
     unordered_map<string, unordered_set<string>>::const_iterator got = a->rulesModel.find ("is_right_to");
@@ -466,7 +466,7 @@ void ModelParser::isRightTo(shared_ptr<Node> a, shared_ptr<Node> b) {
 }
 
 
-void ModelParser::isLeftTo(shared_ptr<Node> a, shared_ptr<Node> b) {
+void DocumentModel::isLeftTo(shared_ptr<Node> a, shared_ptr<Node> b) {
 
     // Set the rule in node a
     unordered_map<string, unordered_set<string>>::const_iterator got = a->rulesModel.find ("is_left_to");
@@ -488,7 +488,7 @@ void ModelParser::isLeftTo(shared_ptr<Node> a, shared_ptr<Node> b) {
 }
 
 
-//void ModelParser::orderIds(shared_ptr<Node> node, int currentId) {
+//void DocumentModel::orderIds(shared_ptr<Node> node, int currentId) {
 //    node->id=currentId;
 //
 //}

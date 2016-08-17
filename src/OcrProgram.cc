@@ -1,5 +1,5 @@
 #include "OcrProgram.h"
-#include "AccuracyProgram.h"
+#include "OcrEvaluation.h"
 
 #include "regex"
 using namespace std;
@@ -269,7 +269,7 @@ void OcrProgram::runOcrProgram(string path) {
         string plotImagePath=path+"plottedDataComparison/"+imageFileNameLine;
 
         // And run teh accuracy test
-        float newAccuracy=AccuracyProgram(programJsonFilePath,expectedJsonFilePath,inputImagePath,plotImagePath).run();
+        float newAccuracy=OcrEvaluation(programJsonFilePath,expectedJsonFilePath,inputImagePath,plotImagePath).run();
 
         // If the accuracy is zero, there must be something wrong otherwise add it to compute average
         if(newAccuracy!=0) {

@@ -1,12 +1,12 @@
 #include "OcrProgram.h"
-#include "TextualData.h"
+#include "DataTypes/TextualData.h"
 
 
 #ifndef K_1_PARSING2_ACCURACYPROGRAM_H
 #define K_1_PARSING2_ACCURACYPROGRAM_H
 
 
-class AccuracyProgram {
+class OcrEvaluation {
 private:
     /**
      * Contains the complete path of the OCR program output JSON file
@@ -59,7 +59,7 @@ public:
      * @param[in] inputFile must contain the complete path (or relative) of input image on which the OCR was run (for plotting purposes)
      * @param[in] comparisonFile must contain the complete path (or relative) of the comparison file to be generated
      */
-    AccuracyProgram(std::string programOutputFile, std::string expectedOutputFilem, std::string inputFile, std::string comparisonFile);
+    OcrEvaluation(std::string programOutputFile, std::string expectedOutputFilem, std::string inputFile, std::string comparisonFile);
 
     /**
      * This runs the test case (data is already provided in the constructor)

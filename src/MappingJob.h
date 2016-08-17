@@ -1,8 +1,13 @@
+#include "DataTypes/Model/Node.h"
+#include <memory>
+#include <functional>
+#include "opencv2/core/core.hpp"
+#include "opencv2/highgui/highgui.hpp"
+#include "opencv2/imgproc/imgproc.hpp"
 
-#include "Node.h"
 
-#ifndef K_1_PARSING2_MAPPINGJOB_H
-#define K_1_PARSING2_MAPPINGJOB_H
+#ifndef K1_PARSING_MAPPINGJOB_H
+#define K1_PARSING_MAPPINGJOB_H
 
 
 class MappingJob {
@@ -20,4 +25,4 @@ private:
 };
 
 
-#endif //K_1_PARSING2_MAPPINGJOB_H
+#endif //K1_PARSING_MAPPINGJOB_H
