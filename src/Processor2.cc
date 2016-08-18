@@ -5,7 +5,6 @@
 #include "Mapper.h"
 #include "Model/RepeatInputNode.h"
 #include "Model/MappingJob.h"
-
 using namespace std;
 using namespace cv;
 

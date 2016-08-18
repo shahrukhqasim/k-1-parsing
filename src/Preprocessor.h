@@ -28,7 +28,7 @@ public:
      * @return        Pointer to the newly created Pix data structure.
      *
      */
-    static void conCompFast(cv::Mat &img, std::vector<cv::Rect> &rboxes, float max_x = 1.0, float max_y = 1.0,
+    static void conCompFast(const cv::Mat &img, std::vector<cv::Rect> &rboxes, float max_x = 1.0, float max_y = 1.0,
                             float min_area = 0, int type = 8);
 
 

@@ -23,12 +23,58 @@ void OcrProgram::loadBinaryImage(cv::Mat &image, string fileName, int mode) {
 }
 
 
+vector<OcrResult> OcrProgram::PerformOCR(std::vector<unsigned char> data)
+{
+	auto image2 = imdecode(data, 0);
+
+	cv::Mat binaryImage;
+	Preprocessor::binarizeShafait(image2, binaryImage, 100, 0.5);
+	//HelperMethods::outputImage(binaryImage, "binarizeShafait.png");
+
+	std::vector<cv::Rect> rboxes;
+
+	doSegmentation(binaryImage, rboxes);
+
+	auto cleanedImage = cleanImage(binaryImage);
+
+	// Write cleaned image to file	
+	//HelperMethods::outputImage(cleanedImage, "cleaned.png");
+	
+
+	// First run OCR on the segments
+	TesseractFinder finder;
+	finder.run((uchar*)cleanedImage.data, cleanedImage.size().width, cleanedImage.size().height, cleanedImage.channels(), cleanedImage.step1());
+
+	auto segmentedData = finder.getRecognizedData();
+
+	// Then remove the segments
+	auto imageWithoutSegments = RemoveSegments(cleanedImage, rboxes);
+	//HelperMethods::outputImage(imageWithoutSegments, "withoutsegments.png");
+
+	TesseractFinder finder2(string(), rboxes);
+	
+
+	finder2.run((uchar*)imageWithoutSegments.data, imageWithoutSegments.size().width, imageWithoutSegments.size().height, imageWithoutSegments.channels(), imageWithoutSegments.step1());
+	auto unsegmentedData = finder2.getRecognizedData();
+	
+	std::vector<OcrResult> results;
+	results.reserve(segmentedData.size() + unsegmentedData.size()); // preallocate memory
+	results.insert(results.end(), segmentedData.begin(), segmentedData.end());
+	results.insert(results.end(), unsegmentedData.begin(), unsegmentedData.end());
+
+	return CleanResults(results);
+
+}
+
+
+
 void OcrProgram::run() {
     // Load the binary image from the path provided
     loadBinaryImage(originalImage, inputFolder + "/" + inputFileName, 0);
 
-    // Then compute its segmentation
-    doSegmentation();
+	
+	// Then compute its segmentation
+    doSegmentation(originalImage, segments);
 
     // Clean the image of any rulings and write it to disk
     cleanImageAndWriteToDisk();
@@ -43,34 +89,90 @@ void OcrProgram::run() {
     outputResult();
 }
 
-void OcrProgram::doSegmentation() {
+void OcrProgram::doSegmentation(const cv::Mat& original, std::vector<cv::Rect> &rboxes) {
     // Clone the input image so we can safely make changes
-    Mat image=originalImage.clone();
+    Mat image= original.clone();
 
     // Invert black and white colors
     Preprocessor::invertImage(image);
 
     // Compute big black connnected components and store the result in segments
     // These have to be the rulings
-    Preprocessor::conCompFast(image,segments,0.5,0.5,1024,4);
+    Preprocessor::conCompFast(image, rboxes,0.5,0.5,1024,4);
 }
 
+
+cv::Mat OcrProgram::RemoveSegments(const cv::Mat& image, std::vector<cv::Rect>& segmentsToRemove)
+{
+	
+	Mat imageWithoutSegments = image.clone();
+	Scalar color(255, 255, 255);
+	for (int i = 0; i < segmentsToRemove.size(); i++)
+	{
+		Rect box = segmentsToRemove[i];
+		rectangle(imageWithoutSegments, box, color, CV_FILLED, 8, 0);
+	}
+	return imageWithoutSegments;
+}
+
+
+vector<OcrResult> OcrProgram::CleanResults(std::vector<OcrResult>& results)
+{
+	// This will segment any missing sentences and remove leading and training white
+	// spaces using regular expressions. It will also remove any leading or trailing "\n"
+	// Note that "\n" is not a whitespace character but rather a texual thing
+	// that tesseract ouputs occasionally
+	vector<OcrResult> data3;
+	// Remove leading and trailing whitespaces
+	for (OcrResult& result : results)
+	{
+		result.text = regex_replace(result.text, regex("(^\\s+)|(\\s|\\\\n)+$"), "");
+		vector<string>elements = HelperMethods::regexSplit(result.text);
+		if (elements.size()>1)
+		{
+			
+			vector<Rect> subRectangles;
+			double percentage = 0;
+			double single = 1.0*(result.p2.x - result.p1.x) / result.text.length();
+			double startingX = result.p1.x;
+			for (int i = 0;i<elements.size();i++)
+			{
+				OcrResult subElement;
+				subElement.text = elements[i];
+				subElement.p1.y = result.p1.y;
+				subElement.p2.y = result.p2.y;
+
+				subElement.p1.x = startingX;
+				startingX += single*elements[i].length();
+				subElement.p2.x = startingX;
+				startingX += single;
+
+				data3.push_back(subElement);
+			}
+		}
+		else
+		{
+			data3.push_back(result);
+		}
+	}
+	return data3;
+}
+
+
+
 void OcrProgram::runOcr() {
-    // First run OCR on the segments
-    TesseractFinder finder1(outputFolder+"/"+cleanedImageFileName);
-    finder1.run();
+   
+	// First run OCR on the segments
+	TesseractFinder finder1(outputFolder + "/" + cleanedImageFileName);
+	finder1.run();
 
-    // Then remove the segments
-    Mat imageWithoutSegments=cleanedImage.clone();
-    Scalar color(255, 255, 255);
-    for (int i = 0; i < segments.size(); i++) {
-        Rect box = segments[i];
-        rectangle(imageWithoutSegments, Point(box.x, box.y), Point(box.x + box.width, box.y + box.height), color, CV_FILLED, 8,0);
-    }
+	
+	// Then remove the segments
+	Mat imageWithoutSegments = RemoveSegments(cleanedImage, segments);		
 
-    // and output to a file
-    string withoutSegmentsImageFileName=HelperMethods::removeFileExtension(inputFileName)+"_withoutSegments.png";
-    HelperMethods::outputImage(imageWithoutSegments,outputFolder+"/"+withoutSegmentsImageFileName);
+	// and output to a file
+	string withoutSegmentsImageFileName = HelperMethods::removeFileExtension(inputFileName) + "_withoutSegments.png";
+	HelperMethods::outputImage(imageWithoutSegments, outputFolder + "/" + withoutSegmentsImageFileName);   
 
     // Run OCR on parts which weren't part of any of segments
     TesseractFinder finder2(outputFolder+"/"+withoutSegmentsImageFileName,segments);
@@ -82,74 +184,54 @@ void OcrProgram::runOcr() {
     vector<OcrResult>data2=finder2.getRecognizedData();
     data.insert(data.end(), data2.begin(), data2.end());
 
-
-    // This will segment any missing sentences and remove leading and training white
-    // spaces using regular expressions. It will also remove any leading or trailing "\n"
-    // Note that "\n" is not a whitespace character but rather a texual thing
-    // that tesseract ouputs occasionally
-    vector<OcrResult> data3;
-    // Remove leading and trailing whitespaces
-    for(OcrResult& result : data) {
-        result.text = regex_replace(result.text, regex("(^\\s+)|(\\s|\\\\n)+$"), "");
-        vector<string>elements=HelperMethods::regexSplit(result.text);
-        if(elements.size()>1) {
-//            cout<<Rect(result.p1,result.p2)<<endl;
-            Mat subImage=cleanedImage(Rect(result.p1,result.p2)).clone();
-            vector<Rect> subRectangles;
-            double percentage=0;
-            double single=1.0*(result.p2.x-result.p1.x)/result.text.length();
-            double startingX=result.p1.x;
-            for(int i=0;i<elements.size();i++) {
-                OcrResult subElement;
-                subElement.text=elements[i];
-                subElement.p1.y=result.p1.y;
-                subElement.p2.y=result.p2.y;
-
-                subElement.p1.x=startingX;
-                startingX+=single*elements[i].length();
-                subElement.p2.x=startingX;
-                startingX+=single;
-
-                data3.push_back(subElement);
-            }
-        }
-        else {
-            data3.push_back(result);
-        }
-    }
-    data=data3;
+	data = CleanResults(data);
+  
+    
 }
 
+
+cv::Mat OcrProgram::cleanImage(cv::Mat &img)
+{
+	// Compute all black connected components
+	vector<Rect>boxes;
+	Preprocessor::conCompFast(img, boxes, 1, 1, 0, 8);
+
+	//    cleanedImage=originalImage.clone();
+
+	// Make a new image matrix in which textual connected components will be copied
+	auto cleanedImage = Mat(img.rows, img.cols, img.type());
+
+	// For white color
+	const Scalar whiteColor(255, 255, 255);
+
+	// Fill the new image with white
+	rectangle(cleanedImage, Rect(0, 0, cleanedImage.cols, cleanedImage.rows), whiteColor, CV_FILLED, 8, 0);
+
+	// Run through all the connected components
+	for (int i = 0;i<boxes.size();i++)
+	{
+		// Get the current component
+		Rect box = boxes[i];
+
+		// If the connected component is small enough to be a textual data, copy it to the cleaned image
+		if (!(box.width>10 * box.height || box.width * 10>img.cols || box.height * 10>img.rows))
+		{
+			Mat maskImage(img.rows, img.cols, img.type());
+			maskImage.setTo(0);
+			rectangle(maskImage, box, 255, CV_FILLED, 8, 0);
+			img.copyTo(cleanedImage, maskImage);
+		}
+	}
+	return cleanedImage;
+
+}
+
+
+
 void OcrProgram::cleanImageAndWriteToDisk() {
-    // Compute all black connected components
-    vector<Rect>boxes;
-    Preprocessor::conCompFast(originalImage,boxes,1,1,0,8);
-
-//    cleanedImage=originalImage.clone();
-
-    // Make a new image matrix in which textual connected components will be copied
-    cleanedImage=Mat(originalImage.rows,originalImage.cols, originalImage.type());
-
-    // For white color
-    const Scalar whiteColor(255,255,255);
-
-    // Fill the new image with white
-    rectangle(cleanedImage,Rect(0,0,cleanedImage.cols,cleanedImage.rows),whiteColor,CV_FILLED,8,0);
-
-    // Run through all the connected components
-    for(int i=0;i<boxes.size();i++) {
-        // Get the current component
-        Rect box=boxes[i];
-
-        // If the connected component is small enough to be a textual data, copy it to the cleaned image
-        if(!(box.width>10*box.height || box.width*10>originalImage.cols||box.height*10>originalImage.rows)) {
-            Mat maskImage(originalImage.rows,originalImage.cols,originalImage.type());
-            maskImage.setTo(0);
-            rectangle(maskImage,box,255,CV_FILLED,8,0);
-            originalImage.copyTo(cleanedImage,maskImage);
-        }
-    }
-
+    
+	cleanedImage = cleanImage(originalImage);
+    
     // Write cleaned image to file
     cleanedImageFileName=HelperMethods::removeFileExtension(inputFileName)+"_cleaned.png";
     HelperMethods::outputImage(cleanedImage,outputFolder+"/"+cleanedImageFileName);

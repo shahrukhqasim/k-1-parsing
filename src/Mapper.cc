@@ -82,7 +82,8 @@ pair<string, Rect> Mapper::findTextWithRules(shared_ptr<Node> node) {
             if (!regionDefined) {
                 regionDefined = true;
                 regionFound = currentData.getRect();
-            } else {
+            }
+            else {
                 regionFound = regionFound | currentData.getRect();
             }
 //            cout << " Rule matched" << endl;
@@ -100,7 +101,8 @@ void Mapper::recursiveCallInput(shared_ptr<Node> node) {
 //    bool regionAssigned;
     if (dynamic_pointer_cast<TextNode>(node) != nullptr) {
 
-    } else if (dynamic_pointer_cast<RepeatInputNode>(node) != nullptr) {
+    }
+    else if (dynamic_pointer_cast<RepeatInputNode>(node) != nullptr) {
         shared_ptr<RepeatInputNode> rModel = dynamic_pointer_cast<RepeatInputNode>(node);
 
 //        cout << "Repeat here" << endl;
@@ -223,7 +225,8 @@ void Mapper::recursiveCallInput(shared_ptr<Node> node) {
                 if (!regionXDef) {
                     regionX = alpha.first.getRect();
                     regionXDef = true;
-                } else
+                }
+                else
                     regionX = alpha.first.getRect() | regionX;
             }
         });
@@ -251,7 +254,8 @@ void Mapper::recursiveCallInput(shared_ptr<Node> node) {
         rModel->region = regionX;
 
 
-    } else if (dynamic_pointer_cast<InputNode>(node) != nullptr) {
+    }
+    else if (dynamic_pointer_cast<InputNode>(node) != nullptr) {
 //        cout << "Running on: " << node->id << endl;
         shared_ptr<InputNode> iModel = dynamic_pointer_cast<InputNode>(node);
         if (iModel->inputType == InputNode::INPUT_ALPHA_NUMERIC || iModel->inputType == InputNode::INPUT_NUMERIC) {
@@ -263,7 +267,8 @@ void Mapper::recursiveCallInput(shared_ptr<Node> node) {
             iModel->regionDefined = oup.first.size() == 0 ? false : true;
 //            cout << iModel->id << ": " << iModel->data << endl;
         }
-    } else if (dynamic_pointer_cast<TableNode>(node) != nullptr) {
+    }
+    else if (dynamic_pointer_cast<TableNode>(node) != nullptr) {
         shared_ptr<TableNode> tModel = dynamic_pointer_cast<TableNode>(node);
 
         int left = -1;

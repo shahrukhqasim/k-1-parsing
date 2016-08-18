@@ -102,10 +102,15 @@ class OcrProgram {
 	 */
     void loadBinaryImage(cv::Mat &image, std::string fileName, int mode);
 
+	cv::Mat loadImage(std::string fileName, int mode);
+
 	/**
 	 * This function does segmentation and stores the result in segments member field
 	 */
-    void doSegmentation();
+    
+	static void doSegmentation(const cv::Mat& original, std::vector<cv::Rect> &rboxes);
+
+	static cv::Mat RemoveSegments(const cv::Mat& image, std::vector<cv::Rect>& segmentsToRemove);
 
 	/**
 	 * This function cleans the image from rulings and store the resultant data to disk
@@ -135,12 +140,18 @@ class OcrProgram {
 //    void oneToOneMatch();
 
 
+	static std::vector<OcrResult> CleanResults(std::vector<OcrResult>& results);
+
+	static cv::Mat cleanImage(cv::Mat &img);
+
 	/**
 	 * This std::vector contains segments of the file using simple segmentation algorithms
 	 */
     std::vector<cv::Rect>segments;
 public:
     void run();
+	
+	static std::vector<OcrResult> PerformOCR(std::vector<unsigned char> data);
 
 	/**
 	 * Constructor for the OCR job

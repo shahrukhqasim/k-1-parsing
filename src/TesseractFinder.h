@@ -48,7 +48,12 @@ private:
     /**
      * Run OCR
      */
-    void recognizeText();
+    void recognizeText(Pix* image);
+
+	
+
+	void recognizeText(const unsigned char* imagedata, int width, int height,
+		int bytes_per_pixel, int bytes_per_line);
 
     std::vector<OcrResult> data;
 
@@ -62,6 +67,9 @@ private:
     std::vector<cv::Rect>boxes;
 
 public:
+
+
+	TesseractFinder();
     /**
      * If it is an unsegmented image
      *
@@ -83,6 +91,9 @@ public:
      * Run OCR
      */
     void run();
+
+	void run(const unsigned char* imagedata, int width, int height,
+		int bytes_per_pixel, int bytes_per_line);
 
     /**
      * To retrieve results
