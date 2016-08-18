@@ -1,0 +1,2306 @@
+{
+	"id" : "1",
+	"sub_nodes" : 
+	[
+		{
+			"id" : "TABLE1",
+			"sub_nodes" : 
+			[
+				{
+					"id" : "TABLE1:CAPITAL_ENDING_INPUT",
+					"input_type" : "numeric",
+					"type" : "input",
+					"value" : "%"
+				},
+				{
+					"id" : "TABLE1:PROFIT",
+					"text" : "Profit",
+					"type" : "static_text"
+				},
+				{
+					"id" : "TABLE1:LOSS_BEGINNING_INPUT",
+					"input_type" : "numeric",
+					"type" : "input",
+					"value" : "1.023300"
+				},
+				{
+					"id" : "TABLE1:LOSS",
+					"text" : "Loss",
+					"type" : "static_text"
+				},
+				{
+					"id" : "TABLE1:BEGINNING",
+					"text" : "Beginning",
+					"type" : "static_text"
+				},
+				{
+					"id" : "TABLE1:PROFIT_BEGINNING_INPUT",
+					"input_type" : "numeric",
+					"type" : "input",
+					"value" : "1.023300"
+				},
+				{
+					"id" : "TABLE1:CAPITAL",
+					"text" : "Capital",
+					"type" : "static_text"
+				},
+				{
+					"id" : "TABLE1:ENDING",
+					"text" : "Ending",
+					"type" : "static_text"
+				},
+				{
+					"id" : "TABLE1:PROFIT_ENDING_INPUT",
+					"input_type" : "numeric",
+					"type" : "input",
+					"value" : "%"
+				},
+				{
+					"id" : "TABLE1:CAPITAL_BEGINNING_INPUT",
+					"input_type" : "numeric",
+					"type" : "input",
+					"value" : "1.023300"
+				},
+				{
+					"id" : "TABLE1:LOSS_ENDING_INPUT",
+					"input_type" : "numeric",
+					"type" : "input",
+					"value" : "%"
+				}
+			]
+		},
+		{
+			"id" : "DOCUMENT",
+			"sub_nodes" : 
+			[
+				{
+					"id" : "DOCUMENT:PART_3",
+					"sub_nodes" : 
+					[
+						{
+							"id" : "DOCUMENT:PART_3:SEE_ATTACHED",
+							"is_below" : "DOCUMENT:PART_3:GROUP_20:OTHER_INFORMATION:INPUT_CODE,DOCUMENT:PART_3:GROUP_20:OTHER_INFORMATION:INPUT,DOCUMENT:PART_3:GROUP_14:SELF_EMPLOYMENT:INPUT_CODE,DOCUMENT:PART_3:GROUP_14:SELF_EMPLOYMENT:INPUT",
+							"text" : "See attached statement for additional information",
+							"textAssigned" : "*See attached statement for additional information.",
+							"type" : "static_text"
+						},
+						{
+							"id" : "DOCUMENT:PART_3:GROUP_20",
+							"sub_nodes" : 
+							[
+								{
+									"id" : "DOCUMENT:PART_3:GROUP_20:OTHER_INFORMATION",
+									"is_above" : "DOCUMENT:PART_3:GROUP_20:OTHER_INFORMATION:INPUT_CODE,DOCUMENT:PART_3:GROUP_20:OTHER_INFORMATION:INPUT",
+									"is_below" : "DOCUMENT:PART_3:GROUP_19:DISTRIBUTIONS:INPUT_CODE,DOCUMENT:PART_3:GROUP_19:DISTRIBUTIONS:INPUT",
+									"is_right_to" : "DOCUMENT:PART_3:GROUP_20:OTHER_INFORMATION:INPUT_CODE",
+									"sub_nodes" : 
+									[
+										{
+											"id" : "DOCUMENT:PART_3:GROUP_20:OTHER_INFORMATION:INPUT_CODE",
+											"input_type" : "alpha_numeric",
+											"is_above" : "DOCUMENT:PART_3:SEE_ATTACHED",
+											"is_below" : "DOCUMENT:PART_3:GROUP_20:OTHER_INFORMATION",
+											"is_left_to" : "DOCUMENT:PART_3:GROUP_20:OTHER_INFORMATION",
+											"is_right_to" : "DOCUMENT:PART_3:GROUP_12:SECTION_179_DEDUCTION",
+											"repeat_input_sub_nodes" : 
+											{
+												"(0,0)" : 
+												{
+													"id" : "DOCUMENT:PART_3:GROUP_20:OTHER_INFORMATION:INPUT_CODE:(0,0)",
+													"input_type" : "alpha_numeric",
+													"type" : "input",
+													"value" : "A"
+												},
+												"(0,1)" : 
+												{
+													"id" : "DOCUMENT:PART_3:GROUP_20:OTHER_INFORMATION:INPUT_CODE:(0,1)",
+													"input_type" : "alpha_numeric",
+													"type" : "input",
+													"value" : "B"
+												}
+											},
+											"type" : "input",
+											"value" : "A|B"
+										},
+										{
+											"id" : "DOCUMENT:PART_3:GROUP_20:OTHER_INFORMATION:INPUT",
+											"input_type" : "alpha_numeric",
+											"is_above" : "DOCUMENT:PART_3:SEE_ATTACHED",
+											"is_below" : "DOCUMENT:PART_3:GROUP_20:OTHER_INFORMATION",
+											"is_right_to" : "DOCUMENT:PART_3:GROUP_20:20",
+											"repeat_input_sub_nodes" : 
+											{
+												"(0,0)" : 
+												{
+													"id" : "DOCUMENT:PART_3:GROUP_20:OTHER_INFORMATION:INPUT:(0,0)",
+													"input_type" : "alpha_numeric",
+													"type" : "input",
+													"value" : "6 , 148 ."
+												},
+												"(0,1)" : 
+												{
+													"id" : "DOCUMENT:PART_3:GROUP_20:OTHER_INFORMATION:INPUT:(0,1)",
+													"input_type" : "alpha_numeric",
+													"type" : "input",
+													"value" : "3,367."
+												}
+											},
+											"type" : "input",
+											"value" : "6 , 148 .|3,367."
+										}
+									],
+									"text" : "Other Information",
+									"textAssigned" : "Other information",
+									"type" : "static_text"
+								},
+								{
+									"id" : "DOCUMENT:PART_3:GROUP_20:20",
+									"is_left_to" : "DOCUMENT:PART_3:GROUP_20:OTHER_INFORMATION:INPUT",
+									"is_right_to" : "DOCUMENT:PART_3:GROUP_14:SELF_EMPLOYMENT:INPUT",
+									"text" : "20",
+									"textAssigned" : "20",
+									"type" : "static_text"
+								}
+							]
+						},
+						{
+							"id" : "DOCUMENT:PART_3:GROUP_18",
+							"sub_nodes" : 
+							[
+								{
+									"id" : "DOCUMENT:PART_3:GROUP_18:TAX_EXEMPT",
+									"is_above" : "DOCUMENT:PART_3:GROUP_18:TAX_EXEMPT:INPUT_CODE,DOCUMENT:PART_3:GROUP_18:TAX_EXEMPT:INPUT",
+									"is_below" : "DOCUMENT:PART_3:GROUP_17:ALTERNATIVE_MINIMUM:INPUT_CODE,DOCUMENT:PART_3:GROUP_17:ALTERNATIVE_MINIMUM:INPUT",
+									"is_right_to" : "DOCUMENT:PART_3:GROUP_18:TAX_EXEMPT:INPUT_CODE",
+									"sub_nodes" : 
+									[
+										{
+											"id" : "DOCUMENT:PART_3:GROUP_18:TAX_EXEMPT:INPUT_CODE",
+											"input_type" : "alpha_numeric",
+											"is_above" : "DOCUMENT:PART_3:GROUP_19:DISTRIBUTIONS",
+											"is_below" : "DOCUMENT:PART_3:GROUP_18:TAX_EXEMPT",
+											"is_left_to" : "DOCUMENT:PART_3:GROUP_18:TAX_EXEMPT",
+											"is_right_to" : "DOCUMENT:PART_3:GROUP_10:NET_SECTION",
+											"repeat_input_sub_nodes" : null,
+											"type" : "input",
+											"value" : ""
+										},
+										{
+											"id" : "DOCUMENT:PART_3:GROUP_18:TAX_EXEMPT:INPUT",
+											"input_type" : "alpha_numeric",
+											"is_above" : "DOCUMENT:PART_3:GROUP_19:DISTRIBUTIONS",
+											"is_below" : "DOCUMENT:PART_3:GROUP_18:TAX_EXEMPT",
+											"is_right_to" : "DOCUMENT:PART_3:GROUP_18:18",
+											"repeat_input_sub_nodes" : null,
+											"type" : "input",
+											"value" : ""
+										}
+									],
+									"text" : "Tax-exempt income and",
+									"textAssigned" : "Tax-exempt income and",
+									"type" : "static_text"
+								},
+								{
+									"id" : "DOCUMENT:PART_3:GROUP_18:NON_DEDUCT",
+									"text" : "nondeductible expenses",
+									"textAssigned" : "nondeductible expenses",
+									"type" : "static_text"
+								},
+								{
+									"id" : "DOCUMENT:PART_3:GROUP_18:18",
+									"is_left_to" : "DOCUMENT:PART_3:GROUP_18:TAX_EXEMPT:INPUT",
+									"is_right_to" : "DOCUMENT:PART_3:GROUP_11:OTHER_INCOME:INPUT,DOCUMENT:PART_3:GROUP_10:NET_SECTION:INPUT",
+									"text" : "18",
+									"textAssigned" : "18",
+									"type" : "static_text"
+								}
+							]
+						},
+						{
+							"id" : "DOCUMENT:PART_3:GROUP_7",
+							"sub_nodes" : 
+							[
+								{
+									"id" : "DOCUMENT:PART_3:GROUP_7:ROYALTIES",
+									"is_above" : "DOCUMENT:PART_3:GROUP_7:ROYALTIES:INPUT_CODE,DOCUMENT:PART_3:GROUP_7:ROYALTIES:INPUT",
+									"is_below" : "DOCUMENT:PART_3:GROUP_6B:QUALIFIED_DIVIDENTS:INPUT_CODE,DOCUMENT:PART_3:GROUP_6B:QUALIFIED_DIVIDENTS:INPUT",
+									"is_right_to" : "DOCUMENT:PART_3:GROUP_7:ROYALTIES:INPUT_CODE",
+									"sub_nodes" : 
+									[
+										{
+											"id" : "DOCUMENT:PART_3:GROUP_7:ROYALTIES:INPUT_CODE",
+											"input_type" : "alpha_numeric",
+											"is_above" : "DOCUMENT:PART_3:GROUP_8:NET_SHORTTERM_CAPITAL",
+											"is_below" : "DOCUMENT:PART_3:GROUP_7:ROYALTIES",
+											"is_left_to" : "DOCUMENT:PART_3:GROUP_7:ROYALTIES",
+											"repeat_input_sub_nodes" : null,
+											"type" : "input",
+											"value" : ""
+										},
+										{
+											"id" : "DOCUMENT:PART_3:GROUP_7:ROYALTIES:INPUT",
+											"input_type" : "numeric",
+											"is_above" : "DOCUMENT:PART_3:GROUP_8:NET_SHORTTERM_CAPITAL",
+											"is_below" : "DOCUMENT:PART_3:GROUP_7:ROYALTIES",
+											"is_left_to" : "DOCUMENT:PART_3:GROUP_16:16",
+											"is_right_to" : "DOCUMENT:PART_3:GROUP_7:7",
+											"repeat_input_sub_nodes" : null,
+											"type" : "input",
+											"value" : ""
+										}
+									],
+									"text" : "Royalties",
+									"textAssigned" : "Royalties",
+									"type" : "static_text"
+								},
+								{
+									"id" : "DOCUMENT:PART_3:GROUP_7:7",
+									"is_left_to" : "DOCUMENT:PART_3:GROUP_7:ROYALTIES:INPUT",
+									"text" : "7",
+									"textAssigned" : "7",
+									"type" : "static_text"
+								}
+							]
+						},
+						{
+							"id" : "DOCUMENT:PART_3:DEDUCTION_CREDITS_OTHERS",
+							"text" : "Deductions, Credits, and Other Items",
+							"textAssigned" : "Deductions, Credits and Other Items",
+							"type" : "static_text"
+						},
+						{
+							"id" : "DOCUMENT:PART_3:GROUP_6A",
+							"sub_nodes" : 
+							[
+								{
+									"id" : "DOCUMENT:PART_3:GROUP_6A:ORDINARY_DIVIDENTS",
+									"is_above" : "DOCUMENT:PART_3:GROUP_6A:ORDINARY_DIVIDENTS:INPUT_CODE,DOCUMENT:PART_3:GROUP_6A:ORDINARY_DIVIDENTS:INPUT",
+									"is_below" : "DOCUMENT:PART_3:GROUP_5:INTEREST_INCOME:INPUT_CODE,DOCUMENT:PART_3:GROUP_5:INTEREST_INCOME:INPUT",
+									"is_right_to" : "DOCUMENT:PART_3:GROUP_6A:ORDINARY_DIVIDENTS:INPUT_CODE",
+									"sub_nodes" : 
+									[
+										{
+											"id" : "DOCUMENT:PART_3:GROUP_6A:ORDINARY_DIVIDENTS:INPUT_CODE",
+											"input_type" : "alpha_numeric",
+											"is_above" : "DOCUMENT:PART_3:GROUP_6B:QUALIFIED_DIVIDENTS",
+											"is_below" : "DOCUMENT:PART_3:GROUP_6A:ORDINARY_DIVIDENTS",
+											"is_left_to" : "DOCUMENT:PART_3:GROUP_6A:ORDINARY_DIVIDENTS",
+											"repeat_input_sub_nodes" : null,
+											"type" : "input",
+											"value" : ""
+										},
+										{
+											"id" : "DOCUMENT:PART_3:GROUP_6A:ORDINARY_DIVIDENTS:INPUT",
+											"input_type" : "numeric",
+											"is_above" : "DOCUMENT:PART_3:GROUP_6B:QUALIFIED_DIVIDENTS",
+											"is_below" : "DOCUMENT:PART_3:GROUP_6A:ORDINARY_DIVIDENTS",
+											"is_left_to" : "DOCUMENT:PART_3:GROUP_16:16",
+											"is_right_to" : "DOCUMENT:PART_3:GROUP_6A:6A",
+											"repeat_input_sub_nodes" : null,
+											"type" : "input",
+											"value" : ""
+										}
+									],
+									"text" : "Ordinary dividends",
+									"textAssigned" : "Ordinary dividends",
+									"type" : "static_text"
+								},
+								{
+									"id" : "DOCUMENT:PART_3:GROUP_6A:6A",
+									"is_left_to" : "DOCUMENT:PART_3:GROUP_6A:ORDINARY_DIVIDENTS:INPUT",
+									"text" : "6a",
+									"textAssigned" : "6a",
+									"type" : "static_text"
+								}
+							]
+						},
+						{
+							"id" : "DOCUMENT:PART_3:GROUP_19",
+							"sub_nodes" : 
+							[
+								{
+									"id" : "DOCUMENT:PART_3:GROUP_19:DISTRIBUTIONS",
+									"is_above" : "DOCUMENT:PART_3:GROUP_19:DISTRIBUTIONS:INPUT_CODE,DOCUMENT:PART_3:GROUP_19:DISTRIBUTIONS:INPUT",
+									"is_below" : "DOCUMENT:PART_3:GROUP_18:TAX_EXEMPT:INPUT_CODE,DOCUMENT:PART_3:GROUP_18:TAX_EXEMPT:INPUT",
+									"is_right_to" : "DOCUMENT:PART_3:GROUP_19:DISTRIBUTIONS:INPUT_CODE",
+									"sub_nodes" : 
+									[
+										{
+											"id" : "DOCUMENT:PART_3:GROUP_19:DISTRIBUTIONS:INPUT_CODE",
+											"input_type" : "alpha_numeric",
+											"is_above" : "DOCUMENT:PART_3:GROUP_20:OTHER_INFORMATION",
+											"is_below" : "DOCUMENT:PART_3:GROUP_19:DISTRIBUTIONS",
+											"is_left_to" : "DOCUMENT:PART_3:GROUP_19:DISTRIBUTIONS",
+											"is_right_to" : "DOCUMENT:PART_3:GROUP_12:SECTION_179_DEDUCTION",
+											"repeat_input_sub_nodes" : 
+											{
+												"(0,0)" : 
+												{
+													"id" : "DOCUMENT:PART_3:GROUP_19:DISTRIBUTIONS:INPUT_CODE:(0,0)",
+													"input_type" : "alpha_numeric",
+													"type" : "input",
+													"value" : "C"
+												}
+											},
+											"type" : "input",
+											"value" : "C"
+										},
+										{
+											"id" : "DOCUMENT:PART_3:GROUP_19:DISTRIBUTIONS:INPUT",
+											"input_type" : "alpha_numeric",
+											"is_above" : "DOCUMENT:PART_3:GROUP_20:OTHER_INFORMATION",
+											"is_below" : "DOCUMENT:PART_3:GROUP_19:DISTRIBUTIONS",
+											"is_right_to" : "DOCUMENT:PART_3:GROUP_19:19",
+											"repeat_input_sub_nodes" : 
+											{
+												"(0,0)" : 
+												{
+													"id" : "DOCUMENT:PART_3:GROUP_19:DISTRIBUTIONS:INPUT:(0,0)",
+													"input_type" : "alpha_numeric",
+													"type" : "input",
+													"value" : "85 , 468 ."
+												}
+											},
+											"type" : "input",
+											"value" : "85 , 468 ."
+										}
+									],
+									"text" : "Distributions",
+									"textAssigned" : "Distributions",
+									"type" : "static_text"
+								},
+								{
+									"id" : "DOCUMENT:PART_3:GROUP_19:19",
+									"is_left_to" : "DOCUMENT:PART_3:GROUP_19:DISTRIBUTIONS:INPUT",
+									"is_right_to" : "DOCUMENT:PART_3:GROUP_13:OTHER_DEDUCTIONS:INPUT,DOCUMENT:PART_3:GROUP_12:SECTION_179_DEDUCTION:INPUT",
+									"text" : "19",
+									"textAssigned" : "19",
+									"type" : "static_text"
+								}
+							]
+						},
+						{
+							"id" : "DOCUMENT:PART_3:GROUP_6B",
+							"sub_nodes" : 
+							[
+								{
+									"id" : "DOCUMENT:PART_3:GROUP_6B:QUALIFIED_DIVIDENTS",
+									"is_above" : "DOCUMENT:PART_3:GROUP_6B:QUALIFIED_DIVIDENTS:INPUT_CODE,DOCUMENT:PART_3:GROUP_6B:QUALIFIED_DIVIDENTS:INPUT",
+									"is_below" : "DOCUMENT:PART_3:GROUP_6A:ORDINARY_DIVIDENTS:INPUT_CODE,DOCUMENT:PART_3:GROUP_6A:ORDINARY_DIVIDENTS:INPUT",
+									"is_right_to" : "DOCUMENT:PART_3:GROUP_6B:QUALIFIED_DIVIDENTS:INPUT_CODE",
+									"sub_nodes" : 
+									[
+										{
+											"id" : "DOCUMENT:PART_3:GROUP_6B:QUALIFIED_DIVIDENTS:INPUT_CODE",
+											"input_type" : "alpha_numeric",
+											"is_above" : "DOCUMENT:PART_3:GROUP_7:ROYALTIES",
+											"is_below" : "DOCUMENT:PART_3:GROUP_6B:QUALIFIED_DIVIDENTS",
+											"is_left_to" : "DOCUMENT:PART_3:GROUP_6B:QUALIFIED_DIVIDENTS",
+											"repeat_input_sub_nodes" : null,
+											"type" : "input",
+											"value" : ""
+										},
+										{
+											"id" : "DOCUMENT:PART_3:GROUP_6B:QUALIFIED_DIVIDENTS:INPUT",
+											"input_type" : "numeric",
+											"is_above" : "DOCUMENT:PART_3:GROUP_7:ROYALTIES",
+											"is_below" : "DOCUMENT:PART_3:GROUP_6B:QUALIFIED_DIVIDENTS",
+											"is_left_to" : "DOCUMENT:PART_3:GROUP_16:16",
+											"is_right_to" : "DOCUMENT:PART_3:GROUP_6B:6B",
+											"repeat_input_sub_nodes" : 
+											{
+												"(0,0)" : 
+												{
+													"id" : "DOCUMENT:PART_3:GROUP_6B:QUALIFIED_DIVIDENTS:INPUT:(0,0)",
+													"input_type" : "alpha_numeric",
+													"type" : "input",
+													"value" : "8."
+												}
+											},
+											"type" : "input",
+											"value" : "8."
+										}
+									],
+									"text" : "Qualified dividends",
+									"textAssigned" : "Qualified dividends",
+									"type" : "static_text"
+								},
+								{
+									"id" : "DOCUMENT:PART_3:GROUP_6B:6B",
+									"is_left_to" : "DOCUMENT:PART_3:GROUP_6B:QUALIFIED_DIVIDENTS:INPUT",
+									"text" : "6b",
+									"textAssigned" : "6b",
+									"type" : "static_text"
+								}
+							]
+						},
+						{
+							"id" : "DOCUMENT:PART_3:GROUP_13",
+							"sub_nodes" : 
+							[
+								{
+									"id" : "DOCUMENT:PART_3:GROUP_13:OTHER_DEDUCTIONS",
+									"is_above" : "DOCUMENT:PART_3:GROUP_13:OTHER_DEDUCTIONS:INPUT_CODE,DOCUMENT:PART_3:GROUP_13:OTHER_DEDUCTIONS:INPUT",
+									"is_below" : "DOCUMENT:PART_3:GROUP_12:SECTION_179_DEDUCTION:INPUT_CODE,DOCUMENT:PART_3:GROUP_12:SECTION_179_DEDUCTION:INPUT",
+									"is_right_to" : "DOCUMENT:PART_3:GROUP_13:OTHER_DEDUCTIONS:INPUT_CODE",
+									"sub_nodes" : 
+									[
+										{
+											"id" : "DOCUMENT:PART_3:GROUP_13:OTHER_DEDUCTIONS:INPUT_CODE",
+											"input_type" : "alpha_numeric",
+											"is_above" : "DOCUMENT:PART_3:GROUP_14:SELF_EMPLOYMENT",
+											"is_below" : "DOCUMENT:PART_3:GROUP_13:OTHER_DEDUCTIONS",
+											"is_left_to" : "DOCUMENT:PART_3:GROUP_13:OTHER_DEDUCTIONS",
+											"repeat_input_sub_nodes" : 
+											{
+												"(0,0)" : 
+												{
+													"id" : "DOCUMENT:PART_3:GROUP_13:OTHER_DEDUCTIONS:INPUT_CODE:(0,0)",
+													"input_type" : "alpha_numeric",
+													"type" : "input",
+													"value" : "K*"
+												}
+											},
+											"type" : "input",
+											"value" : "K*"
+										},
+										{
+											"id" : "DOCUMENT:PART_3:GROUP_13:OTHER_DEDUCTIONS:INPUT",
+											"input_type" : "alpha_numeric",
+											"is_above" : "DOCUMENT:PART_3:GROUP_14:SELF_EMPLOYMENT",
+											"is_below" : "DOCUMENT:PART_3:GROUP_13:OTHER_DEDUCTIONS",
+											"is_left_to" : "DOCUMENT:PART_3:GROUP_19:19",
+											"is_right_to" : "DOCUMENT:PART_3:GROUP_13:13",
+											"repeat_input_sub_nodes" : 
+											{
+												"(0,0)" : 
+												{
+													"id" : "DOCUMENT:PART_3:GROUP_13:OTHER_DEDUCTIONS:INPUT:(0,0)",
+													"input_type" : "alpha_numeric",
+													"type" : "input",
+													"value" : "3,361 ."
+												}
+											},
+											"type" : "input",
+											"value" : "3,361 ."
+										}
+									],
+									"text" : "Other deductions",
+									"textAssigned" : "Other deductions",
+									"type" : "static_text"
+								},
+								{
+									"id" : "DOCUMENT:PART_3:GROUP_13:13",
+									"is_left_to" : "DOCUMENT:PART_3:GROUP_13:OTHER_DEDUCTIONS:INPUT",
+									"text" : "13",
+									"textAssigned" : "13",
+									"type" : "static_text"
+								}
+							]
+						},
+						{
+							"id" : "DOCUMENT:PART_3:GROUP_5",
+							"sub_nodes" : 
+							[
+								{
+									"id" : "DOCUMENT:PART_3:GROUP_5:INTEREST_INCOME",
+									"is_above" : "DOCUMENT:PART_3:GROUP_5:INTEREST_INCOME:INPUT_CODE,DOCUMENT:PART_3:GROUP_5:INTEREST_INCOME:INPUT",
+									"is_below" : "DOCUMENT:PART_3:GROUP_4:GUARANTEED_PAYMENTS:INPUT_CODE,DOCUMENT:PART_3:GROUP_4:GUARANTEED_PAYMENTS:INPUT",
+									"is_right_to" : "DOCUMENT:PART_3:GROUP_5:INTEREST_INCOME:INPUT_CODE",
+									"sub_nodes" : 
+									[
+										{
+											"id" : "DOCUMENT:PART_3:GROUP_5:INTEREST_INCOME:INPUT_CODE",
+											"input_type" : "alpha_numeric",
+											"is_above" : "DOCUMENT:PART_3:GROUP_6A:ORDINARY_DIVIDENTS",
+											"is_below" : "DOCUMENT:PART_3:GROUP_5:INTEREST_INCOME",
+											"is_left_to" : "DOCUMENT:PART_3:GROUP_5:INTEREST_INCOME",
+											"repeat_input_sub_nodes" : null,
+											"type" : "input",
+											"value" : ""
+										},
+										{
+											"id" : "DOCUMENT:PART_3:GROUP_5:INTEREST_INCOME:INPUT",
+											"input_type" : "numeric",
+											"is_above" : "DOCUMENT:PART_3:GROUP_6A:ORDINARY_DIVIDENTS",
+											"is_below" : "DOCUMENT:PART_3:GROUP_5:INTEREST_INCOME",
+											"is_left_to" : "DOCUMENT:PART_3:GROUP_16:16",
+											"is_right_to" : "DOCUMENT:PART_3:GROUP_5:5",
+											"repeat_input_sub_nodes" : 
+											{
+												"(0,0)" : 
+												{
+													"id" : "DOCUMENT:PART_3:GROUP_5:INTEREST_INCOME:INPUT:(0,0)",
+													"input_type" : "alpha_numeric",
+													"type" : "input",
+													"value" : "6, 140."
+												}
+											},
+											"type" : "input",
+											"value" : "6, 140."
+										}
+									],
+									"text" : "Interest income",
+									"textAssigned" : "Interest income",
+									"type" : "static_text"
+								},
+								{
+									"id" : "DOCUMENT:PART_3:GROUP_5:5",
+									"is_left_to" : "DOCUMENT:PART_3:GROUP_5:INTEREST_INCOME:INPUT",
+									"text" : "5",
+									"textAssigned" : "5",
+									"type" : "static_text"
+								}
+							]
+						},
+						{
+							"id" : "DOCUMENT:PART_3:GROUP_11",
+							"sub_nodes" : 
+							[
+								{
+									"id" : "DOCUMENT:PART_3:GROUP_11:OTHER_INCOME",
+									"is_above" : "DOCUMENT:PART_3:GROUP_11:OTHER_INCOME:INPUT_CODE,DOCUMENT:PART_3:GROUP_11:OTHER_INCOME:INPUT",
+									"is_below" : "DOCUMENT:PART_3:GROUP_10:NET_SECTION:INPUT_CODE,DOCUMENT:PART_3:GROUP_10:NET_SECTION:INPUT",
+									"is_right_to" : "DOCUMENT:PART_3:GROUP_11:OTHER_INCOME:INPUT_CODE",
+									"sub_nodes" : 
+									[
+										{
+											"id" : "DOCUMENT:PART_3:GROUP_11:OTHER_INCOME:INPUT_CODE",
+											"input_type" : "alpha_numeric",
+											"is_above" : "DOCUMENT:PART_3:GROUP_12:SECTION_179_DEDUCTION",
+											"is_below" : "DOCUMENT:PART_3:GROUP_11:OTHER_INCOME",
+											"is_left_to" : "DOCUMENT:PART_3:GROUP_11:OTHER_INCOME",
+											"repeat_input_sub_nodes" : null,
+											"type" : "input",
+											"value" : ""
+										},
+										{
+											"id" : "DOCUMENT:PART_3:GROUP_11:OTHER_INCOME:INPUT",
+											"input_type" : "alpha_numeric",
+											"is_above" : "DOCUMENT:PART_3:GROUP_12:SECTION_179_DEDUCTION",
+											"is_below" : "DOCUMENT:PART_3:GROUP_11:OTHER_INCOME",
+											"is_left_to" : "DOCUMENT:PART_3:GROUP_18:18",
+											"is_right_to" : "DOCUMENT:PART_3:GROUP_11:11",
+											"repeat_input_sub_nodes" : null,
+											"type" : "input",
+											"value" : ""
+										}
+									],
+									"text" : "Other income (loss)",
+									"textAssigned" : "Other income (loss)",
+									"type" : "static_text"
+								},
+								{
+									"id" : "DOCUMENT:PART_3:GROUP_11:11",
+									"is_left_to" : "DOCUMENT:PART_3:GROUP_11:OTHER_INCOME:INPUT",
+									"text" : "11",
+									"textAssigned" : "11",
+									"type" : "static_text"
+								}
+							]
+						},
+						{
+							"id" : "DOCUMENT:PART_3:GROUP_3",
+							"sub_nodes" : 
+							[
+								{
+									"id" : "DOCUMENT:PART_3:GROUP_3:OTHER_RENTAL_INCOME",
+									"is_above" : "DOCUMENT:PART_3:GROUP_3:OTHER_RENTAL_INCOME:INPUT_CODE,DOCUMENT:PART_3:GROUP_3:OTHER_RENTAL_INCOME:INPUT",
+									"is_below" : "DOCUMENT:PART_3:GROUP_2:NET_RENTAL_REAL_ESTATE_INCOME:INPUT_CODE,DOCUMENT:PART_3:GROUP_2:NET_RENTAL_REAL_ESTATE_INCOME:INPUT",
+									"is_right_to" : "DOCUMENT:PART_3:GROUP_3:OTHER_RENTAL_INCOME:INPUT_CODE",
+									"sub_nodes" : 
+									[
+										{
+											"id" : "DOCUMENT:PART_3:GROUP_3:OTHER_RENTAL_INCOME:INPUT_CODE",
+											"input_type" : "alpha_numeric",
+											"is_above" : "DOCUMENT:PART_3:GROUP_4:GUARANTEED_PAYMENTS",
+											"is_below" : "DOCUMENT:PART_3:GROUP_3:OTHER_RENTAL_INCOME",
+											"is_left_to" : "DOCUMENT:PART_3:GROUP_3:OTHER_RENTAL_INCOME",
+											"repeat_input_sub_nodes" : null,
+											"type" : "input",
+											"value" : ""
+										},
+										{
+											"id" : "DOCUMENT:PART_3:GROUP_3:OTHER_RENTAL_INCOME:INPUT",
+											"input_type" : "numeric",
+											"is_above" : "DOCUMENT:PART_3:GROUP_4:GUARANTEED_PAYMENTS",
+											"is_below" : "DOCUMENT:PART_3:GROUP_3:OTHER_RENTAL_INCOME",
+											"is_left_to" : "DOCUMENT:PART_3:GROUP_16:16",
+											"is_right_to" : "DOCUMENT:PART_3:GROUP_3:3",
+											"repeat_input_sub_nodes" : null,
+											"type" : "input",
+											"value" : ""
+										}
+									],
+									"text" : "Other net rental income (loss)",
+									"textAssigned" : "Other net rental income (loss)",
+									"type" : "static_text"
+								},
+								{
+									"id" : "DOCUMENT:PART_3:GROUP_3:3",
+									"is_left_to" : "DOCUMENT:PART_3:GROUP_3:OTHER_RENTAL_INCOME:INPUT",
+									"text" : "3",
+									"textAssigned" : "3",
+									"type" : "static_text"
+								}
+							]
+						},
+						{
+							"id" : "DOCUMENT:PART_3:GROUP_4",
+							"sub_nodes" : 
+							[
+								{
+									"id" : "DOCUMENT:PART_3:GROUP_4:GUARANTEED_PAYMENTS",
+									"is_above" : "DOCUMENT:PART_3:GROUP_4:GUARANTEED_PAYMENTS:INPUT_CODE,DOCUMENT:PART_3:GROUP_4:GUARANTEED_PAYMENTS:INPUT",
+									"is_below" : "DOCUMENT:PART_3:GROUP_3:OTHER_RENTAL_INCOME:INPUT_CODE,DOCUMENT:PART_3:GROUP_3:OTHER_RENTAL_INCOME:INPUT",
+									"is_right_to" : "DOCUMENT:PART_3:GROUP_4:GUARANTEED_PAYMENTS:INPUT_CODE",
+									"sub_nodes" : 
+									[
+										{
+											"id" : "DOCUMENT:PART_3:GROUP_4:GUARANTEED_PAYMENTS:INPUT_CODE",
+											"input_type" : "alpha_numeric",
+											"is_above" : "DOCUMENT:PART_3:GROUP_5:INTEREST_INCOME",
+											"is_below" : "DOCUMENT:PART_3:GROUP_4:GUARANTEED_PAYMENTS",
+											"is_left_to" : "DOCUMENT:PART_3:GROUP_4:GUARANTEED_PAYMENTS",
+											"repeat_input_sub_nodes" : null,
+											"type" : "input",
+											"value" : ""
+										},
+										{
+											"id" : "DOCUMENT:PART_3:GROUP_4:GUARANTEED_PAYMENTS:INPUT",
+											"input_type" : "numeric",
+											"is_above" : "DOCUMENT:PART_3:GROUP_5:INTEREST_INCOME",
+											"is_below" : "DOCUMENT:PART_3:GROUP_4:GUARANTEED_PAYMENTS",
+											"is_left_to" : "DOCUMENT:PART_3:GROUP_16:16",
+											"is_right_to" : "DOCUMENT:PART_3:GROUP_4:4",
+											"repeat_input_sub_nodes" : null,
+											"type" : "input",
+											"value" : ""
+										}
+									],
+									"text" : "Guaranteed payments",
+									"textAssigned" : "Guaranteed payments",
+									"type" : "static_text"
+								},
+								{
+									"id" : "DOCUMENT:PART_3:GROUP_4:4",
+									"is_left_to" : "DOCUMENT:PART_3:GROUP_4:GUARANTEED_PAYMENTS:INPUT",
+									"text" : "4",
+									"textAssigned" : "4",
+									"type" : "static_text"
+								}
+							]
+						},
+						{
+							"id" : "DOCUMENT:PART_3:GROUP_10",
+							"sub_nodes" : 
+							[
+								{
+									"id" : "DOCUMENT:PART_3:GROUP_10:NET_SECTION",
+									"is_above" : "DOCUMENT:PART_3:GROUP_10:NET_SECTION:INPUT_CODE,DOCUMENT:PART_3:GROUP_10:NET_SECTION:INPUT",
+									"is_below" : "DOCUMENT:PART_3:GROUP_9C:UNRECAPTURED:INPUT_CODE,DOCUMENT:PART_3:GROUP_9C:UNRECAPTURED:INPUT",
+									"is_left_to" : "DOCUMENT:PART_3:GROUP_18:TAX_EXEMPT:INPUT_CODE",
+									"is_right_to" : "DOCUMENT:PART_3:GROUP_10:NET_SECTION:INPUT_CODE",
+									"sub_nodes" : 
+									[
+										{
+											"id" : "DOCUMENT:PART_3:GROUP_10:NET_SECTION:INPUT_CODE",
+											"input_type" : "alpha_numeric",
+											"is_above" : "DOCUMENT:PART_3:GROUP_11:OTHER_INCOME",
+											"is_below" : "DOCUMENT:PART_3:GROUP_10:NET_SECTION",
+											"is_left_to" : "DOCUMENT:PART_3:GROUP_10:NET_SECTION",
+											"repeat_input_sub_nodes" : null,
+											"type" : "input",
+											"value" : ""
+										},
+										{
+											"id" : "DOCUMENT:PART_3:GROUP_10:NET_SECTION:INPUT",
+											"input_type" : "alpha_numeric",
+											"is_above" : "DOCUMENT:PART_3:GROUP_11:OTHER_INCOME",
+											"is_below" : "DOCUMENT:PART_3:GROUP_10:NET_SECTION",
+											"is_left_to" : "DOCUMENT:PART_3:GROUP_18:18",
+											"is_right_to" : "DOCUMENT:PART_3:GROUP_10:10",
+											"repeat_input_sub_nodes" : null,
+											"type" : "input",
+											"value" : ""
+										}
+									],
+									"text" : "Net section 1231 gain (loss)",
+									"textAssigned" : "Net section 1231 gain (loss)",
+									"type" : "static_text"
+								},
+								{
+									"id" : "DOCUMENT:PART_3:GROUP_10:10",
+									"is_left_to" : "DOCUMENT:PART_3:GROUP_10:NET_SECTION:INPUT",
+									"text" : "10",
+									"textAssigned" : "10",
+									"type" : "static_text"
+								}
+							]
+						},
+						{
+							"id" : "DOCUMENT:PART_3:GROUP_14",
+							"sub_nodes" : 
+							[
+								{
+									"id" : "DOCUMENT:PART_3:GROUP_14:SELF_EMPLOYMENT",
+									"is_above" : "DOCUMENT:PART_3:GROUP_14:SELF_EMPLOYMENT:INPUT_CODE,DOCUMENT:PART_3:GROUP_14:SELF_EMPLOYMENT:INPUT",
+									"is_below" : "DOCUMENT:PART_3:GROUP_13:OTHER_DEDUCTIONS:INPUT_CODE,DOCUMENT:PART_3:GROUP_13:OTHER_DEDUCTIONS:INPUT",
+									"is_right_to" : "DOCUMENT:PART_3:GROUP_14:SELF_EMPLOYMENT:INPUT_CODE",
+									"sub_nodes" : 
+									[
+										{
+											"id" : "DOCUMENT:PART_3:GROUP_14:SELF_EMPLOYMENT:INPUT_CODE",
+											"input_type" : "alpha_numeric",
+											"is_above" : "DOCUMENT:PART_3:SEE_ATTACHED",
+											"is_below" : "DOCUMENT:PART_3:GROUP_14:SELF_EMPLOYMENT",
+											"is_left_to" : "DOCUMENT:PART_3:GROUP_14:SELF_EMPLOYMENT",
+											"repeat_input_sub_nodes" : null,
+											"type" : "input",
+											"value" : ""
+										},
+										{
+											"id" : "DOCUMENT:PART_3:GROUP_14:SELF_EMPLOYMENT:INPUT",
+											"input_type" : "alpha_numeric",
+											"is_above" : "DOCUMENT:PART_3:SEE_ATTACHED",
+											"is_below" : "DOCUMENT:PART_3:GROUP_14:SELF_EMPLOYMENT",
+											"is_left_to" : "DOCUMENT:PART_3:GROUP_20:20",
+											"is_right_to" : "DOCUMENT:PART_3:GROUP_14:14",
+											"repeat_input_sub_nodes" : null,
+											"type" : "input",
+											"value" : ""
+										}
+									],
+									"text" : "Self-employment earnings (loss)",
+									"textAssigned" : "Self-employment earnings (loss)",
+									"type" : "static_text"
+								},
+								{
+									"id" : "DOCUMENT:PART_3:GROUP_14:14",
+									"is_left_to" : "DOCUMENT:PART_3:GROUP_14:SELF_EMPLOYMENT:INPUT",
+									"text" : "14",
+									"textAssigned" : "14",
+									"type" : "static_text"
+								}
+							]
+						},
+						{
+							"id" : "DOCUMENT:PART_3:PARTNERS_SHARE_CURRENT",
+							"is_below" : "DOCUMENT:HEADER_2:AMENDED_K_1:INPUT,DOCUMENT:HEADER_2:FINAL_K_1:INPUT",
+							"text" : "Partner's Share of Current Year Income,",
+							"textAssigned" : "Partner's Share of Current Year Income,",
+							"type" : "static_text"
+						},
+						{
+							"id" : "DOCUMENT:PART_3:GROUP_2",
+							"sub_nodes" : 
+							[
+								{
+									"id" : "DOCUMENT:PART_3:GROUP_2:NET_RENTAL_REAL_ESTATE_INCOME",
+									"is_above" : "DOCUMENT:PART_3:GROUP_2:NET_RENTAL_REAL_ESTATE_INCOME:INPUT_CODE,DOCUMENT:PART_3:GROUP_2:NET_RENTAL_REAL_ESTATE_INCOME:INPUT",
+									"is_below" : "DOCUMENT:PART_3:GROUP_1:ORDINARY_BUSINESS:INPUT_CODE,DOCUMENT:PART_3:GROUP_1:ORDINARY_BUSINESS:INPUT",
+									"is_left_to" : "DOCUMENT:PART_3:GROUP_16:FOREIGN_TRANSACTIONS:INPUT_CODE",
+									"is_right_to" : "DOCUMENT:PART_3:GROUP_2:NET_RENTAL_REAL_ESTATE_INCOME:INPUT_CODE",
+									"sub_nodes" : 
+									[
+										{
+											"id" : "DOCUMENT:PART_3:GROUP_2:NET_RENTAL_REAL_ESTATE_INCOME:INPUT_CODE",
+											"input_type" : "alpha_numeric",
+											"is_above" : "DOCUMENT:PART_3:GROUP_3:OTHER_RENTAL_INCOME",
+											"is_below" : "DOCUMENT:PART_3:GROUP_2:NET_RENTAL_REAL_ESTATE_INCOME",
+											"is_left_to" : "DOCUMENT:PART_3:GROUP_2:NET_RENTAL_REAL_ESTATE_INCOME",
+											"repeat_input_sub_nodes" : null,
+											"type" : "input",
+											"value" : ""
+										},
+										{
+											"id" : "DOCUMENT:PART_3:GROUP_2:NET_RENTAL_REAL_ESTATE_INCOME:INPUT",
+											"input_type" : "numeric",
+											"is_above" : "DOCUMENT:PART_3:GROUP_3:OTHER_RENTAL_INCOME",
+											"is_below" : "DOCUMENT:PART_3:GROUP_2:NET_RENTAL_REAL_ESTATE_INCOME",
+											"is_left_to" : "DOCUMENT:PART_3:GROUP_15:15",
+											"is_right_to" : "DOCUMENT:PART_3:GROUP_2:2",
+											"repeat_input_sub_nodes" : null,
+											"type" : "input",
+											"value" : ""
+										}
+									],
+									"text" : "Net rental real estate Income (loss)",
+									"textAssigned" : "Net rental real estate income (loss)",
+									"type" : "static_text"
+								},
+								{
+									"id" : "DOCUMENT:PART_3:GROUP_2:2",
+									"is_left_to" : "DOCUMENT:PART_3:GROUP_2:NET_RENTAL_REAL_ESTATE_INCOME:INPUT",
+									"text" : "2",
+									"textAssigned" : "2",
+									"type" : "static_text"
+								}
+							]
+						},
+						{
+							"id" : "DOCUMENT:PART_3:GROUP_8",
+							"sub_nodes" : 
+							[
+								{
+									"id" : "DOCUMENT:PART_3:GROUP_8:NET_SHORTTERM_CAPITAL",
+									"is_above" : "DOCUMENT:PART_3:GROUP_8:NET_SHORTTERM_CAPITAL:INPUT_CODE,DOCUMENT:PART_3:GROUP_8:NET_SHORTTERM_CAPITAL:INPUT",
+									"is_below" : "DOCUMENT:PART_3:GROUP_7:ROYALTIES:INPUT_CODE,DOCUMENT:PART_3:GROUP_7:ROYALTIES:INPUT",
+									"is_right_to" : "DOCUMENT:PART_3:GROUP_8:NET_SHORTTERM_CAPITAL:INPUT_CODE",
+									"sub_nodes" : 
+									[
+										{
+											"id" : "DOCUMENT:PART_3:GROUP_8:NET_SHORTTERM_CAPITAL:INPUT_CODE",
+											"input_type" : "alpha_numeric",
+											"is_above" : "DOCUMENT:PART_3:GROUP_9A:NET_LONG_TERM",
+											"is_below" : "DOCUMENT:PART_3:GROUP_8:NET_SHORTTERM_CAPITAL",
+											"is_left_to" : "DOCUMENT:PART_3:GROUP_8:NET_SHORTTERM_CAPITAL",
+											"repeat_input_sub_nodes" : 
+											{
+												"(0,0)" : 
+												{
+													"id" : "DOCUMENT:PART_3:GROUP_8:NET_SHORTTERM_CAPITAL:INPUT_CODE:(0,0)",
+													"input_type" : "alpha_numeric",
+													"type" : "input",
+													"value" : "k"
+												}
+											},
+											"type" : "input",
+											"value" : "k"
+										},
+										{
+											"id" : "DOCUMENT:PART_3:GROUP_8:NET_SHORTTERM_CAPITAL:INPUT",
+											"input_type" : "numeric",
+											"is_above" : "DOCUMENT:PART_3:GROUP_9A:NET_LONG_TERM",
+											"is_below" : "DOCUMENT:PART_3:GROUP_8:NET_SHORTTERM_CAPITAL",
+											"is_left_to" : "DOCUMENT:PART_3:GROUP_16:16",
+											"is_right_to" : "DOCUMENT:PART_3:GROUP_8:8",
+											"repeat_input_sub_nodes" : null,
+											"type" : "input",
+											"value" : ""
+										}
+									],
+									"text" : "Net short-term capital gain (loss)",
+									"textAssigned" : "Net short-term capital gain (loss)",
+									"type" : "static_text"
+								},
+								{
+									"id" : "DOCUMENT:PART_3:GROUP_8:8",
+									"is_left_to" : "DOCUMENT:PART_3:GROUP_8:NET_SHORTTERM_CAPITAL:INPUT",
+									"text" : "8",
+									"textAssigned" : "8.",
+									"type" : "static_text"
+								}
+							]
+						},
+						{
+							"id" : "DOCUMENT:PART_3:GROUP_9A",
+							"sub_nodes" : 
+							[
+								{
+									"id" : "DOCUMENT:PART_3:GROUP_9A:NET_LONG_TERM",
+									"is_above" : "DOCUMENT:PART_3:GROUP_9A:NET_LONG_TERM:INPUT_CODE,DOCUMENT:PART_3:GROUP_9A:NET_LONG_TERM:INPUT",
+									"is_below" : "DOCUMENT:PART_3:GROUP_8:NET_SHORTTERM_CAPITAL:INPUT_CODE,DOCUMENT:PART_3:GROUP_8:NET_SHORTTERM_CAPITAL:INPUT",
+									"is_left_to" : "DOCUMENT:PART_3:GROUP_17:ALTERNATIVE_MINIMUM:INPUT_CODE",
+									"is_right_to" : "DOCUMENT:PART_3:GROUP_9A:NET_LONG_TERM:INPUT_CODE",
+									"sub_nodes" : 
+									[
+										{
+											"id" : "DOCUMENT:PART_3:GROUP_9A:NET_LONG_TERM:INPUT_CODE",
+											"input_type" : "alpha_numeric",
+											"is_above" : "DOCUMENT:PART_3:GROUP_9B:COLLECTIBLES_28",
+											"is_below" : "DOCUMENT:PART_3:GROUP_9A:NET_LONG_TERM",
+											"is_left_to" : "DOCUMENT:PART_3:GROUP_9A:NET_LONG_TERM",
+											"repeat_input_sub_nodes" : 
+											{
+												"(0,0)" : 
+												{
+													"id" : "DOCUMENT:PART_3:GROUP_9A:NET_LONG_TERM:INPUT_CODE:(0,0)",
+													"input_type" : "alpha_numeric",
+													"type" : "input",
+													"value" : "k"
+												}
+											},
+											"type" : "input",
+											"value" : "k"
+										},
+										{
+											"id" : "DOCUMENT:PART_3:GROUP_9A:NET_LONG_TERM:INPUT",
+											"input_type" : "alpha_numeric",
+											"is_above" : "DOCUMENT:PART_3:GROUP_9B:COLLECTIBLES_28",
+											"is_below" : "DOCUMENT:PART_3:GROUP_9A:NET_LONG_TERM",
+											"is_left_to" : "DOCUMENT:PART_3:GROUP_17:17",
+											"is_right_to" : "DOCUMENT:PART_3:GROUP_9A:9A",
+											"repeat_input_sub_nodes" : 
+											{
+												"(0,0)" : 
+												{
+													"id" : "DOCUMENT:PART_3:GROUP_9A:NET_LONG_TERM:INPUT:(0,0)",
+													"input_type" : "alpha_numeric",
+													"type" : "input",
+													"value" : "381 ."
+												}
+											},
+											"type" : "input",
+											"value" : "381 ."
+										}
+									],
+									"text" : "Net long-term capital gain (loss)",
+									"textAssigned" : "Net long-term capital gain (loss)",
+									"type" : "static_text"
+								},
+								{
+									"id" : "DOCUMENT:PART_3:GROUP_9A:9A",
+									"is_left_to" : "DOCUMENT:PART_3:GROUP_9A:NET_LONG_TERM:INPUT",
+									"text" : "9a",
+									"textAssigned" : "9a",
+									"type" : "static_text"
+								}
+							]
+						},
+						{
+							"id" : "DOCUMENT:PART_3:GROUP_9B",
+							"sub_nodes" : 
+							[
+								{
+									"id" : "DOCUMENT:PART_3:GROUP_9B:COLLECTIBLES_28",
+									"is_above" : "DOCUMENT:PART_3:GROUP_9B:COLLECTIBLES_28:INPUT_CODE,DOCUMENT:PART_3:GROUP_9B:COLLECTIBLES_28:INPUT",
+									"is_below" : "DOCUMENT:PART_3:GROUP_9A:NET_LONG_TERM:INPUT_CODE,DOCUMENT:PART_3:GROUP_9A:NET_LONG_TERM:INPUT",
+									"is_right_to" : "DOCUMENT:PART_3:GROUP_9B:COLLECTIBLES_28:INPUT_CODE",
+									"sub_nodes" : 
+									[
+										{
+											"id" : "DOCUMENT:PART_3:GROUP_9B:COLLECTIBLES_28:INPUT_CODE",
+											"input_type" : "alpha_numeric",
+											"is_above" : "DOCUMENT:PART_3:GROUP_9C:UNRECAPTURED",
+											"is_below" : "DOCUMENT:PART_3:GROUP_9B:COLLECTIBLES_28",
+											"is_left_to" : "DOCUMENT:PART_3:GROUP_9B:COLLECTIBLES_28",
+											"repeat_input_sub_nodes" : null,
+											"type" : "input",
+											"value" : ""
+										},
+										{
+											"id" : "DOCUMENT:PART_3:GROUP_9B:COLLECTIBLES_28:INPUT",
+											"input_type" : "alpha_numeric",
+											"is_above" : "DOCUMENT:PART_3:GROUP_9C:UNRECAPTURED",
+											"is_below" : "DOCUMENT:PART_3:GROUP_9B:COLLECTIBLES_28",
+											"is_left_to" : "DOCUMENT:PART_3:GROUP_17:17",
+											"is_right_to" : "DOCUMENT:PART_3:GROUP_9B:9B",
+											"repeat_input_sub_nodes" : null,
+											"type" : "input",
+											"value" : ""
+										}
+									],
+									"text" : "Collectibles (28%) gain (loss)",
+									"textAssigned" : "Collectibles (28%) gain (loss)",
+									"type" : "static_text"
+								},
+								{
+									"id" : "DOCUMENT:PART_3:GROUP_9B:9B",
+									"is_left_to" : "DOCUMENT:PART_3:GROUP_9B:COLLECTIBLES_28:INPUT",
+									"text" : "9b",
+									"textAssigned" : "9b",
+									"type" : "static_text"
+								}
+							]
+						},
+						{
+							"id" : "DOCUMENT:PART_3:GROUP_9C",
+							"sub_nodes" : 
+							[
+								{
+									"id" : "DOCUMENT:PART_3:GROUP_9C:UNRECAPTURED",
+									"is_above" : "DOCUMENT:PART_3:GROUP_9C:UNRECAPTURED:INPUT_CODE,DOCUMENT:PART_3:GROUP_9C:UNRECAPTURED:INPUT",
+									"is_below" : "DOCUMENT:PART_3:GROUP_9B:COLLECTIBLES_28:INPUT_CODE,DOCUMENT:PART_3:GROUP_9B:COLLECTIBLES_28:INPUT",
+									"is_right_to" : "DOCUMENT:PART_3:GROUP_9C:UNRECAPTURED:INPUT_CODE",
+									"sub_nodes" : 
+									[
+										{
+											"id" : "DOCUMENT:PART_3:GROUP_9C:UNRECAPTURED:INPUT_CODE",
+											"input_type" : "alpha_numeric",
+											"is_above" : "DOCUMENT:PART_3:GROUP_10:NET_SECTION",
+											"is_below" : "DOCUMENT:PART_3:GROUP_9C:UNRECAPTURED",
+											"is_left_to" : "DOCUMENT:PART_3:GROUP_9C:UNRECAPTURED",
+											"repeat_input_sub_nodes" : null,
+											"type" : "input",
+											"value" : ""
+										},
+										{
+											"id" : "DOCUMENT:PART_3:GROUP_9C:UNRECAPTURED:INPUT",
+											"input_type" : "alpha_numeric",
+											"is_above" : "DOCUMENT:PART_3:GROUP_10:NET_SECTION",
+											"is_below" : "DOCUMENT:PART_3:GROUP_9C:UNRECAPTURED",
+											"is_left_to" : "DOCUMENT:PART_3:GROUP_17:17",
+											"is_right_to" : "DOCUMENT:PART_3:GROUP_9C:9C",
+											"repeat_input_sub_nodes" : null,
+											"type" : "input",
+											"value" : ""
+										}
+									],
+									"text" : "Unrecaptured section 1250 gain",
+									"textAssigned" : "Unrecaptured section 1250 gain",
+									"type" : "static_text"
+								},
+								{
+									"id" : "DOCUMENT:PART_3:GROUP_9C:9C",
+									"is_left_to" : "DOCUMENT:PART_3:GROUP_9C:UNRECAPTURED:INPUT",
+									"text" : "9c",
+									"textAssigned" : "9c",
+									"type" : "static_text"
+								}
+							]
+						},
+						{
+							"id" : "DOCUMENT:PART_3:GROUP_12",
+							"sub_nodes" : 
+							[
+								{
+									"id" : "DOCUMENT:PART_3:GROUP_12:SECTION_179_DEDUCTION",
+									"is_above" : "DOCUMENT:PART_3:GROUP_12:SECTION_179_DEDUCTION:INPUT_CODE,DOCUMENT:PART_3:GROUP_12:SECTION_179_DEDUCTION:INPUT",
+									"is_below" : "DOCUMENT:PART_3:GROUP_11:OTHER_INCOME:INPUT_CODE,DOCUMENT:PART_3:GROUP_11:OTHER_INCOME:INPUT",
+									"is_left_to" : "DOCUMENT:PART_3:GROUP_20:OTHER_INFORMATION:INPUT_CODE,DOCUMENT:PART_3:GROUP_19:DISTRIBUTIONS:INPUT_CODE",
+									"is_right_to" : "DOCUMENT:PART_3:GROUP_12:SECTION_179_DEDUCTION:INPUT_CODE",
+									"sub_nodes" : 
+									[
+										{
+											"id" : "DOCUMENT:PART_3:GROUP_12:SECTION_179_DEDUCTION:INPUT_CODE",
+											"input_type" : "alpha_numeric",
+											"is_above" : "DOCUMENT:PART_3:GROUP_13:OTHER_DEDUCTIONS",
+											"is_below" : "DOCUMENT:PART_3:GROUP_12:SECTION_179_DEDUCTION",
+											"is_left_to" : "DOCUMENT:PART_3:GROUP_12:SECTION_179_DEDUCTION",
+											"repeat_input_sub_nodes" : null,
+											"type" : "input",
+											"value" : ""
+										},
+										{
+											"id" : "DOCUMENT:PART_3:GROUP_12:SECTION_179_DEDUCTION:INPUT",
+											"input_type" : "alpha_numeric",
+											"is_above" : "DOCUMENT:PART_3:GROUP_13:OTHER_DEDUCTIONS",
+											"is_below" : "DOCUMENT:PART_3:GROUP_12:SECTION_179_DEDUCTION",
+											"is_left_to" : "DOCUMENT:PART_3:GROUP_19:19",
+											"is_right_to" : "DOCUMENT:PART_3:GROUP_12:12",
+											"repeat_input_sub_nodes" : null,
+											"type" : "input",
+											"value" : ""
+										}
+									],
+									"text" : "Section 179 deduction",
+									"textAssigned" : "Section 179 deduction",
+									"type" : "static_text"
+								},
+								{
+									"id" : "DOCUMENT:PART_3:GROUP_12:12",
+									"is_left_to" : "DOCUMENT:PART_3:GROUP_12:SECTION_179_DEDUCTION:INPUT",
+									"is_right_to" : "DOCUMENT:PART_2:GROUP_I2:RETIREMENTPLAN:INPUT",
+									"text" : "12",
+									"textAssigned" : "12",
+									"type" : "static_text"
+								}
+							]
+						},
+						{
+							"id" : "DOCUMENT:PART_3:GROUP_1",
+							"sub_nodes" : 
+							[
+								{
+									"id" : "DOCUMENT:PART_3:GROUP_1:ORDINARY_BUSINESS",
+									"is_above" : "DOCUMENT:PART_3:GROUP_1:ORDINARY_BUSINESS:INPUT_CODE,DOCUMENT:PART_3:GROUP_1:ORDINARY_BUSINESS:INPUT",
+									"is_left_to" : "DOCUMENT:PART_3:GROUP_15:CREDITS:INPUT_CODE",
+									"is_right_to" : "DOCUMENT:PART_3:GROUP_1:ORDINARY_BUSINESS:INPUT_CODE",
+									"sub_nodes" : 
+									[
+										{
+											"id" : "DOCUMENT:PART_3:GROUP_1:ORDINARY_BUSINESS:INPUT_CODE",
+											"input_type" : "alpha_numeric",
+											"is_above" : "DOCUMENT:PART_3:GROUP_2:NET_RENTAL_REAL_ESTATE_INCOME",
+											"is_below" : "DOCUMENT:PART_3:GROUP_1:ORDINARY_BUSINESS",
+											"is_left_to" : "DOCUMENT:PART_3:GROUP_1:ORDINARY_BUSINESS",
+											"repeat_input_sub_nodes" : null,
+											"type" : "input",
+											"value" : ""
+										},
+										{
+											"id" : "DOCUMENT:PART_3:GROUP_1:ORDINARY_BUSINESS:INPUT",
+											"input_type" : "numeric",
+											"is_above" : "DOCUMENT:PART_3:GROUP_2:NET_RENTAL_REAL_ESTATE_INCOME",
+											"is_below" : "DOCUMENT:PART_3:GROUP_1:ORDINARY_BUSINESS",
+											"is_left_to" : "DOCUMENT:PART_3:GROUP_15:15",
+											"is_right_to" : "DOCUMENT:PART_3:GROUP_1:1",
+											"repeat_input_sub_nodes" : null,
+											"type" : "input",
+											"value" : ""
+										}
+									],
+									"text" : "Ordinary business income (loss)",
+									"textAssigned" : "Ordinary business income (loss)",
+									"type" : "static_text"
+								},
+								{
+									"id" : "DOCUMENT:PART_3:GROUP_1:1",
+									"is_left_to" : "DOCUMENT:PART_3:GROUP_1:ORDINARY_BUSINESS:INPUT",
+									"text" : "1",
+									"textAssigned" : "1",
+									"type" : "static_text"
+								}
+							]
+						},
+						{
+							"id" : "DOCUMENT:PART_3:GROUP_15",
+							"sub_nodes" : 
+							[
+								{
+									"id" : "DOCUMENT:PART_3:GROUP_15:CREDITS",
+									"is_above" : "DOCUMENT:PART_3:GROUP_15:CREDITS:INPUT_CODE,DOCUMENT:PART_3:GROUP_15:CREDITS:INPUT",
+									"is_right_to" : "DOCUMENT:PART_3:GROUP_15:CREDITS:INPUT_CODE",
+									"sub_nodes" : 
+									[
+										{
+											"id" : "DOCUMENT:PART_3:GROUP_15:CREDITS:INPUT_CODE",
+											"input_type" : "alpha_numeric",
+											"is_above" : "DOCUMENT:PART_3:GROUP_16:FOREIGN_TRANSACTIONS",
+											"is_below" : "DOCUMENT:PART_3:GROUP_15:CREDITS",
+											"is_left_to" : "DOCUMENT:PART_3:GROUP_15:CREDITS",
+											"is_right_to" : "DOCUMENT:PART_3:GROUP_1:ORDINARY_BUSINESS",
+											"repeat_input_sub_nodes" : null,
+											"type" : "input",
+											"value" : ""
+										},
+										{
+											"id" : "DOCUMENT:PART_3:GROUP_15:CREDITS:INPUT",
+											"input_type" : "alpha_numeric",
+											"is_above" : "DOCUMENT:PART_3:GROUP_16:FOREIGN_TRANSACTIONS",
+											"is_below" : "DOCUMENT:PART_3:GROUP_15:CREDITS",
+											"is_right_to" : "DOCUMENT:PART_3:GROUP_15:15",
+											"repeat_input_sub_nodes" : null,
+											"type" : "input",
+											"value" : ""
+										}
+									],
+									"text" : "Credits",
+									"textAssigned" : "Credits",
+									"type" : "static_text"
+								},
+								{
+									"id" : "DOCUMENT:PART_3:GROUP_15:15",
+									"is_left_to" : "DOCUMENT:PART_3:GROUP_15:CREDITS:INPUT",
+									"is_right_to" : "DOCUMENT:PART_3:GROUP_2:NET_RENTAL_REAL_ESTATE_INCOME:INPUT,DOCUMENT:PART_3:GROUP_1:ORDINARY_BUSINESS:INPUT",
+									"text" : "15",
+									"textAssigned" : "15",
+									"type" : "static_text"
+								}
+							]
+						},
+						{
+							"id" : "DOCUMENT:PART_3:GROUP_16",
+							"sub_nodes" : 
+							[
+								{
+									"id" : "DOCUMENT:PART_3:GROUP_16:FOREIGN_TRANSACTIONS",
+									"is_above" : "DOCUMENT:PART_3:GROUP_16:FOREIGN_TRANSACTIONS:INPUT_CODE,DOCUMENT:PART_3:GROUP_16:FOREIGN_TRANSACTIONS:INPUT",
+									"is_below" : "DOCUMENT:PART_3:GROUP_15:CREDITS:INPUT_CODE,DOCUMENT:PART_3:GROUP_15:CREDITS:INPUT",
+									"is_right_to" : "DOCUMENT:PART_3:GROUP_16:FOREIGN_TRANSACTIONS:INPUT_CODE",
+									"sub_nodes" : 
+									[
+										{
+											"id" : "DOCUMENT:PART_3:GROUP_16:FOREIGN_TRANSACTIONS:INPUT_CODE",
+											"input_type" : "alpha_numeric",
+											"is_above" : "DOCUMENT:PART_3:GROUP_17:ALTERNATIVE_MINIMUM",
+											"is_below" : "DOCUMENT:PART_3:GROUP_16:FOREIGN_TRANSACTIONS",
+											"is_left_to" : "DOCUMENT:PART_3:GROUP_16:FOREIGN_TRANSACTIONS",
+											"is_right_to" : "DOCUMENT:PART_3:GROUP_2:NET_RENTAL_REAL_ESTATE_INCOME",
+											"repeat_input_sub_nodes" : null,
+											"type" : "input",
+											"value" : ""
+										},
+										{
+											"id" : "DOCUMENT:PART_3:GROUP_16:FOREIGN_TRANSACTIONS:INPUT",
+											"input_type" : "alpha_numeric",
+											"is_above" : "DOCUMENT:PART_3:GROUP_17:ALTERNATIVE_MINIMUM",
+											"is_below" : "DOCUMENT:PART_3:GROUP_16:FOREIGN_TRANSACTIONS",
+											"is_right_to" : "DOCUMENT:PART_3:GROUP_16:16",
+											"repeat_input_sub_nodes" : null,
+											"type" : "input",
+											"value" : ""
+										}
+									],
+									"text" : "Foreign transactions",
+									"textAssigned" : "Foreign transactions",
+									"type" : "static_text"
+								},
+								{
+									"id" : "DOCUMENT:PART_3:GROUP_16:16",
+									"is_left_to" : "DOCUMENT:PART_3:GROUP_16:FOREIGN_TRANSACTIONS:INPUT",
+									"is_right_to" : "DOCUMENT:PART_3:GROUP_8:NET_SHORTTERM_CAPITAL:INPUT,DOCUMENT:PART_3:GROUP_7:ROYALTIES:INPUT,DOCUMENT:PART_3:GROUP_6B:QUALIFIED_DIVIDENTS:INPUT,DOCUMENT:PART_3:GROUP_3:OTHER_RENTAL_INCOME:INPUT,DOCUMENT:PART_3:GROUP_4:GUARANTEED_PAYMENTS:INPUT,DOCUMENT:PART_3:GROUP_5:INTEREST_INCOME:INPUT,DOCUMENT:PART_3:GROUP_6A:ORDINARY_DIVIDENTS:INPUT",
+									"text" : "16",
+									"textAssigned" : "16",
+									"type" : "static_text"
+								}
+							]
+						},
+						{
+							"id" : "DOCUMENT:PART_3:GROUP_17",
+							"sub_nodes" : 
+							[
+								{
+									"id" : "DOCUMENT:PART_3:GROUP_17:ALTERNATIVE_MINIMUM",
+									"is_above" : "DOCUMENT:PART_3:GROUP_17:ALTERNATIVE_MINIMUM:INPUT_CODE,DOCUMENT:PART_3:GROUP_17:ALTERNATIVE_MINIMUM:INPUT",
+									"is_below" : "DOCUMENT:PART_3:GROUP_16:FOREIGN_TRANSACTIONS:INPUT_CODE,DOCUMENT:PART_3:GROUP_16:FOREIGN_TRANSACTIONS:INPUT",
+									"is_right_to" : "DOCUMENT:PART_3:GROUP_17:ALTERNATIVE_MINIMUM:INPUT_CODE",
+									"sub_nodes" : 
+									[
+										{
+											"id" : "DOCUMENT:PART_3:GROUP_17:ALTERNATIVE_MINIMUM:INPUT_CODE",
+											"input_type" : "alpha_numeric",
+											"is_above" : "DOCUMENT:PART_3:GROUP_18:TAX_EXEMPT",
+											"is_below" : "DOCUMENT:PART_3:GROUP_17:ALTERNATIVE_MINIMUM",
+											"is_left_to" : "DOCUMENT:PART_3:GROUP_17:ALTERNATIVE_MINIMUM",
+											"is_right_to" : "DOCUMENT:PART_3:GROUP_9A:NET_LONG_TERM",
+											"repeat_input_sub_nodes" : null,
+											"type" : "input",
+											"value" : ""
+										},
+										{
+											"id" : "DOCUMENT:PART_3:GROUP_17:ALTERNATIVE_MINIMUM:INPUT",
+											"input_type" : "alpha_numeric",
+											"is_above" : "DOCUMENT:PART_3:GROUP_18:TAX_EXEMPT",
+											"is_below" : "DOCUMENT:PART_3:GROUP_17:ALTERNATIVE_MINIMUM",
+											"is_right_to" : "DOCUMENT:PART_3:GROUP_17:17",
+											"repeat_input_sub_nodes" : null,
+											"type" : "input",
+											"value" : ""
+										}
+									],
+									"text" : "Alternative minimum tax (AMT) items",
+									"textAssigned" : "Alternative minimum tax (AMT) items",
+									"type" : "static_text"
+								},
+								{
+									"id" : "DOCUMENT:PART_3:GROUP_17:17",
+									"is_left_to" : "DOCUMENT:PART_3:GROUP_17:ALTERNATIVE_MINIMUM:INPUT",
+									"is_right_to" : "DOCUMENT:PART_3:GROUP_9C:UNRECAPTURED:INPUT,DOCUMENT:PART_3:GROUP_9B:COLLECTIBLES_28:INPUT,DOCUMENT:PART_3:GROUP_9A:NET_LONG_TERM:INPUT",
+									"text" : "17",
+									"textAssigned" : "17",
+									"type" : "static_text"
+								}
+							]
+						}
+					]
+				},
+				{
+					"id" : "DOCUMENT:PART_1",
+					"is_below" : "DOCUMENT:HEADER_1",
+					"sub_nodes" : 
+					[
+						{
+							"id" : "DOCUMENT:PART_1:GROUP_D",
+							"sub_nodes" : 
+							[
+								{
+									"id" : "DOCUMENT:PART_1:GROUP_D:PTP",
+									"is_below" : "DOCUMENT:PART_1:GROUP_C:IRS:INPUT",
+									"is_right_to" : "DOCUMENT:PART_1:GROUP_D:PTP:INPUT",
+									"sub_nodes" : 
+									[
+										{
+											"id" : "DOCUMENT:PART_1:GROUP_D:PTP:INPUT",
+											"input_type" : "boolean",
+											"is_above" : "DOCUMENT:PART_2:INFORMATION_ABOUT_PARTNER",
+											"is_below" : "DOCUMENT:PART_1:GROUP_C:IRS",
+											"is_left_to" : "DOCUMENT:PART_1:GROUP_D:PTP",
+											"is_right_to" : "DOCUMENT:PART_1:GROUP_D:D",
+											"type" : "input",
+											"value" : ""
+										}
+									],
+									"text" : "Check if this is a publicly traded partnership(PTP)",
+									"textAssigned" : "| Check if this is a publicly traded partnership (PTP)",
+									"type" : "static_text"
+								},
+								{
+									"id" : "DOCUMENT:PART_1:GROUP_D:D",
+									"is_below" : "DOCUMENT:PART_1:GROUP_C:IRS:INPUT",
+									"is_left_to" : "DOCUMENT:PART_1:GROUP_D:PTP:INPUT",
+									"text" : "D",
+									"textAssigned" : "D",
+									"type" : "static_text"
+								}
+							]
+						},
+						{
+							"id" : "DOCUMENT:PART_1:INFORMATION_ABOUT_PARTNERSHIP",
+							"is_above" : "DOCUMENT:PART_1:GROUP_A:PARTNERSHIPS_EMPLOYER",
+							"is_below" : "DOCUMENT:HEADER_1:SEE_BACK",
+							"text" : "Information About the Partnership",
+							"textAssigned" : "Information About the Partnership",
+							"type" : "static_text"
+						},
+						{
+							"id" : "DOCUMENT:PART_1:GROUP_B",
+							"sub_nodes" : 
+							[
+								{
+									"id" : "DOCUMENT:PART_1:GROUP_B:PARTNERSHIPS_NAME",
+									"is_above" : "DOCUMENT:PART_1:GROUP_B:PARTNERSHIPS_NAME:INPUT",
+									"is_below" : "DOCUMENT:PART_1:GROUP_A:PARTNERSHIPS_EMPLOYER:INPUT",
+									"is_right_to" : "DOCUMENT:PART_1:GROUP_B:B",
+									"sub_nodes" : 
+									[
+										{
+											"id" : "DOCUMENT:PART_1:GROUP_B:PARTNERSHIPS_NAME:INPUT",
+											"input_type" : "alpha_numeric",
+											"is_above" : "DOCUMENT:PART_1:GROUP_C:C,DOCUMENT:PART_1:GROUP_C:IRS",
+											"is_below" : "DOCUMENT:PART_1:GROUP_B:PARTNERSHIPS_NAME,DOCUMENT:PART_1:GROUP_B:B",
+											"type" : "input",
+											"value" : ""
+										}
+									],
+									"text" : "Partnership's name, address, city, state, and ZIP code",
+									"textAssigned" : "Partnership's name, address, city, state, and ZIP code",
+									"type" : "static_text"
+								},
+								{
+									"id" : "DOCUMENT:PART_1:GROUP_B:B",
+									"is_above" : "DOCUMENT:PART_1:GROUP_B:PARTNERSHIPS_NAME:INPUT",
+									"is_below" : "DOCUMENT:PART_1:GROUP_A:PARTNERSHIPS_EMPLOYER:INPUT",
+									"is_left_to" : "DOCUMENT:PART_1:GROUP_B:PARTNERSHIPS_NAME",
+									"text" : "B",
+									"textAssigned" : "B",
+									"type" : "static_text"
+								}
+							]
+						},
+						{
+							"id" : "DOCUMENT:PART_1:GROUP_A",
+							"sub_nodes" : 
+							[
+								{
+									"id" : "DOCUMENT:PART_1:GROUP_A:PARTNERSHIPS_EMPLOYER",
+									"is_above" : "DOCUMENT:PART_1:GROUP_A:PARTNERSHIPS_EMPLOYER:INPUT",
+									"is_below" : "DOCUMENT:PART_1:INFORMATION_ABOUT_PARTNERSHIP",
+									"is_right_to" : "DOCUMENT:PART_1:GROUP_A:A",
+									"sub_nodes" : 
+									[
+										{
+											"id" : "DOCUMENT:PART_1:GROUP_A:PARTNERSHIPS_EMPLOYER:INPUT",
+											"input_type" : "alpha_numeric",
+											"is_above" : "DOCUMENT:PART_1:GROUP_B:B,DOCUMENT:PART_1:GROUP_B:PARTNERSHIPS_NAME",
+											"is_below" : "DOCUMENT:PART_1:GROUP_A:PARTNERSHIPS_EMPLOYER,DOCUMENT:PART_1:GROUP_A:A",
+											"type" : "input",
+											"value" : ""
+										}
+									],
+									"text" : "Partnership's employer identification number",
+									"textAssigned" : "Partnership's employer identification number",
+									"type" : "static_text"
+								},
+								{
+									"id" : "DOCUMENT:PART_1:GROUP_A:A",
+									"is_above" : "DOCUMENT:PART_1:GROUP_A:PARTNERSHIPS_EMPLOYER:INPUT",
+									"is_left_to" : "DOCUMENT:PART_1:GROUP_A:PARTNERSHIPS_EMPLOYER",
+									"text" : "A",
+									"textAssigned" : "A",
+									"type" : "static_text"
+								}
+							]
+						},
+						{
+							"id" : "DOCUMENT:PART_1:GROUP_C",
+							"sub_nodes" : 
+							[
+								{
+									"id" : "DOCUMENT:PART_1:GROUP_C:IRS",
+									"is_above" : "DOCUMENT:PART_1:GROUP_D:PTP:INPUT,DOCUMENT:PART_1:GROUP_C:IRS:INPUT",
+									"is_below" : "DOCUMENT:PART_1:GROUP_B:PARTNERSHIPS_NAME:INPUT",
+									"is_right_to" : "DOCUMENT:PART_1:GROUP_C:C",
+									"sub_nodes" : 
+									[
+										{
+											"id" : "DOCUMENT:PART_1:GROUP_C:IRS:INPUT",
+											"input_type" : "alpha_numeric",
+											"is_above" : "DOCUMENT:PART_1:GROUP_D:D,DOCUMENT:PART_1:GROUP_D:PTP",
+											"is_below" : "DOCUMENT:PART_1:GROUP_C:IRS,DOCUMENT:PART_1:GROUP_C:C",
+											"type" : "input",
+											"value" : " Oqden"
+										}
+									],
+									"text" : "IRS Center where partnership field return",
+									"textAssigned" : "IRS Center where partnership filed return",
+									"type" : "static_text"
+								},
+								{
+									"id" : "DOCUMENT:PART_1:GROUP_C:C",
+									"is_above" : "DOCUMENT:PART_1:GROUP_C:IRS:INPUT",
+									"is_below" : "DOCUMENT:PART_1:GROUP_B:PARTNERSHIPS_NAME:INPUT",
+									"is_left_to" : "DOCUMENT:PART_1:GROUP_C:IRS",
+									"text" : "C",
+									"textAssigned" : "C",
+									"type" : "static_text"
+								}
+							]
+						}
+					]
+				},
+				{
+					"id" : "DOCUMENT:HEADER_1",
+					"is_above" : "DOCUMENT:PART_1",
+					"sub_nodes" : 
+					[
+						{
+							"id" : "DOCUMENT:HEADER_1:PARTNER",
+							"is_above" : "DOCUMENT:HEADER_1:SEE_BACK,DOCUMENT:HEADER_1:CREDIT",
+							"is_below" : "DOCUMENT:HEADER_1:ENDING:INPUT,DOCUMENT:HEADER_1:ENDING",
+							"text" : "Partner's Share of Income, Deduction,",
+							"textAssigned" : "Partner's Share of Income, Deductions,",
+							"type" : "static_text"
+						},
+						{
+							"id" : "DOCUMENT:HEADER_1:INTERNAL",
+							"is_below" : "DOCUMENT:HEADER_1:DEPARTMENT",
+							"text" : "Internal Revenue Service",
+							"textAssigned" : "Internal Revenue Service",
+							"type" : "static_text"
+						},
+						{
+							"id" : "DOCUMENT:HEADER_1:DEPARTMENT",
+							"is_above" : "DOCUMENT:HEADER_1:INTERNAL",
+							"is_left_to" : "DOCUMENT:HEADER_1:CALENDER",
+							"text" : "Department of the Treasury",
+							"textAssigned" : "Department of the Treasury",
+							"type" : "static_text"
+						},
+						{
+							"id" : "DOCUMENT:HEADER_1:2013TEXT",
+							"is_above" : "DOCUMENT:HEADER_1:20:INPUT",
+							"is_right_to" : "DOCUMENT:HEADER_1:YEAR_BEGINNING:INPUT",
+							"text" : ",2013",
+							"textAssigned" : ", 2013",
+							"type" : "static_text"
+						},
+						{
+							"id" : "DOCUMENT:HEADER_1:SCHEDULE_K1",
+							"is_above" : "DOCUMENT:HEADER_1:FORM_1065",
+							"text" : "Schedule K-1",
+							"textAssigned" : "Schedule K-1",
+							"type" : "static_text"
+						},
+						{
+							"id" : "DOCUMENT:HEADER_1:CREDIT",
+							"is_below" : "DOCUMENT:HEADER_1:PARTNER",
+							"is_left_to" : "DOCUMENT:HEADER_1:SEE_BACK",
+							"text" : "Credits, etc.",
+							"textAssigned" : "Credits, etc.",
+							"type" : "static_text"
+						},
+						{
+							"id" : "DOCUMENT:HEADER_1:2013",
+							"is_above" : "DOCUMENT:HEADER_1:CALENDER",
+							"is_right_to" : "DOCUMENT:HEADER_1:FORM_1065",
+							"text" : "2013",
+							"textAssigned" : "1(0)13",
+							"type" : "static_text"
+						},
+						{
+							"id" : "DOCUMENT:HEADER_1:SEE_BACK",
+							"is_above" : "DOCUMENT:PART_1:INFORMATION_ABOUT_PARTNERSHIP",
+							"is_below" : "DOCUMENT:HEADER_1:PARTNER",
+							"is_right_to" : "DOCUMENT:HEADER_1:CREDIT",
+							"text" : "See back of form and separate instructions.",
+							"textAssigned" : "► See back of form and separate instructions.",
+							"type" : "static_text"
+						},
+						{
+							"id" : "DOCUMENT:HEADER_1:FORM_1065",
+							"is_below" : "DOCUMENT:HEADER_1:SCHEDULE_K1",
+							"is_left_to" : "DOCUMENT:HEADER_1:2013",
+							"text" : "(Form 1065)",
+							"textAssigned" : "(Form 1065)",
+							"type" : "static_text"
+						},
+						{
+							"id" : "DOCUMENT:HEADER_1:CALENDER",
+							"is_above" : "DOCUMENT:HEADER_1:YEAR_BEGINNING:INPUT,DOCUMENT:HEADER_1:YEAR_BEGINNING",
+							"is_below" : "DOCUMENT:HEADER_1:2013",
+							"is_right_to" : "DOCUMENT:HEADER_1:DEPARTMENT",
+							"text" : "For calender year 2013,or tax",
+							"textAssigned" : "For calendar year 2013, or tax",
+							"type" : "static_text"
+						},
+						{
+							"id" : "DOCUMENT:HEADER_1:YEAR_BEGINNING",
+							"is_above" : "DOCUMENT:HEADER_1:ENDING:INPUT,DOCUMENT:HEADER_1:ENDING",
+							"is_below" : "DOCUMENT:HEADER_1:CALENDER",
+							"is_left_to" : "DOCUMENT:HEADER_1:YEAR_BEGINNING:INPUT",
+							"sub_nodes" : 
+							[
+								{
+									"id" : "DOCUMENT:HEADER_1:YEAR_BEGINNING:INPUT",
+									"input_type" : "numeric",
+									"is_above" : "DOCUMENT:HEADER_1:20",
+									"is_below" : "DOCUMENT:HEADER_1:CALENDER",
+									"is_left_to" : "DOCUMENT:HEADER_1:2013TEXT",
+									"is_right_to" : "DOCUMENT:HEADER_1:YEAR_BEGINNING",
+									"type" : "input",
+									"value" : ""
+								}
+							],
+							"text" : "year beginning",
+							"textAssigned" : "year beginning _",
+							"type" : "static_text"
+						},
+						{
+							"id" : "DOCUMENT:HEADER_1:ENDING",
+							"is_above" : "DOCUMENT:HEADER_1:PARTNER",
+							"is_below" : "DOCUMENT:HEADER_1:YEAR_BEGINNING",
+							"is_left_to" : "DOCUMENT:HEADER_1:ENDING:INPUT",
+							"sub_nodes" : 
+							[
+								{
+									"id" : "DOCUMENT:HEADER_1:ENDING:INPUT",
+									"input_type" : "numeric",
+									"is_above" : "DOCUMENT:HEADER_1:PARTNER",
+									"is_below" : "DOCUMENT:HEADER_1:YEAR_BEGINNING",
+									"is_left_to" : "DOCUMENT:HEADER_1:20",
+									"is_right_to" : "DOCUMENT:HEADER_1:ENDING",
+									"type" : "input",
+									"value" : ""
+								}
+							],
+							"text" : "ending",
+							"textAssigned" : "ending _",
+							"type" : "static_text"
+						},
+						{
+							"id" : "DOCUMENT:HEADER_1:20",
+							"is_below" : "DOCUMENT:HEADER_1:YEAR_BEGINNING:INPUT",
+							"is_left_to" : "DOCUMENT:HEADER_1:20:INPUT",
+							"is_right_to" : "DOCUMENT:HEADER_1:ENDING:INPUT",
+							"sub_nodes" : 
+							[
+								{
+									"id" : "DOCUMENT:HEADER_1:20:INPUT",
+									"input_type" : "numeric",
+									"is_below" : "DOCUMENT:HEADER_1:2013TEXT",
+									"is_right_to" : "DOCUMENT:HEADER_1:20",
+									"type" : "input",
+									"value" : ""
+								}
+							],
+							"text" : "20",
+							"textAssigned" : ", 20 _",
+							"type" : "static_text"
+						}
+					]
+				},
+				{
+					"id" : "DOCUMENT:PART_2",
+					"sub_nodes" : 
+					[
+						{
+							"id" : "DOCUMENT:PART_2:GROUP_K",
+							"sub_nodes" : 
+							[
+								{
+									"id" : "DOCUMENT:PART_2:GROUP_K:PARTNER_LIABILITY",
+									"is_above" : "DOCUMENT:PART_2:GROUP_K:PARTNER_LIABILITY:NONRECOURSE:INPUT",
+									"is_below" : "DOCUMENT:PART_2:GROUP_J:TABLE",
+									"sub_nodes" : 
+									[
+										{
+											"id" : "DOCUMENT:PART_2:GROUP_K:PARTNER_LIABILITY:RECOURSE",
+											"is_below" : "DOCUMENT:PART_2:GROUP_K:PARTNER_LIABILITY:QUALIFIED_NONRECOURSE:INPUT",
+											"is_left_to" : "DOCUMENT:PART_2:GROUP_K:PARTNER_LIABILITY:RECOURSE:INPUT",
+											"sub_nodes" : 
+											[
+												{
+													"id" : "DOCUMENT:PART_2:GROUP_K:PARTNER_LIABILITY:RECOURSE:INPUT",
+													"input_type" : "numeric",
+													"is_above" : "DOCUMENT:PART_2:GROUP_L:PARTNER_CAPITAL",
+													"is_below" : "DOCUMENT:PART_2:GROUP_K:PARTNER_LIABILITY:QUALIFIED_NONRECOURSE",
+													"is_right_to" : "DOCUMENT:PART_2:GROUP_K:PARTNER_LIABILITY:RECOURSE",
+													"type" : "input",
+													"value" : " $"
+												}
+											],
+											"text" : "Recourse",
+											"textAssigned" : "Recourse",
+											"type" : "static_text"
+										},
+										{
+											"id" : "DOCUMENT:PART_2:GROUP_K:PARTNER_LIABILITY:QUALIFIED_NONRECOURSE",
+											"is_above" : "DOCUMENT:PART_2:GROUP_K:PARTNER_LIABILITY:RECOURSE:INPUT",
+											"is_below" : "DOCUMENT:PART_2:GROUP_K:PARTNER_LIABILITY:NONRECOURSE:INPUT",
+											"is_left_to" : "DOCUMENT:PART_2:GROUP_K:PARTNER_LIABILITY:QUALIFIED_NONRECOURSE:INPUT",
+											"sub_nodes" : 
+											[
+												{
+													"id" : "DOCUMENT:PART_2:GROUP_K:PARTNER_LIABILITY:QUALIFIED_NONRECOURSE:INPUT",
+													"input_type" : "numeric",
+													"is_above" : "DOCUMENT:PART_2:GROUP_K:PARTNER_LIABILITY:RECOURSE",
+													"is_below" : "DOCUMENT:PART_2:GROUP_K:PARTNER_LIABILITY:NONRECOURSE",
+													"is_right_to" : "DOCUMENT:PART_2:GROUP_K:PARTNER_LIABILITY:QUALIFIED_NONRECOURSE",
+													"type" : "input",
+													"value" : " . $"
+												}
+											],
+											"text" : "Qualified nonrecourse financing",
+											"textAssigned" : "Qualified nonrecourse financing. .",
+											"type" : "static_text"
+										},
+										{
+											"id" : "DOCUMENT:PART_2:GROUP_K:PARTNER_LIABILITY:NONRECOURSE",
+											"is_above" : "DOCUMENT:PART_2:GROUP_K:PARTNER_LIABILITY:QUALIFIED_NONRECOURSE:INPUT",
+											"is_left_to" : "DOCUMENT:PART_2:GROUP_K:PARTNER_LIABILITY:NONRECOURSE:INPUT",
+											"sub_nodes" : 
+											[
+												{
+													"id" : "DOCUMENT:PART_2:GROUP_K:PARTNER_LIABILITY:NONRECOURSE:INPUT",
+													"input_type" : "numeric",
+													"is_above" : "DOCUMENT:PART_2:GROUP_K:PARTNER_LIABILITY:QUALIFIED_NONRECOURSE",
+													"is_below" : "DOCUMENT:PART_2:GROUP_K:PARTNER_LIABILITY",
+													"is_right_to" : "DOCUMENT:PART_2:GROUP_K:PARTNER_LIABILITY:NONRECOURSE",
+													"type" : "input",
+													"value" : " S"
+												}
+											],
+											"text" : "Nonrecourse",
+											"textAssigned" : "Nonrecourse ...........",
+											"type" : "static_text"
+										}
+									],
+									"text" : "Partner's share of liabilities at year end:",
+									"textAssigned" : "Partner's share of liabilities at year end:",
+									"type" : "static_text"
+								}
+							]
+						},
+						{
+							"id" : "DOCUMENT:PART_2:GROUP_G",
+							"sub_nodes" : 
+							[
+								{
+									"id" : "DOCUMENT:PART_2:GROUP_G:LIMITEDPARTNERCON",
+									"text" : "member",
+									"textAssigned" : "member",
+									"type" : "static_text"
+								},
+								{
+									"id" : "DOCUMENT:PART_2:GROUP_G:LIMITEDPARTNER",
+									"is_above" : "DOCUMENT:PART_2:GROUP_H:FOREIGNPARTNER:INPUT",
+									"is_right_to" : "DOCUMENT:PART_2:GROUP_G:LIMITEDPARTNER:INPUT",
+									"sub_nodes" : 
+									[
+										{
+											"id" : "DOCUMENT:PART_2:GROUP_G:LIMITEDPARTNER:INPUT",
+											"input_type" : "boolean",
+											"is_above" : "DOCUMENT:PART_2:GROUP_H:FOREIGNPARTNER",
+											"is_below" : "DOCUMENT:PART_2:GROUP_F:PARTNERNAME",
+											"is_left_to" : "DOCUMENT:PART_2:GROUP_G:LIMITEDPARTNER",
+											"is_right_to" : "DOCUMENT:PART_2:GROUP_G:GENERALPARTNER",
+											"type" : "input",
+											"value" : ""
+										}
+									],
+									"text" : "Limited partner of other LLC",
+									"textAssigned" : "I X I Limited partner or other LLC",
+									"type" : "static_text"
+								},
+								{
+									"id" : "DOCUMENT:PART_2:GROUP_G:GENERALPARTNERCON",
+									"text" : "member-manager",
+									"textAssigned" : "member-manager",
+									"type" : "static_text"
+								},
+								{
+									"id" : "DOCUMENT:PART_2:GROUP_G:GENERALPARTNER",
+									"is_above" : "DOCUMENT:PART_2:GROUP_H:DOMESTICPARTNER:INPUT",
+									"is_below" : "DOCUMENT:PART_2:GROUP_F:PARTNERNAME:INPUT",
+									"is_left_to" : "DOCUMENT:PART_2:GROUP_G:LIMITEDPARTNER:INPUT",
+									"is_right_to" : "DOCUMENT:PART_2:GROUP_G:GENERALPARTNER:INPUT",
+									"sub_nodes" : 
+									[
+										{
+											"id" : "DOCUMENT:PART_2:GROUP_G:GENERALPARTNER:INPUT",
+											"input_type" : "boolean",
+											"is_above" : "DOCUMENT:PART_2:GROUP_H:DOMESTICPARTNER",
+											"is_below" : "DOCUMENT:PART_2:GROUP_F:PARTNERNAME",
+											"is_left_to" : "DOCUMENT:PART_2:GROUP_G:GENERALPARTNER",
+											"type" : "input",
+											"value" : ""
+										}
+									],
+									"text" : "General partner or LLC",
+									"textAssigned" : "| General partner or LLC",
+									"type" : "static_text"
+								}
+							]
+						},
+						{
+							"id" : "DOCUMENT:PART_2:GROUP_I1",
+							"sub_nodes" : 
+							[
+								{
+									"id" : "DOCUMENT:PART_2:GROUP_I1:TYPE_ENTITY_PARTNER",
+									"is_above" : "DOCUMENT:PART_2:GROUP_I2:RETIREMENTPLAN:INPUT",
+									"is_below" : "DOCUMENT:PART_2:GROUP_H:FOREIGNPARTNER:INPUT,DOCUMENT:PART_2:GROUP_H:DOMESTICPARTNER:INPUT",
+									"is_left_to" : "DOCUMENT:PART_2:GROUP_I1:TYPE_ENTITY_PARTNER:INPUT",
+									"sub_nodes" : 
+									[
+										{
+											"id" : "DOCUMENT:PART_2:GROUP_I1:TYPE_ENTITY_PARTNER:INPUT",
+											"input_type" : "alpha_numeric",
+											"is_above" : "DOCUMENT:PART_2:GROUP_I2:RETIREMENTPLAN",
+											"is_below" : "DOCUMENT:PART_2:GROUP_H:FOREIGNPARTNER",
+											"is_right_to" : "DOCUMENT:PART_2:GROUP_I1:TYPE_ENTITY_PARTNER",
+											"type" : "input",
+											"value" : " Partnership"
+										}
+									],
+									"text" : "What type of entity is this partner?",
+									"textAssigned" : "What type of entity is this partner?",
+									"type" : "static_text"
+								}
+							]
+						},
+						{
+							"id" : "DOCUMENT:PART_2:GROUP_E",
+							"sub_nodes" : 
+							[
+								{
+									"id" : "DOCUMENT:PART_2:GROUP_E:PARTNERID",
+									"is_above" : "DOCUMENT:PART_2:GROUP_E:PARTNERID:INPUT",
+									"sub_nodes" : 
+									[
+										{
+											"id" : "DOCUMENT:PART_2:GROUP_E:PARTNERID:INPUT",
+											"input_type" : "numeric",
+											"is_above" : "DOCUMENT:PART_2:GROUP_F:PARTNERNAME",
+											"is_below" : "DOCUMENT:PART_2:GROUP_E:PARTNERID",
+											"type" : "input",
+											"value" : ""
+										}
+									],
+									"text" : "Partner's identifying number",
+									"textAssigned" : "Partner's identifying number",
+									"type" : "static_text"
+								}
+							]
+						},
+						{
+							"id" : "DOCUMENT:PART_2:GROUP_F",
+							"sub_nodes" : 
+							[
+								{
+									"id" : "DOCUMENT:PART_2:GROUP_F:PARTNERNAME",
+									"is_above" : "DOCUMENT:PART_2:GROUP_G:LIMITEDPARTNER:INPUT,DOCUMENT:PART_2:GROUP_G:GENERALPARTNER:INPUT,DOCUMENT:PART_2:GROUP_F:PARTNERNAME:INPUT",
+									"is_below" : "DOCUMENT:PART_2:GROUP_E:PARTNERID:INPUT",
+									"sub_nodes" : 
+									[
+										{
+											"id" : "DOCUMENT:PART_2:GROUP_F:PARTNERNAME:INPUT",
+											"input_type" : "alpha_numeric",
+											"is_above" : "DOCUMENT:PART_2:GROUP_G:GENERALPARTNER",
+											"is_below" : "DOCUMENT:PART_2:GROUP_F:PARTNERNAME",
+											"type" : "input",
+											"value" : ""
+										}
+									],
+									"text" : "Partner's name, address, city, state, and ZIP code",
+									"textAssigned" : "Partner's name, address, city, state, and ZIP code",
+									"type" : "static_text"
+								}
+							]
+						},
+						{
+							"id" : "DOCUMENT:PART_2:INFORMATION_ABOUT_PARTNER",
+							"is_below" : "DOCUMENT:PART_1:GROUP_D:PTP:INPUT",
+							"text" : "Information About the Partner",
+							"textAssigned" : "Information About the Partner",
+							"type" : "static_text"
+						},
+						{
+							"id" : "DOCUMENT:PART_2:GROUP_M",
+							"sub_nodes" : 
+							[
+								{
+									"id" : "DOCUMENT:PART_2:GROUP_M:IFYES",
+									"is_below" : "DOCUMENT:PART_2:GROUP_M:PARTNER_CONTRIB_GAIN_LOSS:NO:INPUT,DOCUMENT:PART_2:GROUP_M:PARTNER_CONTRIB_GAIN_LOSS:YES:INPUT",
+									"text" : "If /Yes,/ attach statement (see instructions)",
+									"textAssigned" : "If \"Yes,\" attach statement (see instructions)",
+									"type" : "static_text"
+								},
+								{
+									"id" : "DOCUMENT:PART_2:GROUP_M:PARTNER_CONTRIB_GAIN_LOSS",
+									"is_above" : "DOCUMENT:PART_2:GROUP_M:PARTNER_CONTRIB_GAIN_LOSS:NO:INPUT,DOCUMENT:PART_2:GROUP_M:PARTNER_CONTRIB_GAIN_LOSS:YES:INPUT",
+									"is_below" : "DOCUMENT:PART_2:GROUP_L:OTHER:INPUT1",
+									"sub_nodes" : 
+									[
+										{
+											"id" : "DOCUMENT:PART_2:GROUP_M:PARTNER_CONTRIB_GAIN_LOSS:NO",
+											"is_right_to" : "DOCUMENT:PART_2:GROUP_M:PARTNER_CONTRIB_GAIN_LOSS:NO:INPUT",
+											"sub_nodes" : 
+											[
+												{
+													"id" : "DOCUMENT:PART_2:GROUP_M:PARTNER_CONTRIB_GAIN_LOSS:NO:INPUT",
+													"input_type" : "boolean",
+													"is_above" : "DOCUMENT:PART_2:GROUP_M:IFYES",
+													"is_below" : "DOCUMENT:PART_2:GROUP_M:PARTNER_CONTRIB_GAIN_LOSS",
+													"is_left_to" : "DOCUMENT:PART_2:GROUP_M:PARTNER_CONTRIB_GAIN_LOSS:NO",
+													"is_right_to" : "DOCUMENT:PART_2:GROUP_M:PARTNER_CONTRIB_GAIN_LOSS:YES",
+													"type" : "input",
+													"value" : ""
+												}
+											]
+										},
+										{
+											"id" : "DOCUMENT:PART_2:GROUP_M:PARTNER_CONTRIB_GAIN_LOSS:YES",
+											"is_left_to" : "DOCUMENT:PART_2:GROUP_M:PARTNER_CONTRIB_GAIN_LOSS:NO:INPUT",
+											"is_right_to" : "DOCUMENT:PART_2:GROUP_M:PARTNER_CONTRIB_GAIN_LOSS:YES:INPUT",
+											"sub_nodes" : 
+											[
+												{
+													"id" : "DOCUMENT:PART_2:GROUP_M:PARTNER_CONTRIB_GAIN_LOSS:YES:INPUT",
+													"input_type" : "boolean",
+													"is_above" : "DOCUMENT:PART_2:GROUP_M:IFYES",
+													"is_below" : "DOCUMENT:PART_2:GROUP_M:PARTNER_CONTRIB_GAIN_LOSS",
+													"is_left_to" : "DOCUMENT:PART_2:GROUP_M:PARTNER_CONTRIB_GAIN_LOSS:YES",
+													"type" : "input",
+													"value" : ""
+												}
+											]
+										}
+									],
+									"text" : "Did the partner contribute property with a built-in gain or loss?",
+									"textAssigned" : "Did the partner contribute property with a built-in gain or loss?",
+									"type" : "static_text"
+								}
+							]
+						},
+						{
+							"id" : "DOCUMENT:PART_2:GROUP_J",
+							"sub_nodes" : 
+							[
+								{
+									"data" : "(0,3)=>Capital\n(4,3)=>%\n(3,3)=>0.000000\n(1,3)=>1.023300\n(0,2)=>Loss\n(1,1)=>1.023300\n(2,2)=>%\n(1,0)=>Beginning\n(3,0)=>Ending\n(2,1)=>%\n(3,1)=>0.000000\n(4,1)=>%\n(0,1)=>Profit\n(4,2)=>%\n(3,2)=>0.000000\n(2,3)=>%\n(1,2)=>1.023300\n",
+									"id" : "DOCUMENT:PART_2:GROUP_J:TABLE",
+									"is_above" : "DOCUMENT:PART_2:GROUP_K:PARTNER_LIABILITY",
+									"is_below" : "DOCUMENT:PART_2:GROUP_J:PARTNERSHAREFINANCE",
+									"num_cols" : 3,
+									"num_rows" : 4,
+									"table_entries" : 
+									{
+										"(0,1)" : 
+										{
+											"id" : "TABLE1:PROFIT",
+											"text" : "Profit",
+											"type" : "static_text"
+										},
+										"(0,2)" : 
+										{
+											"id" : "TABLE1:LOSS",
+											"text" : "Loss",
+											"type" : "static_text"
+										},
+										"(0,3)" : 
+										{
+											"id" : "TABLE1:CAPITAL",
+											"text" : "Capital",
+											"type" : "static_text"
+										},
+										"(1,0)" : 
+										{
+											"id" : "TABLE1:BEGINNING",
+											"text" : "Beginning",
+											"type" : "static_text"
+										},
+										"(1,1)" : 
+										{
+											"id" : "TABLE1:PROFIT_BEGINNING_INPUT",
+											"input_type" : "numeric",
+											"type" : "input",
+											"value" : "1.023300"
+										},
+										"(1,2)" : 
+										{
+											"id" : "TABLE1:LOSS_BEGINNING_INPUT",
+											"input_type" : "numeric",
+											"type" : "input",
+											"value" : "1.023300"
+										},
+										"(1,3)" : 
+										{
+											"id" : "TABLE1:CAPITAL_BEGINNING_INPUT",
+											"input_type" : "numeric",
+											"type" : "input",
+											"value" : "1.023300"
+										},
+										"(2,0)" : 
+										{
+											"id" : "TABLE1:ENDING",
+											"text" : "Ending",
+											"type" : "static_text"
+										},
+										"(2,1)" : 
+										{
+											"id" : "TABLE1:PROFIT_ENDING_INPUT",
+											"input_type" : "numeric",
+											"type" : "input",
+											"value" : "%"
+										},
+										"(2,2)" : 
+										{
+											"id" : "TABLE1:LOSS_ENDING_INPUT",
+											"input_type" : "numeric",
+											"type" : "input",
+											"value" : "%"
+										},
+										"(2,3)" : 
+										{
+											"id" : "TABLE1:CAPITAL_ENDING_INPUT",
+											"input_type" : "numeric",
+											"type" : "input",
+											"value" : "%"
+										}
+									},
+									"type" : "tabular"
+								},
+								{
+									"id" : "DOCUMENT:PART_2:GROUP_J:PARTNERSHAREFINANCE",
+									"is_above" : "DOCUMENT:PART_2:GROUP_J:TABLE",
+									"is_below" : "DOCUMENT:PART_2:GROUP_I2:RETIREMENTPLAN:INPUT",
+									"text" : "Partner's share of profit, loss, and capital (see instructions)",
+									"textAssigned" : "Partner's share of profit, loss, and capital (see instructions):",
+									"type" : "static_text"
+								}
+							]
+						},
+						{
+							"id" : "DOCUMENT:PART_2:GROUP_H",
+							"sub_nodes" : 
+							[
+								{
+									"id" : "DOCUMENT:PART_2:GROUP_H:FOREIGNPARTNER",
+									"is_above" : "DOCUMENT:PART_2:GROUP_I1:TYPE_ENTITY_PARTNER:INPUT",
+									"is_below" : "DOCUMENT:PART_2:GROUP_G:LIMITEDPARTNER:INPUT",
+									"is_right_to" : "DOCUMENT:PART_2:GROUP_H:FOREIGNPARTNER:INPUT",
+									"sub_nodes" : 
+									[
+										{
+											"id" : "DOCUMENT:PART_2:GROUP_H:FOREIGNPARTNER:INPUT",
+											"input_type" : "boolean",
+											"is_above" : "DOCUMENT:PART_2:GROUP_I1:TYPE_ENTITY_PARTNER",
+											"is_below" : "DOCUMENT:PART_2:GROUP_G:LIMITEDPARTNER",
+											"is_left_to" : "DOCUMENT:PART_2:GROUP_H:FOREIGNPARTNER",
+											"is_right_to" : "DOCUMENT:PART_2:GROUP_H:DOMESTICPARTNER",
+											"type" : "input",
+											"value" : ""
+										}
+									],
+									"text" : "Foreign partner",
+									"textAssigned" : "Foreign partner",
+									"type" : "static_text"
+								},
+								{
+									"id" : "DOCUMENT:PART_2:GROUP_H:DOMESTICPARTNER",
+									"is_below" : "DOCUMENT:PART_2:GROUP_G:GENERALPARTNER:INPUT",
+									"is_left_to" : "DOCUMENT:PART_2:GROUP_H:FOREIGNPARTNER:INPUT",
+									"is_right_to" : "DOCUMENT:PART_2:GROUP_H:DOMESTICPARTNER:INPUT",
+									"sub_nodes" : 
+									[
+										{
+											"id" : "DOCUMENT:PART_2:GROUP_H:DOMESTICPARTNER:INPUT",
+											"input_type" : "boolean",
+											"is_above" : "DOCUMENT:PART_2:GROUP_I1:TYPE_ENTITY_PARTNER",
+											"is_below" : "DOCUMENT:PART_2:GROUP_G:GENERALPARTNER",
+											"is_left_to" : "DOCUMENT:PART_2:GROUP_H:DOMESTICPARTNER",
+											"type" : "input",
+											"value" : ""
+										}
+									],
+									"text" : "Domestic partner",
+									"textAssigned" : "Domestic partner",
+									"type" : "static_text"
+								}
+							]
+						},
+						{
+							"id" : "DOCUMENT:PART_2:GROUP_I2",
+							"sub_nodes" : 
+							[
+								{
+									"id" : "DOCUMENT:PART_2:GROUP_I2:RETIREMENTPLANCON",
+									"is_left_to" : "DOCUMENT:PART_2:GROUP_I2:RETIREMENTPLAN:INPUT",
+									"text" : "(see instructions)",
+									"textAssigned" : "(see instructions) ......................",
+									"type" : "static_text"
+								},
+								{
+									"id" : "DOCUMENT:PART_2:GROUP_I2:RETIREMENTPLAN",
+									"is_below" : "DOCUMENT:PART_2:GROUP_I1:TYPE_ENTITY_PARTNER:INPUT",
+									"sub_nodes" : 
+									[
+										{
+											"id" : "DOCUMENT:PART_2:GROUP_I2:RETIREMENTPLAN:INPUT",
+											"input_type" : "boolean",
+											"is_above" : "DOCUMENT:PART_2:GROUP_J:PARTNERSHAREFINANCE",
+											"is_below" : "DOCUMENT:PART_2:GROUP_I1:TYPE_ENTITY_PARTNER",
+											"is_left_to" : "DOCUMENT:PART_3:GROUP_12:12",
+											"is_right_to" : "DOCUMENT:PART_2:GROUP_I2:RETIREMENTPLANCON",
+											"type" : "input",
+											"value" : ""
+										}
+									],
+									"text" : "If this partner is a retirement plan (IRA/SEP/Keogh/etc. check here",
+									"textAssigned" : "If this partner is a retirement plan (IRA/SEP/Keogh/etc.), check here",
+									"type" : "static_text"
+								}
+							]
+						},
+						{
+							"id" : "DOCUMENT:PART_2:GROUP_L",
+							"sub_nodes" : 
+							[
+								{
+									"id" : "DOCUMENT:PART_2:GROUP_L:SECTION704",
+									"is_right_to" : "DOCUMENT:PART_2:GROUP_L:SECTION704:INPUT",
+									"sub_nodes" : 
+									[
+										{
+											"id" : "DOCUMENT:PART_2:GROUP_L:SECTION704:INPUT",
+											"input_type" : "boolean",
+											"is_above" : "DOCUMENT:PART_2:GROUP_L:OTHER",
+											"is_below" : "DOCUMENT:PART_2:GROUP_L:ENDING_CAPITAL_ACCOUNT",
+											"is_left_to" : "DOCUMENT:PART_2:GROUP_L:SECTION704",
+											"is_right_to" : "DOCUMENT:PART_2:GROUP_L:GAAP",
+											"type" : "input",
+											"value" : ""
+										}
+									]
+								},
+								{
+									"id" : "DOCUMENT:PART_2:GROUP_L:GAAP",
+									"is_left_to" : "DOCUMENT:PART_2:GROUP_L:SECTION704:INPUT",
+									"is_right_to" : "DOCUMENT:PART_2:GROUP_L:GAAP:INPUT",
+									"sub_nodes" : 
+									[
+										{
+											"id" : "DOCUMENT:PART_2:GROUP_L:GAAP:INPUT",
+											"input_type" : "boolean",
+											"is_above" : "DOCUMENT:PART_2:GROUP_L:OTHER",
+											"is_below" : "DOCUMENT:PART_2:GROUP_L:ENDING_CAPITAL_ACCOUNT",
+											"is_left_to" : "DOCUMENT:PART_2:GROUP_L:GAAP",
+											"is_right_to" : "DOCUMENT:PART_2:GROUP_L:TAXBASIS",
+											"type" : "input",
+											"value" : ""
+										}
+									]
+								},
+								{
+									"id" : "DOCUMENT:PART_2:GROUP_L:PARTNER_CAPITAL",
+									"is_above" : "DOCUMENT:PART_2:GROUP_L:PARTNER_CAPITAL:BEGINNING:INPUT",
+									"is_below" : "DOCUMENT:PART_2:GROUP_K:PARTNER_LIABILITY:RECOURSE:INPUT",
+									"sub_nodes" : 
+									[
+										{
+											"id" : "DOCUMENT:PART_2:GROUP_L:PARTNER_CAPITAL:CURRENT_YEAR",
+											"is_above" : "DOCUMENT:PART_2:GROUP_L:WITHDRAWAL_CONTRIBUTION:INPUT",
+											"is_below" : "DOCUMENT:PART_2:GROUP_L:PARTNER_CAPITAL:CAPITAL_DURING_YEAR:INPUT",
+											"is_left_to" : "DOCUMENT:PART_2:GROUP_L:PARTNER_CAPITAL:CURRENT_YEAR:INPUT",
+											"sub_nodes" : 
+											[
+												{
+													"id" : "DOCUMENT:PART_2:GROUP_L:PARTNER_CAPITAL:CURRENT_YEAR:INPUT",
+													"input_type" : "numeric",
+													"is_above" : "DOCUMENT:PART_2:GROUP_L:WITHDRAWAL_CONTRIBUTION",
+													"is_below" : "DOCUMENT:PART_2:GROUP_L:PARTNER_CAPITAL:CAPITAL_DURING_YEAR",
+													"is_right_to" : "DOCUMENT:PART_2:GROUP_L:PARTNER_CAPITAL:CURRENT_YEAR",
+													"type" : "input",
+													"value" : " . . $ -1,868,625."
+												}
+											],
+											"text" : "Current year increase (decrease)",
+											"textAssigned" : "Current year increase (decrease)",
+											"type" : "static_text"
+										},
+										{
+											"id" : "DOCUMENT:PART_2:GROUP_L:PARTNER_CAPITAL:CAPITAL_DURING_YEAR",
+											"is_above" : "DOCUMENT:PART_2:GROUP_L:PARTNER_CAPITAL:CURRENT_YEAR:INPUT",
+											"is_below" : "DOCUMENT:PART_2:GROUP_L:PARTNER_CAPITAL:BEGINNING:INPUT",
+											"is_left_to" : "DOCUMENT:PART_2:GROUP_L:PARTNER_CAPITAL:CAPITAL_DURING_YEAR:INPUT",
+											"sub_nodes" : 
+											[
+												{
+													"id" : "DOCUMENT:PART_2:GROUP_L:PARTNER_CAPITAL:CAPITAL_DURING_YEAR:INPUT",
+													"input_type" : "numeric",
+													"is_above" : "DOCUMENT:PART_2:GROUP_L:PARTNER_CAPITAL:CURRENT_YEAR",
+													"is_below" : "DOCUMENT:PART_2:GROUP_L:PARTNER_CAPITAL:BEGINNING",
+													"is_right_to" : "DOCUMENT:PART_2:GROUP_L:PARTNER_CAPITAL:CAPITAL_DURING_YEAR",
+													"type" : "input",
+													"value" : " . $"
+												}
+											],
+											"text" : "Capital contributed during this year",
+											"textAssigned" : "Capital contributed during the year",
+											"type" : "static_text"
+										},
+										{
+											"id" : "DOCUMENT:PART_2:GROUP_L:PARTNER_CAPITAL:BEGINNING",
+											"is_above" : "DOCUMENT:PART_2:GROUP_L:PARTNER_CAPITAL:CAPITAL_DURING_YEAR:INPUT",
+											"is_left_to" : "DOCUMENT:PART_2:GROUP_L:PARTNER_CAPITAL:BEGINNING:INPUT",
+											"sub_nodes" : 
+											[
+												{
+													"id" : "DOCUMENT:PART_2:GROUP_L:PARTNER_CAPITAL:BEGINNING:INPUT",
+													"input_type" : "numeric",
+													"is_above" : "DOCUMENT:PART_2:GROUP_L:PARTNER_CAPITAL:CAPITAL_DURING_YEAR",
+													"is_below" : "DOCUMENT:PART_2:GROUP_L:PARTNER_CAPITAL",
+													"is_right_to" : "DOCUMENT:PART_2:GROUP_L:PARTNER_CAPITAL:BEGINNING",
+													"type" : "input",
+													"value" : " . . . $ 1, 954,093."
+												}
+											],
+											"text" : "Beginning capital account",
+											"textAssigned" : "Beginning capital account",
+											"type" : "static_text"
+										}
+									],
+									"text" : "Partner's capital account analysis:",
+									"textAssigned" : "Partner's capital account analysis:",
+									"type" : "static_text"
+								},
+								{
+									"id" : "DOCUMENT:PART_2:GROUP_L:WITHDRAWAL_CONTRIBUTION",
+									"is_above" : "DOCUMENT:PART_2:GROUP_L:ENDING_CAPITAL_ACCOUNT:INPUT",
+									"is_below" : "DOCUMENT:PART_2:GROUP_L:PARTNER_CAPITAL:CURRENT_YEAR:INPUT",
+									"is_left_to" : "DOCUMENT:PART_2:GROUP_L:WITHDRAWAL_CONTRIBUTION:INPUT",
+									"sub_nodes" : 
+									[
+										{
+											"id" : "DOCUMENT:PART_2:GROUP_L:WITHDRAWAL_CONTRIBUTION:INPUT",
+											"input_type" : "numeric",
+											"is_above" : "DOCUMENT:PART_2:GROUP_L:ENDING_CAPITAL_ACCOUNT",
+											"is_below" : "DOCUMENT:PART_2:GROUP_L:PARTNER_CAPITAL:CURRENT_YEAR",
+											"is_right_to" : "DOCUMENT:PART_2:GROUP_L:WITHDRAWAL_CONTRIBUTION",
+											"type" : "input",
+											"value" : " . . $ I 85,468. )"
+										}
+									],
+									"text" : "Withdrawals & distributions",
+									"textAssigned" : "Withdrawals & distributions",
+									"type" : "static_text"
+								},
+								{
+									"id" : "DOCUMENT:PART_2:GROUP_L:ENDING_CAPITAL_ACCOUNT",
+									"is_above" : "DOCUMENT:PART_2:GROUP_L:SECTION704:INPUT,DOCUMENT:PART_2:GROUP_L:GAAP:INPUT,DOCUMENT:PART_2:GROUP_L:TAXBASIS:INPUT",
+									"is_below" : "DOCUMENT:PART_2:GROUP_L:WITHDRAWAL_CONTRIBUTION:INPUT",
+									"is_left_to" : "DOCUMENT:PART_2:GROUP_L:ENDING_CAPITAL_ACCOUNT:INPUT",
+									"sub_nodes" : 
+									[
+										{
+											"id" : "DOCUMENT:PART_2:GROUP_L:ENDING_CAPITAL_ACCOUNT:INPUT",
+											"input_type" : "numeric",
+											"is_above" : "DOCUMENT:PART_2:GROUP_L:TAXBASIS",
+											"is_below" : "DOCUMENT:PART_2:GROUP_L:WITHDRAWAL_CONTRIBUTION",
+											"is_right_to" : "DOCUMENT:PART_2:GROUP_L:ENDING_CAPITAL_ACCOUNT",
+											"type" : "input",
+											"value" : " s"
+										}
+									],
+									"text" : "Ending capital account",
+									"textAssigned" : "Ending capital account",
+									"type" : "static_text"
+								},
+								{
+									"id" : "DOCUMENT:PART_2:GROUP_L:OTHER",
+									"is_below" : "DOCUMENT:PART_2:GROUP_L:SECTION704:INPUT,DOCUMENT:PART_2:GROUP_L:GAAP:INPUT,DOCUMENT:PART_2:GROUP_L:TAXBASIS:INPUT",
+									"sub_nodes" : 
+									[
+										{
+											"id" : "DOCUMENT:PART_2:GROUP_L:OTHER:INPUT1",
+											"input_type" : "boolean",
+											"is_above" : "DOCUMENT:PART_2:GROUP_M:PARTNER_CONTRIB_GAIN_LOSS",
+											"is_below" : "DOCUMENT:PART_2:GROUP_L:TAXBASIS",
+											"type" : "input",
+											"value" : ""
+										}
+									]
+								},
+								{
+									"id" : "DOCUMENT:PART_2:GROUP_L:TAXBASIS",
+									"is_above" : "DOCUMENT:PART_2:GROUP_L:OTHER:INPUT1",
+									"is_below" : "DOCUMENT:PART_2:GROUP_L:ENDING_CAPITAL_ACCOUNT:INPUT",
+									"is_left_to" : "DOCUMENT:PART_2:GROUP_L:GAAP:INPUT",
+									"is_right_to" : "DOCUMENT:PART_2:GROUP_L:TAXBASIS:INPUT",
+									"sub_nodes" : 
+									[
+										{
+											"id" : "DOCUMENT:PART_2:GROUP_L:TAXBASIS:INPUT",
+											"input_type" : "boolean",
+											"is_above" : "DOCUMENT:PART_2:GROUP_L:OTHER",
+											"is_below" : "DOCUMENT:PART_2:GROUP_L:ENDING_CAPITAL_ACCOUNT",
+											"is_left_to" : "DOCUMENT:PART_2:GROUP_L:TAXBASIS",
+											"type" : "input",
+											"value" : ""
+										}
+									],
+									"text" : "Tax basis",
+									"textAssigned" : "Tax basis",
+									"type" : "static_text"
+								}
+							]
+						}
+					]
+				},
+				{
+					"id" : "DOCUMENT:HEADER_2",
+					"sub_nodes" : 
+					[
+						{
+							"id" : "DOCUMENT:HEADER_2:OMB_NUMBER",
+							"text" : "1545-0099",
+							"type" : "static_text"
+						},
+						{
+							"id" : "DOCUMENT:HEADER_2:FORM_NUMBER",
+							"text" : "651113",
+							"type" : "static_text"
+						},
+						{
+							"id" : "DOCUMENT:HEADER_2:AMENDED_K_1",
+							"is_right_to" : "DOCUMENT:HEADER_2:AMENDED_K_1:INPUT",
+							"sub_nodes" : 
+							[
+								{
+									"id" : "DOCUMENT:HEADER_2:AMENDED_K_1:INPUT",
+									"input_type" : "boolean",
+									"is_above" : "DOCUMENT:PART_3:PARTNERS_SHARE_CURRENT",
+									"is_left_to" : "DOCUMENT:HEADER_2:AMENDED_K_1",
+									"type" : "input",
+									"value" : ""
+								}
+							],
+							"text" : "Amended K-1",
+							"type" : "static_text"
+						},
+						{
+							"id" : "DOCUMENT:HEADER_2:FINAL_K_1",
+							"is_right_to" : "DOCUMENT:HEADER_2:FINAL_K_1:INPUT",
+							"sub_nodes" : 
+							[
+								{
+									"id" : "DOCUMENT:HEADER_2:FINAL_K_1:INPUT",
+									"input_type" : "boolean",
+									"is_above" : "DOCUMENT:PART_3:PARTNERS_SHARE_CURRENT",
+									"is_left_to" : "DOCUMENT:HEADER_2:FINAL_K_1",
+									"type" : "input",
+									"value" : ""
+								}
+							],
+							"text" : "Final K-1",
+							"type" : "static_text"
+						}
+					]
+				}
+			]
+		}
+	]
+}
