@@ -97,8 +97,6 @@ pair<string, Rect> Mapper::findTextWithRules(shared_ptr<Node> node) {
 
 
 void Mapper::recursiveCallInput(shared_ptr<Node> node) {
-//    Rect rectangle;
-//    bool regionAssigned;
     if (dynamic_pointer_cast<TextNode>(node) != nullptr) {
 
     }
@@ -106,17 +104,9 @@ void Mapper::recursiveCallInput(shared_ptr<Node> node) {
         shared_ptr<RepeatInputNode> rModel = dynamic_pointer_cast<RepeatInputNode>(node);
 
 //        cout << "Repeat here" << endl;
-
-        Rect r = MappingJob(ultimateParent, node->id, width, height).map();
-
-
-        vector<TextualData> croppedTextualData;
-        for_each(data.begin(), data.end(), [&](TextualData &d) {
-            if ((r & d.getRect()).area() == d.getRect().area()) {
-//                cout << d.getText() << endl;
-                croppedTextualData.push_back(d);
-            }
-        });
+        convertRulesToFunctions(rModel);
+        vector<TextualData>croppedTextualData=findTextWithRulesB(rModel);
+        
 
         // Sort wrt y co-ordinates
         sort(croppedTextualData.begin(), croppedTextualData.end(),
@@ -669,4 +659,27 @@ Rect Mapper::findRectFromRules(shared_ptr<Node> rModel, shared_ptr<Node> ultimat
 
     return Rect(left, top, right - left, bottom - top);
 
+}
+
+std::vector<TextualData> Mapper::findTextWithRulesB(std::shared_ptr<Node> node) {
+    vector<TextualData> result;
+    for_each(data.begin(), data.end(), [&](const TextualData &currentData) {
+        bool ruleMatched = true;
+//        cout << node->rules.size();
+//        cout<<currentData.getText()<<" "<<currentData.getRect()<<endl;
+        for_each(node->rules.begin(), node->rules.end(), [&](std::function<bool(const TextualData &n)> currentRule) {
+            bool b = currentRule(currentData);
+            ruleMatched = ruleMatched & b;
+
+//            cout << " " << b << endl;
+        });
+        if (ruleMatched) {
+            result.push_back(currentData);
+//            cout << " Rule matched" << endl;
+        } else {
+//            cout << " Not matched" << endl;
+        }
+    });
+
+    return result;
 }

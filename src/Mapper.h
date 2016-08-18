@@ -29,6 +29,7 @@ public:
     void convertRulesToFunctions(std::shared_ptr<Node>theNode);
 
     std::pair<std::string, cv::Rect> findTextWithRules(std::shared_ptr<Node>node);
+    std::vector<TextualData> findTextWithRulesB(std::shared_ptr<Node>node);
     static cv::Rect findRectFromRules(std::shared_ptr<Node>rModel,std::shared_ptr<Node>ultimateParent, int width, int height);
 
 };
