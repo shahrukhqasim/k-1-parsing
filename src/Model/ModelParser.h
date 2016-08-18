@@ -86,6 +86,20 @@ private:
      */
     void isLeftTo(std::shared_ptr<Node>a, std::shared_ptr<Node>b);
 
+    /**
+     * Sets the rule that a has vertical overlap with b in the IO model
+     * @param a is first node
+     * @param b is second node
+     */
+    void hasVerticalOverlapWith(std::shared_ptr<Node>a, std::shared_ptr<Node>b);
+
+    /**
+     * Sets the rule that a has horizontal overlap with b in the IO model
+     * @param a is first node
+     * @param b is second node
+     */
+    void hasHorizontalOverlapWith(std::shared_ptr<Node>a, std::shared_ptr<Node>b);
+
 
     /**
      * Processes a statement of of Form Definition Language

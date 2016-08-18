@@ -280,6 +280,26 @@ public:
     static bool isRightTo(const cv::Rect& a, const cv::Rect& b);
 
 
+    /**
+     * Calculates horizontal overlap
+     *
+     * @param[in] a represents the test rectangle
+     * @param[in] b represents the rectangle to compare agains
+     *
+     * @return number of overlapping pixels as int
+     */
+    static int getHorizontalOverlap(const cv::Rect& a, const cv::Rect& b);
+
+    /**
+     * Calculates vertical overlap
+     *
+     * @param[in] a represents the test rectangle
+     * @param[in] b represents the rectangle to compare agains
+     *
+     * @return number of overlapping pixels as int
+     */
+    static int getVerticalOverlap(const cv::Rect& a, const cv::Rect& b);
+
 };
 
 

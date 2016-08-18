@@ -66,6 +66,28 @@ void MappingJob::recursive(shared_ptr<Node> node) {
                                  right = theNode->region.x;
                          }
                      }
+
+                     else if (alpha.first == "has_vertical_overlap_with") {
+                         shared_ptr<Node> theNode = ModelParser::findNode(
+                                 HelperMethods::regexSplit(*(alpha.second.begin()), "[:]"), ultimateParent);
+                         if (theNode->regionDefined) {
+                             if (right > theNode->region.x+theNode->region.width)
+                                 right = theNode->region.x+theNode->region.width;
+                             if (left < theNode->region.x)
+                                 left = theNode->region.x;
+                         }
+                     }
+
+                     else if (alpha.first == "has_horizontal_overlap_with") {
+                         shared_ptr<Node> theNode = ModelParser::findNode(
+                                 HelperMethods::regexSplit(*(alpha.second.begin()), "[:]"), ultimateParent);
+                         if (theNode->regionDefined) {
+                             if (bottom > theNode->region.y+theNode->region.height)
+                                 bottom = theNode->region.y+theNode->region.height;
+                             if (top < theNode->region.y)
+                                 top = theNode->region.y;
+                         }
+                     }
                  });
     }
 

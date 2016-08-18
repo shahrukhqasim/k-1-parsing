@@ -40,12 +40,12 @@ int Mapper::findMinTextIndex(const vector<TextualData> &data, const string &text
     int minDistance = 99999999;
     int minIndex = -1;
     for (int i = 0; i < data.size(); i++) {
-        string dataCurrent=data[i].getText();
+        string dataCurrent = data[i].getText();
         string dataCurrent2;
 
-        for(int i=0;i<dataCurrent.size();i++) {
-            if(HelperMethods::isAlphaNumericNotSpace(dataCurrent[i]))
-                dataCurrent2+=dataCurrent[i];
+        for (int i = 0; i < dataCurrent.size(); i++) {
+            if (HelperMethods::isAlphaNumericNotSpace(dataCurrent[i]))
+                dataCurrent2 += dataCurrent[i];
         }
 
         EditDistance editDistance;
@@ -82,8 +82,7 @@ pair<string, Rect> Mapper::findTextWithRules(shared_ptr<Node> node) {
             if (!regionDefined) {
                 regionDefined = true;
                 regionFound = currentData.getRect();
-            }
-            else {
+            } else {
                 regionFound = regionFound | currentData.getRect();
             }
 //            cout << " Rule matched" << endl;
@@ -101,13 +100,12 @@ void Mapper::recursiveCallInput(shared_ptr<Node> node) {
 //    bool regionAssigned;
     if (dynamic_pointer_cast<TextNode>(node) != nullptr) {
 
-    }
-    else if (dynamic_pointer_cast<RepeatInputNode>(node) != nullptr) {
+    } else if (dynamic_pointer_cast<RepeatInputNode>(node) != nullptr) {
         shared_ptr<RepeatInputNode> rModel = dynamic_pointer_cast<RepeatInputNode>(node);
 
 //        cout << "Repeat here" << endl;
 
-        Rect r=MappingJob(ultimateParent,node->id,width,height).map();
+        Rect r = MappingJob(ultimateParent, node->id, width, height).map();
 
 
         vector<TextualData> croppedTextualData;
@@ -193,55 +191,49 @@ void Mapper::recursiveCallInput(shared_ptr<Node> node) {
 
 //            cout<<"Finding "<<coordinateString<<endl;
             {
-                shared_ptr<InputNode>newDynamicNode=shared_ptr<InputNode>(new InputNode(InputNode::INPUT_ALPHA_NUMERIC));
-                newDynamicNode->id=node->id+":"+coordinateString;
+                shared_ptr<InputNode> newDynamicNode = shared_ptr<InputNode>(
+                        new InputNode(InputNode::INPUT_ALPHA_NUMERIC));
+                newDynamicNode->id = node->id + ":" + coordinateString;
 
-                rModel->repeatInputSubNodes[coordinateString]=newDynamicNode;
-                shared_ptr<Node>nx=rModel->repeatInputSubNodes[coordinateString];
-                if(dynamic_pointer_cast<InputNode>(nx)!= nullptr) {
-                    shared_ptr<InputNode>nx2=dynamic_pointer_cast<InputNode>(nx);
+                rModel->repeatInputSubNodes[coordinateString] = newDynamicNode;
+                shared_ptr<Node> nx = rModel->repeatInputSubNodes[coordinateString];
+                if (dynamic_pointer_cast<InputNode>(nx) != nullptr) {
+                    shared_ptr<InputNode> nx2 = dynamic_pointer_cast<InputNode>(nx);
 //                    cout<<"SETTING "<<coordinateString<<" to "<<alpha.first.getText()<<endl;
-                    nx2->data+=alpha.first.getText();
-                    nx2->region=alpha.first.getRect();
-                    nx2->regionDefined=true;
+                    nx2->data += alpha.first.getText();
+                    nx2->region = alpha.first.getRect();
+                    nx2->regionDefined = true;
                 }
             }
         });
 
 
-
-
-
-
-
         string dx2 = "";
         Rect regionX;
-        bool regionXDef=false;
+        bool regionXDef = false;
 
-        vector<TextualData>dataVector;
+        vector<TextualData> dataVector;
 
         for_each(dataX.begin(), dataX.end(), [&](pair<TextualData, pair<int, int>> alpha) {
             dataVector.push_back(alpha.first);
 //            cout << "Assigned to " << alpha.first.getText() << " value " << alpha.second.first << ","
 //                 << alpha.second.second << endl;
             //dx2 += alpha.first.getText() + "|";
-            if(!(alpha.first.getRect().x==0||alpha.first.getRect().y==0)) {
+            if (!(alpha.first.getRect().x == 0 || alpha.first.getRect().y == 0)) {
                 if (!regionXDef) {
                     regionX = alpha.first.getRect();
                     regionXDef = true;
-                }
-                else
+                } else
                     regionX = alpha.first.getRect() | regionX;
             }
         });
 
         sort(dataVector.begin(), dataVector.end(),
-             [](const TextualData & a, const TextualData & b) -> bool
-             {
+             [](const TextualData &a, const TextualData &b) -> bool {
                  return a.getRect().y < b.getRect().y;
              });
 
-        for_each(dataVector.begin(),dataVector.end(),[&] (const TextualData &x) {
+        for_each(dataVector.begin(), dataVector.end(), [&](const TextualData &x) {
             dx2 += x.getText() + "|";
         });
 
@@ -255,12 +247,11 @@ void Mapper::recursiveCallInput(shared_ptr<Node> node) {
 //        rModel->region=r;
         rModel->dataCoordinates = dx;
         rModel->data = dx2;
-        rModel->regionDefined=dataVector.size()!=0?true:false;
-        rModel->region=regionX;
+        rModel->regionDefined = dataVector.size() != 0 ? true : false;
+        rModel->region = regionX;
 
 
-    }
-    else if (dynamic_pointer_cast<InputNode>(node) != nullptr) {
+    } else if (dynamic_pointer_cast<InputNode>(node) != nullptr) {
 //        cout << "Running on: " << node->id << endl;
         shared_ptr<InputNode> iModel = dynamic_pointer_cast<InputNode>(node);
         if (iModel->inputType == InputNode::INPUT_ALPHA_NUMERIC || iModel->inputType == InputNode::INPUT_NUMERIC) {
@@ -269,11 +260,10 @@ void Mapper::recursiveCallInput(shared_ptr<Node> node) {
             string textExtracted = oup.first;
             iModel->data = textExtracted;
             iModel->region = oup.second;
-            iModel->regionDefined = oup.first.size()==0?false:true;
+            iModel->regionDefined = oup.first.size() == 0 ? false : true;
 //            cout << iModel->id << ": " << iModel->data << endl;
         }
-    }
-    else if (dynamic_pointer_cast<TableNode>(node) != nullptr) {
+    } else if (dynamic_pointer_cast<TableNode>(node) != nullptr) {
         shared_ptr<TableNode> tModel = dynamic_pointer_cast<TableNode>(node);
 
         int left = -1;
@@ -293,27 +283,21 @@ void Mapper::recursiveCallInput(shared_ptr<Node> node) {
 //                cout << "::" << theNode->id << endl;
 //                cout << theNode->region << endl;
 //                cout << (dynamic_pointer_cast<TextNode>(theNode))->textAssigned << endl;
-            }
-
-            else if (alpha.first == "is_above") {
+            } else if (alpha.first == "is_above") {
                 shared_ptr<Node> theNode = ModelParser::findNode(
                         HelperMethods::regexSplit(*(alpha.second.begin()), "[:]"), ultimateParent);
                 if (theNode->regionDefined) {
                     if (bottom == -1 || (bottom > theNode->region.y && top != -1))
                         bottom = theNode->region.y;
                 }
-            }
-
-            else if (alpha.first == "is_right_to") {
+            } else if (alpha.first == "is_right_to") {
                 shared_ptr<Node> theNode = ModelParser::findNode(
                         HelperMethods::regexSplit(*(alpha.second.begin()), "[:]"), ultimateParent);
                 if (theNode->regionDefined) {
                     if (left == -1 || left < (theNode->region.x + theNode->region.width && top != -1))
                         left = theNode->region.x + theNode->region.width;
                 }
-            }
-
-            else if (alpha.first == "is_left_to") {
+            } else if (alpha.first == "is_left_to") {
                 shared_ptr<Node> theNode = ModelParser::findNode(
                         HelperMethods::regexSplit(*(alpha.second.begin()), "[:]"), ultimateParent);
                 if (theNode->regionDefined) {
@@ -452,20 +436,18 @@ void Mapper::recursiveCallInput(shared_ptr<Node> node) {
             dx += alpha.first.getText() + "\n";
 
 //            cout<<"Finding "<<coordinateString<<endl;
-            if(tModel->tableEntries.find(coordinateString)!=tModel->tableEntries.end()) {
-                shared_ptr<Node>nx=tModel->tableEntries[coordinateString];
-                if(dynamic_pointer_cast<InputNode>(nx)!= nullptr) {
-                    shared_ptr<InputNode>nx2=dynamic_pointer_cast<InputNode>(nx);
+            if (tModel->tableEntries.find(coordinateString) != tModel->tableEntries.end()) {
+                shared_ptr<Node> nx = tModel->tableEntries[coordinateString];
+                if (dynamic_pointer_cast<InputNode>(nx) != nullptr) {
+                    shared_ptr<InputNode> nx2 = dynamic_pointer_cast<InputNode>(nx);
 //                    cout<<"SETTING "<<coordinateString<<" to "<<alpha.first.getText()<<endl;
-                    nx2->data+=alpha.first.getText();
-                    nx2->region=alpha.first.getRect();
-                    nx2->regionDefined=true;
+                    nx2->data += alpha.first.getText();
+                    nx2->region = alpha.first.getRect();
+                    nx2->regionDefined = true;
                 }
             }
 
         });
-
-
 
 
         tModel->data = dx;
@@ -502,8 +484,7 @@ Rect Mapper::recursiveCallText(shared_ptr<Node> node) {
             regionAssigned = true;
             tNode->regionDefined = true;
         }
-    }
-    else if (dynamic_pointer_cast<InputNode>(node) != nullptr) {
+    } else if (dynamic_pointer_cast<InputNode>(node) != nullptr) {
 //        shared_ptr<InputNode> iModel=dynamic_pointer_cast<InputNode>(node);
 //        string type="";
 //        switch(iModel->inputType) {
@@ -517,8 +498,7 @@ Rect Mapper::recursiveCallText(shared_ptr<Node> node) {
 //                type="boolean";
 //                break;
 //        }
-    }
-    else if (dynamic_pointer_cast<TableNode>(node) != nullptr) {
+    } else if (dynamic_pointer_cast<TableNode>(node) != nullptr) {
         shared_ptr<TableNode> tModel = dynamic_pointer_cast<TableNode>(node);
 
         for_each(tModel->tableEntries.begin(), tModel->tableEntries.end(), [&](pair<string, shared_ptr<Node>> kv) {
@@ -543,8 +523,7 @@ Rect Mapper::recursiveCallText(shared_ptr<Node> node) {
             Rect newStuff = recursiveCallText(current.second);
             if (regionAssigned) {
                 rectangle = newStuff | rectangle;
-            }
-            else {
+            } else {
                 rectangle = newStuff;
                 regionAssigned = true;
             }
@@ -569,14 +548,12 @@ void Mapper::convertRulesToFunctions(shared_ptr<Node> theNode) {
                 if (second->regionDefined) {
                     theNode->rules.push_back([=](const TextualData &third) -> bool {
 //                        cout << "Is below: " << second->id;
-
                         return Processor2::isBelow(third.getRect(), second->region);
                     });
                 }
             });
 
-        }
-        else if (thePair.first == "is_above") {
+        } else if (thePair.first == "is_above") {
             unordered_set<string> value = thePair.second;
             for_each(value.begin(), value.end(), [&](const string &x) {
                 vector<string> hierarchy = HelperMethods::regexSplit(x, "[:]");
@@ -590,8 +567,7 @@ void Mapper::convertRulesToFunctions(shared_ptr<Node> theNode) {
                 }
             });
 
-        }
-        else if (thePair.first == "is_left_to") {
+        } else if (thePair.first == "is_left_to") {
             unordered_set<string> value = thePair.second;
             for_each(value.begin(), value.end(), [&](const string &x) {
                 vector<string> hierarchy = HelperMethods::regexSplit(x, "[:]");
@@ -604,8 +580,7 @@ void Mapper::convertRulesToFunctions(shared_ptr<Node> theNode) {
                 }
             });
 
-        }
-        else if (thePair.first == "is_right_to") {
+        } else if (thePair.first == "is_right_to") {
             unordered_set<string> value = thePair.second;
             for_each(value.begin(), value.end(), [&](const string &x) {
                 vector<string> hierarchy = HelperMethods::regexSplit(x, "[:]");
@@ -613,11 +588,34 @@ void Mapper::convertRulesToFunctions(shared_ptr<Node> theNode) {
                 if (second->regionDefined) {
                     theNode->rules.push_back([=](const TextualData &third) -> bool {
 //                        cout << "Is right to: " << second->id;
-                        return Processor2::isRightTo(third.getRect(), second->region);
+                        return Processor2::isRightTo(third.getRect(), second->region) > 0;
                     });
                 }
             });
 
+        } else if (thePair.first == "has_vertical_overlap_with") {
+            unordered_set<string> value = thePair.second;
+            for_each(value.begin(), value.end(), [&](const string &x) {
+                vector<string> hierarchy = HelperMethods::regexSplit(x, "[:]");
+                shared_ptr<Node> second = ModelParser::findNode(hierarchy, ultimateParent);
+                if (second->regionDefined) {
+                    theNode->rules.push_back([=](const TextualData &third) -> bool {
+                        return Processor2::getVerticalOverlap(third.getRect(), second->region) > 0;
+                    });
+                }
+            });
+        }
+        else if (thePair.first == "has_horizontal_overlap_with") {
+            unordered_set<string> value = thePair.second;
+            for_each(value.begin(), value.end(), [&](const string &x) {
+                vector<string> hierarchy = HelperMethods::regexSplit(x, "[:]");
+                shared_ptr<Node> second = ModelParser::findNode(hierarchy, ultimateParent);
+                if (second->regionDefined) {
+                    theNode->rules.push_back([=](const TextualData &third) -> bool {
+                        return Processor2::getHorizontalOverlap(third.getRect(), second->region) > 0;
+                    });
+                }
+            });
         }
     });
 }
@@ -640,27 +638,21 @@ Rect Mapper::findRectFromRules(shared_ptr<Node> rModel, shared_ptr<Node> ultimat
                 if (top == -1 || (top < theNode->region.y + theNode->region.height && top != -1))
                     top = theNode->region.y + theNode->region.height;
             }
-        }
-
-        else if (alpha.first == "is_above") {
+        } else if (alpha.first == "is_above") {
             shared_ptr<Node> theNode = ModelParser::findNode(
                     HelperMethods::regexSplit(*(alpha.second.begin()), "[:]"), ultimateParent);
             if (theNode->regionDefined) {
                 if (bottom == -1 || (bottom > theNode->region.y && top != -1))
                     bottom = theNode->region.y;
             }
-        }
-
-        else if (alpha.first == "is_right_to") {
+        } else if (alpha.first == "is_right_to") {
             shared_ptr<Node> theNode = ModelParser::findNode(
                     HelperMethods::regexSplit(*(alpha.second.begin()), "[:]"), ultimateParent);
             if (theNode->regionDefined) {
                 if (left == -1 || left < (theNode->region.x + theNode->region.width && top != -1))
                     left = theNode->region.x + theNode->region.width;
             }
-        }
-
-        else if (alpha.first == "is_left_to") {
+        } else if (alpha.first == "is_left_to") {
             shared_ptr<Node> theNode = ModelParser::findNode(
                     HelperMethods::regexSplit(*(alpha.second.begin()), "[:]"), ultimateParent);
             if (theNode->regionDefined) {
@@ -670,6 +662,6 @@ Rect Mapper::findRectFromRules(shared_ptr<Node> rModel, shared_ptr<Node> ultimat
         }
     });
 
-    return Rect(left,top,right-left,bottom-top);
+    return Rect(left, top, right - left, bottom - top);
 
 }

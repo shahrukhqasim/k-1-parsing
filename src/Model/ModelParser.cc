@@ -198,6 +198,15 @@ void ModelParser::processStatement(string statement, int lineNumber) {
             else if (rule == "IS_RIGHT_TO") {
                 isRightTo(nodeA, nodeB);
             }
+            else if (rule == "HAS_HORIZONTAL_OVERLAP_WITH") {
+                hasHorizontalOverlapWith(nodeA, nodeB);
+            }
+            else if (rule == "HAS_VERTICAL_OVERLAP_WITH") {
+                hasVerticalOverlapWith(nodeA, nodeB);
+            }
+            else {
+                cerr<<"Error at line "<<lineNumber<<endl;
+            }
         }
     }
     else if(fields[0]=="ADD_TO_TABLE") {
@@ -519,8 +528,29 @@ void ModelParser::isLeftTo(shared_ptr<Node> a, shared_ptr<Node> b) {
 
 }
 
+void ModelParser::hasVerticalOverlapWith(std::shared_ptr<Node> a, std::shared_ptr<Node> b) {
+    // Set the rule in node a
+    unordered_map<string, unordered_set<string>>::const_iterator got = a->rulesModel.find ("is_left_to");
+    if(got==a->rulesModel.end()) {
+        // Did not find the rule. Create a new one.
+        a->rulesModel["has_vertical_overlap_with"] = unordered_set<string>();
+    }
+    a->rulesModel["has_vertical_overlap_with"].insert(b->id);
+}
+
+void ModelParser::hasHorizontalOverlapWith(std::shared_ptr<Node> a, std::shared_ptr<Node> b) {
+    // Set the rule in node a
+    unordered_map<string, unordered_set<string>>::const_iterator got = a->rulesModel.find ("is_left_to");
+    if(got==a->rulesModel.end()) {
+        // Did not find the rule. Create a new one.
+        a->rulesModel["has_horizontal_overlap_with"] = unordered_set<string>();
+    }
+    a->rulesModel["has_horizontal_overlap_with"].insert(b->id);
+}
+
 
 //void ModelParser::orderIds(shared_ptr<Node> node, int currentId) {
 //    node->id=currentId;
 //
 //}
+

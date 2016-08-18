@@ -5,6 +5,7 @@
 #include "Mapper.h"
 #include "Model/RepeatInputNode.h"
 #include "Model/MappingJob.h"
+
 using namespace std;
 using namespace cv;
 
@@ -164,9 +165,9 @@ void Processor2::outputDataToJson() {
     recursiveInputFieldsToJson(documentNode->subNodes["DOCUMENT"]);
 
     Json::Value outputJson2;
-    ModelParser::convertToJson(outputJson2,documentNode);
-    ofstream outputStream2(outputFolder+outputFileName+"_tree.json");
-    outputStream2<<outputJson2;
+    ModelParser::convertToJson(outputJson2, documentNode);
+    ofstream outputStream2(outputFolder + outputFileName + "_tree.json");
+    outputStream2 << outputJson2;
 
     imwrite(outputFolder + outputFileName + "_output.png", image);
 
@@ -185,32 +186,28 @@ void Processor2::outputBindingLine(shared_ptr<Node> node, Rect region) {
                 cout << "BIND " << node->id << " \"" << i.first << '\"' << endl;
             }
         }
-    }
-    else if (((int) node->id.find("HEADER_2")) >= 0) {
+    } else if (((int) node->id.find("HEADER_2")) >= 0) {
         for (auto i:mappedGroundH2) {
             rectangle(image, i.second, Scalar(0, 255, 0), 3, 8, 0);
             if ((i.second & region).area() != 0) {
                 cout << "BIND " << node->id << " \"" << i.first << '\"' << endl;
             }
         }
-    }
-    else if (((int) node->id.find("PART_1")) >= 0) {
+    } else if (((int) node->id.find("PART_1")) >= 0) {
         for (auto i:mappedGroundP1) {
             rectangle(image, i.second, Scalar(0, 255, 0), 3, 8, 0);
             if ((i.second & region).area() != 0) {
                 cout << "BIND " << node->id << " \"" << i.first << '\"' << endl;
             }
         }
-    }
-    else if (((int) node->id.find("PART_2")) >= 0 || ((int) node->id.find("TABLE")) >= 0) {
+    } else if (((int) node->id.find("PART_2")) >= 0 || ((int) node->id.find("TABLE")) >= 0) {
         for (auto i:mappedGroundP2) {
             rectangle(image, i.second, Scalar(0, 255, 0), 3, 8, 0);
             if ((i.second & region).area() != 0) {
                 cout << "BIND " << node->id << " \"" << i.first << '\"' << endl;
             }
         }
-    }
-    else if (((int) node->id.find("PART_3")) >= 0) {
+    } else if (((int) node->id.find("PART_3")) >= 0) {
         for (auto i:mappedGroundP3) {
             rectangle(image, i.second, Scalar(0, 255, 0), 3, 8, 0);
             if ((i.second & region).area() != 0) {
@@ -222,8 +219,8 @@ void Processor2::outputBindingLine(shared_ptr<Node> node, Rect region) {
 
 void Processor2::visualize(shared_ptr<Node> node) {
 
-    if(dynamic_pointer_cast<InputNode>(node)) {
-        shared_ptr<InputNode>iModel=dynamic_pointer_cast<InputNode>(node);
+    if (dynamic_pointer_cast<InputNode>(node)) {
+        shared_ptr<InputNode> iModel = dynamic_pointer_cast<InputNode>(node);
 
         if ((int) (node->id.find("TABLE")) >= 0)
             return;
@@ -233,7 +230,7 @@ void Processor2::visualize(shared_ptr<Node> node) {
             shared_ptr<Node> foundNode = ModelParser::findNode(hierarchy, documentNode);
             if (foundNode != nullptr) {
                 if (foundNode->regionDefined) {
-                    Scalar randomColor=randomColors[((unsigned int) rng) % 5];
+                    Scalar randomColor = randomColors[((unsigned int) rng) % 5];
                     rectangle(image, foundNode->region, randomColor, 3, 8, 0);
                     putText(image, iModel->data, foundNode->region.br(), 1, 2, randomColor, 2);
                 }
@@ -260,7 +257,6 @@ void Processor2::testAccuracy(shared_ptr<InputNode> node) {
     accuracyTests++;
 
 
-
     vector<string> values = HelperMethods::regexSplit(node->data, "[|]");
 
     for (string j:values) {
@@ -274,7 +270,8 @@ void Processor2::testAccuracy(shared_ptr<InputNode> node) {
                 continue;
             if (HelperMethods::nearEqualComparison(g->value, j)) {
 
-                Scalar randomColor = randomColors[(int) rng % 5];//Scalar((int) rng % 256, (int) rng % 256, (int) rng % 256);
+                Scalar randomColor = randomColors[(int) rng %
+                                                  5];//Scalar((int) rng % 256, (int) rng % 256, (int) rng % 256);
 
 //                rectangle(image, g->rect, randomColor, 3, 8, 0);
 
@@ -356,16 +353,16 @@ void Processor2::recursiveInputFieldsToJson(shared_ptr<Node> node) {
 
 
         Json::Value region;
-        region["l"] = rModel->regionDefined?rModel->region.x:-1;
-        region["t"] = rModel->regionDefined?rModel->region.y:-1;
-        region["r"] = rModel->regionDefined?rModel->region.x + rModel->region.width:-1;
-        region["b"] = rModel->regionDefined?rModel->region.y + rModel->region.height:-1;
+        region["l"] = rModel->regionDefined ? rModel->region.x : -1;
+        region["t"] = rModel->regionDefined ? rModel->region.y : -1;
+        region["r"] = rModel->regionDefined ? rModel->region.x + rModel->region.width : -1;
+        region["b"] = rModel->regionDefined ? rModel->region.y + rModel->region.height : -1;
 
         value["Region"] = region;
 
         Rect regionX = MappingJob(documentNode, rModel->id, image.cols, image.rows).map();
 
-        if((int)(node->id.find("PART_1"))>=0) {
+        if ((int) (node->id.find("PART_1")) >= 0) {
 //            cout<<node->id<<endl;
 //            rectangle(image, MappingJob(documentNode,rModel->id,image.cols,image.rows).map(), Scalar(0,0,255), 3, 8, 0);
         }
@@ -386,8 +383,7 @@ void Processor2::recursiveInputFieldsToJson(shared_ptr<Node> node) {
         }
 
         outputJson["Pages"][0]["Fields"][lastIndexJson++] = value;
-    }
-    else if (dynamic_pointer_cast<InputNode>(node) != nullptr) {
+    } else if (dynamic_pointer_cast<InputNode>(node) != nullptr) {
 //        cout << "Running on: " << node->id << endl;
         shared_ptr<InputNode> iModel = dynamic_pointer_cast<InputNode>(node);
 
@@ -398,19 +394,20 @@ void Processor2::recursiveInputFieldsToJson(shared_ptr<Node> node) {
 
 
         Json::Value region;
-        region["l"] = iModel->regionDefined?iModel->region.x:-1;
-        region["t"] = iModel->regionDefined?iModel->region.y:-1;
-        region["r"] = iModel->regionDefined?iModel->region.x + iModel->region.width:-1;
-        region["b"] = iModel->regionDefined?iModel->region.y + iModel->region.height:-1;
+        region["l"] = iModel->regionDefined ? iModel->region.x : -1;
+        region["t"] = iModel->regionDefined ? iModel->region.y : -1;
+        region["r"] = iModel->regionDefined ? iModel->region.x + iModel->region.width : -1;
+        region["b"] = iModel->regionDefined ? iModel->region.y + iModel->region.height : -1;
 
         value["Region"] = region;
 
         Rect regionX = MappingJob(documentNode, iModel->id, image.cols, image.rows).map();
 
-        if((int)(node->id.find("PART_1"))>=0) {
-            cout<<node->id<<endl;
-            rectangle(image, MappingJob(documentNode,iModel->id,image.cols,image.rows).map(), Scalar(0,0,255), 3, 8, 0);
-        }
+//        if ((int) (node->id.find("PART_1")) >= 0) {
+//            cout << node->id << endl;
+//            rectangle(image, MappingJob(documentNode, iModel->id, image.cols, image.rows).map(), Scalar(0, 0, 255), 3,
+//                      8, 0);
+//        }
 
 
         if (groundTruthFilePath.length() != 0)
@@ -507,8 +504,7 @@ void Processor2::divideIntoParts() {
         TextualData box = mergedWords[i];
         if (shallowProjectionIndex - box.getRect().x > box.getRect().width / 2) {
             leftBoxes.push_back(box);
-        }
-        else {
+        } else {
             rightBoxes.push_back(box);
         }
     }
@@ -518,8 +514,7 @@ void Processor2::divideIntoParts() {
         pair<string, Rect> box = mappedGround[i];
         if (shallowProjectionIndex - box.second.x > box.second.width / 2) {
             mappedGroundL.push_back(box);
-        }
-        else {
+        } else {
             mappedGroundR.push_back(box);
         }
     }
@@ -549,13 +544,11 @@ void Processor2::divideIntoParts() {
             if ((current.getRect().y) >= part2TextualData.getRect().y - 10) {
                 part2Data.push_back(current);
                 part2Rect = part2Rect | current.getRect();
-            }
-            else if (current.getRect().y >= part1TextualData.getRect().y &&
-                     current.getRect().y < part2TextualData.getRect().y) {
+            } else if (current.getRect().y >= part1TextualData.getRect().y &&
+                       current.getRect().y < part2TextualData.getRect().y) {
                 part1Data.push_back(current);
                 part1Rect = part1Rect | current.getRect();
-            }
-            else if (current.getRect().y < part1TextualData.getRect().y - 10) {
+            } else if (current.getRect().y < part1TextualData.getRect().y - 10) {
                 header1Data.push_back(current);
             }
         }
@@ -565,8 +558,7 @@ void Processor2::divideIntoParts() {
             TextualData current = rightBoxes[i];
             if (current.getRect().y >= part3TextualData.getRect().y) {
                 part3Data.push_back(current);
-            }
-            else if (current.getRect().y < part3TextualData.getRect().y - 10) {
+            } else if (current.getRect().y < part3TextualData.getRect().y - 10) {
                 header2Data.push_back(current);
             }
         }
@@ -580,12 +572,10 @@ void Processor2::divideIntoParts() {
             // TODO: Change 10 offset to something dynamic
             if ((current.second.y) >= part2TextualData.getRect().y - 10) {
                 mappedGroundP2.push_back(current);
-            }
-            else if (current.second.y >= part1TextualData.getRect().y &&
-                     current.second.y < part2TextualData.getRect().y) {
+            } else if (current.second.y >= part1TextualData.getRect().y &&
+                       current.second.y < part2TextualData.getRect().y) {
                 mappedGroundP1.push_back(current);
-            }
-            else if (current.second.y < part1TextualData.getRect().y - 10) {
+            } else if (current.second.y < part1TextualData.getRect().y - 10) {
                 mappedGroundH1.push_back(current);
             }
         }
@@ -595,8 +585,7 @@ void Processor2::divideIntoParts() {
             pair<string, Rect> current = mappedGroundR[i];
             if (current.second.y >= part3TextualData.getRect().y) {
                 mappedGroundP3.push_back(current);
-            }
-            else if (current.second.y < part3TextualData.getRect().y - 10) {
+            } else if (current.second.y < part3TextualData.getRect().y - 10) {
                 mappedGroundH2.push_back(current);
             }
         }
@@ -707,8 +696,7 @@ void Processor2::mergeWordBoxes(const vector<TextualData> &words, vector<Textual
             if (vOverlap && (hGap > 0) && (hGap < hGapThresh)) {
                 elem = elem | currWord;
                 prevWord = currWord;
-            }
-            else {
+            } else {
 //                if(elem.width > elem.height){
                 elemBoxes.push_back(elem);
 //                }
@@ -804,6 +792,15 @@ void Processor2::runProcessorProgram(string parentPath, bool evaluate) {
     if (groundTruthFile.length() != 0)
         cout << "Average accuracy " << accuracySum / num;
 
+}
+
+int Processor2::getHorizontalOverlap(const cv::Rect &a, const cv::Rect &b) {
+    return max(0, min(a.y+a.height, b.y+b.height) - max(a.y, b.y));
+}
+
+int Processor2::getVerticalOverlap(const cv::Rect &a, const cv::Rect &b) {
+
+    return max(0, min(a.x+a.width, b.x+b.width) - max(a.x, b.x));
 }
 
 GroundTruth::GroundTruth(const Rect &rect, const string &value) : rect(rect), value(value) {}
