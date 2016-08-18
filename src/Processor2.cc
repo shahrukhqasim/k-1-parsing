@@ -8,7 +8,7 @@
 using namespace std;
 using namespace cv;
 
-#define PROCESSOR_DEBUG_ON
+//#define PROCESSOR_DEBUG_ON
 
 
 Processor2::Processor2(const string &imageFilePath, const string &textFilePath, const string &groundTruthFilePath,
@@ -163,10 +163,12 @@ void Processor2::outputDataToJson() {
 
     recursiveInputFieldsToJson(documentNode->subNodes["DOCUMENT"]);
 
+#ifdef PROESSOR_DEBUG_ON
     Json::Value outputJson2;
     ModelParser::convertToJson(outputJson2, documentNode);
     ofstream outputStream2(outputFolder + outputFileName + "_tree.json");
     outputStream2 << outputJson2;
+#endif
 
     imwrite(outputFolder + outputFileName + "_output.png", image);
 

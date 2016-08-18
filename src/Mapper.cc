@@ -106,7 +106,7 @@ void Mapper::recursiveCallInput(shared_ptr<Node> node) {
 //        cout << "Repeat here" << endl;
         convertRulesToFunctions(rModel);
         vector<TextualData>croppedTextualData=findTextWithRulesB(rModel);
-        
+
 
         // Sort wrt y co-ordinates
         sort(croppedTextualData.begin(), croppedTextualData.end(),
