@@ -366,8 +366,8 @@ void Processor2::recursiveInputFieldsToJson(shared_ptr<Node> node) {
         Rect regionX = MappingJob(documentNode, rModel->id, image.cols, image.rows).map();
 
         if((int)(node->id.find("PART_1"))>=0) {
-            cout<<node->id<<endl;
-            rectangle(image, MappingJob(documentNode,rModel->id,image.cols,image.rows).map(), Scalar(0,0,255), 3, 8, 0);
+//            cout<<node->id<<endl;
+//            rectangle(image, MappingJob(documentNode,rModel->id,image.cols,image.rows).map(), Scalar(0,0,255), 3, 8, 0);
         }
 
 
