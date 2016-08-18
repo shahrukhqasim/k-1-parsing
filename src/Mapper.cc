@@ -180,7 +180,37 @@ void Mapper::recursiveCallInput(shared_ptr<Node> node) {
             dx += string(")");
             dx += string("=>");
             dx += alpha.first.getText() + "\n";
+
+
+            string coordinateString;
+
+            coordinateString += string("(");
+            coordinateString += to_string(alpha.second.first);
+            coordinateString += string(",");
+            coordinateString += to_string(alpha.second.second);
+            coordinateString += string(")");
+
+
+//            cout<<"Finding "<<coordinateString<<endl;
+            {
+                shared_ptr<InputNode>newDynamicNode=shared_ptr<InputNode>(new InputNode(InputNode::INPUT_ALPHA_NUMERIC));
+                newDynamicNode->id=node->id+":"+coordinateString;
+
+                rModel->repeatInputSubNodes[coordinateString]=newDynamicNode;
+                shared_ptr<Node>nx=rModel->repeatInputSubNodes[coordinateString];
+                if(dynamic_pointer_cast<InputNode>(nx)!= nullptr) {
+                    shared_ptr<InputNode>nx2=dynamic_pointer_cast<InputNode>(nx);
+//                    cout<<"SETTING "<<coordinateString<<" to "<<alpha.first.getText()<<endl;
+                    nx2->data+=alpha.first.getText();
+                    nx2->region=alpha.first.getRect();
+                    nx2->regionDefined=true;
+                }
+            }
         });
+
+
+
+
 
 
 

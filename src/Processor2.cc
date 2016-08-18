@@ -8,6 +8,9 @@
 using namespace std;
 using namespace cv;
 
+#define PROCESSOR_DEBUG_ON
+
+
 Processor2::Processor2(const string &imageFilePath, const string &textFilePath, const string &groundTruthFilePath,
                        const string &modelFilePath,
                        const string &outputFolder, const string &outputFileName) {
@@ -159,6 +162,11 @@ void Processor2::outputDataToJson() {
     outputJson["Pages"][0]["Height"] = image.rows;
 
     recursiveInputFieldsToJson(documentNode->subNodes["DOCUMENT"]);
+
+    Json::Value outputJson2;
+    ModelParser::convertToJson(outputJson2,documentNode);
+    ofstream outputStream2(outputFolder+outputFileName+"_tree.json");
+    outputStream2<<outputJson2;
 
     imwrite(outputFolder + outputFileName + "_output.png", image);
 
@@ -337,7 +345,49 @@ void Processor2::testAccuracy(shared_ptr<InputNode> node) {
 }
 
 void Processor2::recursiveInputFieldsToJson(shared_ptr<Node> node) {
-    if (dynamic_pointer_cast<InputNode>(node) != nullptr) {
+    if (dynamic_pointer_cast<RepeatInputNode>(node) != nullptr) {
+//        cout << "Running on: " << node->id << endl;
+        shared_ptr<RepeatInputNode> rModel = dynamic_pointer_cast<RepeatInputNode>(node);
+
+        Json::Value value;
+        value["Id"] = rModel->id;
+        value["Name"] = rModel->descriptiveName;
+        value["Value"] = rModel->data;
+
+
+        Json::Value region;
+        region["l"] = rModel->regionDefined?rModel->region.x:-1;
+        region["t"] = rModel->regionDefined?rModel->region.y:-1;
+        region["r"] = rModel->regionDefined?rModel->region.x + rModel->region.width:-1;
+        region["b"] = rModel->regionDefined?rModel->region.y + rModel->region.height:-1;
+
+        value["Region"] = region;
+
+        Rect regionX = MappingJob(documentNode, rModel->id, image.cols, image.rows).map();
+
+        if((int)(node->id.find("PART_1"))>=0) {
+            cout<<node->id<<endl;
+            rectangle(image, MappingJob(documentNode,rModel->id,image.cols,image.rows).map(), Scalar(0,0,255), 3, 8, 0);
+        }
+
+
+        if (groundTruthFilePath.length() != 0)
+            testAccuracy(rModel);
+        visualize(rModel);
+
+        Mat image2 = image.clone();
+
+
+        if (rModel->repeatInputSubNodes.size() != 0) {
+            for_each(rModel->repeatInputSubNodes.begin(), rModel->repeatInputSubNodes.end(),
+                     [&](pair<string, shared_ptr<Node>> current) {
+                         recursiveInputFieldsToJson(current.second);
+                     });
+        }
+
+        outputJson["Pages"][0]["Fields"][lastIndexJson++] = value;
+    }
+    else if (dynamic_pointer_cast<InputNode>(node) != nullptr) {
 //        cout << "Running on: " << node->id << endl;
         shared_ptr<InputNode> iModel = dynamic_pointer_cast<InputNode>(node);
 
@@ -356,6 +406,11 @@ void Processor2::recursiveInputFieldsToJson(shared_ptr<Node> node) {
         value["Region"] = region;
 
         Rect regionX = MappingJob(documentNode, iModel->id, image.cols, image.rows).map();
+
+        if((int)(node->id.find("PART_1"))>=0) {
+            cout<<node->id<<endl;
+            rectangle(image, MappingJob(documentNode,iModel->id,image.cols,image.rows).map(), Scalar(0,0,255), 3, 8, 0);
+        }
 
 
         if (groundTruthFilePath.length() != 0)

@@ -328,6 +328,38 @@ void ModelParser::convertToJson(Json::Value &jsonOutput, const shared_ptr<Node>&
 
         }
     }
+    else if(dynamic_pointer_cast<RepeatInputNode>(model)!= nullptr) {
+        shared_ptr<RepeatInputNode> rModel=dynamic_pointer_cast<RepeatInputNode>(model);
+        jsonOutput["type"]="input";
+        jsonOutput["value"]=rModel->data;
+        string type="";
+        switch(rModel->inputType) {
+            case InputNode::INPUT_ALPHA_NUMERIC:
+                type="alpha_numeric";
+                break;
+            case InputNode::INPUT_NUMERIC:
+                type="numeric";
+                break;
+            case InputNode::INPUT_CHECKBOX:
+                type="boolean";
+                break;
+        }
+
+        jsonOutput["input_type"]=type;
+
+
+        Json::Value tableEntries;
+        for_each(rModel->repeatInputSubNodes.begin(),rModel->repeatInputSubNodes.end(), [&] (pair<string,shared_ptr<Node>> kv) {
+            string keyy=kv.first;
+            shared_ptr<Node> v=kv.second;
+
+            Json::Value jsonV;
+            convertToJson(jsonV,v);
+
+            tableEntries[keyy]=jsonV;
+        });
+        jsonOutput["repeat_input_sub_nodes"]=tableEntries;
+    }
     else if(dynamic_pointer_cast<InputNode>(model)!= nullptr) {
         shared_ptr<InputNode> iModel=dynamic_pointer_cast<InputNode>(model);
         jsonOutput["type"]="input";
