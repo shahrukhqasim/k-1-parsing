@@ -381,7 +381,7 @@ void Processor2::recursiveInputFieldsToJson(shared_ptr<Node> node) {
                      });
         }
 
-        outputJson["Pages"][0]["Fields"][lastIndexJson++] = value;
+//        outputJson["Pages"][0]["Fields"][lastIndexJson++] = value;
     } else if (dynamic_pointer_cast<InputNode>(node) != nullptr) {
 //        cout << "Running on: " << node->id << endl;
         shared_ptr<InputNode> iModel = dynamic_pointer_cast<InputNode>(node);
