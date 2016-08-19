@@ -160,8 +160,6 @@ void Mapper::recursiveCallInput(shared_ptr<Node> node) {
 
         string dx = "";
 
-
-        int x=0;
         for_each(dataX.begin(), dataX.end(), [&](pair<TextualData, pair<int, int>> alpha) {
 //            cout << "Assigned to " << alpha.first.getText() << " value " << alpha.second.first << ","
 //                 << alpha.second.second << endl;
@@ -172,7 +170,6 @@ void Mapper::recursiveCallInput(shared_ptr<Node> node) {
             dx += string(")");
             dx += string("=>");
             dx += alpha.first.getText() + "\n";
-            x++;
 
 
             string coordinateString;
@@ -185,21 +182,6 @@ void Mapper::recursiveCallInput(shared_ptr<Node> node) {
 
 
 //            cout<<"Finding "<<coordinateString<<endl;
-            {
-                shared_ptr<InputNode> newDynamicNode = shared_ptr<InputNode>(
-                        new InputNode(InputNode::INPUT_ALPHA_NUMERIC));
-                newDynamicNode->id = node->id + ":" + to_string(x);
-
-                rModel->repeatInputSubNodes[coordinateString] = newDynamicNode;
-                shared_ptr<Node> nx = rModel->repeatInputSubNodes[coordinateString];
-                if (dynamic_pointer_cast<InputNode>(nx) != nullptr) {
-                    shared_ptr<InputNode> nx2 = dynamic_pointer_cast<InputNode>(nx);
-//                    cout<<"SETTING "<<coordinateString<<" to "<<alpha.first.getText()<<endl;
-                    nx2->data += alpha.first.getText();
-                    nx2->region = alpha.first.getRect();
-                    nx2->regionDefined = true;
-                }
-            }
         });
 
 
@@ -229,8 +211,26 @@ void Mapper::recursiveCallInput(shared_ptr<Node> node) {
                  return a.getRect().y < b.getRect().y;
              });
 
+        int number=0;
         for_each(dataVector.begin(), dataVector.end(), [&](const TextualData &x) {
             dx2 += x.getText() + "|";
+            number++;
+
+            {
+                shared_ptr<InputNode> newDynamicNode = shared_ptr<InputNode>(
+                        new InputNode(InputNode::INPUT_ALPHA_NUMERIC));
+                newDynamicNode->id = node->id + ":" + to_string(number);
+
+                rModel->repeatInputSubNodes[to_string(number)] = newDynamicNode;
+                shared_ptr<Node> nx = rModel->repeatInputSubNodes[to_string(number)];
+                if (dynamic_pointer_cast<InputNode>(nx) != nullptr) {
+                    shared_ptr<InputNode> nx2 = dynamic_pointer_cast<InputNode>(nx);
+//                    cout<<"SETTING "<<coordinateString<<" to "<<alpha.first.getText()<<endl;
+                    nx2->data += x.getText();
+                    nx2->region = x.getRect();
+                    nx2->regionDefined = true;
+                }
+            }
         });
 
         if (dx2.length() > 0) {
