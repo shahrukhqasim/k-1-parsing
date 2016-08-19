@@ -54,8 +54,8 @@ float Processor2::execute() {
 
         if (x.second->taken || c.length() == 0)
             testsPassed++;
-        else
-            cout << "Not passed " << x.first << " - " << x.second->value << endl;
+//        else
+//            cout << "Not passed " << x.first << " - " << x.second->value << endl;
 
     }
 
@@ -635,7 +635,7 @@ void Processor2::getFieldValues(Json::Value root, vector<TextualData> &outputVec
 void Processor2::readData() {
 
     if (groundTruthFilePath.length() != 0) {
-        cout << groundTruthFilePath << endl;
+//        cout << groundTruthFilePath << endl;
         ifstream theFile(groundTruthFilePath);
         Json::Value parsedData;
         theFile >> parsedData;
@@ -741,7 +741,7 @@ void Processor2::runProcessorProgram(string parentPath, bool evaluate) {
     if (parentPath[parentPath.length() - 1] != '/')
         parentPath = parentPath + "/";
 
-    cout << "Running on " << parentPath << endl;
+//    cout << "Running on " << parentPath << endl;
 
     fstream streamImageFilesList(parentPath + "images/files.txt");
     fstream streamJsonFilesList(parentPath + "text/files.txt");

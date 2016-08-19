@@ -160,6 +160,8 @@ void Mapper::recursiveCallInput(shared_ptr<Node> node) {
 
         string dx = "";
 
+
+        int x=0;
         for_each(dataX.begin(), dataX.end(), [&](pair<TextualData, pair<int, int>> alpha) {
 //            cout << "Assigned to " << alpha.first.getText() << " value " << alpha.second.first << ","
 //                 << alpha.second.second << endl;
@@ -170,6 +172,7 @@ void Mapper::recursiveCallInput(shared_ptr<Node> node) {
             dx += string(")");
             dx += string("=>");
             dx += alpha.first.getText() + "\n";
+            x++;
 
 
             string coordinateString;
@@ -185,7 +188,7 @@ void Mapper::recursiveCallInput(shared_ptr<Node> node) {
             {
                 shared_ptr<InputNode> newDynamicNode = shared_ptr<InputNode>(
                         new InputNode(InputNode::INPUT_ALPHA_NUMERIC));
-                newDynamicNode->id = node->id + ":" + coordinateString;
+                newDynamicNode->id = node->id + ":" + to_string(x);
 
                 rModel->repeatInputSubNodes[coordinateString] = newDynamicNode;
                 shared_ptr<Node> nx = rModel->repeatInputSubNodes[coordinateString];
