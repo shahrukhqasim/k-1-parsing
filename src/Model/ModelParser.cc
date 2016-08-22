@@ -291,14 +291,6 @@ shared_ptr<Node> ModelParser::createHierarchy(vector<string>&hierarchy) {
     shared_ptr<Node>current=document;
 
     string absoluteId="";
-//    for_each(hierarchy.begin(),hierarchy.end(),[&] (string&s2){
-//        absoluteId+=s2+":";
-//    });
-//    if(absoluteId.length()!=0) {
-//        absoluteId=absoluteId.substr(0,absoluteId.length()-1);
-//    }
-//
-//    cout<<absoluteId<<endl;
 
     absoluteId="";
     int index=0;

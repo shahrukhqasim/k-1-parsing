@@ -11,8 +11,6 @@ public:
 
     std::string dataCoordinates;
 
-
-
     /**
      * Sub-nodes of this repeat input. Represented by a hash map from Point to the Node
      * Key = Cartesian coordiante of the the repeat input entry number

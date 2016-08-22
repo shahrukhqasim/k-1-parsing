@@ -1,5 +1,6 @@
 #include "OcrProgram.h"
 
+
 #ifndef K_1_PARSING2_WORDENTRY_H
 #define K_1_PARSING2_WORDENTRY_H
 
