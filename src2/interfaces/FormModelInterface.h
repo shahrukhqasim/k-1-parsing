@@ -7,7 +7,6 @@
 
 
 class FormModelInterface {
-    virtual ~FormModelInterface()=0;
 };
 
 

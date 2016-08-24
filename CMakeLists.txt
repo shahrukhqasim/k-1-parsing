@@ -45,7 +45,7 @@ set(SOURCE_FILES
     src/Model/RepeatInputNode.cc 
     src/Model/RepeatInputNode.h 
     src/Model/MappingJob.cc 
-    src/Model/MappingJob.h)
+    src/Model/MappingJob.h src2/interfaces/FormProcessorInterface.h src2/interfaces/RawFormInterface.h src2/interfaces/FormModelInterface.h src2/mainTest.cpp src2/interfaces/LabelledTreeNodeInterface.h src2/interfaces/TreeFormNodeInterface.h src2/interfaces/TreeFormModelInterface.h src2/implementation/TreeFormIterator.cpp src2/implementation/TreeFormIterator.h src2/implementation/TreeFormModel.cpp src2/implementation/TreeFormModel.h src2/interfaces/TreeFormNodeProcessorInterface.h src2/implementation/BasicTreeFormNode.cpp src2/implementation/BasicTreeFormNode.h src2/implementation/TextTreeFormNode.cpp src2/implementation/TextTreeFormNode.h src2/implementation/InputTreeFormNode.cpp src2/implementation/InputTreeFormNode.h src2/implementation/RepeatInputTreeFormNode.cpp src2/implementation/RepeatInputTreeFormNode.h src2/implementation/TableTreeFormNode.cpp src2/implementation/TableTreeFormNode.h src2/implementation src2/implementation/TreeFormNodeProcessor.cpp src2/implementation/TreeFormNodeProcessor.h)
 
 
 add_executable(k1_parsing ${SOURCE_FILES})
