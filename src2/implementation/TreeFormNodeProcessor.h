@@ -1,6 +1,7 @@
 //
 // Created by shahrukhqasim on 8/22/16.
 //
+#include "../checkboxes/checkbox.h"
 
 #ifndef K1_PARSING_TREEFORMNODEPROCESSOR_H
 #define K1_PARSING_TREEFORMNODEPROCESSOR_H
@@ -11,14 +12,20 @@
 #include "BasicTreeFormNode.h"
 #include "TreeFormModel.h"
 
-class TreeFormNodeProcessor : TreeFormNodeProcessorInterface{
+class TreeFormNodeProcessor : public TreeFormNodeProcessorInterface{
 private:
-    std::shared_ptr<RawFormInterface> form;
+
+    std::vector<CCheckBox> checkboxes;
     std::vector<TextualData>text;
     std::vector<TextualData>takenText;
     cv::Mat image;
-    std::shared_ptr<BasicTreeFormNode>root; // Check this thoroughly
+    std::shared_ptr<BasicTreeFormNode>root;
+
+    std::unordered_map<std::string,cv::Rect>textDividedRegion;
+
 public:
+    TreeFormNodeProcessor(const cv::Mat& image,const std::vector<TextualData> &mergedWords,
+                          const std::shared_ptr<BasicTreeFormNode> &root);
 
 
     void setForm(const std::shared_ptr<RawFormInterface> &form);
@@ -32,6 +39,7 @@ public:
     std::pair<std::string, cv::Rect> findTextFromFunctionalRules(std::vector<std::function<bool(const TextualData &n)>> functionalRules);
     std::vector<TextualData> findVectorizedTextFromFunctionalRules(std::vector<std::function<bool(const TextualData &n)>> functionalRules);
     int findTextWithMinimumEditDistance(std::vector<TextualData>data,std::string textToFind);
+    int findTextWithMinimumEditDistance(std::vector<TextualData>data,std::string textToFind, cv::Rect region);
 };
 
 

@@ -2,53 +2,158 @@
 // Created by shahrukhqasim on 8/22/16.
 //
 
-#include "TreeFormIterator.h"
+#include "TreeFormProcessor.h"
+#include "TreeFormNodeProcessor.h"
+#include "RepeatInputTreeFormNode.h"
 
-bool TreeFormIterator::getResult(std::string result) {
-    return false;
+TreeFormProcessor::TreeFormProcessor(std::shared_ptr<TreeFormModelInterface> formModel) : formModel(formModel) {
 }
 
-TreeFormIterator::TreeFormIterator(std::shared_ptr<TreeFormModelInterface> formModel) : formModel(formModel) {
+bool TreeFormProcessor::processForm(std::shared_ptr<RawFormInterface> anInterface) {
 
-}
 
-bool TreeFormIterator::processForm(std::shared_ptr<RawFormInterface> anInterface) {
-    if(processor== nullptr) {
-        std::cerr<<"Error: Processor not set in iterator"<<std::endl;
-        return false;
-    }
+//    if(processor== nullptr) {
+//        std::cerr<<"Error: Processor not set in iterator"<<std::endl;
+//        return false;
+//    }
 
+    form=anInterface;
     std::shared_ptr<TreeFormNodeInterface>rootNode=formModel->constructRoot();
 
+    root=rootNode;
+
+    std::vector<TextualData>words;
+    std::vector<TextualData>mergedWords;
+    cv::Mat image;
+    anInterface->getText(words);
+    anInterface->getRasterImage(image);
+
+    mergeWordBoxes(words,mergedWords);
+
+    setProcessor(std::shared_ptr<TreeFormNodeProcessorInterface>(new TreeFormNodeProcessor(image,mergedWords,std::dynamic_pointer_cast<BasicTreeFormNode>(rootNode))));
+
+    bool error=false;
     for(int i=0;i<formModel->getIterations();i++) {
         currentIteration=i;
-        recursiveCall(rootNode);
+        std::cout<<"Running iteration "<<i<<std::endl;
+        if(!recursiveCall(rootNode)) {
+            error=true;
+            std::cout<<"Error in iteration "<<i<<std::endl;
+            break;
+        }
+        std::cout<<"Success in iteration "<<i<<std::endl;
     }
-
-    return false;
+    processed=!error;
+    return !error;
 }
 
-void TreeFormIterator::recursiveCall(std::shared_ptr<TreeFormNodeInterface> node) {
+bool TreeFormProcessor::recursiveCall(std::shared_ptr<TreeFormNodeInterface> node) {
     bool childrenDone=false;
 
-    processor->process(node,formModel,currentIteration,childrenDone);
+    if(!processor->process(node,formModel,currentIteration,childrenDone))
+        return false;
 
-    if(!childrenDone) {
+    if(!childrenDone)
+    {
         std::vector<std::shared_ptr<TreeFormNodeInterface>>children;
         node->getChildren(children);
 
         std::for_each(children.begin(),children.end(), [&] (std::shared_ptr<TreeFormNodeInterface>currentChild){
-            recursiveCall(currentChild);
+
+            if(!recursiveCall(currentChild))
+                return false;
         });
     }
+    return true;
 }
 
-const std::shared_ptr<TreeFormNodeProcessorInterface> &TreeFormIterator::getProcessor() const {
+const std::shared_ptr<TreeFormNodeProcessorInterface> &TreeFormProcessor::getProcessor() const {
     return processor;
 }
 
-void TreeFormIterator::setProcessor(const std::shared_ptr<TreeFormNodeProcessorInterface> &processor) {
-    TreeFormIterator::processor = processor;
+void TreeFormProcessor::setProcessor(const std::shared_ptr<TreeFormNodeProcessorInterface> &processor) {
+    TreeFormProcessor::processor = processor;
+}
+
+void TreeFormProcessor::mergeWordBoxes(const std::vector<TextualData> &words, std::vector<TextualData> &elemBoxes) {
+    // Merge the words extracted from Tesseract to obtain text-lines. The logic used for text-line extraction
+    // is to merge two consecutive words if they overlap along the y-axis, and the gap between them is smaller
+    // than the height of the shorter word.
+    int nRects = words.size();
+    bool newElem = true;
+    TextualData elem, prevWord;
+    for (int i = 0; i < nRects; i++) {
+        TextualData currWord = words[i];
+        if (!newElem) {
+            int hGap = currWord.getRect().x - prevWord.getRect().x - prevWord.getRect().width;
+            int hGapThresh = std::max(currWord.getRect().height, prevWord.getRect().height);
+            bool vOverlap = false;
+            if (((currWord.getRect().y <= prevWord.getRect().y) &&
+                 (currWord.getRect().y + currWord.getRect().height > prevWord.getRect().y)) ||
+                ((prevWord.getRect().y <= currWord.getRect().y) &&
+                 (prevWord.getRect().y + prevWord.getRect().height > currWord.getRect().y)))
+                vOverlap = true;
+            if (vOverlap && (hGap > 0) && (hGap < hGapThresh)) {
+                elem = elem | currWord;
+                prevWord = currWord;
+            } else {
+//                if(elem.width > elem.height){
+                elemBoxes.push_back(elem);
+//                }
+                newElem = true;
+            }
+        }
+        if (newElem) {
+            elem = currWord;
+            newElem = false;
+            prevWord = currWord;
+            continue;
+        }
+    }
+    elemBoxes.push_back(elem);
+
+
+}
+
+bool TreeFormProcessor::getResult(Json::Value& result) {
+    lastIndexJson=0;
+    if(processed) {
+        recursiveResultConvert(root);
+        result = fieldsResult;
+        return true;
+    } else
+        return false;
+}
+
+void TreeFormProcessor::recursiveResultConvert(std::shared_ptr<TreeFormNodeInterface> currentNode) {
+    std::cout<<"I am here"<<std::endl;
+    if (std::dynamic_pointer_cast<InputTreeFormNode>(currentNode) != nullptr) {
+        std::shared_ptr<InputTreeFormNode> iModel = std::dynamic_pointer_cast<InputTreeFormNode>(currentNode);
+
+        Json::Value value;
+        value["Id"] = iModel->getId();
+        value["Name"] = iModel->getDescriptiveName();
+        value["Value"] = iModel->getData();
+
+
+        Json::Value region;
+        region["l"] = iModel->isRegionDefined() ? iModel->getRegion().x : -1;
+        region["t"] = iModel->isRegionDefined() ? iModel->getRegion().y : -1;
+        region["r"] = iModel->isRegionDefined() ? iModel->getRegion().x + iModel->getRegion().width : -1;
+        region["b"] = iModel->isRegionDefined() ? iModel->getRegion().y + iModel->getRegion().height : -1;
+
+        value["Region"] = region;
+
+
+        fieldsResult["Pages"][0]["Fields"][lastIndexJson++] = value;
+    }
+
+    std::vector<std::shared_ptr<TreeFormNodeInterface>> children;
+    currentNode->getChildren(children);
+    for(auto x:children) {
+        recursiveResultConvert(x);
+    }
+
 }
 
 

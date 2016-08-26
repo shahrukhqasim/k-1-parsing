@@ -10,7 +10,11 @@
 #include "TableTreeFormNode.h"
 
 std::shared_ptr<TreeFormNodeInterface> TreeFormModel::constructRoot() {
-    return nullptr;
+    if(processMdl()) {
+        return root;
+    }
+    else
+        return nullptr;
 }
 
 std::shared_ptr<TreeFormNodeInterface>
@@ -28,7 +32,7 @@ TreeFormModel::getNode(std::shared_ptr<TreeFormNodeInterface> root, std::vector<
 }
 
 int TreeFormModel::getIterations() {
-    return 0;
+    return 4;
 }
 
 TreeFormModel::TreeFormModel() {
@@ -39,17 +43,20 @@ bool TreeFormModel::processMdl() {
     std::stringstream stringStream(mdlData);
     std::string line;
     int lineNumber = 1;
+    root=std::shared_ptr<BasicTreeFormNode>(new BasicTreeFormNode());
     while (getline(stringStream, line)) {
         if (processLine(line, lineNumber)) {
         } else {
+            std::cout<<"Error at line "<<lineNumber<<": "<<line<<std::endl;
             hasError = true;
         }
         ++lineNumber;
     }
-    return hasError;
+
+    return !hasError;
 }
 
-void TreeFormModel::divideLine(const std::string &line, std::vector<std::string> fields) {
+void TreeFormModel::divideLine(const std::string &line, std::vector<std::string>& fields) {
     fields.clear();
     std::string s = "";
     bool withInField = false;
@@ -114,7 +121,7 @@ bool TreeFormModel::processLine(const std::string &line, int lineNumber) {
     divideLine(line, fields);
 
     if (fields.size() == 0) {
-        return false;
+        return true;
     }
 
     bool hasError = false;
@@ -238,8 +245,6 @@ bool TreeFormModel::processLine(const std::string &line, int lineNumber) {
         }
 
 
-
-
         std::vector<std::string>hierarchyA=HelperMethods::regexSplit(nodeAId,"[:]");
         std::vector<std::string>hierarchyB=HelperMethods::regexSplit(nodeBId,"[:]");
 
@@ -280,6 +285,78 @@ bool TreeFormModel::processLine(const std::string &line, int lineNumber) {
             else {
                 std::cerr<<"Error at line "<<lineNumber<<std::endl;
                 hasError=true;
+            }
+        }
+
+
+    }else if (fields[0] == "RULE_DIVIDE") {
+        if (!(fields.size() == 4 || fields.size() == 3)) {
+            std::cerr << "Error at line: " << lineNumber << ": RULE has extra or not enough arguments" << std::endl;
+            hasError = true;
+        }
+        std::string rule = fields[2];
+
+        bool reference;
+        if ((rule == "IS_BELOW" || rule == "IS_ABOVE" || rule == "IS_LEFT_TO" || rule == "IS_RIGHT_TO" || rule == "IS_BELOW_INCLUSIVE"|| rule == "IS_ABOVE_INCLUSIVE")) {
+            reference = true;
+        }
+        else if((rule == "IS_LEFT_HALF" || rule == "IS_RIGHT_HALF" )) {
+            reference=false;
+        }
+        else {
+            std::cerr<<"Not recognized rule at line"<<lineNumber<<std::endl;
+            hasError = true;
+        }
+
+        if(!hasError) {
+            if(reference) {
+                std::string nodeAId = fields[1];
+                std::string nodeBId = fields[3];
+
+
+                std::vector<std::string> hierarchyA = HelperMethods::regexSplit(nodeAId, "[:]");
+                std::vector<std::string> hierarchyB = HelperMethods::regexSplit(nodeBId, "[:]");
+
+                std::shared_ptr<BasicTreeFormNode> nodeA = std::dynamic_pointer_cast<BasicTreeFormNode>(
+                        getNode(root, hierarchyA));
+                std::shared_ptr<BasicTreeFormNode> nodeB = std::dynamic_pointer_cast<BasicTreeFormNode>(
+                        getNode(root, hierarchyB));
+
+                if (nodeA == nullptr) {
+                    std::cerr << "Node A not found at line: " << lineNumber << std::endl;
+                    hasError = true;
+//            assert(false);
+                }
+
+                if (nodeB == nullptr) {
+                    std::cerr << "Node B not found at line: " << lineNumber << std::endl;
+                    hasError = true;
+//            assert(false);
+                }
+                if (nodeA != nullptr && nodeB != nullptr) {
+                    std::transform(rule.begin(), rule.end(), rule.begin(), ::tolower);
+                    addDivisionRuleWithReference(rule,nodeA,nodeB);
+                }
+            }
+            else {
+
+                std::string nodeAId = fields[1];
+
+                std::vector<std::string> hierarchyA = HelperMethods::regexSplit(nodeAId, "[:]");
+
+                std::shared_ptr<BasicTreeFormNode> nodeA = std::dynamic_pointer_cast<BasicTreeFormNode>(
+                        getNode(root, hierarchyA));
+
+                if (nodeA == nullptr) {
+                    std::cerr << "Node A not found at line: " << lineNumber << std::endl;
+                    hasError = true;
+//            assert(false);
+                }
+
+                if (nodeA != nullptr) {
+                    std::transform(rule.begin(), rule.end(), rule.begin(), ::tolower);
+                    addDivisionRule(rule,nodeA);
+                }
             }
         }
 
@@ -346,8 +423,9 @@ std::shared_ptr<TreeFormModel> TreeFormModel::constructFormModel(std::ifstream m
 
     if(model->processMdl())
         return model;
-    else
+    else {
         return nullptr;
+    }
 }
 
 void TreeFormModel::isBelow(std::shared_ptr<BasicTreeFormNode> a, std::shared_ptr<BasicTreeFormNode> b) {
@@ -452,5 +530,18 @@ TreeFormModel::hasHorizontalOverlapWith(std::shared_ptr<BasicTreeFormNode> a, st
         a->rulesModel["has_horizontal_overlap_with"] = std::unordered_set<std::string>();
     }
     a->rulesModel["has_horizontal_overlap_with"].insert(b->getId());
+
+}
+
+void TreeFormModel::addDivisionRule(std::string keyWord, std::shared_ptr<BasicTreeFormNode> a) {
+    std::shared_ptr<DivisionRule>divisionRule=std::shared_ptr<DivisionRule>(new DivisionRule(keyWord,a->getId()));
+    a->divisionRules.push_back(divisionRule);
+
+}
+
+void TreeFormModel::addDivisionRuleWithReference(std::string keyWord, std::shared_ptr<BasicTreeFormNode> a,
+                                                 std::shared_ptr<BasicTreeFormNode> b) {
+    std::shared_ptr<DivisionRule>divisionRule=std::shared_ptr<DivisionRule>(new DivisionRule(keyWord,b->getId()));
+    a->divisionRules.push_back(divisionRule);
 
 }

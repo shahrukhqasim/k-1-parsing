@@ -3,6 +3,7 @@
 //
 
 #include <string>
+#include "../../json/json/json.h"
 
 #ifndef K1_PARSING_TREEFORMPROCESSOR_H
 #define K1_PARSING_TREEFORMPROCESSOR_H
@@ -11,24 +12,37 @@
 #include "../interfaces/FormProcessorInterface.h"
 #include "../interfaces/TreeFormModelInterface.h"
 
-class TreeFormIterator : public FormProcessorInterface<std::string>{
+class TreeFormProcessor : public FormProcessorInterface<Json::Value>{
     std::shared_ptr<TreeFormModelInterface> formModel;
     std::string result;
-
     int currentIteration;
+    std::shared_ptr<RawFormInterface> form;
     std::shared_ptr<TreeFormNodeProcessorInterface> processor= nullptr;
 public:
     const std::shared_ptr<TreeFormNodeProcessorInterface> &getProcessor() const;
 
-    void setProcessor(const std::shared_ptr<TreeFormNodeProcessorInterface> &processor);
-
 public:
-    TreeFormIterator(std::shared_ptr<TreeFormModelInterface> formModel);
+    void setProcessor(const std::shared_ptr<TreeFormNodeProcessorInterface> &processor);
+    TreeFormProcessor(std::shared_ptr<TreeFormModelInterface> formModel);
 public:
     virtual bool processForm(std::shared_ptr<RawFormInterface> anInterface) override;
-    virtual bool getResult(std::string result) override;
+    virtual bool getResult(Json::Value& result) override;
 private:
-    void recursiveCall(std::shared_ptr<TreeFormNodeInterface>node);
+    bool processed=false;
+    Json::Value fieldsResult;
+    int lastIndexJson=0;
+    std::shared_ptr<TreeFormNodeInterface> root;
+    void recursiveResultConvert(std::shared_ptr<TreeFormNodeInterface>currentNode);
+
+    bool recursiveCall(std::shared_ptr<TreeFormNodeInterface>node);
+
+    /**
+     * Merges words from words into elemBoxes
+     *
+     * @param[in] words represent the input words
+     * @param[out] elemBoxes represent the resultant elements
+     */
+    void mergeWordBoxes(const std::vector<TextualData>&words, std::vector<TextualData>&elemBoxes);
 };
 
 

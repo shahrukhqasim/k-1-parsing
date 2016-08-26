@@ -10,8 +10,11 @@
 
 
 #include "../interfaces/TreeFormNodeInterface.h"
+#include "DivisionRule.h"
 
 class BasicTreeFormNode : public TreeFormNodeInterface {
+protected:
+    std::unordered_map<std::string, std::shared_ptr<TreeFormNodeInterface>>subNodes;
 private:
     cv::Rect region;
     std::string id;
@@ -31,7 +34,6 @@ public:
 private:
     bool regionDefined=false;
 
-    std::unordered_map<std::string, std::shared_ptr<TreeFormNodeInterface>>subNodes;
     std::shared_ptr<TreeFormNodeProcessorInterface> processor;
 
 public:
@@ -48,6 +50,7 @@ public:
 
 
     std::unordered_map<std::string, std::unordered_set<std::string>> rulesModel;
+    std::vector<std::shared_ptr<DivisionRule>> divisionRules;
 };
 
 

@@ -7,7 +7,8 @@
 
 
 class RuleInterface {
-
+public:
+    virtual ~RuleInterface()=0;
 };
 
 

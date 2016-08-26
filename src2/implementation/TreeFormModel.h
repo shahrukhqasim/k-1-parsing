@@ -19,7 +19,7 @@ private:
 
     bool processMdl();
     bool processLine(const std::string &line, int lineNumber);
-    void divideLine(const std::string& line, std::vector<std::string>fields);
+    void divideLine(const std::string& line, std::vector<std::string>&fields);
     std::shared_ptr<TreeFormNodeInterface> createHierarchy(std::vector<std::string>&hierarchy);
     TreeFormModel();
 public:
@@ -46,6 +46,9 @@ public:
     void hasVerticalOverlapWith(std::shared_ptr<BasicTreeFormNode>a, std::shared_ptr<BasicTreeFormNode>b);
 
     void hasHorizontalOverlapWith(std::shared_ptr<BasicTreeFormNode>a, std::shared_ptr<BasicTreeFormNode>b);
+
+    void addDivisionRule(std::string keyWord, std::shared_ptr<BasicTreeFormNode>a);
+    void addDivisionRuleWithReference(std::string keyWord, std::shared_ptr<BasicTreeFormNode>a, std::shared_ptr<BasicTreeFormNode>b);
 
 
 };

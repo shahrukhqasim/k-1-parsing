@@ -13,7 +13,7 @@
 template<typename Result>
 class FormProcessorInterface {
     virtual bool processForm(std::shared_ptr<RawFormInterface>)=0;
-    virtual bool getResult(Result)=0;
+    virtual bool getResult(Result&)=0;
 };
 
 
