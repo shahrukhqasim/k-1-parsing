@@ -359,6 +359,8 @@ bool TreeFormNodeProcessor::process(std::shared_ptr<TreeFormNodeInterface> ptr,
             rModel->setRegionDefined(dataVector.size() != 0 ? true : false);
             rModel->setRegion(regionX);
 
+            childrenDone=true;
+
 
         } else if (std::dynamic_pointer_cast<InputTreeFormNode>(ptr) != nullptr) {
 //        cout << "Running on: " << node->id << endl;
@@ -692,7 +694,7 @@ bool TreeFormNodeProcessor::process(std::shared_ptr<TreeFormNodeInterface> ptr,
 
 
 //            tModel->data = dx;
-
+            childrenDone=true;
         }
     }
     return true;
