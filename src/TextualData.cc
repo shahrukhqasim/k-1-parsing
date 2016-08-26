@@ -2,6 +2,8 @@
 using namespace std;
 using namespace cv;
 
+
+
 bool TextualData::compare(TextualData &expectedOutput){
 
     int matched=0;
