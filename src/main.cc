@@ -48,7 +48,6 @@ void printHelp() {
  * @return insignificant. Will return 0 in most cases.
  */
 int main(int argc, char**argv) {
-
     if(argc!=3) {
         cout<<"Error in arguments."<<endl;
         printHelp();
