@@ -472,7 +472,7 @@ bool TreeFormNodeProcessor::process(std::shared_ptr<TreeFormNodeInterface> ptr,
                 else {
                     iModel->setRegionDefined(true);
                     iModel->setRegion(box.outerBBox);
-                    iModel->setData(box.isFilled?"checked":"unchecked");
+                    iModel->setData(box.isFilled?"True":"False");
                 }
 
             }
@@ -697,6 +697,11 @@ bool TreeFormNodeProcessor::process(std::shared_ptr<TreeFormNodeInterface> ptr,
             childrenDone=true;
         }
     }
+    else if(iteration==4) {
+
+        childrenDone=true;
+    }
+
     return true;
 }
 

@@ -32,7 +32,7 @@ TreeFormModel::getNode(std::shared_ptr<TreeFormNodeInterface> root, std::vector<
 }
 
 int TreeFormModel::getIterations() {
-    return 4;
+    return 5;
 }
 
 TreeFormModel::TreeFormModel() {
