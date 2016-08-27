@@ -15,6 +15,130 @@ using namespace cv;
 #include "Processor2.h"
 #include "Model/ModelParser.h"
 
+
+#include <iostream>
+#include "../src2/interfaces/TreeFormModelInterface.h"
+#include "../src2/implementation/TreeFormModel.h"
+#include "../src2/implementation/TreeFormProcessor.h"
+#include "fstream"
+#include "../src2/implementation/BasicForm.h"
+#include "../src2/accuracy_test/InputFieldsAccuracyTest.h"
+
+void getWords(Json::Value root, std::vector<TextualData> &outputVector) {
+    root = root["Pages"][0];
+
+    Json::Value words = root["Words"];
+    for (int i = 0; i < words.size(); i++) {
+        Json::Value word = words[i];
+        std::string value = word["Value"].asString();
+        Json::Value rectangle = word["Region"];
+
+        int t = rectangle["t"].asInt();
+        int l = rectangle["l"].asInt();
+        int b = rectangle["b"].asInt();
+        int r = rectangle["r"].asInt();
+
+        TextualData entry;
+        entry.setRect(cv::Rect(l, t, r - l, b - t));
+        entry.setText(value);
+        outputVector.push_back(entry);
+    }
+}
+
+inline bool readJson(const std::string& path, Json::Value&output) {
+    std::ifstream file(path);
+    file>>output;
+}
+
+void batchProcess(std::string parentPath, bool evaluate) {
+    if (parentPath[parentPath.length() - 1] != '/')
+        parentPath = parentPath + "/";
+
+//    cout << "Running on " << parentPath << endl;
+
+    std::fstream streamImageFilesList(parentPath + "images/files.txt");
+    std::fstream streamJsonFilesList(parentPath + "text/files.txt");
+    std::fstream streamGroundTruthFilesList;
+
+    if (evaluate)
+        streamGroundTruthFilesList.open(parentPath + "groundTruth/files.txt");
+
+    std::string imageFile;
+    std::string ocrTextFile;
+    std::string groundTruthFile;
+    std::string modelFilePath = parentPath + "model.mdl";
+
+    std::string outputFolder = parentPath + "output/";
+
+
+
+    std::shared_ptr<TreeFormModelInterface> model = TreeFormModel::constructFormModel(ifstream(modelFilePath));
+    TreeFormProcessor processor(model);
+
+    Json::Value bindingsFile;
+    readJson(parentPath+"groundTruthBindings.json",bindingsFile);
+
+    float accuracySum = 0;
+    int num = 0;
+
+    while (getline(streamImageFilesList, imageFile)) {
+        getline(streamJsonFilesList, ocrTextFile);
+        groundTruthFile = "";
+        if (evaluate)
+            getline(streamGroundTruthFilesList, groundTruthFile);
+
+        std::cout << imageFile << std::endl;
+        if (groundTruthFile.length() == 0 && evaluate) {
+            std::cerr << "Ground truth not found" << std::endl;
+        }
+
+        std::string workFile = HelperMethods::removeFileExtension(imageFile);
+
+        imageFile = parentPath + "images/" + imageFile;
+        ocrTextFile = parentPath + "text/" + ocrTextFile;
+        if (groundTruthFile.length() != 0)
+            groundTruthFile = parentPath + "groundTruth/" + groundTruthFile;
+
+
+        //float x = Processor2(imageFile, ocrTextFile, groundTruthFile, modelFilePath, outputFolder, workFile).execute();
+
+        std::cout<<imageFile<<std::endl;
+        cv::Mat image;
+        image=cv::imread(imageFile,1);
+
+        Json::Value textJson;
+        readJson(ocrTextFile,textJson);
+
+        std::vector<TextualData>text;
+        getWords(textJson,text);
+
+
+        std::shared_ptr<BasicForm> basicForm=std::shared_ptr<BasicForm> (new BasicForm(image,text));
+
+        processor.processForm(basicForm);
+        Json::Value outputFromProcessor;
+        processor.getResult(outputFromProcessor);
+
+        std::ofstream outputResultStream(outputFolder+workFile+"_fields.json");
+        outputResultStream<<outputFromProcessor;
+
+        if(groundTruthFile.length()!=0) {
+            Json::Value gtJson;
+            readJson(groundTruthFile,gtJson);
+            InputFieldsAccuracyTest tester(bindingsFile,gtJson,outputFromProcessor);
+            float acc=tester.calculateAccuracy(true,true);
+            num++;
+            accuracySum+=acc;
+
+            std::cout<<"Accuracy ="<<acc<<std::endl;
+        }
+
+    }
+
+    std::cout << "Average accuracy " << accuracySum / num;
+
+}
+
 /**
  * This function prints arguments help
  */
@@ -77,10 +201,10 @@ int main(int argc, char**argv) {
 
     }
     else if(job==string("-p")) {
-        Processor2::runProcessorProgram(path,false);
+        batchProcess(path,false);
     }
     else if(job==string("-e")) {
-        Processor2::runProcessorProgram(path,true);
+        batchProcess(path,true);
     }
     else if(job==string("-m")) {
         ModelParser::runModelBuilderProgram(path);
