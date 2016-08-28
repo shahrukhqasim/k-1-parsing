@@ -10,6 +10,7 @@
 #include <unordered_map>
 #include <iostream>
 #include "../../json/json/json.h"
+#include <string>
 
 class InputFieldsAccuracyTest {
     struct AccuracyData{
@@ -29,10 +30,23 @@ class InputFieldsAccuracyTest {
     void readGroundTruth();
     void readOutputData();
     void readBindingsData();
+
+    std::string output;
+
+    cv::Mat drawImage;
+public:
+    cv::Mat getErrorsImage() const;
+
+private:
+    bool imageSet=false;
 public:
     InputFieldsAccuracyTest(const Json::Value &bindings, const Json::Value &groundTruth,
                             const Json::Value &modelOutput);
-    float calculateAccuracy(bool outputCorrect=false, bool outputInCorrect=false);
+
+    InputFieldsAccuracyTest(const Json::Value &bindings, const Json::Value &groundTruth,
+                            const Json::Value &processorOutput, const cv::Mat &drawImage);
+
+    float calculateAccuracy(bool outputErrors, bool outputCorrect=false, bool outputInCorrect=false);
 };
 
 
