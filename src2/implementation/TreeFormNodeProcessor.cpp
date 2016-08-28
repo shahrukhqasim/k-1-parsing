@@ -24,6 +24,19 @@ namespace std {
     };
 }
 
+std::shared_ptr<cv::Mat> TreeFormNodeProcessor::getIterationOutputImage(std::string key) {
+    auto iteratorImageFinder=images.find(key);
+    std::shared_ptr<cv::Mat> theImage;
+    if(iteratorImageFinder==images.end()) {
+        std::cout<<"Making new copy of "<<key<<std::endl;
+        images[key]=theImage=std::shared_ptr<cv::Mat>(new cv::Mat(image.clone()));
+    }
+    else {
+        theImage=iteratorImageFinder->second;
+    }
+    return theImage;
+}
+
 bool TreeFormNodeProcessor::process(std::shared_ptr<TreeFormNodeInterface> ptr,
                                     std::shared_ptr<TreeFormModelInterface> model, int iteration,
                                     bool &childrenDone) {
@@ -38,6 +51,12 @@ bool TreeFormNodeProcessor::process(std::shared_ptr<TreeFormNodeInterface> ptr,
         checkboxesDetector.detectCheckBoxes(imageGrey, checkboxes);
 
         childrenDone=true;
+
+        auto drawImage=getIterationOutputImage("checkboxes");
+
+        for(auto i:checkboxes) {
+            cv::rectangle(*drawImage, i.outerBBox, cv::Scalar(0, 255, 0), 3, 8, 0);
+        }
 
         return true;
     }
@@ -64,8 +83,12 @@ bool TreeFormNodeProcessor::process(std::shared_ptr<TreeFormNodeInterface> ptr,
 
             std::vector<TextualData> textB = text;
 
+            int left=0;
+            int top=0;
+            int right=image.cols;
+            int bottom=image.rows;
 
-            int xDivisionCoordinate;
+
             if (isLeft || isRight) {
                 cv::Mat vProjection(1, image.cols, CV_16U);
                 vProjection = 0;
@@ -83,8 +106,6 @@ bool TreeFormNodeProcessor::process(std::shared_ptr<TreeFormNodeInterface> ptr,
                         shallowProjectionIndex = i;
                 }
 
-                xDivisionCoordinate = shallowProjectionIndex;
-
                 std::vector<TextualData> leftBoxes;
                 std::vector<TextualData> rightBoxes;
 
@@ -97,24 +118,23 @@ bool TreeFormNodeProcessor::process(std::shared_ptr<TreeFormNodeInterface> ptr,
                 }
 
                 if (isLeft) {
+                    right=shallowProjectionIndex;
                     textB = leftBoxes;
                 } else if (isRight) {
+                    left=shallowProjectionIndex;
                     textB = rightBoxes;
                 }
             }
 
-            int left=0;
-            int top=0;
-            int right=image.cols;
-            int bottom=image.rows;
-
             for (auto i:bNode->divisionRules) {
+                std::cout<<i->getRuleKeyword()<<std::endl;
                 if (std::dynamic_pointer_cast<DivisionRuleWithReference>(i) != nullptr) {
+                    std::cout<<"Reference"<<std::endl;
                     std::shared_ptr<DivisionRuleWithReference> castedRule = std::dynamic_pointer_cast<DivisionRuleWithReference>(
                             i);
 
                     std::shared_ptr<TextTreeFormNode> node = std::dynamic_pointer_cast<TextTreeFormNode>(
-                            TreeFormModel::getNode(root, HelperMethods::regexSplit(castedRule->getOtherNodeId())));
+                            TreeFormModel::getNode(root, HelperMethods::regexSplit(castedRule->getOtherNodeId(),":")));
                     std::string referenceText = node->getText();
 
                     int index = findTextWithMinimumEditDistance(textB, referenceText);
@@ -151,9 +171,20 @@ bool TreeFormNodeProcessor::process(std::shared_ptr<TreeFormNodeInterface> ptr,
                 }
             }
 
-
-
             textDividedRegion[bNode->getId()]=cv::Rect(left,top,right-left,bottom-top);
+            std::shared_ptr<cv::Mat>drawImage=getIterationOutputImage("division");
+
+            std::cout<<"Division rect "<<bNode->getId()<<": "<<cv::Rect(left,top,right-left,bottom-top)<<std::endl;
+
+            cv::Scalar color(0,0,255);
+            if(colorBucket.size()!=0) {
+                color = colorBucket[0];
+                colorBucket.erase(colorBucket.begin());
+            }
+
+
+            cv::rectangle(*drawImage, cv::Rect(left,top,right-left,bottom-top), color, 3, 8, 0);
+
         }
     }
         // Minimum text iteration
@@ -343,6 +374,11 @@ bool TreeFormNodeProcessor::process(std::shared_ptr<TreeFormNodeInterface> ptr,
                         nx2->setData(nx2->getData() + x.getText());
                         nx2->setRegion(x.getRect());
                         nx2->setRegionDefined(true);
+
+                        std::shared_ptr<cv::Mat>theImage=getIterationOutputImage("inputs");
+                        cv::Scalar randomColor = randomColors[((unsigned int) rng) % 5];
+                        rectangle(*theImage, nx2->getRegion(), randomColor, 3, 8, 0);
+                        putText(*theImage, nx2->getData(), nx2->getRegion().br(), 1, 2, randomColor, 2);
                     }
                 }
             });
@@ -387,12 +423,23 @@ bool TreeFormNodeProcessor::process(std::shared_ptr<TreeFormNodeInterface> ptr,
                 }
                 convertRulesToFunctions(iModel, std::dynamic_pointer_cast<TreeFormModel>(model), root, functionalRules);
                 std::pair<std::string, cv::Rect> oup = findTextFromFunctionalRules(functionalRules);
+
                 std::string textExtracted = oup.first;
                 iModel->setData(textExtracted);
                 iModel->setRegion(oup.second);
                 iModel->setRegionDefined(oup.first.size() == 0 ? false : true);
+
+                if(oup.first.size()!=0) {
+                    std::shared_ptr<cv::Mat>theImage=getIterationOutputImage("inputs");
+                    cv::Scalar randomColor = randomColors[((unsigned int) rng) % 5];
+                    rectangle(*theImage, iModel->getRegion(), randomColor, 3, 8, 0);
+                    putText(*theImage, iModel->getData(), iModel->getRegion().br(), 1, 2, randomColor, 2);
+                }
+
+
 //            cout << iModel->id << ": " << iModel->data << endl;
             }
+            // Checkboxes
             else {
                 int left = -1;
                 int top = -1;
@@ -457,6 +504,13 @@ bool TreeFormNodeProcessor::process(std::shared_ptr<TreeFormNodeInterface> ptr,
                 bool done=false;
                 CCheckBox box;
 
+
+                auto drawImage=getIterationOutputImage("checkboxes");
+
+//                for(auto i:checkboxes) {
+                cv::rectangle(*drawImage, rect, cv::Scalar(0, 0, 255), 3, 8, 0);
+//                }
+
                 for(auto i:checkboxes) {
                     if((i.outerBBox&rect).area()!=0) {
                         if(done) {
@@ -466,6 +520,7 @@ bool TreeFormNodeProcessor::process(std::shared_ptr<TreeFormNodeInterface> ptr,
                         box=i;
                     }
                 }
+
                 if(!done) {
                     std::cout<<"Warning: no checkbox found in the region of"<<iModel->getId()<<std::endl;
                 }
@@ -687,6 +742,12 @@ bool TreeFormNodeProcessor::process(std::shared_ptr<TreeFormNodeInterface> ptr,
                         nx2->setData(nx2->getData() + alpha.first.getText());
                         nx2->setRegion(alpha.first.getRect());
                         nx2->setRegionDefined(true);
+
+
+                        std::shared_ptr<cv::Mat>theImage=getIterationOutputImage("inputs");
+                        cv::Scalar randomColor = randomColors[((unsigned int) rng) % 5];
+                        rectangle(*theImage, nx2->getRegion(), randomColor, 3, 8, 0);
+                        putText(*theImage, nx2->getData(), nx2->getRegion().br(), 1, 2, randomColor, 2);
                     }
                 }
 
@@ -966,4 +1027,16 @@ TreeFormNodeProcessor::TreeFormNodeProcessor(const cv::Mat &image, const std::ve
     TreeFormNodeProcessor::image=image;
     TreeFormNodeProcessor::text=mergedWords;
     TreeFormNodeProcessor::root=root;
+}
+
+cv::Mat TreeFormNodeProcessor::getCheckboxesImage() {
+    return getIterationOutputImage("checkboxes")->clone();
+}
+
+cv::Mat TreeFormNodeProcessor::getDivisionImage() {
+    return getIterationOutputImage("division")->clone();
+}
+
+cv::Mat TreeFormNodeProcessor::getInputImage() {
+    return getIterationOutputImage("inputs")->clone();
 }
