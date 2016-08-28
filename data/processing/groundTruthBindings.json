@@ -184,23 +184,23 @@
     "Binded": "topmostSubform[0].Page1[0].RightCol[0].RightCol1[0].p1-t32[0]"
   },
   {
-    "Model": "DOCUMENT:PART_3:GROUP_8:NET_SHORTTERM_CAPITAL:INPUT INPUT NUMERIC",
+    "Model": "DOCUMENT:PART_3:GROUP_8:NET_SHORTTERM_CAPITAL:INPUT",
     "Binded": "topmostSubform[0].Page1[0].RightCol[0].RightCol1[0].p1-t33[0]"
   },
   {
-    "Model": "DOCUMENT:PART_3:GROUP_9A:NET_LONG_TERM:INPUT INPUT ALPHA_NUMERIC",
+    "Model": "DOCUMENT:PART_3:GROUP_9A:NET_LONG_TERM:INPUT",
     "Binded": "topmostSubform[0].Page1[0].RightCol[0].RightCol1[0].p1-t34[0]"
   },
   {
-    "Model": "DOCUMENT:PART_3:GROUP_9B:COLLECTIBLES_28:INPUT INPUT ALPHA_NUMERIC",
+    "Model": "DOCUMENT:PART_3:GROUP_9B:COLLECTIBLES_28:INPUT",
     "Binded": "topmostSubform[0].Page1[0].RightCol[0].RightCol1[0].p1-t35[0]"
   },
   {
-    "Model": "DOCUMENT:PART_3:GROUP_9C:UNRECAPTURED:INPUT INPUT ALPHA_NUMERIC",
+    "Model": "DOCUMENT:PART_3:GROUP_9C:UNRECAPTURED:INPUT",
     "Binded": "topmostSubform[0].Page1[0].RightCol[0].RightCol1[0].p1-t36[0]"
   },
   {
-    "Model": "DOCUMENT:PART_3:GROUP_10:NET_SECTION:INPUT INPUT ALPHA_NUMERIC",
+    "Model": "DOCUMENT:PART_3:GROUP_10:NET_SECTION:INPUT",
     "Binded": "topmostSubform[0].Page1[0].RightCol[0].RightCol1[0].p1-t37[0]"
   },
   {
@@ -216,7 +216,7 @@
     "Binded": "topmostSubform[0].Page1[0].RightCol[0].RightCol1[0].p1-t40[1]"
   },
   {
-    "Model": "DOCUMENT:PART_3:GROUP_12:SECTION_179_DEDUCTION:INPUT INPUT ALPHA_NUMERIC",
+    "Model": "DOCUMENT:PART_3:GROUP_12:SECTION_179_DEDUCTION:INPUT",
     "Binded": "topmostSubform[0].Page1[0].RightCol[0].RightCol1[0].p1-t41[0]"
   },
   {
@@ -281,7 +281,7 @@
   },
   {
     "Model": "DOCUMENT:PART_3:GROUP_17:ALTERNATIVE_MINIMUM:INPUT:2",
-    "Binded": "opmostSubform[0].Page1[0].RightCol[0].RightCol2[0].p1-t57[0]"
+    "Binded": "topmostSubform[0].Page1[0].RightCol[0].RightCol2[0].p1-t57[0]"
   },
   {
     "Model": "DOCUMENT:PART_3:GROUP_17:ALTERNATIVE_MINIMUM:INPUT:3",
@@ -377,7 +377,7 @@
   },
   {
     "Model": "DOCUMENT:PART_3:GROUP_17:ALTERNATIVE_MINIMUM:INPUT_CODE:2",
-    "Binded": "opmostSubform[0].Page1[0].RightCol[0].RightCol2[0].p1-t57a[0]"
+    "Binded": "topmostSubform[0].Page1[0].HeaderAndLeftCol[0].HeaderPg1[0].c1_01_0_[0]"
   },
   {
     "Model": "DOCUMENT:PART_3:GROUP_17:ALTERNATIVE_MINIMUM:INPUT_CODE:3",
