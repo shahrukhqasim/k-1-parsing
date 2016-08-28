@@ -115,20 +115,33 @@ void batchProcess(std::string parentPath, bool evaluate) {
 
         std::shared_ptr<BasicForm> basicForm=std::shared_ptr<BasicForm> (new BasicForm(image,text));
 
-        processor.processForm(basicForm);
+        if(!processor.processForm(basicForm)) {
+            std::cerr << "Error processing form: " << imageFile << std::endl;
+            continue;
+        }
         Json::Value outputFromProcessor;
         processor.getResult(outputFromProcessor);
 
-        std::ofstream outputResultStream(outputFolder+workFile+"_fields.json");
+
+        imwrite(outputFolder+workFile+".checkboxes.png", processor.getCheckboxesImage());
+        imwrite(outputFolder+workFile+".division.png", processor.getDivisionImage());
+        imwrite(outputFolder+workFile+".fields.png", processor.getFieldsImage());
+
+        std::ofstream outputResultStream(outputFolder+workFile+".fields.json");
         outputResultStream<<outputFromProcessor;
 
         if(groundTruthFile.length()!=0) {
             Json::Value gtJson;
             readJson(groundTruthFile,gtJson);
-            InputFieldsAccuracyTest tester(bindingsFile,gtJson,outputFromProcessor);
+
+            cv::Mat imageOutputAccuracy=image.clone();
+
+            InputFieldsAccuracyTest tester(bindingsFile,gtJson,outputFromProcessor,imageOutputAccuracy);
             float acc=tester.calculateAccuracy(true,true);
             num++;
             accuracySum+=acc;
+
+            imwrite(outputFolder+workFile+".accuracy.png", tester.getErrorsImage());
 
             std::cout<<"Accuracy ="<<acc<<std::endl;
         }
