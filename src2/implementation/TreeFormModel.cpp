@@ -8,6 +8,7 @@
 #include "InputTreeFormNode.h"
 #include "RepeatInputTreeFormNode.h"
 #include "TableTreeFormNode.h"
+#include "DivisionRuleWithReference.h"
 
 std::shared_ptr<TreeFormNodeInterface> TreeFormModel::constructRoot() {
     if(processMdl()) {
@@ -298,6 +299,7 @@ bool TreeFormModel::processLine(const std::string &line, int lineNumber) {
 
         bool reference;
         if ((rule == "IS_BELOW" || rule == "IS_ABOVE" || rule == "IS_LEFT_TO" || rule == "IS_RIGHT_TO" || rule == "IS_BELOW_INCLUSIVE"|| rule == "IS_ABOVE_INCLUSIVE")) {
+
             reference = true;
         }
         else if((rule == "IS_LEFT_HALF" || rule == "IS_RIGHT_HALF" )) {
@@ -541,7 +543,7 @@ void TreeFormModel::addDivisionRule(std::string keyWord, std::shared_ptr<BasicTr
 
 void TreeFormModel::addDivisionRuleWithReference(std::string keyWord, std::shared_ptr<BasicTreeFormNode> a,
                                                  std::shared_ptr<BasicTreeFormNode> b) {
-    std::shared_ptr<DivisionRule>divisionRule=std::shared_ptr<DivisionRule>(new DivisionRule(keyWord,b->getId()));
+    std::shared_ptr<DivisionRule>divisionRule=std::shared_ptr<DivisionRule>(new DivisionRuleWithReference(keyWord,a->getId(),b->getId()));
     a->divisionRules.push_back(divisionRule);
 
 }
