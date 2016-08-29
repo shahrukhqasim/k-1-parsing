@@ -1,7 +1,7 @@
 #include "AccuracyProgram.h"
 using namespace cv;
 using namespace std;
-
+namespace FormParser {
 float AccuracyProgram::testAccuracy() {
     int size = expectedOutput.size();
     int matches = 0;
@@ -263,3 +263,4 @@ float AccuracyProgram::run() {
     // Return the accuracy to the caller
     return accuracy;
 }
+} // namespace FormParser {

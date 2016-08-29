@@ -4,7 +4,7 @@
 
 #ifndef K_1_PARSING2_TABLENODE_H
 #define K_1_PARSING2_TABLENODE_H
-
+namespace FormParser {
 /**
  * If this node is a table, this class represents that
  */
@@ -35,6 +35,6 @@ public:
     std::unordered_map<std::string, std::shared_ptr<Node>>tableEntries;
 
 };
-
+} // namespace FormParser {
 
 #endif //K_1_PARSING2_TABLENODE_H

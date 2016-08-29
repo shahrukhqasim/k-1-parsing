@@ -25,7 +25,7 @@
 #ifndef K_1_PARSING2_PROCESSOR2_H
 #define K_1_PARSING2_PROCESSOR2_H
 
-
+namespace FormParser {
 struct GroundTruth {
     cv::Rect rect;
     std::string value;
@@ -301,6 +301,6 @@ public:
     static int getVerticalOverlap(const cv::Rect& a, const cv::Rect& b);
 
 };
-
+} // namespace FormParser
 
 #endif //K_1_PARSING2_PROCESSOR2_H

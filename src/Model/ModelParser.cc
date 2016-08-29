@@ -8,7 +8,7 @@
 #include "RepeatInputNode.h"
 
 using namespace std;
-
+namespace FormParser {
 void ModelParser::runModelBuilderProgram(string path) {
     Node::lastId=0;
     shared_ptr<Node>document=ModelParser().execute(path);
@@ -553,3 +553,4 @@ void ModelParser::hasHorizontalOverlapWith(std::shared_ptr<Node> a, std::shared_
 //    node->id=currentId;
 //
 //}
+} // namespace FormParser

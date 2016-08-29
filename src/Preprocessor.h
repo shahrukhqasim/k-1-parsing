@@ -8,7 +8,7 @@
 #ifndef K_1_PARSING2_PREPROCESSOR_H
 #define K_1_PARSING2_PREPROCESSOR_H
 
-
+namespace FormParser {
 class Preprocessor {
 public:
     /**
@@ -50,6 +50,6 @@ public:
      */
     static void invertImage(cv::Mat &image);
 };
-
+} // namespace FormParser
 
 #endif //K_1_PARSING2_PREPROCESSOR_H

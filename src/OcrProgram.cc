@@ -4,7 +4,7 @@
 #include "regex"
 using namespace std;
 using namespace cv;
-
+namespace FormParser {
 OcrProgram::OcrProgram(string inputFileName, string inputFolder, string outputFolder) {
     this->inputFileName=inputFileName;
     this->inputFolder=inputFolder;
@@ -370,3 +370,4 @@ void OcrProgram::runOcrProgram(string path) {
     cout<<"Average accuracy is: "<<accuracySum/numForms<<endl;
     cout<<"Receipts run: "<<numForms<<endl;
 }
+} // namespace FormParser

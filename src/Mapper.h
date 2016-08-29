@@ -7,7 +7,7 @@
 #ifndef K_1_PARSING2_MAPPER_H
 #define K_1_PARSING2_MAPPER_H
 
-
+namespace FormParser {
 class Mapper {
     std::vector<TextualData>data;
     std::vector<TextualData>taken;
@@ -33,6 +33,6 @@ public:
     static cv::Rect findRectFromRules(std::shared_ptr<Node>rModel,std::shared_ptr<Node>ultimateParent, int width, int height);
 
 };
-
+} // namespace FormParser
 
 #endif //K_1_PARSING2_MAPPER_H

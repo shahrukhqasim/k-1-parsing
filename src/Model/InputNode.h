@@ -4,6 +4,8 @@
 #ifndef K_1_PARSING2_INPUTNODE_H
 #define K_1_PARSING2_INPUTNODE_H
 
+namespace FormParser {
+
 /**
  * If the node is an input field, this class represents it
  */
@@ -49,6 +51,6 @@ public:
      */
     std::vector<std::string>bindedGroundTruthEntries;
 };
-
+} // namespace FormParser
 
 #endif //K_1_PARSING2_INPUTNODE_H

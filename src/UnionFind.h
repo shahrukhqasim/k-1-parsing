@@ -3,7 +3,7 @@
  
 #include "stdio.h" 
 #include <assert.h>
-
+namespace FormParser {
 /** 
  * @class CUnionFind 
  * This class contains an implementation of the UnionFind data structure 
@@ -45,6 +45,6 @@ public:
         return (labels[n]==0);
     }			
 };
-
+} // namespace FormParser
 #endif
 

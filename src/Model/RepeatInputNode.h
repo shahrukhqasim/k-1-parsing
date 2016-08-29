@@ -4,7 +4,7 @@
 #ifndef K_1_PARSING2_REPEATINPUTNODE_H
 #define K_1_PARSING2_REPEATINPUTNODE_H
 
-
+namespace FormParser {
 class RepeatInputNode : public InputNode{
 public:
     RepeatInputNode(InputType inputType);
@@ -23,6 +23,6 @@ public:
      */
     std::unordered_map<std::string, std::shared_ptr<Node>>repeatInputSubNodes;
 };
-
+} // namespace FormParser
 
 #endif //K_1_PARSING2_REPEATINPUTNODE_H

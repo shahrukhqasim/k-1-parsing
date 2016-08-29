@@ -15,7 +15,7 @@
 #include "opencv2/imgproc/imgproc.hpp"
 #include <vector>
 
-
+namespace FormParser {
 /**
  * Contains an OCR result entry.
  * TODO: change it to TextualData class
@@ -103,6 +103,6 @@ public:
     std::vector<OcrResult> getRecognizedData();
 
 };
-
+} // namespace FormParser
 
 #endif

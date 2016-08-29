@@ -1,6 +1,6 @@
 #ifndef EDIT_DISTANCE_
 #define EDIT_DISTANCE_
-
+namespace FormParser {
 class EditDistance
 {
   public:
@@ -11,5 +11,5 @@ class EditDistance
     int getAt (int *pOrigin, int col, int row, int nCols);
     void putAt (int *pOrigin, int col, int row, int nCols, int x);
 };
-
+} // namespace FormParser
 #endif

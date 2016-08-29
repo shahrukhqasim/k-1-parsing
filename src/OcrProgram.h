@@ -49,7 +49,7 @@
 //	}
 //};
 
-
+namespace FormParser {
 class OcrProgram {
 	/**
 	 * A Random Numbers Generator
@@ -170,6 +170,6 @@ public:
 	 */
     static void runOcrProgram(std::string path);
 };
-
+} // namespace FormParser
 
 #endif //K_1_PARSING2_PROGRAM_H

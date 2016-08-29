@@ -2,7 +2,7 @@
 #include <string.h>
 #include <stdlib.h> 
 #include <string.h>
-
+namespace FormParser {
 //****************************
 // Get minimum of three values
 //****************************
@@ -136,3 +136,4 @@ int sz; // number of cells in matrix
   return result;
 
 }
+} // namespace FormParser

@@ -2,7 +2,7 @@
 using namespace std;
 using namespace cv;
 
-
+namespace FormParser {
 TesseractFinder::TesseractFinder()
 {	
 	this->mode = MODE_FULL;
@@ -161,3 +161,4 @@ void TesseractFinder::recognizeText(Pix* image) {
 vector<OcrResult> TesseractFinder::getRecognizedData() {
     return data;
 }
+} // namespace FormParser

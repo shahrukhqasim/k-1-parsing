@@ -3,7 +3,7 @@
 #ifndef K_1_PARSING2_WORDENTRY_H
 #define K_1_PARSING2_WORDENTRY_H
 
-
+namespace FormParser {
 /**
  * This class represents a text segment defined by its std::string and bounding box
  * */
@@ -67,5 +67,5 @@ public:
     }
 
 };
-
+} // namespace FormParser
 #endif //K_1_PARSING2_WORDENTRY_H

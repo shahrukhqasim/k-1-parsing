@@ -5,7 +5,7 @@
 #ifndef K_1_PARSING2_ACCURACYPROGRAM_H
 #define K_1_PARSING2_ACCURACYPROGRAM_H
 
-
+namespace FormParser {
 class AccuracyProgram {
 private:
     /**
@@ -113,6 +113,6 @@ private:
      */
     bool successful;
 };
-
+} // namespace FormParser {
 
 #endif //K_1_PARSING2_ACCURACYPROGRAM_H

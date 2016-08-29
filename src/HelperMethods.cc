@@ -3,7 +3,7 @@
 #include <regex>
 using namespace cv;
 using namespace std;
-
+namespace FormParser {
 void HelperMethods::displayImageResizable(const Mat&image) {
 	imwrite("temp/displayImage.png",image);
 	system("xdg-open temp/displayImage.png");
@@ -75,3 +75,4 @@ std::vector<std::string> HelperMethods::regexSplit(const std::string &s, string 
 
 	return elems;
 }
+} // namespace FormParser

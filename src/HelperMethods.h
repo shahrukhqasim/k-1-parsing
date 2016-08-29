@@ -6,7 +6,7 @@
 #ifndef HELPERMETHODS_H_
 #define HELPERMETHODS_H_
 
-
+namespace FormParser {
 
 /**
  * This is a static class which only contains different helper methods
@@ -69,5 +69,5 @@ public:
      * */
     static std::vector<std::string> regexSplit(const std::string & s, std::string rgx_str = "\\s+");
 };
-
+} // namespace FormParser {
 #endif /* HELPERMETHODS_H_ */

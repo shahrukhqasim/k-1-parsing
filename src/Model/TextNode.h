@@ -4,7 +4,7 @@
 #ifndef K_1_PARSING2_TEXTNODE_H
 #define K_1_PARSING2_TEXTNODE_H
 
-
+namespace FormParser {
 class TextNode : public Node{
 public:
     /**
@@ -25,6 +25,6 @@ public:
     TextNode(const std::string& text);
 
 };
-
+} // namespace FormParser {
 
 #endif //K_1_PARSING2_TEXTNODE_H

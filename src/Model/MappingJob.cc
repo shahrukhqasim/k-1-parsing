@@ -5,7 +5,7 @@
 using namespace cv;
 using namespace std;
 
-
+namespace FormParser {
 MappingJob::MappingJob(const shared_ptr<Node> &ultimateParent, const string &nodeId, int width, int height)
         : ultimateParent(ultimateParent), nodeId(nodeId), width(width), height(height) {}
 
@@ -99,3 +99,4 @@ void MappingJob::recursive(shared_ptr<Node> node) {
         });
     }
 }
+} // namespace FormParser {

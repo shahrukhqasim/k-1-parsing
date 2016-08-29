@@ -1,7 +1,7 @@
 #include "TextualData.h"
 using namespace std;
 using namespace cv;
-
+namespace FormParser {
 bool TextualData::compare(TextualData &expectedOutput){
 
     int matched=0;
@@ -49,3 +49,4 @@ TextualData TextualData::operator|(const TextualData &second) const {
     d.setRect(getRect()|second.getRect());
     return d;
 }
+} // namespace FormParser

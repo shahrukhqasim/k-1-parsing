@@ -9,8 +9,8 @@ using namespace cv;
 
 namespace std {
     template<>
-    struct hash<TextualData> {
-        inline size_t operator()(const TextualData &x) const {
+    struct hash<FormParser::TextualData> {
+        inline size_t operator()(const FormParser::TextualData &x) const {
             size_t value = hash<string>()(x.getText());
             value += x.getRect().x + x.getRect().y + x.getRect().width + x.getRect().height;
 
@@ -18,7 +18,7 @@ namespace std {
         }
     };
 }
-
+namespace FormParser {
 Mapper::Mapper(const vector<TextualData> &data, shared_ptr<Node> node, shared_ptr<Node> ultimateParent, int width,
                int height) {
     this->data = data;
@@ -686,3 +686,4 @@ std::vector<TextualData> Mapper::findTextWithRulesB(std::shared_ptr<Node> node) 
 
     return result;
 }
+} // namespace FormParser

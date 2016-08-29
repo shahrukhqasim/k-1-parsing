@@ -10,7 +10,7 @@ using namespace cv;
 
 //#define PROCESSOR_DEBUG_ON
 
-
+namespace FormParser {
 Processor2::Processor2(const string &imageFilePath, const string &textFilePath, const string &groundTruthFilePath,
                        const string &modelFilePath,
                        const string &outputFolder, const string &outputFileName) {
@@ -805,3 +805,4 @@ int Processor2::getVerticalOverlap(const cv::Rect &a, const cv::Rect &b) {
 }
 
 GroundTruth::GroundTruth(const Rect &rect, const string &value) : rect(rect), value(value) {}
+} // namespace FormParser

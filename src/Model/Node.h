@@ -19,7 +19,7 @@
 #define K_1_PARSING2_NODE_H
 
 
-
+namespace FormParser {
 /**
  * This class represents a Document Model node.
  */
@@ -77,5 +77,5 @@ public:
     virtual ~Node();
 
 };
-
+} // namespace FormParser
 #endif //K_1_PARSING2_NODE_H

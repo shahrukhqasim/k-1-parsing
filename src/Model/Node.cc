@@ -4,6 +4,7 @@
 
 using namespace std;
 
+namespace FormParser {
 int Node::lastId = 0;
 
 Node::~Node() {
@@ -16,3 +17,4 @@ Node::Node(bool incrementId) {
     }
 
 }
+} // namespace FormParser

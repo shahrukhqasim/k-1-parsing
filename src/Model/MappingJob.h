@@ -4,7 +4,7 @@
 #ifndef K_1_PARSING2_MAPPINGJOB_H
 #define K_1_PARSING2_MAPPINGJOB_H
 
-
+namespace FormParser {
 class MappingJob {
     std::shared_ptr<Node>ultimateParent;
     cv::Rect lastRect;
@@ -18,6 +18,6 @@ public:
 private:
     void recursive(std::shared_ptr<Node> node);
 };
-
+} // namespace FormParser
 
 #endif //K_1_PARSING2_MAPPINGJOB_H

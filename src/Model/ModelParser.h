@@ -11,7 +11,7 @@
 #define K_1_PARSING2_MODELBUILDER_H
 
 
-
+namespace FormParser {
 class ModelParser {
 
     /**
@@ -127,6 +127,6 @@ private:
      */
     std::shared_ptr<Node>findNode(const std::vector<std::string>&hierarchy);
 };
-
+} // namespace FormParser {
 
 #endif //K_1_PARSING2_MODELBUILDER_H
