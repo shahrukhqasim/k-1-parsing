@@ -1,6 +1,5 @@
 #ifndef K1_PARSING_TREEFORMPROCESSOR_H
 #define K1_PARSING_TREEFORMPROCESSOR_H
-
 #include "../interfaces/FormProcessorInterface.h"
 #include <string>
 #include "../../json/json/json.h"

@@ -7,7 +7,7 @@
 #include "opencv2/core/core.hpp"
 #include "opencv2/highgui/highgui.hpp"
 #include "opencv2/imgproc/imgproc.hpp"
-#include "../../src/TextualData.h"
+#include "../TextualData.h"
 
 #ifndef K1_PARSING_RAWFORMINTERFACE_H
 #define K1_PARSING_RAWFORMINTERFACE_H

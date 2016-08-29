@@ -11,7 +11,7 @@
 #include <memory>
 #include <vector>
 #include "TreeFormModelInterface.h"
-#include "../../src/TextualData.h"
+#include "../TextualData.h"
 #include "TreeFormNodeInterface.h"
 class TreeFormNodeInterface;
 class TreeFormModelInterface;

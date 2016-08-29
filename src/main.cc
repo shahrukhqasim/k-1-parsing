@@ -14,12 +14,12 @@ using namespace cv;
 #include "AccuracyProgram.h"
 
 #include <iostream>
-#include "../src2/interfaces/TreeFormModelInterface.h"
-#include "../src2/implementation/TreeFormModel.h"
-#include "../src2/implementation/TreeFormProcessor.h"
+#include "interfaces/TreeFormModelInterface.h"
+#include "implementation/TreeFormModel.h"
+#include "implementation/TreeFormProcessor.h"
 #include "fstream"
-#include "../src2/implementation/BasicForm.h"
-#include "../src2/accuracy_test/InputFieldsAccuracyTest.h"
+#include "implementation/BasicForm.h"
+#include "accuracy_test/InputFieldsAccuracyTest.h"
 
 void getWords(Json::Value root, std::vector<TextualData> &outputVector) {
     root = root["Pages"][0];

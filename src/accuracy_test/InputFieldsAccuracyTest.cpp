@@ -3,7 +3,7 @@
 //
 
 #include "InputFieldsAccuracyTest.h"
-#include "../../src/HelperMethods.h"
+#include "../HelperMethods.h"
 #include <regex>
 
 
