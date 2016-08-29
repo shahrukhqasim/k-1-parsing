@@ -62,6 +62,12 @@ bool TreeFormNodeProcessor::process(std::shared_ptr<TreeFormNodeInterface> ptr,
     }
     // Text division iteration
     else if (iteration == 1) {
+
+        std::shared_ptr<cv::Mat>drawImage=getIterationOutputImage("division");
+        for (int i = 0; i < text.size(); i++) {
+            cv::rectangle(*drawImage, text[i].getRect(), cv::Scalar(0, 255, 255), 3, 8, 0);
+        }
+
         std::shared_ptr<BasicTreeFormNode> bNode = std::dynamic_pointer_cast<BasicTreeFormNode>(ptr);
         if (bNode->divisionRules.size() != 0) {
             bool isLeft = false;
@@ -98,10 +104,17 @@ bool TreeFormNodeProcessor::process(std::shared_ptr<TreeFormNodeInterface> ptr,
                         vProjection.at<short>(0, j) += r.height;
                 }
 
-                int quarter = vProjection.cols / 6;
+
+                std::shared_ptr<cv::Mat>drawImage=getIterationOutputImage("division");
+                for (int i = 0; i < vProjection.cols; i++) {
+                    line(*drawImage,cv::Point(i,0),cv::Point(i,vProjection.at<short>(0,i)),cv::Scalar(255,0,0));
+                }
+
+
+                int quarter = vProjection.cols / 8;
 
                 int shallowProjectionIndex = quarter;
-                for (int i = quarter * 2; i < quarter * 4; i++) {
+                for (int i = quarter * 3; i < quarter * 5; i++) {
                     if (vProjection.at<short>(0, i) < vProjection.at<short>(0, shallowProjectionIndex))
                         shallowProjectionIndex = i;
                 }
@@ -304,7 +317,7 @@ bool TreeFormNodeProcessor::process(std::shared_ptr<TreeFormNodeInterface> ptr,
                             dataX[beta.first].first = colValue;
                         }
                     });
-                    colValue++;
+//                    colValue++;
                 }
             });
 
@@ -341,17 +354,31 @@ bool TreeFormNodeProcessor::process(std::shared_ptr<TreeFormNodeInterface> ptr,
 
             std::vector<TextualData> dataVector;
 
+            std::unordered_set<TextualData>done;
+
             for_each(dataX.begin(), dataX.end(), [&](std::pair<TextualData, std::pair<int, int>> alpha) {
-                dataVector.push_back(alpha.first);
+                if(done.find(alpha.first)==done.end()) {
+                    done.insert(alpha.first);
+                    TextualData t = alpha.first;
+                    for_each(dataX.begin(), dataX.end(), [&](std::pair<TextualData, std::pair<int, int>> beta) {
+                        if ((cv::Rect(beta.first.getRect().y, 0, beta.first.getRect().height, 10) &
+                             cv::Rect(alpha.first.getRect().y, 0, alpha.first.getRect().height, 10)).area() != 0 &&
+                            !(alpha.first == beta.first)) {
+                            t = t | beta.first;
+                            done.insert(beta.first);
+                        }
+                    });
+                    dataVector.push_back(t);
 //            cout << "Assigned to " << alpha.first.getText() << " value " << alpha.second.first << ","
 //                 << alpha.second.second << endl;
-                //dx2 += alpha.first.getText() + "|";
-                if (!(alpha.first.getRect().x == 0 || alpha.first.getRect().y == 0)) {
-                    if (!regionXDef) {
-                        regionX = alpha.first.getRect();
-                        regionXDef = true;
-                    } else
-                        regionX = alpha.first.getRect() | regionX;
+                    //dx2 += alpha.first.getText() + "|";
+                    if (!(t.getRect().x == 0 || t.getRect().y == 0)) {
+                        if (!regionXDef) {
+                            regionX = t.getRect();
+                            regionXDef = true;
+                        } else
+                            regionX = t.getRect() | regionX;
+                    }
                 }
             });
 
@@ -635,11 +662,11 @@ bool TreeFormNodeProcessor::process(std::shared_ptr<TreeFormNodeInterface> ptr,
                 if ((r & d.getRect()).area() != 0 &&std::regex_match(d.getText(),hasAnAlphaNumericCharacter)) {
 //                cout << d.getText() << endl;
                     croppedTextualData.push_back(d);
-//                    std::cout<<"Cropped : "<<d.getText()<<std::endl;
+                    std::cout<<"Cropped : "<<d.getText()<<std::endl;
                 }
             });
 
-//            std::cout<<"Cropped size: "<<croppedTextualData.size()<<std::endl;
+            std::cout<<"Cropped size: "<<croppedTextualData.size()<<std::endl;
 
             // Sort wrt y co-ordinates
             sort(croppedTextualData.begin(), croppedTextualData.end(),
@@ -670,6 +697,7 @@ bool TreeFormNodeProcessor::process(std::shared_ptr<TreeFormNodeInterface> ptr,
                 }
             });
 
+
             // Sort wrt x co-ordinates
             sort(croppedTextualData.begin(), croppedTextualData.end(),
                  [&](const TextualData &d1, const TextualData &d2) -> bool {
@@ -691,6 +719,9 @@ bool TreeFormNodeProcessor::process(std::shared_ptr<TreeFormNodeInterface> ptr,
                     });
                     colValue++;
                 }
+            });
+            std::for_each(dataX.begin(), dataX.end(), [&](std::pair<TextualData, std::pair<int, int>> beta) {
+                std::cout<<beta.first.getText()<<": ("<<beta.second.first<<","<<beta.second.second<<")"<<std::endl;
             });
 
             std::for_each(tModel->getStartIterator(), tModel->getEndIterator(),
