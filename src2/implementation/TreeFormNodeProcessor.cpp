@@ -473,6 +473,34 @@ bool TreeFormNodeProcessor::process(std::shared_ptr<TreeFormNodeInterface> ptr,
             }
             // Checkboxes
             else {
+                /*
+                 * First, check if the checkbox is a part of the text node above one level
+                 */
+                {
+                    size_t index=iModel->getId().find_last_of(":");
+                    if(index!=std::string::npos) {
+                        std::string parentId=iModel->getId().substr(0,index);
+                        std::shared_ptr<TreeFormNodeInterface> parentUnCasted= TreeFormModel::getNode(root,HelperMethods::regexSplit(parentId,"[:]"));
+                        if(parentUnCasted!= nullptr) {
+                            std::shared_ptr<TextTreeFormNode> parent = std::dynamic_pointer_cast<TextTreeFormNode>(
+                                    parentUnCasted);
+                            if(parent!= nullptr) {
+                                if(parent->isRegionDefined()) {
+                                    for (auto i:checkboxes) {
+                                        if ((i.innerBBox & parent->getRegion()).area()!=0) {
+                                            iModel->setData(i.isFilled?"True":"False");
+                                            iModel->setRegion(i.innerBBox);
+                                            std::cout<<"Found a region from parent for checkbox"<<std::endl;
+                                            return true;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+
                 int left = -1;
                 int top = -1;
                 int right = -1;
