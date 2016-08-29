@@ -9,7 +9,7 @@
 #include "RepeatInputTreeFormNode.h"
 #include "TableTreeFormNode.h"
 #include "DivisionRuleWithReference.h"
-
+#include <regex>
 
 // TODO: Move this to correct place
 namespace std {
@@ -221,6 +221,10 @@ bool TreeFormNodeProcessor::process(std::shared_ptr<TreeFormNodeInterface> ptr,
                 takenText.push_back(TreeFormNodeProcessor::text[minIndex]);
                 TreeFormNodeProcessor::text.erase(TreeFormNodeProcessor::text.begin() + minIndex);
             }
+        }
+        else
+        if (std::dynamic_pointer_cast<TableTreeFormNode>(ptr) != nullptr) {
+            childrenDone=true;
         }
     }
         // Input node iteration
@@ -609,19 +613,31 @@ bool TreeFormNodeProcessor::process(std::shared_ptr<TreeFormNodeInterface> ptr,
             cv::Rect r(left, top, right - left, bottom - top);
 
 
+
+
+
             if(divisionRegionIdentified) {
                 r=r&dividedTextRegion;
             }
+            {
+                std::shared_ptr<cv::Mat> theImage = getIterationOutputImage("inputs");
+                cv::Scalar randomColor(255,0,0);// = randomColors[((unsigned int) rng) % 5];
+                rectangle(*theImage, r, randomColor, 3, 8, 0);
+            }
 
 //        cout << "R=" << r << endl;
+
 
             std::vector<TextualData> croppedTextualData;
             std::for_each(text.begin(), text.end(), [&](TextualData &d) {
                 if ((r & d.getRect()).area() != 0) {
 //                cout << d.getText() << endl;
                     croppedTextualData.push_back(d);
+//                    std::cout<<"Cropped : "<<d.getText()<<std::endl;
                 }
             });
+
+//            std::cout<<"Cropped size: "<<croppedTextualData.size()<<std::endl;
 
             // Sort wrt y co-ordinates
             sort(croppedTextualData.begin(), croppedTextualData.end(),

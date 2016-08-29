@@ -93,7 +93,9 @@ void TreeFormProcessor::mergeWordBoxes(const std::vector<TextualData> &words, st
                 ((prevWord.getRect().y <= currWord.getRect().y) &&
                  (prevWord.getRect().y + prevWord.getRect().height > currWord.getRect().y)))
                 vOverlap = true;
-            if (vOverlap && (hGap > 0) && (hGap < hGapThresh)) {
+            bool isCheckbox=false;
+
+            if (vOverlap && (hGap > 0) && (hGap < hGapThresh) &&!isCheckbox) {
                 elem = elem | currWord;
                 prevWord = currWord;
             } else {
