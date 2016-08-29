@@ -134,7 +134,7 @@ void batchProcess(std::string parentPath, bool evaluate) {
             cv::Mat imageOutputAccuracy=image.clone();
 
             InputFieldsAccuracyTest tester(bindingsFile,gtJson,outputFromProcessor,imageOutputAccuracy);
-            float acc=tester.calculateAccuracy(true,true);
+            float acc=tester.calculateAccuracy(true,true,true);
             num++;
             accuracySum+=acc;
 
