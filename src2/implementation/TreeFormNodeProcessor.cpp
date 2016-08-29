@@ -627,10 +627,11 @@ bool TreeFormNodeProcessor::process(std::shared_ptr<TreeFormNodeInterface> ptr,
 
 //        cout << "R=" << r << endl;
 
+            std::regex hasAnAlphaNumericCharacter(".*([0-9-]|[A-Z]|[a-z]).*");
 
             std::vector<TextualData> croppedTextualData;
             std::for_each(text.begin(), text.end(), [&](TextualData &d) {
-                if ((r & d.getRect()).area() != 0) {
+                if ((r & d.getRect()).area() != 0 &&std::regex_match(d.getText(),hasAnAlphaNumericCharacter)) {
 //                cout << d.getText() << endl;
                     croppedTextualData.push_back(d);
 //                    std::cout<<"Cropped : "<<d.getText()<<std::endl;
