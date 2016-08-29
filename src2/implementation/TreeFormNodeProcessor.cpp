@@ -133,8 +133,9 @@ bool TreeFormNodeProcessor::process(std::shared_ptr<TreeFormNodeInterface> ptr,
                     std::shared_ptr<DivisionRuleWithReference> castedRule = std::dynamic_pointer_cast<DivisionRuleWithReference>(
                             i);
 
-                    std::shared_ptr<TextTreeFormNode> node = std::dynamic_pointer_cast<TextTreeFormNode>(
-                            TreeFormModel::getNode(root, HelperMethods::regexSplit(castedRule->getOtherNodeId(),":")));
+                    std::shared_ptr<TreeFormNodeInterface> nodeF=TreeFormModel::getNode(root, HelperMethods::regexSplit(castedRule->getOtherNodeId(),":"));
+
+                    std::shared_ptr<TextTreeFormNode> node = std::dynamic_pointer_cast<TextTreeFormNode>(nodeF);
                     std::string referenceText = node->getText();
 
                     int index = findTextWithMinimumEditDistance(textB, referenceText);
