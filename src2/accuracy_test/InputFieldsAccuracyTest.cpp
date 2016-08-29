@@ -48,9 +48,9 @@ float InputFieldsAccuracyTest::calculateAccuracy(bool outputErrors, bool outputC
                     std::cerr << "Output model id not found in output: " << i.second << std::endl;
 
 
-                if (imageSet) {
-                    cv::rectangle(drawImage, iteratorGt->second.region, cv::Scalar(0, 0, 255), 3, 8, 0);
-                }
+//                if (imageSet) {
+//                    cv::rectangle(drawImage, iteratorGt->second.region, cv::Scalar(0, 0, 255), 3, 8, 0);
+//                }
 
                 continue;
             }
