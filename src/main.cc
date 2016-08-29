@@ -12,9 +12,6 @@ using namespace tesseract;
 using namespace cv;
 
 #include "AccuracyProgram.h"
-#include "Processor2.h"
-#include "Model/ModelParser.h"
-
 
 #include <iostream>
 #include "../src2/interfaces/TreeFormModelInterface.h"
@@ -156,7 +153,7 @@ void batchProcess(std::string parentPath, bool evaluate) {
  * This function prints arguments help
  */
 void printHelp() {
-    cout<<"Argument 1 should either be -a, -o, -e, -p or -m to run only accuracy test, OCR+accuracy test, processing evaluation program, processing program or model builder programs respectively respectively."<<endl<<endl;
+    cout<<"Argument 1 should either be -a, -o, -e, or -p to run only accuracy test, OCR+accuracy test, processing evaluation program or processing programrespectively respectively."<<endl<<endl;
     cout<<" * In case of -a or -o you need to give path of a directory as second argument which must contin these folders:\n"
                   "\t * 1. programInput - should contain input images and files.txt which must contains names (not path) of input images files\n"
                   "\t * 2. expectedOutput - should contain the JSON files of expected output and files.txt which must contain names (not paths) of these JSON files. The order should match with (1)\n"
@@ -218,10 +215,6 @@ int main(int argc, char**argv) {
     }
     else if(job==string("-e")) {
         batchProcess(path,true);
-    }
-    else if(job==string("-m")) {
-        ModelParser::runModelBuilderProgram(path);
-
     }
     else {
         cout<<"Error in argument 1. It can either be -a, -o, -p or -m"<<endl;
