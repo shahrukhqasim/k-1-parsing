@@ -441,7 +441,7 @@
   },
   {
     "Model": "DOCUMENT:PART_3:GROUP_1:ORDINARY_BUSINESS:INPUT_CODE",
-    "Binded": "topmostSubform[0].Page1[0].RightCol[0].RightCol1[0].121[0]"
+    "Binded": "topmostSubform[0].Page1[0].RightCol[0].RightCol1[0].Line1[0]"
   },
   {
     "Model": "DOCUMENT:PART_3:GROUP_2:NET_RENTAL_REAL_ESTATE_INCOME:INPUT_CODE",
