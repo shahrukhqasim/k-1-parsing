@@ -1,7 +1,3 @@
-//
-// Created by shahrukhqasim on 8/26/16.
-//
-
 #include "DivisionRule.h"
 
 #ifndef K1_PARSING_DIVISIONRULEWITHREFERENCE_H

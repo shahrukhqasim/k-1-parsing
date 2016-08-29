@@ -1,7 +1,3 @@
-//
-// Created by shahrukhqasim on 8/26/16.
-//
-
 #include "string"
 
 #ifndef K1_PARSING_DIVISIONRULE_H
