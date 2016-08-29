@@ -1,6 +1,3 @@
-//
-// Created by shahrukhqasim on 8/28/16.
-//
 
 #ifndef K1_PARSING_INPUTFIELDSACCURACYTEST_H
 #define K1_PARSING_INPUTFIELDSACCURACYTEST_H

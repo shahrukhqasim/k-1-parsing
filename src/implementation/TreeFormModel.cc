@@ -1,6 +1,3 @@
-//
-// Created by shahrukhqasim on 8/22/16.
-//
 #include <vector>
 #include <unordered_map>
 #include "TreeFormModel.h"

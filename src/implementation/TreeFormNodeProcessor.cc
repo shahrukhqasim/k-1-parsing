@@ -1,6 +1,3 @@
-//
-// Created by shahrukhqasim on 8/22/16.
-//
 
 #include "TreeFormNodeProcessor.h"
 #include "TreeFormModel.h"
