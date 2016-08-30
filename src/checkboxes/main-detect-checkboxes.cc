@@ -11,7 +11,7 @@
 
 #include "stdio.h" 
 #include <string> 
-#include "concomp.h"
+#include "../Preprocessor.h"
 #include "checkbox.h"
 // Open CV headers 
 #include "opencv2/core/core.hpp" 

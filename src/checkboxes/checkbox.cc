@@ -11,8 +11,8 @@
 
 #include "stdio.h" 
 #include <string> 
-#include "concomp.h"
 #include "checkbox.h"
+#include "../Preprocessor.h"
 
 using namespace std; 
 using namespace cv;
@@ -149,7 +149,7 @@ bool CDetectCheckBoxes::detectCheckBoxes(Mat &imgMATgray, vector<CCheckBox> &cBo
 		/*imshow("out", new_mat);
 		waitKey(0);
 		destroyWindow("out");*/
-		findConComp(new_mat, holes, 0.9, 0.9, 200, 4);
+        Preprocessor::conCompFast(new_mat, holes, 0.9, 0.9, 200, 4);
 //		for (int k = ex_size; k < holes.size(); k++){
 //			holes[k].x += x[i];
 //			holes[k].y += y[i];
@@ -169,7 +169,7 @@ bool CDetectCheckBoxes::detectCheckBoxes(Mat &imgMATgray, vector<CCheckBox> &cBo
 		/*imshow("out", new_mat);
 		waitKey(0);
 		destroyWindow("out");*/
-		findConComp(new_mat, rboxes, 0.9, 0.9, 200, 4);
+    Preprocessor::conCompFast(new_mat, rboxes, 0.9, 0.9, 200, 4);
 //		for (int k = ex_size; k < rboxes.size(); k++){
 //			rboxes[k].x += x[i];
 //			rboxes[k].y += y[i];
@@ -287,7 +287,7 @@ bool CDetectCheckBoxes::detectCheckBoxes(string &inFileName, vector<CCheckBox> &
 		imshow("out", new_mat);
 		waitKey(0);
 		destroyWindow("out");
-		findConComp(new_mat, holes, 0.9, 0.9, 200, 4);
+        Preprocessor::conCompFast(new_mat, holes, 0.9, 0.9, 200, 4);
 		for (int k = ex_size; k < holes.size(); k++){
 			holes[k].x += x[i];
 			holes[k].y += y[i];
@@ -305,7 +305,7 @@ bool CDetectCheckBoxes::detectCheckBoxes(string &inFileName, vector<CCheckBox> &
 		/*imshow("out", new_mat);
 		waitKey(0);
 		destroyWindow("out");*/
-		findConComp(new_mat, rboxes, 0.9, 0.9, 200, 4);
+        Preprocessor::conCompFast(new_mat, rboxes, 0.9, 0.9, 200, 4);
 		for (int k = ex_size; k < rboxes.size(); k++){
 			rboxes[k].x += x[i];
 			rboxes[k].y += y[i];

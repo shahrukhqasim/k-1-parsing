@@ -59,9 +59,6 @@ set(SOURCE_FILES
         src/implementation/DivisionRuleWithReference.h
         src/checkboxes/checkbox.cc
         src/checkboxes/checkbox.h
-        src/checkboxes/concomp.cc
-        src/checkboxes/concomp.h
-        src/checkboxes/union-find.h
         src/implementation/BasicForm.cc
         src/implementation/BasicForm.h
         src/accuracy_test/InputFieldsAccuracyTest.cc
