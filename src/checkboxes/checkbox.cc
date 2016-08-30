@@ -36,11 +36,11 @@ void CDetectCheckBoxes::binarizeOtsu(Mat &gray, Mat &binary){
  * @return    True if the input rectangle appears like a square, False otherwise. 
  */ 
 bool CDetectCheckBoxes::isAlmostSquare(Rect &r){
-    float factor = 0.1;
+    float factor = 0.3;
     float hmin = (float) (r.height * (1.0 - factor));
     float hmax = (float) (r.height * (1.0 + factor));
     
-    return (r.width > hmin) && (r.width < hmax);
+    return (r.width > hmin) && (r.width < hmax) && (r.area() < 5000) && (r.area()>1000);
 }
 
 
@@ -149,7 +149,7 @@ bool CDetectCheckBoxes::detectCheckBoxes(Mat &imgMATgray, vector<CCheckBox> &cBo
 		/*imshow("out", new_mat);
 		waitKey(0);
 		destroyWindow("out");*/
-        Preprocessor::conCompFast(new_mat, holes, 0.9, 0.9, 200, 4);
+        Preprocessor::conCompFast(new_mat, holes, 2, 2, 200, 4);
 //		for (int k = ex_size; k < holes.size(); k++){
 //			holes[k].x += x[i];
 //			holes[k].y += y[i];
@@ -169,7 +169,7 @@ bool CDetectCheckBoxes::detectCheckBoxes(Mat &imgMATgray, vector<CCheckBox> &cBo
 		/*imshow("out", new_mat);
 		waitKey(0);
 		destroyWindow("out");*/
-    Preprocessor::conCompFast(new_mat, rboxes, 0.9, 0.9, 200, 4);
+    Preprocessor::conCompFast(new_mat, rboxes, 2, 2, 200, 4);
 //		for (int k = ex_size; k < rboxes.size(); k++){
 //			rboxes[k].x += x[i];
 //			rboxes[k].y += y[i];
