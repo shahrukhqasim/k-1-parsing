@@ -194,7 +194,7 @@ bool TreeFormNodeProcessor::process(std::shared_ptr<TreeFormNodeInterface> ptr,
             }
 
 
-            cv::rectangle(*drawImage, cv::Rect(left,top,right-left,bottom-top), color, 3, 8, 0);
+           // cv::rectangle(*drawImage, cv::Rect(left,top,right-left,bottom-top), color, 3, 8, 0);
 
         }
     }
@@ -562,10 +562,10 @@ bool TreeFormNodeProcessor::process(std::shared_ptr<TreeFormNodeInterface> ptr,
                 CCheckBox box;
 
 
-                auto drawImage=getIterationOutputImage("checkboxes");
+              //  auto drawImage=getIterationOutputImage("checkboxes");
 
 //                for(auto i:checkboxes) {
-                cv::rectangle(*drawImage, rect, cv::Scalar(0, 0, 255), 3, 8, 0);
+              //  cv::rectangle(*drawImage, rect, cv::Scalar(0, 0, 255), 3, 8, 0);
 //                }
 
                 for(auto i:checkboxes) {
@@ -675,7 +675,7 @@ bool TreeFormNodeProcessor::process(std::shared_ptr<TreeFormNodeInterface> ptr,
             {
                 std::shared_ptr<cv::Mat> theImage = getIterationOutputImage("inputs");
                 cv::Scalar randomColor(255,0,0);// = randomColors[((unsigned int) rng) % 5];
-                rectangle(*theImage, r, randomColor, 3, 8, 0);
+             //   rectangle(*theImage, r, randomColor, 3, 8, 0);
             }
 
 //        cout << "R=" << r << endl;

@@ -47,7 +47,7 @@ bool CDetectCheckBoxes::isAlmostSquare(Rect &r){
 void CDetectCheckBoxes::mergeHoles(vector<Rect> &holes){
     int nHoles = (int) holes.size();
     vector<Rect> merged;
-    vector<bool> used(nHoles, false);
+    vector<bool> used((unsigned long) nHoles, false);
     for(int i=0; i<nHoles; i++){
         if(used[i]) continue;
         Rect r = holes[i];
