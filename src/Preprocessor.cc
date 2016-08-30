@@ -17,17 +17,17 @@ void Preprocessor::conCompFast(const cv::Mat &img, std::vector<cv::Rect> &rboxes
                 } // top neighbor
                 if (y>0 && labelImg.at<double>(y-1,x)!=0){
                     l1 = uf->find(label);
-                    l2 = uf->find(labelImg.at<double>(y-1,x));
+                    l2 = uf->find((int) labelImg.at<double>(y - 1, x));
                     if (l1 != l2) uf->set(l1,l2);
                 }
                 else if (y>0 && x>0 && labelImg.at<double>(y-1,x-1)!=0 && type==8){
                     l1 = uf->find(label);
-                    l2 = uf->find(labelImg.at<double>(y-1,x-1));
+                    l2 = uf->find((int) labelImg.at<double>(y - 1, x - 1));
                     if (l1 != l2) uf->set(l1,l2);
                 }
                 else if (y>0 && x<X-1 && labelImg.at<double>(y-1,x+1)!=0 && type==8){
                     l1 = uf->find(label);
-                    l2 = uf->find(labelImg.at<double>(y-1,x+1));
+                    l2 = uf->find((int) labelImg.at<double>(y - 1, x + 1));
                     if (l1 != l2) uf->set(l1,l2);
                 }
             }
@@ -36,18 +36,18 @@ void Preprocessor::conCompFast(const cv::Mat &img, std::vector<cv::Rect> &rboxes
     //fprintf(stderr, "%d labels found!\n", label);
     for (int y=0; y<img.rows; y++)
         for (int x=0; x<img.cols; x++)
-            labelImg.at<double>(y,x) = uf->find(labelImg.at<double>(y,x));
+            labelImg.at<double>(y,x) = uf->find((int) labelImg.at<double>(y, x));
 
     // Init Bboxes and Seeds
-    std::vector<cv::Rect> bb(label+1, cv::Rect());
-    std::vector<bool> empty(label+1, true);
+    std::vector<cv::Rect> bb((unsigned long) (label + 1), cv::Rect());
+    std::vector<bool> empty((unsigned long) (label + 1), true);
     int l;
-    cv::Rect b;
-    int l_old = 0 ;
+    //cv::Rect b;
+    //int l_old = 0 ;
     for (int y=0, Y=img.rows; y<Y; y++){
         for (int x=0, X=img.cols; x<X; x++){
             if (img.at<uchar>(y,x) == 0){
-                l = uf->find(labelImg.at<double>(y,x));
+                l = uf->find((int) labelImg.at<double>(y, x));
                 cv::Rect pt(x,y,1,1);
                 if(empty[l]){
                     bb[l] = pt;
@@ -103,7 +103,7 @@ void Preprocessor::binarizeShafait(Mat &gray, Mat &binary, int w, double k){
 void Preprocessor::invertImage(Mat &image) {
     for(int i=0;i<image.rows;i++){
         for(int j=0;j<image.cols;j++){
-            image.at<uchar>(i,j)=255-image.at<uchar>(i,j);
+            image.at<uchar>(i,j)= (uchar) (255 - image.at<uchar>(i, j));
 
         }
     }

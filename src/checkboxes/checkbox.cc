@@ -13,11 +13,7 @@
 #include <string> 
 #include "concomp.h"
 #include "checkbox.h"
-// Open CV headers 
-#include "opencv2/core/core.hpp" 
-#include "opencv2/highgui/highgui.hpp" 
-#include "opencv2/imgproc/imgproc.hpp" 
- 
+
 using namespace std; 
 using namespace cv;
 
@@ -41,15 +37,15 @@ void CDetectCheckBoxes::binarizeOtsu(Mat &gray, Mat &binary){
  */ 
 bool CDetectCheckBoxes::isAlmostSquare(Rect &r){
     float factor = 0.1;
-    float hmin = r.height * (1.0 - factor);
-    float hmax = r.height * (1.0 + factor);
+    float hmin = (float) (r.height * (1.0 - factor));
+    float hmax = (float) (r.height * (1.0 + factor));
     
     return (r.width > hmin) && (r.width < hmax);
 }
 
 
 void CDetectCheckBoxes::mergeHoles(vector<Rect> &holes){
-    int nHoles = holes.size();
+    int nHoles = (int) holes.size();
     vector<Rect> merged;
     vector<bool> used(nHoles, false);
     for(int i=0; i<nHoles; i++){

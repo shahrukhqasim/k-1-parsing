@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "stdio.h"
+//#include "stdio.h"
 #include <vector>
 #include <tesseract/baseapi.h>
 #include "opencv2/core/core.hpp"
@@ -13,11 +13,11 @@ using namespace cv;
 
 #include "AccuracyProgram.h"
 
-#include <iostream>
+//#include <iostream>
 #include "interfaces/TreeFormModelInterface.h"
 #include "implementation/TreeFormModel.h"
 #include "implementation/TreeFormProcessor.h"
-#include "fstream"
+//#include "fstream"
 #include "implementation/BasicForm.h"
 #include "accuracy_test/InputFieldsAccuracyTest.h"
 
@@ -196,16 +196,9 @@ int main(int argc, char**argv) {
 
     // Compare the job and run the program accordingly
     if(job==string("-a")) {
-        if(argc==2) {
-            path="../data/accuracy";
-        }
-
         AccuracyProgram::runAccuracyTest(path);
     }
     else if(job==string("-o")) {
-        if(argc==2) {
-            path="../data/ocr_and_accuracy";
-        }
 
         OcrProgram::runOcrProgram(path);
 

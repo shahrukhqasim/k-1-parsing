@@ -16,7 +16,7 @@ void HelperMethods::outputImage(const Mat&image, const string& fileName) {
 
 string HelperMethods::removeFileExtension(const string &fileName) {
 	int dotIndex=-1;
-	for(int i=fileName.length()-1;i>=0;i--) {
+	for(int i= (int) (fileName.length() - 1); i >= 0; i--) {
 		if(fileName[i]=='.') {
 			dotIndex = i;
 			break;
@@ -24,16 +24,14 @@ string HelperMethods::removeFileExtension(const string &fileName) {
 	}
 
 	if(dotIndex>0)
-		return fileName.substr(0,dotIndex);
+		return fileName.substr(0, (unsigned long) dotIndex);
 
 	std::cerr<<"Error in file name:"<<fileName<<endl;
 	exit(0);
 }
 
 bool HelperMethods::isAlphaNumericNotSpace(char a) {
-    if(a>='0'&&a<='9'||a>='A'&&a<='Z'||a>='a'&&a<='z')
-        return true;
-    return false;
+	return a >= '0' && a <= '9' || a >= 'A' && a <= 'Z' || a >= 'a' && a <= 'z';
 
 }
 

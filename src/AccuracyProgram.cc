@@ -3,7 +3,7 @@ using namespace cv;
 using namespace std;
 
 float AccuracyProgram::testAccuracy() {
-    int size = expectedOutput.size();
+    int size = (int) expectedOutput.size();
     int matches = 0;
 
     // Those elements which are found are entered into this vector
@@ -75,7 +75,7 @@ float AccuracyProgram::testAccuracy() {
 
     // Calculate accuracy percentage and return it
     if (size != 0) {
-        return matches * 100.0 / size;
+        return (float) (matches * 100.0 / size);
     }
     else
         return 0;
@@ -118,8 +118,9 @@ void AccuracyProgram::cleanWords(vector<TextualData> &root) {
         string w = word.getText();
         bool isVerified = false;
         // TODO: Change it use regular expressions
-        for (int i = 0; i < w.size(); i++) {
-            if (HelperMethods::isAlphaNumericNotSpace(w[i])) {
+
+        for (int j = 0; j < w.size(); j++) {
+            if (HelperMethods::isAlphaNumericNotSpace(w[j])) {
                 isVerified = true;
                 break;
             }
@@ -139,12 +140,7 @@ void AccuracyProgram::compare2(Json::Value rootProgram, Json::Value rootExpected
     getWords(rootExpected, expectedOutput);
 
     // If there is no expected output, then there is no comparison
-    if (expectedOutput.size() == 0) {
-        successful = false;
-    }
-    else {
-        successful = true;
-    }
+    successful = expectedOutput.size() != 0;
 
     // Remove all data entries which do not contain alpha numeric characters
     cleanWords(expectedOutput);

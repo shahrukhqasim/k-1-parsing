@@ -1,7 +1,7 @@
 #include "EditDistance.h"
 #include <string.h>
 #include <stdlib.h> 
-#include <string.h>
+//#include <string.h>
 
 //****************************
 // Get minimum of three values
@@ -77,8 +77,8 @@ int sz; // number of cells in matrix
 
   // Step 1
 
-  n = strlen (s);
-  m = strlen (t);
+  n = (int) strlen (s);
+  m = (int) strlen (t);
   if (n == 0) {
     return m;
   }
@@ -86,7 +86,7 @@ int sz; // number of cells in matrix
     return n;
   }
   sz = (n+1) * (m+1) * sizeof (int);
-  d = (int *) malloc (sz);
+  d = (int *) malloc ((size_t) sz);
 
   // Step 2
 

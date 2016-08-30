@@ -35,7 +35,8 @@ vector<OcrResult> OcrProgram::PerformOCR(std::vector<unsigned char> data)
 
 	doSegmentation(binaryImage, rboxes);
 
-	auto cleanedImage = cleanImage(binaryImage);
+    Mat cleanedImage;
+    cleanedImage = cleanImage(binaryImage);
 
 	// Write cleaned image to file	
 	//HelperMethods::outputImage(cleanedImage, "cleaned.png");
@@ -43,7 +44,7 @@ vector<OcrResult> OcrProgram::PerformOCR(std::vector<unsigned char> data)
 
 	// First run OCR on the segments
 	TesseractFinder finder;
-	finder.run((uchar*)cleanedImage.data, cleanedImage.size().width, cleanedImage.size().height, cleanedImage.channels(), cleanedImage.step1());
+	finder.run(cleanedImage.data, cleanedImage.size().width, cleanedImage.size().height, cleanedImage.channels(), cleanedImage.step1());
 
 	auto segmentedData = finder.getRecognizedData();
 
@@ -131,8 +132,8 @@ vector<OcrResult> OcrProgram::CleanResults(std::vector<OcrResult>& results)
 		if (elements.size()>1)
 		{
 			
-			vector<Rect> subRectangles;
-			double percentage = 0;
+			//vector<Rect> subRectangles;
+			//double percentage = 0;
 			double single = 1.0*(result.p2.x - result.p1.x) / result.text.length();
 			double startingX = result.p1.x;
 			for (int i = 0;i<elements.size();i++)
@@ -142,9 +143,9 @@ vector<OcrResult> OcrProgram::CleanResults(std::vector<OcrResult>& results)
 				subElement.p1.y = result.p1.y;
 				subElement.p2.y = result.p2.y;
 
-				subElement.p1.x = startingX;
+				subElement.p1.x = (int) startingX;
 				startingX += single*elements[i].length();
-				subElement.p2.x = startingX;
+				subElement.p2.x = (int) startingX;
 				startingX += single;
 
 				data3.push_back(subElement);
@@ -244,7 +245,7 @@ void OcrProgram::outputToJson() {
     pages["Width"]=originalImage.cols;
     pages["Height"]=originalImage.rows;
 
-    Json::Value words;
+    //Json::Value words;
 
     for(int i=0;i<data.size();i++) {
         OcrResult wordEntry=data[i];

@@ -50,7 +50,7 @@ void TesseractFinder::iterate(tesseract::TessBaseAPI *api) {
             const char *word = ri->GetUTF8Text(level);
 			if (word != NULL)
 			{
-				float conf = ri->Confidence(level);
+			//	float conf = ri->Confidence(level);
 				int x1, y1, x2, y2;
 
 				ri->BoundingBox(level, &x1, &y1, &x2, &y2);
@@ -73,7 +73,7 @@ void TesseractFinder::recognizeText(const unsigned char* imagedata, int width, i
 	int bytes_per_pixel, int bytes_per_line)
 {
 
-	RNG rng(12345);
+	//RNG rng(12345);
 	tesseract::TessBaseAPI *api = new tesseract::TessBaseAPI();
 
 	if (!api->SetVariable("textord_no_rejects", "1"))
@@ -119,7 +119,7 @@ void TesseractFinder::recognizeText(const unsigned char* imagedata, int width, i
 
 void TesseractFinder::recognizeText(Pix* image) {
 
-    RNG rng(12345);
+    //RNG rng(12345);
     tesseract::TessBaseAPI *api = new tesseract::TessBaseAPI();
 
     if (!api->SetVariable("textord_no_rejects", "1"))

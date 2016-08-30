@@ -102,7 +102,7 @@ class OcrProgram {
 	 */
     void loadBinaryImage(cv::Mat &image, std::string fileName, int mode);
 
-	cv::Mat loadImage(std::string fileName, int mode);
+	//cv::Mat loadImage(std::string fileName, int mode);
 
 	/**
 	 * This function does segmentation and stores the result in segments member field

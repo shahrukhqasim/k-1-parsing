@@ -6,7 +6,7 @@ using namespace cv;
 
 bool TextualData::compare(TextualData &expectedOutput){
 
-    int matched=0;
+    //int matched=0;
 
     // Jc = (Box1 intersection Box2)/(Box1 union Box2)
     float Jc =float((this->boundingBox & expectedOutput.getRect()).area())/( this->boundingBox | expectedOutput.getRect() ).area() ;
@@ -23,10 +23,7 @@ bool TextualData::compare(TextualData &expectedOutput){
 }
 
 bool TextualData::equals(TextualData &expectedOutput) {
-    if(this->getRect()==expectedOutput.getRect()&& this->getText()== expectedOutput.getText())
-        return true;
-    else
-        return false;
+    return this->getRect() == expectedOutput.getRect() && this->getText() == expectedOutput.getText();
 }
 
 Rect TextualData::getRect() const{
