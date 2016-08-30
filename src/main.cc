@@ -145,7 +145,8 @@ void batchProcess(std::string parentPath, bool evaluate) {
 
     }
 
-    std::cout << "Average accuracy " << accuracySum / num;
+    if (evaluate)
+        std::cout << "Average accuracy " << accuracySum / num << std::endl;
 
 }
 

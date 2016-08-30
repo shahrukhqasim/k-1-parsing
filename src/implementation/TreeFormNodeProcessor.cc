@@ -52,7 +52,11 @@ bool TreeFormNodeProcessor::process(std::shared_ptr<TreeFormNodeInterface> ptr,
         auto drawImage=getIterationOutputImage("checkboxes");
 
         for(auto i:checkboxes) {
-            cv::rectangle(*drawImage, i.outerBBox, cv::Scalar(0, 255, 0), 3, 8, 0);
+            if(i.validOuterBBox){
+                cv::rectangle(*drawImage, i.outerBBox, cv::Scalar(0, 255, 0), 3, 8, 0);
+            } else if (i.validInnerBBox){
+//                cv::rectangle(*drawImage, i.innerBBox, cv::Scalar(0, 255, 0), 3, 8, 0);
+            }
         }
 
         return true;

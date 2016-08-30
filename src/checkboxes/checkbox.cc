@@ -1,14 +1,3 @@
-/** 
- * @file pdf-ocr.cc 
- * This is the main file for extracting checkboxes from images.
- * 
- * 
- * @author Faisal Shafait (faisalshafait@gmail.com)  
- * 
- * @version 0.1  
- * 
- */ 
-
 #include "stdio.h" 
 #include <string> 
 #include "checkbox.h"

@@ -35,8 +35,8 @@ vector<OcrResult> OcrProgram::PerformOCR(std::vector<unsigned char> data)
 
 	doSegmentation(binaryImage, rboxes);
 
-    Mat cleanedImage;
-    cleanedImage = cleanImage(binaryImage);
+        Mat cleanedImage;
+        cleanedImage = cleanImage(binaryImage);
 
 	// Write cleaned image to file	
 	//HelperMethods::outputImage(cleanedImage, "cleaned.png");
@@ -44,7 +44,7 @@ vector<OcrResult> OcrProgram::PerformOCR(std::vector<unsigned char> data)
 
 	// First run OCR on the segments
 	TesseractFinder finder;
-	finder.run(cleanedImage.data, cleanedImage.size().width, cleanedImage.size().height, cleanedImage.channels(), cleanedImage.step1());
+	finder.run((uchar*)cleanedImage.data, cleanedImage.size().width, cleanedImage.size().height, cleanedImage.channels(), cleanedImage.step1());
 
 	auto segmentedData = finder.getRecognizedData();
 
