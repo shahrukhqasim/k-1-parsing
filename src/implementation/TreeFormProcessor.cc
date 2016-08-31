@@ -125,7 +125,9 @@ bool TreeFormProcessor::getResult(Json::Value& result) {
 }
 
 void TreeFormProcessor::recursiveResultConvert(std::shared_ptr<TreeFormNodeInterface> currentNode) {
-    if (std::dynamic_pointer_cast<InputTreeFormNode>(currentNode) != nullptr) {
+    if (std::dynamic_pointer_cast<RepeatInputTreeFormNode>(currentNode) != nullptr) {
+    }
+    else if (std::dynamic_pointer_cast<InputTreeFormNode>(currentNode) != nullptr) {
         std::shared_ptr<InputTreeFormNode> iModel = std::dynamic_pointer_cast<InputTreeFormNode>(currentNode);
 
         Json::Value value;
