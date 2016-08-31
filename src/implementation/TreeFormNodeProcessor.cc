@@ -582,6 +582,12 @@ bool TreeFormNodeProcessor::process(std::shared_ptr<TreeFormNodeInterface> ptr,
                                             iModel->setRegion(i.outerBBox);
                                             iModel->setRegionDefined(true);
                                             std::cout<<"Found a region from parent"<<iModel->getId()<<" for checkbox "<<iModel->getRegion()<<" "<<iModel->isRegionDefined()<<std::endl;
+
+                                            std::shared_ptr<cv::Mat>theImage=getIterationOutputImage("inputs");
+                                            cv::Scalar randomColor = randomColors[((unsigned int) rng) % 5];
+                                            rectangle(*theImage, iModel->getRegion(), randomColor, 3, 8, 0);
+                                            putText(*theImage, iModel->getData(), iModel->getRegion().br(), 1, 2, randomColor, 2);
+
                                             return true;
                                         }
                                     }
@@ -608,6 +614,12 @@ bool TreeFormNodeProcessor::process(std::shared_ptr<TreeFormNodeInterface> ptr,
                     iModel->setRegionDefined(true);
                     iModel->setRegion(box.outerBBox);
                     iModel->setData(box.isFilled?"True":"False");
+
+
+                    std::shared_ptr<cv::Mat>theImage=getIterationOutputImage("inputs");
+                    cv::Scalar randomColor = randomColors[((unsigned int) rng) % 5];
+                    rectangle(*theImage, iModel->getRegion(), randomColor, 3, 8, 0);
+                    putText(*theImage, iModel->getData(), iModel->getRegion().br(), 1, 2, randomColor, 2);
                 }
 
             }
