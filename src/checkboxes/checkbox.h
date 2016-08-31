@@ -1,14 +1,4 @@
 #pragma once
-/** 
- * @file checkbox.h
- * This file contains class definitions for detecting checkboxes
- * in a PDF rendered image. 
- * 
- * @author Faisal Shafait (faisalshafait@gmail.com)  
- * 
- * @version 0.1  
- * 
- */ 
  
 #include "stdio.h" 
 #include <string> 
