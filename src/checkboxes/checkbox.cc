@@ -180,6 +180,7 @@ bool CDetectCheckBoxes::detectCheckBoxes(Mat &imgMATgray, vector<CCheckBox> &cBo
     //rboxes=holes;
     vector<bool> usedInner(holes.size(), false);
 
+
     for(int i=0; i<holes.size(); i++){
 
         if(isAlmostSquare(holes[i])){
