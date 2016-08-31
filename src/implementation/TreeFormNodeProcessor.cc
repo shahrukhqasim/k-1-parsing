@@ -558,7 +558,7 @@ bool TreeFormNodeProcessor::process(std::shared_ptr<TreeFormNodeInterface> ptr,
                 auto drawImage=getIterationOutputImage("checkboxes");
 
                 cv::Scalar randomColor = randomColors[((unsigned int) rng) % 5];
-                cv::rectangle(*drawImage, rect, randomColor, 3, 8, 0);
+//                cv::rectangle(*drawImage, rect, randomColor, 3, 8, 0);
 
 
                 /*
