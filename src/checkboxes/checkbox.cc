@@ -177,7 +177,6 @@ bool CDetectCheckBoxes::detectCheckBoxes(Mat &imgMATgray, vector<CCheckBox> &cBo
     ex_size = rboxes.size();
 //	}
 
-    //rboxes=holes;
     vector<bool> usedInner(holes.size(), false);
 
 
