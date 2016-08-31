@@ -407,6 +407,7 @@ bool TreeFormNodeProcessor::process(std::shared_ptr<TreeFormNodeInterface> ptr,
                         nx2->setData(nx2->getData() + x.getText());
                         nx2->setRegion(x.getRect());
                         nx2->setRegionDefined(true);
+                        nx2->setDescriptiveName(rModel->getDescriptiveName());
 
                         std::shared_ptr<cv::Mat>theImage=getIterationOutputImage("inputs");
                         cv::Scalar randomColor = randomColors[((unsigned int) rng) % 5];
@@ -557,9 +558,7 @@ bool TreeFormNodeProcessor::process(std::shared_ptr<TreeFormNodeInterface> ptr,
                 auto drawImage=getIterationOutputImage("checkboxes");
 
                 cv::Scalar randomColor = randomColors[((unsigned int) rng) % 5];
-//                for(auto i:checkboxes) {
                 cv::rectangle(*drawImage, rect, randomColor, 3, 8, 0);
-//                }
 
 
                 /*
