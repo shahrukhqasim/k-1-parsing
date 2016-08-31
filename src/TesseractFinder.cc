@@ -95,7 +95,7 @@ void TesseractFinder::recognizeText(const unsigned char* imagedata, int width, i
 	}
 	else if (mode == MODE_BOXES)
 	{
-		for (int i = 0;i<boxes.size();i++)
+		for (size_t i = 0;i<boxes.size();i++)
 		{
 			Rect box = boxes[i];
 			api->SetRectangle(box.x, box.y, box.width, box.height);
@@ -138,7 +138,7 @@ void TesseractFinder::recognizeText(Pix* image) {
         iterate(api);
     }
     else if(mode==MODE_BOXES) {
-        for(int i=0;i<boxes.size();i++) {
+        for(size_t i=0;i<boxes.size();i++) {
             Rect box=boxes[i];
             api->SetRectangle(box.x,box.y,box.width,box.height);
             api->Recognize(0);

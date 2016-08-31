@@ -65,7 +65,7 @@ bool TreeFormNodeProcessor::process(std::shared_ptr<TreeFormNodeInterface> ptr,
     else if (iteration == 1) {
 
         std::shared_ptr<cv::Mat>drawImage=getIterationOutputImage("division");
-        for (int i = 0; i < text.size(); i++) {
+        for (size_t i = 0; i < text.size(); i++) {
             cv::rectangle(*drawImage, text[i].getRect(), cv::Scalar(0, 255, 255), 3, 8, 0);
         }
 
@@ -99,7 +99,7 @@ bool TreeFormNodeProcessor::process(std::shared_ptr<TreeFormNodeInterface> ptr,
             if (isLeft || isRight) {
                 cv::Mat vProjection(1, image.cols, CV_16U);
                 vProjection = 0;
-                for (int i = 0; i < text.size(); i++) {
+                for (size_t i = 0; i < text.size(); i++) {
                     cv::Rect r = text[i].getRect();
                     for (int j = r.x; j < r.x + r.width; j++)
                         vProjection.at<short>(0, j) += r.height;
@@ -884,11 +884,11 @@ int TreeFormNodeProcessor::findTextWithMinimumEditDistance(std::string textToFin
     // TODO: FUNCTION PERFORMANCE OPTIMIZATION NEEDED
     int minDistance = 99999999;
     int minIndex = -1;
-    for (int i = 0; i < text.size(); i++) {
+    for (size_t i = 0; i < text.size(); i++) {
         std::string dataCurrent = text[i].getText();
         std::string dataCurrent2;
 
-        for (int i = 0; i < dataCurrent.size(); i++) {
+        for (size_t i = 0; i < dataCurrent.size(); i++) {
             if (HelperMethods::isAlphaNumericNotSpace(dataCurrent[i]))
                 dataCurrent2 += dataCurrent[i];
         }
@@ -909,11 +909,11 @@ int TreeFormNodeProcessor::findTextWithMinimumEditDistance(std::vector<TextualDa
     // TODO: FUNCTION PERFORMANCE OPTIMIZATION NEEDED
     int minDistance = 99999999;
     int minIndex = -1;
-    for (int i = 0; i < text.size(); i++) {
+    for (size_t i = 0; i < text.size(); i++) {
         std::string dataCurrent = text[i].getText();
         std::string dataCurrent2;
 
-        for (int i = 0; i < dataCurrent.size(); i++) {
+        for (size_t i = 0; i < dataCurrent.size(); i++) {
             if (HelperMethods::isAlphaNumericNotSpace(dataCurrent[i]))
                 dataCurrent2 += dataCurrent[i];
         }
@@ -935,7 +935,7 @@ int TreeFormNodeProcessor::findTextWithMinimumEditDistance(std::vector<TextualDa
     // TODO: FUNCTION PERFORMANCE OPTIMIZATION NEEDED
     int minDistance = 99999999;
     int minIndex = -1;
-    for (int i = 0; i < text.size(); i++) {
+    for (size_t i = 0; i < text.size(); i++) {
         if((region&text[i].getRect()).area()==0)
             continue;
 
@@ -943,7 +943,7 @@ int TreeFormNodeProcessor::findTextWithMinimumEditDistance(std::vector<TextualDa
         std::string dataCurrent2;
 
 
-        for (int i = 0; i < dataCurrent.size(); i++) {
+        for (size_t i = 0; i < dataCurrent.size(); i++) {
             if (HelperMethods::isAlphaNumericNotSpace(dataCurrent[i]))
                 dataCurrent2 += dataCurrent[i];
         }

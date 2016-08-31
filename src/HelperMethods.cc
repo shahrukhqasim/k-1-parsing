@@ -31,23 +31,23 @@ string HelperMethods::removeFileExtension(const string &fileName) {
 }
 
 bool HelperMethods::isAlphaNumericNotSpace(char a) {
-	return a >= '0' && a <= '9' || a >= 'A' && a <= 'Z' || a >= 'a' && a <= 'z';
+	return (a >= '0') && ((a <= '9') || (a >= 'A')) && ((a <= 'Z') || (a >= 'a')) && (a <= 'z');
 
 }
 
 bool HelperMethods::nearEqualComparison(const string&a,const string&b) {
 	string c;
 	string d;
-	for(int i=0;i<a.size();i++) {
+	for(size_t i=0;i<a.size();i++) {
 		if(isAlphaNumericNotSpace(a[i]))
 			c+=a[i];
 	}
-	for(int i=0;i<b.size();i++) {
+	for(size_t i=0;i<b.size();i++) {
 		if(isAlphaNumericNotSpace(b[i]))
 			d+=b[i];
 	}
 
-    for(int i=0;i<c.size();i++) {
+    for(size_t i=0;i<c.size();i++) {
         if(c[i]=='\n') {
             cout<<c<<endl;
             assert(false);

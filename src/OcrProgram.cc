@@ -108,7 +108,7 @@ cv::Mat OcrProgram::RemoveSegments(const cv::Mat& image, std::vector<cv::Rect>& 
 	
 	Mat imageWithoutSegments = image.clone();
 	Scalar color(255, 255, 255);
-	for (int i = 0; i < segmentsToRemove.size(); i++)
+	for (size_t i = 0; i < segmentsToRemove.size(); i++)
 	{
 		Rect box = segmentsToRemove[i];
 		rectangle(imageWithoutSegments, box, color, CV_FILLED, 8, 0);
@@ -136,7 +136,7 @@ vector<OcrResult> OcrProgram::CleanResults(std::vector<OcrResult>& results)
 			//double percentage = 0;
 			double single = 1.0*(result.p2.x - result.p1.x) / result.text.length();
 			double startingX = result.p1.x;
-			for (int i = 0;i<elements.size();i++)
+			for (size_t i = 0;i<elements.size();i++)
 			{
 				OcrResult subElement;
 				subElement.text = elements[i];
@@ -209,7 +209,7 @@ cv::Mat OcrProgram::cleanImage(cv::Mat &img)
 	rectangle(cleanedImage, Rect(0, 0, cleanedImage.cols, cleanedImage.rows), whiteColor, CV_FILLED, 8, 0);
 
 	// Run through all the connected components
-	for (int i = 0;i<boxes.size();i++)
+	for (size_t i = 0;i<boxes.size();i++)
 	{
 		// Get the current component
 		Rect box = boxes[i];
@@ -247,7 +247,7 @@ void OcrProgram::outputToJson() {
 
     //Json::Value words;
 
-    for(int i=0;i<data.size();i++) {
+    for(size_t i=0;i<data.size();i++) {
         OcrResult wordEntry=data[i];
         string s=wordEntry.text;
         Json::Value word;
@@ -259,7 +259,7 @@ void OcrProgram::outputToJson() {
         word["Value"]=s;
         word["Region"]=rectangle;
 
-        pages["Words"][i]=word;
+        pages["Words"][int(i)]=word;
     }
 
     root["Pages"][0]=pages;
@@ -273,7 +273,7 @@ void OcrProgram::outputResult() {
     Mat image;
     cvtColor(originalImage,image,CV_GRAY2RGB);
 
-    for (int i = 0; i < data.size(); i++) {
+    for (size_t i = 0; i < data.size(); i++) {
 
         Point p1 = data[i].p1;
         Point p2 = data[i].p2;

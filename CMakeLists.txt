@@ -64,6 +64,7 @@ set(SOURCE_FILES
         src/accuracy_test/InputFieldsAccuracyTest.cc
         src/accuracy_test/InputFieldsAccuracyTest.h)
 
+set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra")
 
 
 add_executable(k1_parsing ${SOURCE_FILES})
