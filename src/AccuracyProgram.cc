@@ -14,9 +14,9 @@ float AccuracyProgram::testAccuracy() {
 
 
     // Go through OCR output
-    for (int i = 0; i < ocrOutput.size(); i++) {
+    for (size_t i = 0; i < ocrOutput.size(); i++) {
         // Go through expected output (Ground Truth)
-        for (int j = 0; j < expectedOutput.size(); j++) {
+        for (size_t j = 0; j < expectedOutput.size(); j++) {
             // If any matches
             if (ocrOutput[i].compare(expectedOutput[j])) {
                 // Push the found element into found vector
@@ -35,9 +35,9 @@ float AccuracyProgram::testAccuracy() {
 
     // Those elements from tesseract output which are not matched to anything
     vector<TextualData> notMatched;
-    for (int i = 0; i < ocrOutput.size(); i++) {
+    for (size_t i = 0; i < ocrOutput.size(); i++) {
         bool matched = false;
-        for (int j = 0; j < ocrMatched.size(); j++) {
+        for (size_t j = 0; j < ocrMatched.size(); j++) {
             if (ocrOutput[i].equals(ocrMatched[j])) {
                 matched = true;
                 break;
@@ -55,20 +55,20 @@ float AccuracyProgram::testAccuracy() {
 
     // First draw all the found elements in green
     Scalar green(0, 255, 0);
-    for (int i = 0; i < found.size(); i++) {
+    for (size_t i = 0; i < found.size(); i++) {
         rectangle(theImage, found[i].getRect(), green, 3, 8, 0);
     }
 
 
     //Then draw all the not found elements of expected output in red
     Scalar red(0, 0, 255);
-    for (int i = 0; i < expectedOutput.size(); i++) {
+    for (size_t i = 0; i < expectedOutput.size(); i++) {
         rectangle(theImage, expectedOutput[i].getRect(), red, 3, 8, 0);
     }
 
     // Then draw all the not found elements ocr output in blue
     Scalar blue(255, 0, 0);
-    for (int i = 0; i < ocrOutput.size(); i++) {
+    for (size_t i = 0; i < ocrOutput.size(); i++) {
         rectangle(theImage, ocrOutput[i].getRect(), blue, 3, 8, 0);
     }
 
@@ -94,7 +94,7 @@ void AccuracyProgram::getWords(Json::Value root, vector<TextualData> &outputVect
     root = root["Pages"][0];
 
     Json::Value words = root["Words"];
-    for (int i = 0; i < words.size(); i++) {
+    for (unsigned int i = 0; i < words.size(); i++) {
         Json::Value word = words[i];
         string value = word["Value"].asString();
         Json::Value rectangle = word["Region"];
@@ -113,13 +113,13 @@ void AccuracyProgram::getWords(Json::Value root, vector<TextualData> &outputVect
 
 void AccuracyProgram::cleanWords(vector<TextualData> &root) {
     vector<TextualData> words2;
-    for (int i = 0; i < root.size(); i++) {
+    for (size_t i = 0; i < root.size(); i++) {
         TextualData word = root[i];
         string w = word.getText();
         bool isVerified = false;
         // TODO: Change it use regular expressions
 
-        for (int j = 0; j < w.size(); j++) {
+        for (size_t j = 0; j < w.size(); j++) {
             if (HelperMethods::isAlphaNumericNotSpace(w[j])) {
                 isVerified = true;
                 break;

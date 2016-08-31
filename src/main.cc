@@ -25,7 +25,7 @@ void getWords(Json::Value root, std::vector<TextualData> &outputVector) {
     root = root["Pages"][0];
 
     Json::Value words = root["Words"];
-    for (int i = 0; i < words.size(); i++) {
+    for (unsigned int i = 0; i < words.size(); i++) {
         Json::Value word = words[i];
         std::string value = word["Value"].asString();
         Json::Value rectangle = word["Region"];
@@ -45,6 +45,7 @@ void getWords(Json::Value root, std::vector<TextualData> &outputVector) {
 inline bool readJson(const std::string& path, Json::Value&output) {
     std::ifstream file(path);
     file>>output;
+    return 0;
 }
 
 void batchProcess(std::string parentPath, bool evaluate) {

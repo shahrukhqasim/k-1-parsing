@@ -6,6 +6,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -std=c++0x -lpthread")
 link_directories(/usr/local/lib/ /usr/lib/)
 include_directories(/usr/local/include/)
 
+
 set(SOURCE_FILES
         src/main.cc
         csv/CSVparser.cc
@@ -65,6 +66,7 @@ set(SOURCE_FILES
         src/accuracy_test/InputFieldsAccuracyTest.h)
 
 
+set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra")
 
 add_executable(k1_parsing ${SOURCE_FILES})
 target_link_libraries(k1_parsing lept tesseract opencv_core opencv_imgproc opencv_highgui opencv_imgcodecs)

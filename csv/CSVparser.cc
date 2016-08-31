@@ -81,7 +81,7 @@ namespace csv {
          for (; i != it->length(); i++)
          {
               if (it->at(i) == '"')
-                  quoted = ((quoted) ? (false) : (true));
+                  quoted = !quoted;
               else if (it->at(i) == ',' && !quoted)
               {
                   row->push(it->substr(tokenStart, i - tokenStart));

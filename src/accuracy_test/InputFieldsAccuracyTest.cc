@@ -15,7 +15,7 @@ float InputFieldsAccuracyTest::calculateAccuracy(bool outputErrors, bool outputC
     readBindingsData();
 
     int count = 0;
-    float correct;
+    float correct=0;
     for (auto i:bindingsData) {
         auto iteratorGt = groundTruthData.find(i.first);
         auto iteratorOutput = outputData.find(i.second);
@@ -93,7 +93,7 @@ float InputFieldsAccuracyTest::calculateAccuracy(bool outputErrors, bool outputC
 void InputFieldsAccuracyTest::readGroundTruth() {
     Json::Value groundTruth = InputFieldsAccuracyTest::groundTruth["Pages"][0]["Fields"];
 
-    for (int i = 0; i < groundTruth.size(); i++) {
+    for (unsigned int i = 0; i < groundTruth.size(); i++) {
         std::string name = groundTruth[i]["Name"].asString();
         std::string value = groundTruth[i]["Value"].asString();
         Json::Value region = groundTruth[i]["Region"];
@@ -112,7 +112,7 @@ void InputFieldsAccuracyTest::readGroundTruth() {
 void InputFieldsAccuracyTest::readOutputData() {
     Json::Value processorOutput = InputFieldsAccuracyTest::processorOutput["Pages"][0]["Fields"];
 
-    for (int i = 0; i < processorOutput.size(); i++) {
+    for (unsigned int i = 0; i < processorOutput.size(); i++) {
         std::string name = processorOutput[i]["Id"].asString();
         std::string value = processorOutput[i]["Value"].asString();
         Json::Value region = processorOutput[i]["Region"];
@@ -130,7 +130,7 @@ void InputFieldsAccuracyTest::readOutputData() {
 }
 
 void InputFieldsAccuracyTest::readBindingsData() {
-    for (int i = 0; i < bindings.size(); i++) {
+    for (unsigned int i = 0; i < bindings.size(); i++) {
         std::string model = bindings[i]["Model"].asString();
         std::string bindedGt = bindings[i]["Binded"].asString();
 

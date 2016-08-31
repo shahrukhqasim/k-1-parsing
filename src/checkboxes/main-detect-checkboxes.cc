@@ -28,15 +28,15 @@ int mainx(int argc, char **argv){
             fprintf(stderr, "Usage: %s image1 [image2 ... imageN]\n", argv[0]);
             exit(-1);
         }
-        bool debugMode = false;
+   //     bool debugMode = false;
         int narg = 1;
         while(narg < argc){
             string inFileName(argv[narg]);
             vector<CCheckBox> cBoxes;
             CDetectCheckBoxes CBDetector;
-            if(debugMode){
-                CBDetector.detectCheckBoxes(inFileName, cBoxes);
-            } else {
+//            if(debugMode){
+//                CBDetector.detectCheckBoxes(inFileName, cBoxes);
+//            } else {
                 Mat imgMATgray = imread(inFileName, IMREAD_GRAYSCALE); 
                 if(imgMATgray.empty()){ 
                     fprintf(stderr, "Error: Could not read image %s with OPENCV! Skipping ...\n", inFileName.c_str()); 
@@ -65,7 +65,7 @@ int mainx(int argc, char **argv){
                 string fileBaseName = inFileName.substr(0,pAtExt); 
                 string ccFile = fileBaseName + "-cc.png";
                 imwrite(ccFile, imgMAT);
-            }
+          //  }
            
             narg++;   
         }

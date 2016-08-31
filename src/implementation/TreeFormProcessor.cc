@@ -1,6 +1,5 @@
 
 #include "TreeFormProcessor.h"
-#include "TreeFormNodeProcessor.h"
 #include "RepeatInputTreeFormNode.h"
 
 TreeFormProcessor::TreeFormProcessor(std::shared_ptr<TreeFormModelInterface> formModel) : formModel(formModel) {
@@ -65,6 +64,7 @@ bool TreeFormProcessor::recursiveCall(std::shared_ptr<TreeFormNodeInterface> nod
 }
 
 const std::shared_ptr<TreeFormNodeProcessorInterface> &TreeFormProcessor::getProcessor() const {
+
     return processor;
 }
 
@@ -76,7 +76,7 @@ void TreeFormProcessor::mergeWordBoxes(const std::vector<TextualData> &words, st
     // Merge the words extracted from Tesseract to obtain text-lines. The logic used for text-line extraction
     // is to merge two consecutive words if they overlap along the y-axis, and the gap between them is smaller
     // than the height of the shorter word.
-    int nRects = words.size();
+    int nRects = (int) words.size();
     bool newElem = true;
     TextualData elem, prevWord;
     for (int i = 0; i < nRects; i++) {

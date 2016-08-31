@@ -102,7 +102,7 @@ std::shared_ptr<TreeFormNodeInterface> TreeFormModel::createHierarchy(std::vecto
         }
     }
 
-    for (int i = index; i < hierarchy.size(); i++) {
+    for (size_t i = index; i < hierarchy.size(); i++) {
         std::shared_ptr<BasicTreeFormNode> newNode = std::shared_ptr<BasicTreeFormNode>(new BasicTreeFormNode);
         std::string s = hierarchy[i];
         absoluteId += s;
@@ -169,8 +169,9 @@ bool TreeFormModel::processLine(const std::string &line, int lineNumber) {
                 type = InputTreeFormNode::INPUT_NUMERIC;
             } else if (fields[3] == "ALPHA_NUMERIC") {
                 type = InputTreeFormNode::INPUT_ALPHA_NUMERIC;
-            } else if (fields[3] == "BOOLEAN") {
-                type = InputTreeFormNode::INPUT_CHECKBOX;
+            } //else if (fields[3] == "BOOLEAN") {
+            else{
+            type = InputTreeFormNode::INPUT_CHECKBOX;
             }
 
             std::shared_ptr<InputTreeFormNode> newNode = std::shared_ptr<InputTreeFormNode>(
@@ -197,7 +198,9 @@ bool TreeFormModel::processLine(const std::string &line, int lineNumber) {
                 type = InputTreeFormNode::INPUT_NUMERIC;
             } else if (fields[3] == "ALPHA_NUMERIC") {
                 type = InputTreeFormNode::INPUT_ALPHA_NUMERIC;
-            } else if (fields[3] == "BOOLEAN") {
+            }
+            //else if (fields[3] == "BOOLEAN") {
+              else{
                 type = InputTreeFormNode::INPUT_CHECKBOX;
             }
 

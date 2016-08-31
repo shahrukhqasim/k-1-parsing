@@ -107,7 +107,7 @@ double CDetectCheckBoxes::computeFillRatio(Mat &imgBin, Rect &bbox){
 }
 
 void CDetectCheckBoxes::fillRatioFilter(Mat &imgBin, vector<CCheckBox> &cBoxes){
-    int nBoxes = cBoxes.size();
+    int nBoxes = (int) cBoxes.size();
     for(int i=0; i<nBoxes; i++){
         CCheckBox cb = cBoxes[i];
         double fr = 0.0;
@@ -142,7 +142,7 @@ bool CDetectCheckBoxes::detectCheckBoxes(Mat &imgMATgray, vector<CCheckBox> &cBo
 //		exit(-1);
 //	}
 
-    int ex_size = 0;
+    //int ex_size = 0;
     vector<Rect> holes;
 //	for (size_t i = 0; i < x.size(); i++){
     Mat new_mat = imgMATbinMorph;//(Rect(x[i], y[i], width[i], height[i]));
@@ -154,7 +154,7 @@ bool CDetectCheckBoxes::detectCheckBoxes(Mat &imgMATgray, vector<CCheckBox> &cBo
 //			holes[k].x += x[i];
 //			holes[k].y += y[i];
 //		}
-    ex_size = holes.size();
+    //ex_size = holes.size();
 //	}
     //mergeHoles(holes);
 //	fprintf(stderr, "%s\n", "done!");
@@ -163,7 +163,7 @@ bool CDetectCheckBoxes::detectCheckBoxes(Mat &imgMATgray, vector<CCheckBox> &cBo
     vector<Rect> rboxes;
 //	fprintf(stderr, "%s\n", "done!");
 
-    ex_size = 0;
+    //ex_size = 0;
 //	for (size_t i = 0; i < x.size(); i++){
     new_mat = imgMATbinMorph;//(Rect(x[i], y[i], width[i], height[i]));
     /*imshow("out", new_mat);
@@ -174,14 +174,15 @@ bool CDetectCheckBoxes::detectCheckBoxes(Mat &imgMATgray, vector<CCheckBox> &cBo
 //			rboxes[k].x += x[i];
 //			rboxes[k].y += y[i];
 //		}
-    ex_size = rboxes.size();
+    //ex_size = rboxes.size();
+
 //	}
 
-    //rboxes=holes;
+
     vector<bool> usedInner(holes.size(), false);
 
 
-    for(int i=0; i<holes.size(); i++){
+    for(size_t i=0; i<holes.size(); i++){
 
         if(isAlmostSquare(holes[i])){
             CCheckBox cb;
@@ -200,13 +201,9 @@ bool CDetectCheckBoxes::detectCheckBoxes(Mat &imgMATgray, vector<CCheckBox> &cBo
 
     fillRatioFilter(imgMATbin, cBoxes);
 
-    for(int i=0; i<cBoxes.size(); i++){
+    for(size_t i=0; i<cBoxes.size(); i++){
         CCheckBox cb = cBoxes[i];
-        if(cb.innerFillRatio < 0.05){
-            cBoxes[i].isFilled = false;
-        } else {
-            cBoxes[i].isFilled = true;
-        }
+        cBoxes[i].isFilled = cb.innerFillRatio >= 0.05;
     }
 
     return true;
@@ -269,7 +266,7 @@ bool CDetectCheckBoxes::detectCheckBoxes(string &inFileName, vector<CCheckBox> &
         height.push_back(atoi(temp.c_str()));
     }
 
-    for (int j = 0; j < x.size(); j++)
+    for (size_t j = 0; j < x.size(); j++)
         fprintf(stderr, "%d " "%d " "%d " "%d \n", x[j], y[j], width[j], height[j]);
 
     vector<Rect> holes;
@@ -280,11 +277,11 @@ bool CDetectCheckBoxes::detectCheckBoxes(string &inFileName, vector<CCheckBox> &
         waitKey(0);
         destroyWindow("out");
         Preprocessor::conCompFast(new_mat, holes, 0.9, 0.9, 200, 4);
-        for (int k = ex_size; k < holes.size(); k++){
+        for (size_t k = ex_size; k < holes.size(); k++){
             holes[k].x += x[i];
             holes[k].y += y[i];
         }
-        ex_size = holes.size();
+        ex_size = (int) holes.size();
     }
     mergeHoles(holes);
     fprintf(stderr, "%s ", "done!");
@@ -298,21 +295,21 @@ bool CDetectCheckBoxes::detectCheckBoxes(string &inFileName, vector<CCheckBox> &
         waitKey(0);
         destroyWindow("out");*/
         Preprocessor::conCompFast(new_mat, rboxes, 0.9, 0.9, 200, 4);
-        for (int k = ex_size; k < rboxes.size(); k++){
+        for (size_t k = ex_size; k < rboxes.size(); k++){
             rboxes[k].x += x[i];
             rboxes[k].y += y[i];
         }
-        ex_size = rboxes.size();
+        ex_size = (int) rboxes.size();
     }
     fprintf(stderr, "%s\n", "done!");
 
     vector<bool> usedInner(holes.size(), false);
-    for(int i=0; i<rboxes.size(); i++){
+    for(size_t i=0; i<rboxes.size(); i++){
         if(isAlmostSquare(rboxes[i])){
             CCheckBox cb;
             cb.outerBBox = rboxes[i];
             cb.validOuterBBox = true;
-            for(int j=0; j<holes.size(); j++){
+            for(size_t j=0; j<holes.size(); j++){
                 Rect inter = rboxes[i] & holes[j];
                 if(inter.area() == holes[j].area()){
                     cb.innerBBox = holes[j];
@@ -325,7 +322,7 @@ bool CDetectCheckBoxes::detectCheckBoxes(string &inFileName, vector<CCheckBox> &
             //rectangle(imgMAT, rboxes[i], Scalar(0,0,255), 2);
         }
     }
-    for(int i=0; i<holes.size(); i++){
+    for(size_t i=0; i<holes.size(); i++){
         if(!usedInner[i]){
             CCheckBox cb;
             cb.innerBBox = holes[i];
@@ -337,7 +334,7 @@ bool CDetectCheckBoxes::detectCheckBoxes(string &inFileName, vector<CCheckBox> &
 
     fillRatioFilter(imgMATbin, cBoxes);
 
-    for(int i=0; i<cBoxes.size(); i++){
+    for(size_t i=0; i<cBoxes.size(); i++){
         CCheckBox cb = cBoxes[i];
         if(cb.innerFillRatio < 0.1){
             cBoxes[i].isFilled = false;
@@ -357,7 +354,7 @@ bool CDetectCheckBoxes::detectCheckBoxes(string &inFileName, vector<CCheckBox> &
 
         char score[80];
         sprintf(score, "%.2f", 100.0 * cb.innerFillRatio);
-        string str(score);
+        //string str(score);
         Point org;
 //                if(cb.validOuterBBox)
 //                    org = Point (cb.outerBBox.y + cb.outerBBox.height, cb.outerBBox.x + cb.outerBBox.width + 5);
