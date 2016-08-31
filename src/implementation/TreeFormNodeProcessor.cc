@@ -437,7 +437,6 @@ bool TreeFormNodeProcessor::process(std::shared_ptr<TreeFormNodeInterface> ptr,
             if (iModel->getInputType() == InputTreeFormNode::INPUT_ALPHA_NUMERIC ||
                 iModel->getInputType() == InputTreeFormNode::INPUT_NUMERIC) {
 
-
                 bool divisionRegionIdentified=false;
                 cv::Rect dividedTextRegion;
 
@@ -474,32 +473,6 @@ bool TreeFormNodeProcessor::process(std::shared_ptr<TreeFormNodeInterface> ptr,
             }
             // Checkboxes
             else {
-                /*
-                 * First, check if the checkbox is a part of the text node above one level
-                 */
-                {
-                    size_t index=iModel->getId().find_last_of(":");
-                    if(index!=std::string::npos) {
-                        std::string parentId=iModel->getId().substr(0,index);
-                        std::shared_ptr<TreeFormNodeInterface> parentUnCasted= TreeFormModel::getNode(root,HelperMethods::regexSplit(parentId,"[:]"));
-                        if(parentUnCasted!= nullptr) {
-                            std::shared_ptr<TextTreeFormNode> parent = std::dynamic_pointer_cast<TextTreeFormNode>(
-                                    parentUnCasted);
-                            if(parent!= nullptr) {
-                                if(parent->isRegionDefined()) {
-                                    for (auto i:checkboxes) {
-                                        if ((i.innerBBox & parent->getRegion()).area()!=0) {
-                                            iModel->setData(i.isFilled?"True":"False");
-                                            iModel->setRegion(i.innerBBox);
-                                            std::cout<<"Found a region from parent for checkbox"<<std::endl;
-                                            return true;
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
 
 
                 int left = -1;
@@ -562,15 +535,62 @@ bool TreeFormNodeProcessor::process(std::shared_ptr<TreeFormNodeInterface> ptr,
 
                 cv::Rect rect(left,top,right-left,bottom-top);
 
+                bool divisionRegionIdentified=false;
+                cv::Rect dividedTextRegion;
+
+                for(auto i:textDividedRegion) {
+                    if(ptr->getId().find(i.first)!=std::string::npos) {
+                        dividedTextRegion=i.second;
+                        divisionRegionIdentified=true;
+                    }
+                }
+
+
+                if(divisionRegionIdentified) {
+                    rect=rect&dividedTextRegion;
+                }
+
                 bool done=false;
                 CCheckBox box;
 
 
-              //  auto drawImage=getIterationOutputImage("checkboxes");
+                auto drawImage=getIterationOutputImage("checkboxes");
 
+                cv::Scalar randomColor = randomColors[((unsigned int) rng) % 5];
 //                for(auto i:checkboxes) {
-              //  cv::rectangle(*drawImage, rect, cv::Scalar(0, 0, 255), 3, 8, 0);
+                cv::rectangle(*drawImage, rect, randomColor, 3, 8, 0);
 //                }
+
+
+                /*
+                 * First, check if the checkbox is a part of the text node above one level
+                 */
+                {
+                    size_t index=iModel->getId().find_last_of(":");
+                    if(index!=std::string::npos) {
+                        std::string parentId=iModel->getId().substr(0,index);
+                        std::shared_ptr<TreeFormNodeInterface> parentUnCasted= TreeFormModel::getNode(root,HelperMethods::regexSplit(parentId,"[:]"));
+                        if(parentUnCasted!= nullptr) {
+                            std::shared_ptr<TextTreeFormNode> parent = std::dynamic_pointer_cast<TextTreeFormNode>(
+                                    parentUnCasted);
+                            if(parent!= nullptr) {
+                                if(parent->isRegionDefined()) {
+                                    for (auto i:checkboxes) {
+                                        if(!i.validOuterBBox)
+                                            continue;
+                                        if ((i.outerBBox & parent->getRegion()).area()!=0) {
+                                            iModel->setData(i.isFilled?"True":"False");
+                                            iModel->setRegion(i.outerBBox);
+                                            iModel->setRegionDefined(true);
+                                            std::cout<<"Found a region from parent"<<iModel->getId()<<" for checkbox "<<iModel->getRegion()<<" "<<iModel->isRegionDefined()<<std::endl;
+                                            return true;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
 
                 for(auto i:checkboxes) {
                     if((i.outerBBox&rect).area()!=0) {
