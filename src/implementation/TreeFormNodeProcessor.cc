@@ -398,6 +398,13 @@ bool TreeFormNodeProcessor::process(std::shared_ptr<TreeFormNodeInterface> ptr,
                             new InputTreeFormNode(InputTreeFormNode::INPUT_ALPHA_NUMERIC));
                     newDynamicNode->setId(rModel->getId() + ":" + std::to_string(number));
 
+                    std::string descriptiveNameWithPlaceHolder=rModel->getDescriptiveName();
+                    std::string descriptiveNameWithPlaceHolderReplacedWithRowNumber="";
+                    std::regex numberPlaceHolder("%d");
+                    std::regex_replace(std::back_inserter(descriptiveNameWithPlaceHolderReplacedWithRowNumber),descriptiveNameWithPlaceHolder.begin(),descriptiveNameWithPlaceHolder.end(),numberPlaceHolder,std::to_string(number));
+
+                    newDynamicNode->setDescriptiveName(descriptiveNameWithPlaceHolderReplacedWithRowNumber);
+
                     rModel->addChild(std::to_string(number), newDynamicNode);
                     std::shared_ptr<BasicTreeFormNode> nx = std::dynamic_pointer_cast<BasicTreeFormNode>(
                             rModel->getChild(std::to_string(number)));
@@ -407,7 +414,7 @@ bool TreeFormNodeProcessor::process(std::shared_ptr<TreeFormNodeInterface> ptr,
                         nx2->setData(nx2->getData() + x.getText());
                         nx2->setRegion(x.getRect());
                         nx2->setRegionDefined(true);
-                        nx2->setDescriptiveName(rModel->getDescriptiveName());
+
 
                         std::shared_ptr<cv::Mat>theImage=getIterationOutputImage("inputs");
                         cv::Scalar randomColor = randomColors[((unsigned int) rng) % 5];
