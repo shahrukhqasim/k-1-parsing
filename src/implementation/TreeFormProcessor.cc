@@ -83,7 +83,7 @@ void TreeFormProcessor::mergeWordBoxes(const std::vector<TextualData> &words, st
         TextualData currWord = words[i];
         if (!newElem) {
             int hGap = currWord.getRect().x - prevWord.getRect().x - prevWord.getRect().width;
-            int hGapThresh = std::max(currWord.getRect().height, prevWord.getRect().height);
+            int hGapThresh = std::min(currWord.getRect().height, prevWord.getRect().height);
             bool vOverlap = false;
             if (((currWord.getRect().y <= prevWord.getRect().y) &&
                  (currWord.getRect().y + currWord.getRect().height > prevWord.getRect().y)) ||
