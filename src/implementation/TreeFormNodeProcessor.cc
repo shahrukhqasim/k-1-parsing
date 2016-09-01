@@ -198,7 +198,7 @@ bool TreeFormNodeProcessor::process(std::shared_ptr<TreeFormNodeInterface> ptr,
             }
 
 
-           // cv::rectangle(*drawImage, cv::Rect(left,top,right-left,bottom-top), color, 3, 8, 0);
+            cv::rectangle(*drawImage, cv::Rect(left,top,right-left,bottom-top), color, 3, 8, 0);
 
         }
     }
@@ -232,6 +232,7 @@ bool TreeFormNodeProcessor::process(std::shared_ptr<TreeFormNodeInterface> ptr,
                 tNode->setRegion(TreeFormNodeProcessor::text[minIndex].getRect());
                 tNode->setTextAssigned(TreeFormNodeProcessor::text[minIndex].getText());
                 rectangle = tNode->getRegion();
+                std::cout<<tNode->getText()<<" - "<<tNode->getTextAssigned()<<std::endl;
                 tNode->setRegionDefined(true);
                 takenText.push_back(TreeFormNodeProcessor::text[minIndex]);
                 TreeFormNodeProcessor::text.erase(TreeFormNodeProcessor::text.begin() + minIndex);
