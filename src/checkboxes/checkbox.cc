@@ -44,13 +44,11 @@ void CDetectCheckBoxes::mergeHoles(vector<Rect> &holes){
         re.x -= 10;
         re.width += 20;
         Rect mr;
-        bool intersection = false;
         for(int j=i+1; j<nHoles; j++){
             if(used[j]) continue;
             Rect n = holes[j];
             Rect inter = n & re;
             if(inter.area()){
-                intersection = true;
                 re |= n;
                 r |= n;
                 used[j] = true;
@@ -131,7 +129,6 @@ bool CDetectCheckBoxes::detectCheckBoxes(Mat &imgMATgray, vector<CCheckBox> &cBo
 //		exit(-1);
 //	}
 
-    int ex_size = 0;
     vector<Rect> holes;
 //	for (size_t i = 0; i < x.size(); i++){
     Mat new_mat = imgMATbinMorph;//(Rect(x[i], y[i], width[i], height[i]));
@@ -143,7 +140,6 @@ bool CDetectCheckBoxes::detectCheckBoxes(Mat &imgMATgray, vector<CCheckBox> &cBo
 //			holes[k].x += x[i];
 //			holes[k].y += y[i];
 //		}
-    ex_size = holes.size();
 //	}
     //mergeHoles(holes);
 //	fprintf(stderr, "%s\n", "done!");
@@ -152,7 +148,6 @@ bool CDetectCheckBoxes::detectCheckBoxes(Mat &imgMATgray, vector<CCheckBox> &cBo
     vector<Rect> rboxes;
 //	fprintf(stderr, "%s\n", "done!");
 
-    ex_size = 0;
 //	for (size_t i = 0; i < x.size(); i++){
     new_mat = imgMATbinMorph;//(Rect(x[i], y[i], width[i], height[i]));
     /*imshow("out", new_mat);
@@ -163,7 +158,6 @@ bool CDetectCheckBoxes::detectCheckBoxes(Mat &imgMATgray, vector<CCheckBox> &cBo
 //			rboxes[k].x += x[i];
 //			rboxes[k].y += y[i];
 //		}
-    ex_size = rboxes.size();
 
 //	}
 
