@@ -2,5 +2,4 @@
 006.K1.Face.Original.REDACTED-1.json
 007.K1.Face.Original.REDACTED-1.json
 001.K1.Face.Original.REDACTED.words.json
-2013FedK1TemplateWithValues-ocr.json
 2013FedK1TemplateWithValues2.words.json
