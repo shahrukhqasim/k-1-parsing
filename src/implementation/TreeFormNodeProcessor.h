@@ -14,6 +14,7 @@ private:
 
     std::vector<CCheckBox> checkboxes;
     std::vector<TextualData>text;
+    std::vector<TextualData>unmergedText;
     std::vector<TextualData>takenText;
     cv::Mat image;
     std::shared_ptr<BasicTreeFormNode>root;
@@ -27,7 +28,7 @@ private:
     cv::Scalar randomColors[5]={cv::Scalar(0,168,102),cv::Scalar(0,0,255),cv::Scalar(255,0,0),cv::Scalar(255,0,102),cv::Scalar(128,0,255)};
 
 public:
-    TreeFormNodeProcessor(const cv::Mat& image,const std::vector<TextualData> &mergedWords,
+    TreeFormNodeProcessor(const cv::Mat& image,const std::vector<TextualData> &nonMergedWords,
                           const std::shared_ptr<BasicTreeFormNode> &root);
 
 
@@ -46,8 +47,22 @@ private:
                                  std::vector<std::function<bool(const TextualData &n)>>& functionalRules);
     std::pair<std::string, cv::Rect> findTextFromFunctionalRules(std::vector<std::function<bool(const TextualData &n)>> functionalRules);
     std::vector<TextualData> findVectorizedTextFromFunctionalRules(std::vector<std::function<bool(const TextualData &n)>> functionalRules);
-    int findTextWithMinimumEditDistance(std::vector<TextualData>data,std::string textToFind);
-    int findTextWithMinimumEditDistance(std::vector<TextualData>data,std::string textToFind, cv::Rect region);
+    int findTextWithMinimumEditDistance(std::vector<TextualData>&text,std::string textToFind);
+    int findTextWithMinimumEditDistance(std::vector<TextualData>&text,std::string textToFind, cv::Rect region);
+
+    bool integralImageComputed=false;
+    cv::Mat integralImage;
+    void computeIntegralImage();
+
+
+    /**
+     * Merges words from words into elemBoxes
+     *
+     * @param[in] words represent the input words
+     * @param[out] elemBoxes represent the resultant elements
+     */
+    void mergeWordBoxes(const std::vector<TextualData>&words, std::vector<TextualData>&elemBoxes);
+
 
     std::shared_ptr<cv::Mat> getIterationOutputImage(std::string key);
 };
