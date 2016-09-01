@@ -25,9 +25,9 @@ bool TreeFormProcessor::processForm(std::shared_ptr<RawFormInterface> anInterfac
     anInterface->getText(words);
     anInterface->getRasterImage(image);
 
-    mergeWordBoxes(words,mergedWords);
+    //mergeWordBoxes(words,mergedWords);
 
-    setProcessor(std::shared_ptr<TreeFormNodeProcessor>(new TreeFormNodeProcessor(image,mergedWords,std::dynamic_pointer_cast<BasicTreeFormNode>(rootNode))));
+    setProcessor(std::shared_ptr<TreeFormNodeProcessor>(new TreeFormNodeProcessor(image,words,std::dynamic_pointer_cast<BasicTreeFormNode>(rootNode))));
 
     bool error=false;
     for(int i=0;i<formModel->getIterations();i++) {
@@ -58,6 +58,7 @@ bool TreeFormProcessor::recursiveCall(std::shared_ptr<TreeFormNodeInterface> nod
         std::for_each(children.begin(),children.end(), [&] (std::shared_ptr<TreeFormNodeInterface>currentChild){
             if(!recursiveCall(currentChild))
                 return false;
+            return true;
         });
     }
     return true;
@@ -166,5 +167,3 @@ cv::Mat TreeFormProcessor::getDivisionImage() {
 cv::Mat TreeFormProcessor::getFieldsImage() {
     return processor->getInputImage();
 }
-
-
