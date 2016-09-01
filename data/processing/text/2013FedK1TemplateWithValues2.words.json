@@ -1,0 +1,5548 @@
+{
+  "Pages": [
+    {
+      "PageNumber": 1,
+      "Width": 2550,
+      "Height": 3300,
+      "Words": [
+        {
+          "Name": null,
+          "Value": "651113 ",
+          "Region": {
+            "l": 2184,
+            "t": 102,
+            "r": 2436,
+            "b": 151
+          }
+        },
+        {
+          "Name": null,
+          "Value": "OMB No. 1545-0099 ",
+          "Region": {
+            "l": 2129,
+            "t": 158,
+            "r": 2408,
+            "b": 187
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Final K-1 ",
+          "Region": {
+            "l": 1400,
+            "t": 168,
+            "r": 1525,
+            "b": 197
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Amended K-1 ",
+          "Region": {
+            "l": 1730,
+            "t": 168,
+            "r": 1919,
+            "b": 197
+          }
+        },
+        {
+          "Name": null,
+          "Value": "13",
+          "Region": {
+            "l": 987,
+            "t": 189,
+            "r": 1204,
+            "b": 289
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Schedule K-1  ",
+          "Region": {
+            "l": 150,
+            "t": 195,
+            "r": 439,
+            "b": 240
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Partner’s Share of Current Year Income,  ",
+          "Region": {
+            "l": 1500,
+            "t": 198,
+            "r": 2320,
+            "b": 243
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Part III ",
+          "Region": {
+            "l": 1329,
+            "t": 205,
+            "r": 1472,
+            "b": 250
+          }
+        },
+        {
+          "Name": null,
+          "Value": "(Form 1065) ",
+          "Region": {
+            "l": 150,
+            "t": 245,
+            "r": 395,
+            "b": 290
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Deductions, Credits, and Other Items ",
+          "Region": {
+            "l": 1500,
+            "t": 248,
+            "r": 2249,
+            "b": 293
+          }
+        },
+        {
+          "Name": null,
+          "Value": "1",
+          "Region": {
+            "l": 1327,
+            "t": 309,
+            "r": 1343,
+            "b": 339
+          }
+        },
+        {
+          "Name": null,
+          "Value": "15 ",
+          "Region": {
+            "l": 1889,
+            "t": 309,
+            "r": 1930,
+            "b": 339
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Ordinary business income (loss) ",
+          "Region": {
+            "l": 1393,
+            "t": 310,
+            "r": 1803,
+            "b": 339
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Credits ",
+          "Region": {
+            "l": 1962,
+            "t": 310,
+            "r": 2064,
+            "b": 339
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Department of the Treasury  ",
+          "Region": {
+            "l": 150,
+            "t": 311,
+            "r": 524,
+            "b": 340
+          }
+        },
+        {
+          "Name": null,
+          "Value": "For calendar year 2013, or tax ",
+          "Region": {
+            "l": 750,
+            "t": 314,
+            "r": 1149,
+            "b": 343
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Internal Revenue Service ",
+          "Region": {
+            "l": 150,
+            "t": 346,
+            "r": 482,
+            "b": 375
+          }
+        },
+        {
+          "Name": null,
+          "Value": "01/01",
+          "Region": {
+            "l": 1016,
+            "t": 353,
+            "r": 1111,
+            "b": 395
+          }
+        },
+        {
+          "Name": null,
+          "Value": "111111111111111",
+          "Region": {
+            "l": 1539,
+            "t": 358,
+            "r": 1851,
+            "b": 400
+          }
+        },
+        {
+          "Name": null,
+          "Value": "C",
+          "Region": {
+            "l": 1891,
+            "t": 358,
+            "r": 1919,
+            "b": 400
+          }
+        },
+        {
+          "Name": null,
+          "Value": "15001",
+          "Region": {
+            "l": 2288,
+            "t": 358,
+            "r": 2392,
+            "b": 400
+          }
+        },
+        {
+          "Name": null,
+          "Value": "year beginning ",
+          "Region": {
+            "l": 750,
+            "t": 364,
+            "r": 950,
+            "b": 393
+          }
+        },
+        {
+          "Name": null,
+          "Value": ", 2013",
+          "Region": {
+            "l": 1170,
+            "t": 368,
+            "r": 1251,
+            "b": 397
+          }
+        },
+        {
+          "Name": null,
+          "Value": "12/31",
+          "Region": {
+            "l": 963,
+            "t": 403,
+            "r": 1058,
+            "b": 445
+          }
+        },
+        {
+          "Name": null,
+          "Value": "13",
+          "Region": {
+            "l": 1191,
+            "t": 403,
+            "r": 1233,
+            "b": 445
+          }
+        },
+        {
+          "Name": null,
+          "Value": "2 ",
+          "Region": {
+            "l": 1327,
+            "t": 409,
+            "r": 1351,
+            "b": 439
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Net rental real estate income (loss) ",
+          "Region": {
+            "l": 1388,
+            "t": 410,
+            "r": 1846,
+            "b": 439
+          }
+        },
+        {
+          "Name": null,
+          "Value": "ending ",
+          "Region": {
+            "l": 810,
+            "t": 414,
+            "r": 907,
+            "b": 443
+          }
+        },
+        {
+          "Name": null,
+          "Value": ", 20 ",
+          "Region": {
+            "l": 1110,
+            "t": 414,
+            "r": 1167,
+            "b": 443
+          }
+        },
+        {
+          "Name": null,
+          "Value": "222222222222222",
+          "Region": {
+            "l": 1539,
+            "t": 458,
+            "r": 1851,
+            "b": 500
+          }
+        },
+        {
+          "Name": null,
+          "Value": "E",
+          "Region": {
+            "l": 1892,
+            "t": 458,
+            "r": 1917,
+            "b": 500
+          }
+        },
+        {
+          "Name": null,
+          "Value": "15002",
+          "Region": {
+            "l": 2288,
+            "t": 458,
+            "r": 2392,
+            "b": 500
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Partner’s Share of Income, Deductions, ",
+          "Region": {
+            "l": 150,
+            "t": 467,
+            "r": 1046,
+            "b": 521
+          }
+        },
+        {
+          "Name": null,
+          "Value": "3 ",
+          "Region": {
+            "l": 1327,
+            "t": 509,
+            "r": 1351,
+            "b": 539
+          }
+        },
+        {
+          "Name": null,
+          "Value": "16 ",
+          "Region": {
+            "l": 1889,
+            "t": 509,
+            "r": 1930,
+            "b": 539
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Other net rental income (loss) ",
+          "Region": {
+            "l": 1393,
+            "t": 509,
+            "r": 1784,
+            "b": 538
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Foreign transactions ",
+          "Region": {
+            "l": 1962,
+            "t": 510,
+            "r": 2236,
+            "b": 539
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Credits, etc. ",
+          "Region": {
+            "l": 150,
+            "t": 521,
+            "r": 444,
+            "b": 575
+          }
+        },
+        {
+          "Name": null,
+          "Value": "See back of form and separate instructions. ",
+          "Region": {
+            "l": 655,
+            "t": 536,
+            "r": 1280,
+            "b": 566
+          }
+        },
+        {
+          "Name": null,
+          "Value": "▶",
+          "Region": {
+            "l": 634,
+            "t": 541,
+            "r": 655,
+            "b": 558
+          }
+        },
+        {
+          "Name": null,
+          "Value": "333333333333333",
+          "Region": {
+            "l": 1539,
+            "t": 558,
+            "r": 1851,
+            "b": 600
+          }
+        },
+        {
+          "Name": null,
+          "Value": "A",
+          "Region": {
+            "l": 1890,
+            "t": 558,
+            "r": 1920,
+            "b": 600
+          }
+        },
+        {
+          "Name": null,
+          "Value": "16001",
+          "Region": {
+            "l": 2288,
+            "t": 558,
+            "r": 2392,
+            "b": 600
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Part I ",
+          "Region": {
+            "l": 201,
+            "t": 602,
+            "r": 319,
+            "b": 647
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Information About the Partnership ",
+          "Region": {
+            "l": 360,
+            "t": 602,
+            "r": 1049,
+            "b": 647
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Guaranteed payments ",
+          "Region": {
+            "l": 1393,
+            "t": 605,
+            "r": 1691,
+            "b": 634
+          }
+        },
+        {
+          "Name": null,
+          "Value": "4 ",
+          "Region": {
+            "l": 1327,
+            "t": 609,
+            "r": 1351,
+            "b": 639
+          }
+        },
+        {
+          "Name": null,
+          "Value": "444444444444444",
+          "Region": {
+            "l": 1539,
+            "t": 658,
+            "r": 1851,
+            "b": 700
+          }
+        },
+        {
+          "Name": null,
+          "Value": "B",
+          "Region": {
+            "l": 1891,
+            "t": 658,
+            "r": 1919,
+            "b": 700
+          }
+        },
+        {
+          "Name": null,
+          "Value": "16002",
+          "Region": {
+            "l": 2288,
+            "t": 658,
+            "r": 2392,
+            "b": 700
+          }
+        },
+        {
+          "Name": null,
+          "Value": "A ",
+          "Region": {
+            "l": 170,
+            "t": 668,
+            "r": 198,
+            "b": 698
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Partnership’s employer identification number ",
+          "Region": {
+            "l": 243,
+            "t": 669,
+            "r": 835,
+            "b": 698
+          }
+        },
+        {
+          "Name": null,
+          "Value": "123-45-567",
+          "Region": {
+            "l": 626,
+            "t": 708,
+            "r": 820,
+            "b": 750
+          }
+        },
+        {
+          "Name": null,
+          "Value": "5 ",
+          "Region": {
+            "l": 1327,
+            "t": 709,
+            "r": 1351,
+            "b": 739
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Interest income ",
+          "Region": {
+            "l": 1393,
+            "t": 710,
+            "r": 1603,
+            "b": 739
+          }
+        },
+        {
+          "Name": null,
+          "Value": "5555555555555555",
+          "Region": {
+            "l": 1518,
+            "t": 758,
+            "r": 1851,
+            "b": 800
+          }
+        },
+        {
+          "Name": null,
+          "Value": "C",
+          "Region": {
+            "l": 1891,
+            "t": 758,
+            "r": 1919,
+            "b": 800
+          }
+        },
+        {
+          "Name": null,
+          "Value": "16003",
+          "Region": {
+            "l": 2288,
+            "t": 758,
+            "r": 2392,
+            "b": 800
+          }
+        },
+        {
+          "Name": null,
+          "Value": "B ",
+          "Region": {
+            "l": 169,
+            "t": 768,
+            "r": 198,
+            "b": 798
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Partnership’s name, address, city, state, and ZIP code ",
+          "Region": {
+            "l": 243,
+            "t": 769,
+            "r": 959,
+            "b": 798
+          }
+        },
+        {
+          "Name": null,
+          "Value": "6a ",
+          "Region": {
+            "l": 1319,
+            "t": 809,
+            "r": 1360,
+            "b": 839
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Ordinary dividends ",
+          "Region": {
+            "l": 1393,
+            "t": 810,
+            "r": 1647,
+            "b": 839
+          }
+        },
+        {
+          "Name": null,
+          "Value": "6666666666666666",
+          "Region": {
+            "l": 1518,
+            "t": 858,
+            "r": 1851,
+            "b": 900
+          }
+        },
+        {
+          "Name": null,
+          "Value": "D",
+          "Region": {
+            "l": 1890,
+            "t": 858,
+            "r": 1920,
+            "b": 900
+          }
+        },
+        {
+          "Name": null,
+          "Value": "16004",
+          "Region": {
+            "l": 2288,
+            "t": 858,
+            "r": 2392,
+            "b": 900
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Some Partnership Name ",
+          "Region": {
+            "l": 158,
+            "t": 858,
+            "r": 573,
+            "b": 900
+          }
+        },
+        {
+          "Name": null,
+          "Value": "1234 Unknown Address St. ",
+          "Region": {
+            "l": 158,
+            "t": 908,
+            "r": 629,
+            "b": 950
+          }
+        },
+        {
+          "Name": null,
+          "Value": "6b ",
+          "Region": {
+            "l": 1318,
+            "t": 909,
+            "r": 1360,
+            "b": 939
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Qualified dividends ",
+          "Region": {
+            "l": 1393,
+            "t": 910,
+            "r": 1650,
+            "b": 939
+          }
+        },
+        {
+          "Name": null,
+          "Value": "7777777777777777",
+          "Region": {
+            "l": 1518,
+            "t": 958,
+            "r": 1851,
+            "b": 1000
+          }
+        },
+        {
+          "Name": null,
+          "Value": "E",
+          "Region": {
+            "l": 1892,
+            "t": 958,
+            "r": 1917,
+            "b": 1000
+          }
+        },
+        {
+          "Name": null,
+          "Value": "16005",
+          "Region": {
+            "l": 2288,
+            "t": 958,
+            "r": 2392,
+            "b": 1000
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Unknown City",
+          "Region": {
+            "l": 158,
+            "t": 958,
+            "r": 405,
+            "b": 1000
+          }
+        },
+        {
+          "Name": null,
+          "Value": "7 ",
+          "Region": {
+            "l": 1327,
+            "t": 1009,
+            "r": 1351,
+            "b": 1039
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Royalties ",
+          "Region": {
+            "l": 1393,
+            "t": 1010,
+            "r": 1520,
+            "b": 1039
+          }
+        },
+        {
+          "Name": null,
+          "Value": "C ",
+          "Region": {
+            "l": 169,
+            "t": 1018,
+            "r": 199,
+            "b": 1048
+          }
+        },
+        {
+          "Name": null,
+          "Value": "IRS Center where partnership filed return ",
+          "Region": {
+            "l": 243,
+            "t": 1019,
+            "r": 784,
+            "b": 1048
+          }
+        },
+        {
+          "Name": null,
+          "Value": "8888888888888888",
+          "Region": {
+            "l": 1518,
+            "t": 1058,
+            "r": 1851,
+            "b": 1100
+          }
+        },
+        {
+          "Name": null,
+          "Value": "F",
+          "Region": {
+            "l": 1893,
+            "t": 1058,
+            "r": 1916,
+            "b": 1100
+          }
+        },
+        {
+          "Name": null,
+          "Value": "16006",
+          "Region": {
+            "l": 2288,
+            "t": 1058,
+            "r": 2392,
+            "b": 1100
+          }
+        },
+        {
+          "Name": null,
+          "Value": "IRS Center CT.",
+          "Region": {
+            "l": 158,
+            "t": 1058,
+            "r": 418,
+            "b": 1100
+          }
+        },
+        {
+          "Name": null,
+          "Value": "8 ",
+          "Region": {
+            "l": 1327,
+            "t": 1109,
+            "r": 1351,
+            "b": 1139
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Net short-term capital gain (loss) ",
+          "Region": {
+            "l": 1393,
+            "t": 1110,
+            "r": 1826,
+            "b": 1139
+          }
+        },
+        {
+          "Name": null,
+          "Value": "\u0016",
+          "Region": {
+            "l": 246,
+            "t": 1116,
+            "r": 266,
+            "b": 1138
+          }
+        },
+        {
+          "Name": null,
+          "Value": "D ",
+          "Region": {
+            "l": 169,
+            "t": 1118,
+            "r": 199,
+            "b": 1148
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Check if this is a publicly traded partnership (PTP) ",
+          "Region": {
+            "l": 300,
+            "t": 1119,
+            "r": 958,
+            "b": 1148
+          }
+        },
+        {
+          "Name": null,
+          "Value": "12344567890",
+          "Region": {
+            "l": 1622,
+            "t": 1158,
+            "r": 1851,
+            "b": 1200
+          }
+        },
+        {
+          "Name": null,
+          "Value": "G",
+          "Region": {
+            "l": 1890,
+            "t": 1158,
+            "r": 1920,
+            "b": 1200
+          }
+        },
+        {
+          "Name": null,
+          "Value": "16007",
+          "Region": {
+            "l": 2288,
+            "t": 1158,
+            "r": 2392,
+            "b": 1200
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Part II ",
+          "Region": {
+            "l": 195,
+            "t": 1202,
+            "r": 325,
+            "b": 1247
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Information About the Partner ",
+          "Region": {
+            "l": 360,
+            "t": 1202,
+            "r": 966,
+            "b": 1247
+          }
+        },
+        {
+          "Name": null,
+          "Value": "9a ",
+          "Region": {
+            "l": 1319,
+            "t": 1209,
+            "r": 1360,
+            "b": 1239
+          }
+        },
+        {
+          "Name": null,
+          "Value": "17 ",
+          "Region": {
+            "l": 1889,
+            "t": 1209,
+            "r": 1930,
+            "b": 1239
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Net long-term capital gain (loss) ",
+          "Region": {
+            "l": 1393,
+            "t": 1210,
+            "r": 1815,
+            "b": 1239
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Alternative minimum tax (AMT) items ",
+          "Region": {
+            "l": 1962,
+            "t": 1210,
+            "r": 2404,
+            "b": 1239
+          }
+        },
+        {
+          "Name": null,
+          "Value": "3393939393",
+          "Region": {
+            "l": 1643,
+            "t": 1258,
+            "r": 1851,
+            "b": 1300
+          }
+        },
+        {
+          "Name": null,
+          "Value": "E",
+          "Region": {
+            "l": 1892,
+            "t": 1258,
+            "r": 1917,
+            "b": 1300
+          }
+        },
+        {
+          "Name": null,
+          "Value": "170001",
+          "Region": {
+            "l": 2267,
+            "t": 1258,
+            "r": 2392,
+            "b": 1300
+          }
+        },
+        {
+          "Name": null,
+          "Value": "E ",
+          "Region": {
+            "l": 170,
+            "t": 1268,
+            "r": 197,
+            "b": 1298
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Partner’s identifying number ",
+          "Region": {
+            "l": 243,
+            "t": 1269,
+            "r": 619,
+            "b": 1298
+          }
+        },
+        {
+          "Name": null,
+          "Value": "987-65-4321",
+          "Region": {
+            "l": 616,
+            "t": 1308,
+            "r": 831,
+            "b": 1350
+          }
+        },
+        {
+          "Name": null,
+          "Value": "9b ",
+          "Region": {
+            "l": 1318,
+            "t": 1309,
+            "r": 1360,
+            "b": 1339
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Collectibles (28%) gain (loss) ",
+          "Region": {
+            "l": 1393,
+            "t": 1310,
+            "r": 1776,
+            "b": 1339
+          }
+        },
+        {
+          "Name": null,
+          "Value": "9999999999999",
+          "Region": {
+            "l": 1581,
+            "t": 1358,
+            "r": 1852,
+            "b": 1400
+          }
+        },
+        {
+          "Name": null,
+          "Value": "F",
+          "Region": {
+            "l": 1893,
+            "t": 1358,
+            "r": 1916,
+            "b": 1400
+          }
+        },
+        {
+          "Name": null,
+          "Value": "170002",
+          "Region": {
+            "l": 2267,
+            "t": 1358,
+            "r": 2392,
+            "b": 1400
+          }
+        },
+        {
+          "Name": null,
+          "Value": "F ",
+          "Region": {
+            "l": 171,
+            "t": 1368,
+            "r": 196,
+            "b": 1398
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Partner’s name, address, city, state, and ZIP code ",
+          "Region": {
+            "l": 243,
+            "t": 1369,
+            "r": 904,
+            "b": 1398
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Partners Name ",
+          "Region": {
+            "l": 158,
+            "t": 1408,
+            "r": 415,
+            "b": 1450
+          }
+        },
+        {
+          "Name": null,
+          "Value": "9c ",
+          "Region": {
+            "l": 1319,
+            "t": 1409,
+            "r": 1360,
+            "b": 1439
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Unrecaptured section 1250 gain ",
+          "Region": {
+            "l": 1393,
+            "t": 1410,
+            "r": 1819,
+            "b": 1439
+          }
+        },
+        {
+          "Name": null,
+          "Value": "99898979793",
+          "Region": {
+            "l": 1622,
+            "t": 1458,
+            "r": 1851,
+            "b": 1500
+          }
+        },
+        {
+          "Name": null,
+          "Value": "G",
+          "Region": {
+            "l": 1890,
+            "t": 1458,
+            "r": 1920,
+            "b": 1500
+          }
+        },
+        {
+          "Name": null,
+          "Value": "170003",
+          "Region": {
+            "l": 2267,
+            "t": 1458,
+            "r": 2392,
+            "b": 1500
+          }
+        },
+        {
+          "Name": null,
+          "Value": "45566 Someplace in the USA ",
+          "Region": {
+            "l": 158,
+            "t": 1458,
+            "r": 664,
+            "b": 1500
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Manchester, NH 03840 ",
+          "Region": {
+            "l": 158,
+            "t": 1508,
+            "r": 558,
+            "b": 1550
+          }
+        },
+        {
+          "Name": null,
+          "Value": "10 ",
+          "Region": {
+            "l": 1319,
+            "t": 1509,
+            "r": 1360,
+            "b": 1539
+          }
+        },
+        {
+          "Name": null,
+          "Value": "18 ",
+          "Region": {
+            "l": 1889,
+            "t": 1509,
+            "r": 1930,
+            "b": 1539
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Net section 1231 gain (loss) ",
+          "Region": {
+            "l": 1393,
+            "t": 1510,
+            "r": 1761,
+            "b": 1539
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Tax-exempt income and  ",
+          "Region": {
+            "l": 1962,
+            "t": 1510,
+            "r": 2296,
+            "b": 1539
+          }
+        },
+        {
+          "Name": null,
+          "Value": "nondeductible expenses ",
+          "Region": {
+            "l": 1962,
+            "t": 1545,
+            "r": 2289,
+            "b": 1574
+          }
+        },
+        {
+          "Name": null,
+          "Value": "100000",
+          "Region": {
+            "l": 1727,
+            "t": 1558,
+            "r": 1852,
+            "b": 1600
+          }
+        },
+        {
+          "Name": null,
+          "Value": "A",
+          "Region": {
+            "l": 1890,
+            "t": 1608,
+            "r": 1920,
+            "b": 1650
+          }
+        },
+        {
+          "Name": null,
+          "Value": "18001",
+          "Region": {
+            "l": 2288,
+            "t": 1608,
+            "r": 2392,
+            "b": 1650
+          }
+        },
+        {
+          "Name": null,
+          "Value": "11 ",
+          "Region": {
+            "l": 1319,
+            "t": 1609,
+            "r": 1360,
+            "b": 1639
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Other income (loss) ",
+          "Region": {
+            "l": 1393,
+            "t": 1610,
+            "r": 1653,
+            "b": 1639
+          }
+        },
+        {
+          "Name": null,
+          "Value": "G ",
+          "Region": {
+            "l": 168,
+            "t": 1614,
+            "r": 198,
+            "b": 1644
+          }
+        },
+        {
+          "Name": null,
+          "Value": "General partner or LLC  ",
+          "Region": {
+            "l": 300,
+            "t": 1616,
+            "r": 615,
+            "b": 1645
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Limited partner or other LLC  ",
+          "Region": {
+            "l": 810,
+            "t": 1616,
+            "r": 1196,
+            "b": 1645
+          }
+        },
+        {
+          "Name": null,
+          "Value": "member-manager ",
+          "Region": {
+            "l": 300,
+            "t": 1651,
+            "r": 542,
+            "b": 1680
+          }
+        },
+        {
+          "Name": null,
+          "Value": "member ",
+          "Region": {
+            "l": 810,
+            "t": 1651,
+            "r": 926,
+            "b": 1680
+          }
+        },
+        {
+          "Name": null,
+          "Value": "11101",
+          "Region": {
+            "l": 1747,
+            "t": 1658,
+            "r": 1851,
+            "b": 1700
+          }
+        },
+        {
+          "Name": null,
+          "Value": "S",
+          "Region": {
+            "l": 1893,
+            "t": 1708,
+            "r": 1916,
+            "b": 1750
+          }
+        },
+        {
+          "Name": null,
+          "Value": "18002",
+          "Region": {
+            "l": 2288,
+            "t": 1708,
+            "r": 2392,
+            "b": 1750
+          }
+        },
+        {
+          "Name": null,
+          "Value": "H ",
+          "Region": {
+            "l": 169,
+            "t": 1714,
+            "r": 199,
+            "b": 1744
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Domestic partner ",
+          "Region": {
+            "l": 300,
+            "t": 1719,
+            "r": 533,
+            "b": 1748
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Foreign partner ",
+          "Region": {
+            "l": 810,
+            "t": 1719,
+            "r": 1018,
+            "b": 1748
+          }
+        },
+        {
+          "Name": null,
+          "Value": "11102",
+          "Region": {
+            "l": 1747,
+            "t": 1758,
+            "r": 1851,
+            "b": 1800
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Partnership",
+          "Region": {
+            "l": 721,
+            "t": 1804,
+            "r": 911,
+            "b": 1846
+          }
+        },
+        {
+          "Name": null,
+          "Value": "T",
+          "Region": {
+            "l": 1892,
+            "t": 1808,
+            "r": 1917,
+            "b": 1850
+          }
+        },
+        {
+          "Name": null,
+          "Value": "18003",
+          "Region": {
+            "l": 2288,
+            "t": 1808,
+            "r": 2392,
+            "b": 1850
+          }
+        },
+        {
+          "Name": null,
+          "Value": "What type of entity is this partner?  ",
+          "Region": {
+            "l": 240,
+            "t": 1814,
+            "r": 704,
+            "b": 1843
+          }
+        },
+        {
+          "Name": null,
+          "Value": "I1",
+          "Region": {
+            "l": 167,
+            "t": 1818,
+            "r": 192,
+            "b": 1848
+          }
+        },
+        {
+          "Name": null,
+          "Value": "11103",
+          "Region": {
+            "l": 1747,
+            "t": 1858,
+            "r": 1851,
+            "b": 1900
+          }
+        },
+        {
+          "Name": null,
+          "Value": "19 ",
+          "Region": {
+            "l": 1889,
+            "t": 1859,
+            "r": 1930,
+            "b": 1889
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Distributions ",
+          "Region": {
+            "l": 1962,
+            "t": 1860,
+            "r": 2134,
+            "b": 1889
+          }
+        },
+        {
+          "Name": null,
+          "Value": "I2",
+          "Region": {
+            "l": 167,
+            "t": 1867,
+            "r": 192,
+            "b": 1897
+          }
+        },
+        {
+          "Name": null,
+          "Value": "If this partner is a retirement plan (IRA/SEP/Keogh/etc.), check here ",
+          "Region": {
+            "l": 240,
+            "t": 1868,
+            "r": 1125,
+            "b": 1897
+          }
+        },
+        {
+          "Name": null,
+          "Value": "(see instructions)",
+          "Region": {
+            "l": 240,
+            "t": 1903,
+            "r": 460,
+            "b": 1932
+          }
+        },
+        {
+          "Name": null,
+          "Value": "D",
+          "Region": {
+            "l": 1890,
+            "t": 1908,
+            "r": 1920,
+            "b": 1950
+          }
+        },
+        {
+          "Name": null,
+          "Value": "19001",
+          "Region": {
+            "l": 2288,
+            "t": 1908,
+            "r": 2392,
+            "b": 1950
+          }
+        },
+        {
+          "Name": null,
+          "Value": "12 ",
+          "Region": {
+            "l": 1319,
+            "t": 1909,
+            "r": 1360,
+            "b": 1939
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Section 179 deduction ",
+          "Region": {
+            "l": 1393,
+            "t": 1910,
+            "r": 1696,
+            "b": 1939
+          }
+        },
+        {
+          "Name": null,
+          "Value": "1201",
+          "Region": {
+            "l": 1768,
+            "t": 1958,
+            "r": 1851,
+            "b": 2000
+          }
+        },
+        {
+          "Name": null,
+          "Value": "J ",
+          "Region": {
+            "l": 171,
+            "t": 1968,
+            "r": 195,
+            "b": 1998
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Partner’s share of profit, loss, and capital (see instructions): ",
+          "Region": {
+            "l": 240,
+            "t": 1969,
+            "r": 1021,
+            "b": 1998
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Other deductions ",
+          "Region": {
+            "l": 1393,
+            "t": 2007,
+            "r": 1627,
+            "b": 2036
+          }
+        },
+        {
+          "Name": null,
+          "Value": "E",
+          "Region": {
+            "l": 1892,
+            "t": 2008,
+            "r": 1917,
+            "b": 2050
+          }
+        },
+        {
+          "Name": null,
+          "Value": "19002",
+          "Region": {
+            "l": 2288,
+            "t": 2008,
+            "r": 2392,
+            "b": 2050
+          }
+        },
+        {
+          "Name": null,
+          "Value": " Beginning ",
+          "Region": {
+            "l": 451,
+            "t": 2008,
+            "r": 607,
+            "b": 2038
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Ending ",
+          "Region": {
+            "l": 986,
+            "t": 2008,
+            "r": 1091,
+            "b": 2038
+          }
+        },
+        {
+          "Name": null,
+          "Value": "13 ",
+          "Region": {
+            "l": 1319,
+            "t": 2009,
+            "r": 1360,
+            "b": 2039
+          }
+        },
+        {
+          "Name": null,
+          "Value": "A",
+          "Region": {
+            "l": 1320,
+            "t": 2058,
+            "r": 1350,
+            "b": 2100
+          }
+        },
+        {
+          "Name": null,
+          "Value": "13001",
+          "Region": {
+            "l": 1747,
+            "t": 2058,
+            "r": 1851,
+            "b": 2100
+          }
+        },
+        {
+          "Name": null,
+          "Value": "2.742112",
+          "Region": {
+            "l": 586,
+            "t": 2059,
+            "r": 742,
+            "b": 2101
+          }
+        },
+        {
+          "Name": null,
+          "Value": "2.435344",
+          "Region": {
+            "l": 1036,
+            "t": 2059,
+            "r": 1192,
+            "b": 2101
+          }
+        },
+        {
+          "Name": null,
+          "Value": "20 ",
+          "Region": {
+            "l": 1889,
+            "t": 2059,
+            "r": 1930,
+            "b": 2089
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Other information ",
+          "Region": {
+            "l": 1962,
+            "t": 2060,
+            "r": 2198,
+            "b": 2089
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Profit ",
+          "Region": {
+            "l": 240,
+            "t": 2069,
+            "r": 318,
+            "b": 2098
+          }
+        },
+        {
+          "Name": null,
+          "Value": "% ",
+          "Region": {
+            "l": 766,
+            "t": 2069,
+            "r": 803,
+            "b": 2098
+          }
+        },
+        {
+          "Name": null,
+          "Value": "% ",
+          "Region": {
+            "l": 1216,
+            "t": 2069,
+            "r": 1253,
+            "b": 2098
+          }
+        },
+        {
+          "Name": null,
+          "Value": "2.741694",
+          "Region": {
+            "l": 586,
+            "t": 2109,
+            "r": 742,
+            "b": 2151
+          }
+        },
+        {
+          "Name": null,
+          "Value": "2.435344",
+          "Region": {
+            "l": 1036,
+            "t": 2109,
+            "r": 1192,
+            "b": 2151
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Loss ",
+          "Region": {
+            "l": 240,
+            "t": 2119,
+            "r": 310,
+            "b": 2148
+          }
+        },
+        {
+          "Name": null,
+          "Value": "% ",
+          "Region": {
+            "l": 766,
+            "t": 2119,
+            "r": 803,
+            "b": 2148
+          }
+        },
+        {
+          "Name": null,
+          "Value": "% ",
+          "Region": {
+            "l": 1216,
+            "t": 2119,
+            "r": 1253,
+            "b": 2148
+          }
+        },
+        {
+          "Name": null,
+          "Value": "B",
+          "Region": {
+            "l": 1321,
+            "t": 2158,
+            "r": 1349,
+            "b": 2200
+          }
+        },
+        {
+          "Name": null,
+          "Value": "13002",
+          "Region": {
+            "l": 1747,
+            "t": 2158,
+            "r": 1851,
+            "b": 2200
+          }
+        },
+        {
+          "Name": null,
+          "Value": "A",
+          "Region": {
+            "l": 1890,
+            "t": 2158,
+            "r": 1920,
+            "b": 2200
+          }
+        },
+        {
+          "Name": null,
+          "Value": "20001",
+          "Region": {
+            "l": 2288,
+            "t": 2158,
+            "r": 2392,
+            "b": 2200
+          }
+        },
+        {
+          "Name": null,
+          "Value": "2.645098",
+          "Region": {
+            "l": 586,
+            "t": 2159,
+            "r": 742,
+            "b": 2201
+          }
+        },
+        {
+          "Name": null,
+          "Value": "2.496695",
+          "Region": {
+            "l": 1036,
+            "t": 2159,
+            "r": 1192,
+            "b": 2201
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Capital ",
+          "Region": {
+            "l": 240,
+            "t": 2167,
+            "r": 336,
+            "b": 2196
+          }
+        },
+        {
+          "Name": null,
+          "Value": "% ",
+          "Region": {
+            "l": 766,
+            "t": 2169,
+            "r": 803,
+            "b": 2198
+          }
+        },
+        {
+          "Name": null,
+          "Value": "% ",
+          "Region": {
+            "l": 1216,
+            "t": 2169,
+            "r": 1253,
+            "b": 2198
+          }
+        },
+        {
+          "Name": null,
+          "Value": "C",
+          "Region": {
+            "l": 1321,
+            "t": 2258,
+            "r": 1349,
+            "b": 2300
+          }
+        },
+        {
+          "Name": null,
+          "Value": "13003",
+          "Region": {
+            "l": 1747,
+            "t": 2258,
+            "r": 1851,
+            "b": 2300
+          }
+        },
+        {
+          "Name": null,
+          "Value": "B",
+          "Region": {
+            "l": 1891,
+            "t": 2258,
+            "r": 1919,
+            "b": 2300
+          }
+        },
+        {
+          "Name": null,
+          "Value": "20002",
+          "Region": {
+            "l": 2288,
+            "t": 2258,
+            "r": 2392,
+            "b": 2300
+          }
+        },
+        {
+          "Name": null,
+          "Value": "K ",
+          "Region": {
+            "l": 169,
+            "t": 2268,
+            "r": 198,
+            "b": 2298
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Partner’s share of liabilities at year end: ",
+          "Region": {
+            "l": 240,
+            "t": 2269,
+            "r": 761,
+            "b": 2298
+          }
+        },
+        {
+          "Name": null,
+          "Value": "1111111",
+          "Region": {
+            "l": 1105,
+            "t": 2304,
+            "r": 1251,
+            "b": 2346
+          }
+        },
+        {
+          "Name": null,
+          "Value": "14 ",
+          "Region": {
+            "l": 1319,
+            "t": 2309,
+            "r": 1360,
+            "b": 2339
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Self-employment earnings (loss) ",
+          "Region": {
+            "l": 1393,
+            "t": 2310,
+            "r": 1819,
+            "b": 2339
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Nonrecourse ",
+          "Region": {
+            "l": 240,
+            "t": 2314,
+            "r": 416,
+            "b": 2343
+          }
+        },
+        {
+          "Name": null,
+          "Value": " $ ",
+          "Region": {
+            "l": 749,
+            "t": 2314,
+            "r": 781,
+            "b": 2343
+          }
+        },
+        {
+          "Name": null,
+          "Value": "2222222",
+          "Region": {
+            "l": 1105,
+            "t": 2354,
+            "r": 1251,
+            "b": 2396
+          }
+        },
+        {
+          "Name": null,
+          "Value": "A",
+          "Region": {
+            "l": 1320,
+            "t": 2358,
+            "r": 1350,
+            "b": 2400
+          }
+        },
+        {
+          "Name": null,
+          "Value": "1401",
+          "Region": {
+            "l": 1768,
+            "t": 2358,
+            "r": 1851,
+            "b": 2400
+          }
+        },
+        {
+          "Name": null,
+          "Value": "C",
+          "Region": {
+            "l": 1891,
+            "t": 2358,
+            "r": 1919,
+            "b": 2400
+          }
+        },
+        {
+          "Name": null,
+          "Value": "20003",
+          "Region": {
+            "l": 2288,
+            "t": 2358,
+            "r": 2392,
+            "b": 2400
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Qualified nonrecourse financing ",
+          "Region": {
+            "l": 240,
+            "t": 2364,
+            "r": 661,
+            "b": 2393
+          }
+        },
+        {
+          "Name": null,
+          "Value": " $ ",
+          "Region": {
+            "l": 750,
+            "t": 2364,
+            "r": 782,
+            "b": 2393
+          }
+        },
+        {
+          "Name": null,
+          "Value": "3333333",
+          "Region": {
+            "l": 1105,
+            "t": 2404,
+            "r": 1251,
+            "b": 2446
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Recourse ",
+          "Region": {
+            "l": 240,
+            "t": 2414,
+            "r": 372,
+            "b": 2443
+          }
+        },
+        {
+          "Name": null,
+          "Value": " $ ",
+          "Region": {
+            "l": 749,
+            "t": 2414,
+            "r": 781,
+            "b": 2443
+          }
+        },
+        {
+          "Name": null,
+          "Value": "B",
+          "Region": {
+            "l": 1321,
+            "t": 2458,
+            "r": 1349,
+            "b": 2500
+          }
+        },
+        {
+          "Name": null,
+          "Value": "1402",
+          "Region": {
+            "l": 1768,
+            "t": 2458,
+            "r": 1851,
+            "b": 2500
+          }
+        },
+        {
+          "Name": null,
+          "Value": "D",
+          "Region": {
+            "l": 1890,
+            "t": 2458,
+            "r": 1920,
+            "b": 2500
+          }
+        },
+        {
+          "Name": null,
+          "Value": "20004",
+          "Region": {
+            "l": 2288,
+            "t": 2458,
+            "r": 2392,
+            "b": 2500
+          }
+        },
+        {
+          "Name": null,
+          "Value": "*See attached statement for additional information. ",
+          "Region": {
+            "l": 1319,
+            "t": 2508,
+            "r": 2182,
+            "b": 2547
+          }
+        },
+        {
+          "Name": null,
+          "Value": "L ",
+          "Region": {
+            "l": 171,
+            "t": 2518,
+            "r": 196,
+            "b": 2548
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Partner’s capital account analysis: ",
+          "Region": {
+            "l": 243,
+            "t": 2519,
+            "r": 697,
+            "b": 2548
+          }
+        },
+        {
+          "Name": null,
+          "Value": "2,268,054",
+          "Region": {
+            "l": 1085,
+            "t": 2554,
+            "r": 1252,
+            "b": 2596
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Beginning capital account .",
+          "Region": {
+            "l": 240,
+            "t": 2564,
+            "r": 609,
+            "b": 2593
+          }
+        },
+        {
+          "Name": null,
+          "Value": " $ ",
+          "Region": {
+            "l": 749,
+            "t": 2564,
+            "r": 781,
+            "b": 2593
+          }
+        },
+        {
+          "Name": null,
+          "Value": "855,000.",
+          "Region": {
+            "l": 1105,
+            "t": 2604,
+            "r": 1251,
+            "b": 2646
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Capital contributed during the year        $ ",
+          "Region": {
+            "l": 240,
+            "t": 2614,
+            "r": 782,
+            "b": 2643
+          }
+        },
+        {
+          "Name": null,
+          "Value": "743,554.",
+          "Region": {
+            "l": 1105,
+            "t": 2654,
+            "r": 1251,
+            "b": 2696
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Current year increase (decrease) ",
+          "Region": {
+            "l": 240,
+            "t": 2664,
+            "r": 670,
+            "b": 2693
+          }
+        },
+        {
+          "Name": null,
+          "Value": " $ ",
+          "Region": {
+            "l": 750,
+            "t": 2664,
+            "r": 782,
+            "b": 2693
+          }
+        },
+        {
+          "Name": null,
+          "Value": "1,008,732.",
+          "Region": {
+            "l": 1060,
+            "t": 2708,
+            "r": 1237,
+            "b": 2750
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Withdrawals & distributions ",
+          "Region": {
+            "l": 239,
+            "t": 2713,
+            "r": 603,
+            "b": 2742
+          }
+        },
+        {
+          "Name": null,
+          "Value": " $",
+          "Region": {
+            "l": 747,
+            "t": 2713,
+            "r": 771,
+            "b": 2742
+          }
+        },
+        {
+          "Name": null,
+          "Value": "(                                                       )",
+          "Region": {
+            "l": 791,
+            "t": 2717,
+            "r": 1252,
+            "b": 2746
+          }
+        },
+        {
+          "Name": null,
+          "Value": "2,857,876.",
+          "Region": {
+            "l": 1074,
+            "t": 2754,
+            "r": 1251,
+            "b": 2796
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Ending capital account .",
+          "Region": {
+            "l": 240,
+            "t": 2764,
+            "r": 559,
+            "b": 2793
+          }
+        },
+        {
+          "Name": null,
+          "Value": " $ ",
+          "Region": {
+            "l": 749,
+            "t": 2764,
+            "r": 781,
+            "b": 2793
+          }
+        },
+        {
+          "Name": null,
+          "Value": "\u0016",
+          "Region": {
+            "l": 546,
+            "t": 2866,
+            "r": 566,
+            "b": 2888
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Tax basis ",
+          "Region": {
+            "l": 300,
+            "t": 2869,
+            "r": 432,
+            "b": 2898
+          }
+        },
+        {
+          "Name": null,
+          "Value": "GAAP ",
+          "Region": {
+            "l": 600,
+            "t": 2869,
+            "r": 687,
+            "b": 2898
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Section 704(b) book ",
+          "Region": {
+            "l": 840,
+            "t": 2869,
+            "r": 1110,
+            "b": 2898
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Other (explain) ",
+          "Region": {
+            "l": 300,
+            "t": 2919,
+            "r": 497,
+            "b": 2948
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Other Explain this kdjfkjdfkjdkjfdkjfkdjfkj",
+          "Region": {
+            "l": 510,
+            "t": 2958,
+            "r": 1226,
+            "b": 3000
+          }
+        },
+        {
+          "Name": null,
+          "Value": "M ",
+          "Region": {
+            "l": 166,
+            "t": 3018,
+            "r": 201,
+            "b": 3048
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Did the partner contribute property with a built-in gain or loss?",
+          "Region": {
+            "l": 243,
+            "t": 3019,
+            "r": 1055,
+            "b": 3048
+          }
+        },
+        {
+          "Name": null,
+          "Value": "\u0016",
+          "Region": {
+            "l": 546,
+            "t": 3066,
+            "r": 566,
+            "b": 3088
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Yes",
+          "Region": {
+            "l": 300,
+            "t": 3068,
+            "r": 352,
+            "b": 3098
+          }
+        },
+        {
+          "Name": null,
+          "Value": "No",
+          "Region": {
+            "l": 600,
+            "t": 3068,
+            "r": 639,
+            "b": 3098
+          }
+        },
+        {
+          "Name": null,
+          "Value": "If “Yes,” attach statement (see instructions)",
+          "Region": {
+            "l": 300,
+            "t": 3108,
+            "r": 863,
+            "b": 3137
+          }
+        },
+        {
+          "Name": null,
+          "Value": "For Paperwork Reduction Act Notice, see Instructions for Form 1065. ",
+          "Region": {
+            "l": 150,
+            "t": 3167,
+            "r": 1117,
+            "b": 3197
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Schedule K-1 (Form 1065) 2013 ",
+          "Region": {
+            "l": 1969,
+            "t": 3167,
+            "r": 2408,
+            "b": 3197
+          }
+        },
+        {
+          "Name": null,
+          "Value": "IRS.gov/form1065",
+          "Region": {
+            "l": 1201,
+            "t": 3168,
+            "r": 1438,
+            "b": 3197
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Cat. No. 11394R ",
+          "Region": {
+            "l": 1631,
+            "t": 3168,
+            "r": 1856,
+            "b": 3197
+          }
+        }
+      ]
+    },
+    {
+      "PageNumber": 2,
+      "Width": 2550,
+      "Height": 3300,
+      "Words": [
+        {
+          "Name": null,
+          "Value": "2 ",
+          "Region": {
+            "l": 2377,
+            "t": 147,
+            "r": 2412,
+            "b": 192
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Schedule K-1 (Form 1065) 2013",
+          "Region": {
+            "l": 150,
+            "t": 158,
+            "r": 564,
+            "b": 187
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Page  ",
+          "Region": {
+            "l": 2294,
+            "t": 160,
+            "r": 2377,
+            "b": 189
+          }
+        },
+        {
+          "Name": null,
+          "Value": "This list identifies the codes used on Schedule K-1 for all partners and provides summarized reporting information for partners who file Form 1040.   ",
+          "Region": {
+            "l": 150,
+            "t": 218,
+            "r": 2357,
+            "b": 250
+          }
+        },
+        {
+          "Name": null,
+          "Value": "For detailed reporting and filing information, see the separate Partner’s Instructions for Schedule K-1 and the instructions  for your income tax return. ",
+          "Region": {
+            "l": 150,
+            "t": 249,
+            "r": 2382,
+            "b": 281
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Report on ",
+          "Region": {
+            "l": 1920,
+            "t": 297,
+            "r": 2058,
+            "b": 326
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Code ",
+          "Region": {
+            "l": 1393,
+            "t": 297,
+            "r": 1472,
+            "b": 326
+          }
+        },
+        {
+          "Name": null,
+          "Value": "1. Ordinary business income (loss). ",
+          "Region": {
+            "l": 153,
+            "t": 309,
+            "r": 1170,
+            "b": 340
+          }
+        },
+        {
+          "Name": null,
+          "Value": "L ",
+          "Region": {
+            "l": 1395,
+            "t": 331,
+            "r": 1420,
+            "b": 361
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Empowerment zone  ",
+          "Region": {
+            "l": 1446,
+            "t": 332,
+            "r": 1723,
+            "b": 361
+          }
+        },
+        {
+          "Name": null,
+          "Value": "passive or nonpassive and enter on your return as follows. ",
+          "Region": {
+            "l": 188,
+            "t": 340,
+            "r": 955,
+            "b": 369
+          }
+        },
+        {
+          "Name": null,
+          "Value": "employment credit ",
+          "Region": {
+            "l": 1446,
+            "t": 367,
+            "r": 1698,
+            "b": 396
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Report on ",
+          "Region": {
+            "l": 750,
+            "t": 368,
+            "r": 888,
+            "b": 397
+          }
+        },
+        {
+          "Name": null,
+          "Value": "M ",
+          "Region": {
+            "l": 1390,
+            "t": 399,
+            "r": 1425,
+            "b": 429
+          }
+        },
+        {
+          "Name": null,
+          "Value": "See the Partner’s Instructions ",
+          "Region": {
+            "l": 750,
+            "t": 400,
+            "r": 1144,
+            "b": 429
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Credit for increasing research ",
+          "Region": {
+            "l": 1446,
+            "t": 400,
+            "r": 1800,
+            "b": 429
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Passive loss ",
+          "Region": {
+            "l": 222,
+            "t": 401,
+            "r": 391,
+            "b": 430
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Passive income ",
+          "Region": {
+            "l": 222,
+            "t": 435,
+            "r": 434,
+            "b": 464
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Schedule E, line 28, column (g) ",
+          "Region": {
+            "l": 750,
+            "t": 435,
+            "r": 1160,
+            "b": 464
+          }
+        },
+        {
+          "Name": null,
+          "Value": "activities ",
+          "Region": {
+            "l": 1446,
+            "t": 435,
+            "r": 1556,
+            "b": 464
+          }
+        },
+        {
+          "Name": null,
+          "Value": "See the Partner’s Instructions ",
+          "Region": {
+            "l": 1920,
+            "t": 452,
+            "r": 2314,
+            "b": 481
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Credit for employer social ",
+          "Region": {
+            "l": 1395,
+            "t": 466,
+            "r": 1789,
+            "b": 496
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Nonpassive loss ",
+          "Region": {
+            "l": 222,
+            "t": 468,
+            "r": 443,
+            "b": 497
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Schedule E, line 28, column (h) ",
+          "Region": {
+            "l": 750,
+            "t": 468,
+            "r": 1160,
+            "b": 497
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Nonpassive income ",
+          "Region": {
+            "l": 222,
+            "t": 501,
+            "r": 487,
+            "b": 530
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Schedule E, line 28, column (j) ",
+          "Region": {
+            "l": 750,
+            "t": 501,
+            "r": 1150,
+            "b": 530
+          }
+        },
+        {
+          "Name": null,
+          "Value": "security and Medicare taxes ",
+          "Region": {
+            "l": 1446,
+            "t": 502,
+            "r": 1821,
+            "b": 531
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Backup withholding ",
+          "Region": {
+            "l": 1394,
+            "t": 532,
+            "r": 1712,
+            "b": 562
+          }
+        },
+        {
+          "Name": null,
+          "Value": "2.",
+          "Region": {
+            "l": 173,
+            "t": 534,
+            "r": 197,
+            "b": 564
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Net rental real estate income (loss) ",
+          "Region": {
+            "l": 222,
+            "t": 534,
+            "r": 714,
+            "b": 564
+          }
+        },
+        {
+          "Name": null,
+          "Value": "See the Partner’s Instructions ",
+          "Region": {
+            "l": 750,
+            "t": 535,
+            "r": 1144,
+            "b": 564
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Other credits ",
+          "Region": {
+            "l": 1397,
+            "t": 566,
+            "r": 1623,
+            "b": 596
+          }
+        },
+        {
+          "Name": null,
+          "Value": "3.",
+          "Region": {
+            "l": 173,
+            "t": 567,
+            "r": 197,
+            "b": 597
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Other net rental income (loss) ",
+          "Region": {
+            "l": 222,
+            "t": 567,
+            "r": 642,
+            "b": 597
+          }
+        },
+        {
+          "Name": null,
+          "Value": "16.",
+          "Region": {
+            "l": 1327,
+            "t": 600,
+            "r": 1368,
+            "b": 630
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Foreign transactions",
+          "Region": {
+            "l": 1392,
+            "t": 600,
+            "r": 1679,
+            "b": 630
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Net income ",
+          "Region": {
+            "l": 222,
+            "t": 601,
+            "r": 380,
+            "b": 630
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Schedule E, line 28, column (g) ",
+          "Region": {
+            "l": 750,
+            "t": 601,
+            "r": 1160,
+            "b": 630
+          }
+        },
+        {
+          "Name": null,
+          "Value": "A ",
+          "Region": {
+            "l": 1391,
+            "t": 634,
+            "r": 1764,
+            "b": 664
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Net loss ",
+          "Region": {
+            "l": 222,
+            "t": 635,
+            "r": 337,
+            "b": 664
+          }
+        },
+        {
+          "Name": null,
+          "Value": "See the Partner’s Instructions ",
+          "Region": {
+            "l": 750,
+            "t": 635,
+            "r": 1144,
+            "b": 664
+          }
+        },
+        {
+          "Name": null,
+          "Value": "4.",
+          "Region": {
+            "l": 173,
+            "t": 667,
+            "r": 197,
+            "b": 697
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Guaranteed payments ",
+          "Region": {
+            "l": 222,
+            "t": 667,
+            "r": 537,
+            "b": 697
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Schedule E, line 28, column (j) ",
+          "Region": {
+            "l": 750,
+            "t": 668,
+            "r": 1150,
+            "b": 697
+          }
+        },
+        {
+          "Name": null,
+          "Value": "possession ",
+          "Region": {
+            "l": 1440,
+            "t": 670,
+            "r": 1596,
+            "b": 699
+          }
+        },
+        {
+          "Name": null,
+          "Value": "B ",
+          "Region": {
+            "l": 1390,
+            "t": 700,
+            "r": 1845,
+            "b": 730
+          }
+        },
+        {
+          "Name": null,
+          "Value": "5.",
+          "Region": {
+            "l": 173,
+            "t": 701,
+            "r": 197,
+            "b": 731
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Interest income ",
+          "Region": {
+            "l": 222,
+            "t": 701,
+            "r": 448,
+            "b": 731
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Form 1040, line 8a ",
+          "Region": {
+            "l": 750,
+            "t": 701,
+            "r": 1000,
+            "b": 730
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Form 1116, Part I ",
+          "Region": {
+            "l": 1920,
+            "t": 703,
+            "r": 2155,
+            "b": 732
+          }
+        },
+        {
+          "Name": null,
+          "Value": "6a.",
+          "Region": {
+            "l": 170,
+            "t": 734,
+            "r": 210,
+            "b": 764
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Ordinary dividends ",
+          "Region": {
+            "l": 223,
+            "t": 734,
+            "r": 493,
+            "b": 764
+          }
+        },
+        {
+          "Name": null,
+          "Value": "C ",
+          "Region": {
+            "l": 1389,
+            "t": 734,
+            "r": 1776,
+            "b": 764
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Form 1040, line 9a ",
+          "Region": {
+            "l": 750,
+            "t": 735,
+            "r": 1000,
+            "b": 764
+          }
+        },
+        {
+          "Name": null,
+          "Value": "6b.",
+          "Region": {
+            "l": 169,
+            "t": 767,
+            "r": 210,
+            "b": 797
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Qualified dividends ",
+          "Region": {
+            "l": 223,
+            "t": 767,
+            "r": 496,
+            "b": 797
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Form 1040, line 9b ",
+          "Region": {
+            "l": 750,
+            "t": 768,
+            "r": 1002,
+            "b": 797
+          }
+        },
+        {
+          "Name": null,
+          "Value": "partner level ",
+          "Region": {
+            "l": 1440,
+            "t": 770,
+            "r": 1609,
+            "b": 799
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Schedule E, line 4",
+          "Region": {
+            "l": 750,
+            "t": 799,
+            "r": 983,
+            "b": 828
+          }
+        },
+        {
+          "Name": null,
+          "Value": "7.",
+          "Region": {
+            "l": 173,
+            "t": 801,
+            "r": 197,
+            "b": 831
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Royalties ",
+          "Region": {
+            "l": 222,
+            "t": 801,
+            "r": 359,
+            "b": 831
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Foreign gross income sourced at partnership level ",
+          "Region": {
+            "l": 1392,
+            "t": 801,
+            "r": 2049,
+            "b": 830
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Passive category ",
+          "Region": {
+            "l": 1389,
+            "t": 834,
+            "r": 1670,
+            "b": 864
+          }
+        },
+        {
+          "Name": null,
+          "Value": "8.",
+          "Region": {
+            "l": 173,
+            "t": 834,
+            "r": 197,
+            "b": 864
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Net short-term capital gain (loss) ",
+          "Region": {
+            "l": 222,
+            "t": 834,
+            "r": 687,
+            "b": 864
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Schedule D, line 5",
+          "Region": {
+            "l": 750,
+            "t": 835,
+            "r": 986,
+            "b": 864
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Schedule D, line 12",
+          "Region": {
+            "l": 750,
+            "t": 866,
+            "r": 1002,
+            "b": 895
+          }
+        },
+        {
+          "Name": null,
+          "Value": "General category ",
+          "Region": {
+            "l": 1390,
+            "t": 867,
+            "r": 1672,
+            "b": 897
+          }
+        },
+        {
+          "Name": null,
+          "Value": "9a. Net long-term capital gain (loss) ",
+          "Region": {
+            "l": 169,
+            "t": 867,
+            "r": 676,
+            "b": 897
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Form 1116, Part I ",
+          "Region": {
+            "l": 1920,
+            "t": 870,
+            "r": 2155,
+            "b": 899
+          }
+        },
+        {
+          "Name": null,
+          "Value": "9b. Collectibles (28%) gain (loss) ",
+          "Region": {
+            "l": 168,
+            "t": 896,
+            "r": 631,
+            "b": 926
+          }
+        },
+        {
+          "Name": null,
+          "Value": "28% Rate Gain Worksheet, line 4  ",
+          "Region": {
+            "l": 750,
+            "t": 898,
+            "r": 1198,
+            "b": 927
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Other ",
+          "Region": {
+            "l": 1391,
+            "t": 900,
+            "r": 1521,
+            "b": 930
+          }
+        },
+        {
+          "Name": null,
+          "Value": "(Schedule D instructions) ",
+          "Region": {
+            "l": 750,
+            "t": 933,
+            "r": 1083,
+            "b": 962
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Deductions allocated and apportioned at partner level ",
+          "Region": {
+            "l": 1388,
+            "t": 934,
+            "r": 2093,
+            "b": 963
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Interest expense ",
+          "Region": {
+            "l": 1387,
+            "t": 967,
+            "r": 1665,
+            "b": 997
+          }
+        },
+        {
+          "Name": null,
+          "Value": "9c. Unrecaptured section 1250 gain ",
+          "Region": {
+            "l": 169,
+            "t": 967,
+            "r": 673,
+            "b": 997
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Form 1116, Part I ",
+          "Region": {
+            "l": 1920,
+            "t": 968,
+            "r": 2155,
+            "b": 997
+          }
+        },
+        {
+          "Name": null,
+          "Value": "See the Partner’s Instructions ",
+          "Region": {
+            "l": 750,
+            "t": 968,
+            "r": 1144,
+            "b": 997
+          }
+        },
+        {
+          "Name": null,
+          "Value": "H ",
+          "Region": {
+            "l": 1387,
+            "t": 1000,
+            "r": 1521,
+            "b": 1030
+          }
+        },
+        {
+          "Name": null,
+          "Value": "10.",
+          "Region": {
+            "l": 150,
+            "t": 1001,
+            "r": 191,
+            "b": 1031
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Net section 1231 gain (loss) ",
+          "Region": {
+            "l": 223,
+            "t": 1001,
+            "r": 612,
+            "b": 1031
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Form 1116, Part I ",
+          "Region": {
+            "l": 1920,
+            "t": 1001,
+            "r": 2155,
+            "b": 1030
+          }
+        },
+        {
+          "Name": null,
+          "Value": "See the Partner’s Instructions ",
+          "Region": {
+            "l": 750,
+            "t": 1001,
+            "r": 1144,
+            "b": 1030
+          }
+        },
+        {
+          "Name": null,
+          "Value": "11.",
+          "Region": {
+            "l": 150,
+            "t": 1034,
+            "r": 191,
+            "b": 1064
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Other income (loss) ",
+          "Region": {
+            "l": 223,
+            "t": 1034,
+            "r": 502,
+            "b": 1064
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Deductions allocated and apportioned at partnership level to foreign source ",
+          "Region": {
+            "l": 1392,
+            "t": 1037,
+            "r": 2379,
+            "b": 1066
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Code ",
+          "Region": {
+            "l": 223,
+            "t": 1068,
+            "r": 302,
+            "b": 1097
+          }
+        },
+        {
+          "Name": null,
+          "Value": "income ",
+          "Region": {
+            "l": 1392,
+            "t": 1072,
+            "r": 1496,
+            "b": 1101
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Other portfolio income (loss) ",
+          "Region": {
+            "l": 225,
+            "t": 1101,
+            "r": 646,
+            "b": 1131
+          }
+        },
+        {
+          "Name": null,
+          "Value": "See the Partner’s Instructions ",
+          "Region": {
+            "l": 750,
+            "t": 1101,
+            "r": 1144,
+            "b": 1130
+          }
+        },
+        {
+          "Name": null,
+          "Value": "I ",
+          "Region": {
+            "l": 1394,
+            "t": 1105,
+            "r": 1411,
+            "b": 1135
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Passive category ",
+          "Region": {
+            "l": 1440,
+            "t": 1105,
+            "r": 1671,
+            "b": 1134
+          }
+        },
+        {
+          "Name": null,
+          "Value": "J ",
+          "Region": {
+            "l": 1388,
+            "t": 1134,
+            "r": 1412,
+            "b": 1164
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Involuntary conversions ",
+          "Region": {
+            "l": 225,
+            "t": 1134,
+            "r": 587,
+            "b": 1164
+          }
+        },
+        {
+          "Name": null,
+          "Value": "See the Partner’s Instructions ",
+          "Region": {
+            "l": 750,
+            "t": 1135,
+            "r": 1144,
+            "b": 1164
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Form 1116, Part I ",
+          "Region": {
+            "l": 1920,
+            "t": 1136,
+            "r": 2155,
+            "b": 1165
+          }
+        },
+        {
+          "Name": null,
+          "Value": "General category ",
+          "Region": {
+            "l": 1440,
+            "t": 1138,
+            "r": 1672,
+            "b": 1167
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Sec. 1256 contracts & straddles ",
+          "Region": {
+            "l": 223,
+            "t": 1167,
+            "r": 695,
+            "b": 1197
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Form 6781, line 1 ",
+          "Region": {
+            "l": 750,
+            "t": 1168,
+            "r": 985,
+            "b": 1197
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Other ",
+          "Region": {
+            "l": 1388,
+            "t": 1171,
+            "r": 1521,
+            "b": 1201
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Mining exploration costs recapture See Pub. 535",
+          "Region": {
+            "l": 223,
+            "t": 1201,
+            "r": 925,
+            "b": 1231
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Other information ",
+          "Region": {
+            "l": 1388,
+            "t": 1201,
+            "r": 1624,
+            "b": 1230
+          }
+        },
+        {
+          "Name": null,
+          "Value": "L ",
+          "Region": {
+            "l": 1391,
+            "t": 1234,
+            "r": 1754,
+            "b": 1264
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Cancellation of debt ",
+          "Region": {
+            "l": 222,
+            "t": 1234,
+            "r": 541,
+            "b": 1264
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Form 1116, Part II ",
+          "Region": {
+            "l": 1920,
+            "t": 1234,
+            "r": 2162,
+            "b": 1263
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Form 1040, line 21 or Form 982 ",
+          "Region": {
+            "l": 750,
+            "t": 1235,
+            "r": 1168,
+            "b": 1264
+          }
+        },
+        {
+          "Name": null,
+          "Value": "M ",
+          "Region": {
+            "l": 1384,
+            "t": 1267,
+            "r": 1803,
+            "b": 1297
+          }
+        },
+        {
+          "Name": null,
+          "Value": "F ",
+          "Region": {
+            "l": 224,
+            "t": 1267,
+            "r": 531,
+            "b": 1297
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Form 1116, Part II ",
+          "Region": {
+            "l": 1920,
+            "t": 1268,
+            "r": 2162,
+            "b": 1297
+          }
+        },
+        {
+          "Name": null,
+          "Value": "See the Partner’s Instructions ",
+          "Region": {
+            "l": 750,
+            "t": 1268,
+            "r": 1144,
+            "b": 1297
+          }
+        },
+        {
+          "Name": null,
+          "Value": "N ",
+          "Region": {
+            "l": 1387,
+            "t": 1300,
+            "r": 1417,
+            "b": 1330
+          }
+        },
+        {
+          "Name": null,
+          "Value": "12.",
+          "Region": {
+            "l": 150,
+            "t": 1301,
+            "r": 191,
+            "b": 1331
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Section 179 deduction ",
+          "Region": {
+            "l": 223,
+            "t": 1301,
+            "r": 541,
+            "b": 1331
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Form 1116, line 12 ",
+          "Region": {
+            "l": 1920,
+            "t": 1301,
+            "r": 2171,
+            "b": 1330
+          }
+        },
+        {
+          "Name": null,
+          "Value": "See the Partner’s Instructions ",
+          "Region": {
+            "l": 750,
+            "t": 1301,
+            "r": 1144,
+            "b": 1330
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Reduction in taxes available for credit ",
+          "Region": {
+            "l": 1440,
+            "t": 1302,
+            "r": 1902,
+            "b": 1329
+          }
+        },
+        {
+          "Name": null,
+          "Value": "13.",
+          "Region": {
+            "l": 150,
+            "t": 1334,
+            "r": 191,
+            "b": 1364
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Other deductions ",
+          "Region": {
+            "l": 223,
+            "t": 1334,
+            "r": 473,
+            "b": 1364
+          }
+        },
+        {
+          "Name": null,
+          "Value": "O ",
+          "Region": {
+            "l": 1388,
+            "t": 1334,
+            "r": 1419,
+            "b": 1364
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Form 8873 ",
+          "Region": {
+            "l": 1920,
+            "t": 1334,
+            "r": 2069,
+            "b": 1363
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Foreign trading gross receipts ",
+          "Region": {
+            "l": 1440,
+            "t": 1335,
+            "r": 1810,
+            "b": 1362
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Cash contributions (50%) ",
+          "Region": {
+            "l": 225,
+            "t": 1363,
+            "r": 609,
+            "b": 1393
+          }
+        },
+        {
+          "Name": null,
+          "Value": "P ",
+          "Region": {
+            "l": 1391,
+            "t": 1367,
+            "r": 1419,
+            "b": 1397
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Form 8873 ",
+          "Region": {
+            "l": 1920,
+            "t": 1368,
+            "r": 2069,
+            "b": 1397
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Extraterritorial income exclusion ",
+          "Region": {
+            "l": 1440,
+            "t": 1368,
+            "r": 1835,
+            "b": 1395
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Cash contributions (30%) ",
+          "Region": {
+            "l": 225,
+            "t": 1397,
+            "r": 610,
+            "b": 1427
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Other foreign transactions ",
+          "Region": {
+            "l": 1388,
+            "t": 1401,
+            "r": 1787,
+            "b": 1431
+          }
+        },
+        {
+          "Name": null,
+          "Value": "See the Partner’s Instructions ",
+          "Region": {
+            "l": 1920,
+            "t": 1401,
+            "r": 2314,
+            "b": 1430
+          }
+        },
+        {
+          "Name": null,
+          "Value": "C ",
+          "Region": {
+            "l": 224,
+            "t": 1430,
+            "r": 658,
+            "b": 1460
+          }
+        },
+        {
+          "Name": null,
+          "Value": "17.",
+          "Region": {
+            "l": 1327,
+            "t": 1434,
+            "r": 1368,
+            "b": 1464
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Alternative minimum tax (AMT) items",
+          "Region": {
+            "l": 1392,
+            "t": 1434,
+            "r": 1904,
+            "b": 1464
+          }
+        },
+        {
+          "Name": null,
+          "Value": "D ",
+          "Region": {
+            "l": 224,
+            "t": 1463,
+            "r": 658,
+            "b": 1493
+          }
+        },
+        {
+          "Name": null,
+          "Value": "See the Partner’s ",
+          "Region": {
+            "l": 750,
+            "t": 1465,
+            "r": 983,
+            "b": 1494
+          }
+        },
+        {
+          "Name": null,
+          "Value": "A ",
+          "Region": {
+            "l": 1391,
+            "t": 1467,
+            "r": 1419,
+            "b": 1497
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Post-1986 depreciation adjustment ",
+          "Region": {
+            "l": 1440,
+            "t": 1468,
+            "r": 1861,
+            "b": 1497
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Capital gain property to a 50%",
+          "Region": {
+            "l": 222,
+            "t": 1497,
+            "r": 671,
+            "b": 1527
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Instructions ",
+          "Region": {
+            "l": 750,
+            "t": 1500,
+            "r": 910,
+            "b": 1529
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Adjusted gain or loss ",
+          "Region": {
+            "l": 1390,
+            "t": 1500,
+            "r": 1722,
+            "b": 1530
+          }
+        },
+        {
+          "Name": null,
+          "Value": "See the Partner’s ",
+          "Region": {
+            "l": 1920,
+            "t": 1501,
+            "r": 2153,
+            "b": 1530
+          }
+        },
+        {
+          "Name": null,
+          "Value": "organization (30%) ",
+          "Region": {
+            "l": 270,
+            "t": 1530,
+            "r": 523,
+            "b": 1559
+          }
+        },
+        {
+          "Name": null,
+          "Value": "C ",
+          "Region": {
+            "l": 1389,
+            "t": 1534,
+            "r": 1848,
+            "b": 1564
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Instructions and ",
+          "Region": {
+            "l": 1920,
+            "t": 1536,
+            "r": 2138,
+            "b": 1565
+          }
+        },
+        {
+          "Name": null,
+          "Value": "F ",
+          "Region": {
+            "l": 224,
+            "t": 1563,
+            "r": 637,
+            "b": 1593
+          }
+        },
+        {
+          "Name": null,
+          "Value": "D ",
+          "Region": {
+            "l": 1389,
+            "t": 1567,
+            "r": 1419,
+            "b": 1597
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Oil, gas, & geothermal—gross income ",
+          "Region": {
+            "l": 1440,
+            "t": 1568,
+            "r": 1866,
+            "b": 1597
+          }
+        },
+        {
+          "Name": null,
+          "Value": "the Instructions for ",
+          "Region": {
+            "l": 1920,
+            "t": 1571,
+            "r": 2173,
+            "b": 1600
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Contributions (100%) ",
+          "Region": {
+            "l": 223,
+            "t": 1597,
+            "r": 555,
+            "b": 1627
+          }
+        },
+        {
+          "Name": null,
+          "Value": "E ",
+          "Region": {
+            "l": 1390,
+            "t": 1600,
+            "r": 1417,
+            "b": 1630
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Oil, gas, & geothermal—deductions ",
+          "Region": {
+            "l": 1440,
+            "t": 1601,
+            "r": 1864,
+            "b": 1630
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Form 6251 ",
+          "Region": {
+            "l": 1920,
+            "t": 1606,
+            "r": 2069,
+            "b": 1635
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Other AMT items ",
+          "Region": {
+            "l": 1391,
+            "t": 1634,
+            "r": 1669,
+            "b": 1664
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Investment interest expense ",
+          "Region": {
+            "l": 223,
+            "t": 1634,
+            "r": 645,
+            "b": 1664
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Form 4952, line 1 ",
+          "Region": {
+            "l": 750,
+            "t": 1635,
+            "r": 985,
+            "b": 1664
+          }
+        },
+        {
+          "Name": null,
+          "Value": "18.",
+          "Region": {
+            "l": 1327,
+            "t": 1667,
+            "r": 1368,
+            "b": 1697
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Tax-exempt income and nondeductible expenses",
+          "Region": {
+            "l": 1392,
+            "t": 1667,
+            "r": 2076,
+            "b": 1697
+          }
+        },
+        {
+          "Name": null,
+          "Value": "I ",
+          "Region": {
+            "l": 228,
+            "t": 1667,
+            "r": 245,
+            "b": 1697
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Deductions—royalty income ",
+          "Region": {
+            "l": 270,
+            "t": 1668,
+            "r": 647,
+            "b": 1697
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Schedule E, line 19 ",
+          "Region": {
+            "l": 750,
+            "t": 1668,
+            "r": 1008,
+            "b": 1697
+          }
+        },
+        {
+          "Name": null,
+          "Value": "A ",
+          "Region": {
+            "l": 1391,
+            "t": 1700,
+            "r": 1813,
+            "b": 1730
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Section 59(e)(2) expenditures ",
+          "Region": {
+            "l": 225,
+            "t": 1701,
+            "r": 657,
+            "b": 1731
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Form 1040, line 8b ",
+          "Region": {
+            "l": 1920,
+            "t": 1701,
+            "r": 2172,
+            "b": 1730
+          }
+        },
+        {
+          "Name": null,
+          "Value": "See the Partner’s Instructions ",
+          "Region": {
+            "l": 750,
+            "t": 1701,
+            "r": 1144,
+            "b": 1730
+          }
+        },
+        {
+          "Name": null,
+          "Value": "B ",
+          "Region": {
+            "l": 1390,
+            "t": 1734,
+            "r": 1782,
+            "b": 1764
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Deductions—portfolio (2% floor) ",
+          "Region": {
+            "l": 224,
+            "t": 1734,
+            "r": 699,
+            "b": 1764
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Schedule A, line 23 ",
+          "Region": {
+            "l": 750,
+            "t": 1735,
+            "r": 1009,
+            "b": 1764
+          }
+        },
+        {
+          "Name": null,
+          "Value": "See the Partner’s Instructions ",
+          "Region": {
+            "l": 1920,
+            "t": 1735,
+            "r": 2314,
+            "b": 1764
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Nondeductible expenses ",
+          "Region": {
+            "l": 1389,
+            "t": 1767,
+            "r": 1772,
+            "b": 1797
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Deductions—portfolio (other) ",
+          "Region": {
+            "l": 224,
+            "t": 1767,
+            "r": 655,
+            "b": 1797
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Schedule A, line 28 ",
+          "Region": {
+            "l": 750,
+            "t": 1768,
+            "r": 1009,
+            "b": 1797
+          }
+        },
+        {
+          "Name": null,
+          "Value": "See the Partner’s Instructions ",
+          "Region": {
+            "l": 1920,
+            "t": 1768,
+            "r": 2314,
+            "b": 1797
+          }
+        },
+        {
+          "Name": null,
+          "Value": "19.",
+          "Region": {
+            "l": 1327,
+            "t": 1800,
+            "r": 1368,
+            "b": 1830
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Distributions",
+          "Region": {
+            "l": 1392,
+            "t": 1800,
+            "r": 1570,
+            "b": 1830
+          }
+        },
+        {
+          "Name": null,
+          "Value": "M ",
+          "Region": {
+            "l": 219,
+            "t": 1801,
+            "r": 740,
+            "b": 1831
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Schedule A, line 1 or Form 1040, line 29 ",
+          "Region": {
+            "l": 750,
+            "t": 1804,
+            "r": 1225,
+            "b": 1833
+          }
+        },
+        {
+          "Name": null,
+          "Value": "A ",
+          "Region": {
+            "l": 1391,
+            "t": 1834,
+            "r": 1419,
+            "b": 1864
+          }
+        },
+        {
+          "Name": null,
+          "Value": "N ",
+          "Region": {
+            "l": 223,
+            "t": 1834,
+            "r": 689,
+            "b": 1864
+          }
+        },
+        {
+          "Name": null,
+          "Value": "See the Partner’s Instructions ",
+          "Region": {
+            "l": 750,
+            "t": 1835,
+            "r": 1144,
+            "b": 1864
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Cash and marketable securities",
+          "Region": {
+            "l": 1440,
+            "t": 1835,
+            "r": 1821,
+            "b": 1862
+          }
+        },
+        {
+          "Name": null,
+          "Value": "B ",
+          "Region": {
+            "l": 1390,
+            "t": 1867,
+            "r": 1419,
+            "b": 1897
+          }
+        },
+        {
+          "Name": null,
+          "Value": "O ",
+          "Region": {
+            "l": 222,
+            "t": 1867,
+            "r": 598,
+            "b": 1897
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Distribution subject to section 737",
+          "Region": {
+            "l": 1440,
+            "t": 1868,
+            "r": 1859,
+            "b": 1897
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Form 2441, line 12",
+          "Region": {
+            "l": 750,
+            "t": 1868,
+            "r": 993,
+            "b": 1897
+          }
+        },
+        {
+          "Name": null,
+          "Value": "See the Partner’s Instructions ",
+          "Region": {
+            "l": 1920,
+            "t": 1870,
+            "r": 2314,
+            "b": 1899
+          }
+        },
+        {
+          "Name": null,
+          "Value": "P ",
+          "Region": {
+            "l": 226,
+            "t": 1901,
+            "r": 685,
+            "b": 1931
+          }
+        },
+        {
+          "Name": null,
+          "Value": "C ",
+          "Region": {
+            "l": 1389,
+            "t": 1901,
+            "r": 1419,
+            "b": 1931
+          }
+        },
+        {
+          "Name": null,
+          "Value": "See the Partner’s Instructions ",
+          "Region": {
+            "l": 750,
+            "t": 1901,
+            "r": 1144,
+            "b": 1930
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Other property",
+          "Region": {
+            "l": 1440,
+            "t": 1901,
+            "r": 1620,
+            "b": 1930
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Q ",
+          "Region": {
+            "l": 222,
+            "t": 1930,
+            "r": 753,
+            "b": 1960
+          }
+        },
+        {
+          "Name": null,
+          "Value": "See Form 8582 instructions ",
+          "Region": {
+            "l": 750,
+            "t": 1931,
+            "r": 1117,
+            "b": 1960
+          }
+        },
+        {
+          "Name": null,
+          "Value": "20.",
+          "Region": {
+            "l": 1327,
+            "t": 1934,
+            "r": 1368,
+            "b": 1964
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Other information",
+          "Region": {
+            "l": 1392,
+            "t": 1934,
+            "r": 1638,
+            "b": 1964
+          }
+        },
+        {
+          "Name": null,
+          "Value": "from rental real estate activities ",
+          "Region": {
+            "l": 270,
+            "t": 1966,
+            "r": 685,
+            "b": 1995
+          }
+        },
+        {
+          "Name": null,
+          "Value": "A ",
+          "Region": {
+            "l": 1391,
+            "t": 1967,
+            "r": 1696,
+            "b": 1997
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Form 4952, line 4a ",
+          "Region": {
+            "l": 1920,
+            "t": 1968,
+            "r": 2170,
+            "b": 1997
+          }
+        },
+        {
+          "Name": null,
+          "Value": "R ",
+          "Region": {
+            "l": 224,
+            "t": 1996,
+            "r": 524,
+            "b": 2026
+          }
+        },
+        {
+          "Name": null,
+          "Value": "See the Partner’s Instructions ",
+          "Region": {
+            "l": 750,
+            "t": 1998,
+            "r": 1144,
+            "b": 2027
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Investment expenses ",
+          "Region": {
+            "l": 1390,
+            "t": 2000,
+            "r": 1724,
+            "b": 2030
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Form 4952, line 5 ",
+          "Region": {
+            "l": 1920,
+            "t": 2001,
+            "r": 2155,
+            "b": 2030
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Reforestation expense deduction ",
+          "Region": {
+            "l": 226,
+            "t": 2030,
+            "r": 710,
+            "b": 2060
+          }
+        },
+        {
+          "Name": null,
+          "Value": "See the Partner’s Instructions ",
+          "Region": {
+            "l": 750,
+            "t": 2031,
+            "r": 1144,
+            "b": 2060
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Fuel tax credit information ",
+          "Region": {
+            "l": 1389,
+            "t": 2034,
+            "r": 1788,
+            "b": 2064
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Form 4136 ",
+          "Region": {
+            "l": 1920,
+            "t": 2034,
+            "r": 2069,
+            "b": 2063
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Domestic production activities  ",
+          "Region": {
+            "l": 227,
+            "t": 2063,
+            "r": 681,
+            "b": 2093
+          }
+        },
+        {
+          "Name": null,
+          "Value": "See Form 8903 instructions ",
+          "Region": {
+            "l": 750,
+            "t": 2064,
+            "r": 1117,
+            "b": 2093
+          }
+        },
+        {
+          "Name": null,
+          "Value": "D ",
+          "Region": {
+            "l": 1389,
+            "t": 2067,
+            "r": 1924,
+            "b": 2097
+          }
+        },
+        {
+          "Name": null,
+          "Value": "See the Partner’s Instructions ",
+          "Region": {
+            "l": 1920,
+            "t": 2068,
+            "r": 2314,
+            "b": 2097
+          }
+        },
+        {
+          "Name": null,
+          "Value": "information ",
+          "Region": {
+            "l": 270,
+            "t": 2099,
+            "r": 425,
+            "b": 2128
+          }
+        },
+        {
+          "Name": null,
+          "Value": "(other than rental real estate) ",
+          "Region": {
+            "l": 1440,
+            "t": 2103,
+            "r": 1821,
+            "b": 2132
+          }
+        },
+        {
+          "Name": null,
+          "Value": "U ",
+          "Region": {
+            "l": 223,
+            "t": 2130,
+            "r": 253,
+            "b": 2160
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Form 8903, line 7b ",
+          "Region": {
+            "l": 750,
+            "t": 2130,
+            "r": 1002,
+            "b": 2159
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Qualified production activities income ",
+          "Region": {
+            "l": 270,
+            "t": 2131,
+            "r": 733,
+            "b": 2158
+          }
+        },
+        {
+          "Name": null,
+          "Value": "E ",
+          "Region": {
+            "l": 1390,
+            "t": 2134,
+            "r": 1768,
+            "b": 2164
+          }
+        },
+        {
+          "Name": null,
+          "Value": "See the Partner’s Instructions ",
+          "Region": {
+            "l": 1920,
+            "t": 2135,
+            "r": 2314,
+            "b": 2164
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Employer’s Form W-2 wages ",
+          "Region": {
+            "l": 225,
+            "t": 2163,
+            "r": 656,
+            "b": 2193
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Form 8903, line 17",
+          "Region": {
+            "l": 750,
+            "t": 2164,
+            "r": 993,
+            "b": 2193
+          }
+        },
+        {
+          "Name": null,
+          "Value": "F ",
+          "Region": {
+            "l": 1391,
+            "t": 2167,
+            "r": 1896,
+            "b": 2197
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Form 8611, line 8 ",
+          "Region": {
+            "l": 1920,
+            "t": 2168,
+            "r": 2155,
+            "b": 2197
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Other deductions ",
+          "Region": {
+            "l": 217,
+            "t": 2196,
+            "r": 504,
+            "b": 2226
+          }
+        },
+        {
+          "Name": null,
+          "Value": "See the Partner’s Instructions ",
+          "Region": {
+            "l": 750,
+            "t": 2198,
+            "r": 1144,
+            "b": 2227
+          }
+        },
+        {
+          "Name": null,
+          "Value": "credit (section 42(j)(5)) ",
+          "Region": {
+            "l": 1440,
+            "t": 2203,
+            "r": 1733,
+            "b": 2232
+          }
+        },
+        {
+          "Name": null,
+          "Value": "14.",
+          "Region": {
+            "l": 150,
+            "t": 2234,
+            "r": 191,
+            "b": 2264
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Self-employment earnings (loss)",
+          "Region": {
+            "l": 223,
+            "t": 2234,
+            "r": 671,
+            "b": 2264
+          }
+        },
+        {
+          "Name": null,
+          "Value": "G ",
+          "Region": {
+            "l": 1387,
+            "t": 2234,
+            "r": 1897,
+            "b": 2264
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Form 8611, line 8 ",
+          "Region": {
+            "l": 1920,
+            "t": 2234,
+            "r": 2155,
+            "b": 2263
+          }
+        },
+        {
+          "Name": null,
+          "Value": "credit (other) ",
+          "Region": {
+            "l": 1440,
+            "t": 2270,
+            "r": 1613,
+            "b": 2299
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Note. ",
+          "Region": {
+            "l": 150,
+            "t": 2277,
+            "r": 1225,
+            "b": 2307
+          }
+        },
+        {
+          "Name": null,
+          "Value": "H ",
+          "Region": {
+            "l": 1389,
+            "t": 2300,
+            "r": 1849,
+            "b": 2330
+          }
+        },
+        {
+          "Name": null,
+          "Value": "See Form 4255 ",
+          "Region": {
+            "l": 1920,
+            "t": 2301,
+            "r": 2127,
+            "b": 2330
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Partner’s Instructions before completing Schedule SE. ",
+          "Region": {
+            "l": 150,
+            "t": 2307,
+            "r": 862,
+            "b": 2336
+          }
+        },
+        {
+          "Name": null,
+          "Value": "I ",
+          "Region": {
+            "l": 1394,
+            "t": 2334,
+            "r": 1411,
+            "b": 2364
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Net earnings (loss) from ",
+          "Region": {
+            "l": 225,
+            "t": 2334,
+            "r": 587,
+            "b": 2364
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Schedule SE, Section A or B ",
+          "Region": {
+            "l": 750,
+            "t": 2335,
+            "r": 1130,
+            "b": 2364
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Recapture of other credits ",
+          "Region": {
+            "l": 1440,
+            "t": 2335,
+            "r": 1789,
+            "b": 2364
+          }
+        },
+        {
+          "Name": null,
+          "Value": "See the Partner’s Instructions ",
+          "Region": {
+            "l": 1920,
+            "t": 2335,
+            "r": 2314,
+            "b": 2364
+          }
+        },
+        {
+          "Name": null,
+          "Value": "J ",
+          "Region": {
+            "l": 1388,
+            "t": 2367,
+            "r": 1412,
+            "b": 2397
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Look-back interest—completed  ",
+          "Region": {
+            "l": 1440,
+            "t": 2368,
+            "r": 1869,
+            "b": 2397
+          }
+        },
+        {
+          "Name": null,
+          "Value": "See Form 8697 ",
+          "Region": {
+            "l": 1920,
+            "t": 2368,
+            "r": 2127,
+            "b": 2397
+          }
+        },
+        {
+          "Name": null,
+          "Value": "self-employment ",
+          "Region": {
+            "l": 270,
+            "t": 2374,
+            "r": 496,
+            "b": 2403
+          }
+        },
+        {
+          "Name": null,
+          "Value": "long-term contracts ",
+          "Region": {
+            "l": 1440,
+            "t": 2403,
+            "r": 1706,
+            "b": 2432
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Gross farming or fishing income ",
+          "Region": {
+            "l": 224,
+            "t": 2409,
+            "r": 694,
+            "b": 2439
+          }
+        },
+        {
+          "Name": null,
+          "Value": "See the Partner’s Instructions ",
+          "Region": {
+            "l": 750,
+            "t": 2410,
+            "r": 1144,
+            "b": 2439
+          }
+        },
+        {
+          "Name": null,
+          "Value": "K ",
+          "Region": {
+            "l": 1388,
+            "t": 2434,
+            "r": 1417,
+            "b": 2464
+          }
+        },
+        {
+          "Name": null,
+          "Value": "See Form 8866 ",
+          "Region": {
+            "l": 1920,
+            "t": 2435,
+            "r": 2127,
+            "b": 2464
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Look-back interest—income forecast  ",
+          "Region": {
+            "l": 1440,
+            "t": 2435,
+            "r": 1904,
+            "b": 2462
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Gross non-farm income ",
+          "Region": {
+            "l": 223,
+            "t": 2442,
+            "r": 587,
+            "b": 2472
+          }
+        },
+        {
+          "Name": null,
+          "Value": "See the Partner’s Instructions ",
+          "Region": {
+            "l": 750,
+            "t": 2443,
+            "r": 1144,
+            "b": 2472
+          }
+        },
+        {
+          "Name": null,
+          "Value": "method ",
+          "Region": {
+            "l": 1440,
+            "t": 2467,
+            "r": 1540,
+            "b": 2494
+          }
+        },
+        {
+          "Name": null,
+          "Value": "15.",
+          "Region": {
+            "l": 150,
+            "t": 2476,
+            "r": 191,
+            "b": 2506
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Credits",
+          "Region": {
+            "l": 223,
+            "t": 2476,
+            "r": 324,
+            "b": 2506
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Dispositions of property with  ",
+          "Region": {
+            "l": 1391,
+            "t": 2500,
+            "r": 1830,
+            "b": 2530
+          }
+        },
+        {
+          "Name": null,
+          "Value": "A ",
+          "Region": {
+            "l": 225,
+            "t": 2505,
+            "r": 634,
+            "b": 2535
+          }
+        },
+        {
+          "Name": null,
+          "Value": "section 179 deductions ",
+          "Region": {
+            "l": 1440,
+            "t": 2536,
+            "r": 1753,
+            "b": 2565
+          }
+        },
+        {
+          "Name": null,
+          "Value": "(section 42(j)(5)) from pre-2008 ",
+          "Region": {
+            "l": 270,
+            "t": 2540,
+            "r": 676,
+            "b": 2569
+          }
+        },
+        {
+          "Name": null,
+          "Value": "M ",
+          "Region": {
+            "l": 1384,
+            "t": 2567,
+            "r": 1419,
+            "b": 2597
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Recapture of section 179 deduction",
+          "Region": {
+            "l": 1440,
+            "t": 2568,
+            "r": 1860,
+            "b": 2597
+          }
+        },
+        {
+          "Name": null,
+          "Value": "buildings ",
+          "Region": {
+            "l": 270,
+            "t": 2575,
+            "r": 396,
+            "b": 2604
+          }
+        },
+        {
+          "Name": null,
+          "Value": "N ",
+          "Region": {
+            "l": 1385,
+            "t": 2600,
+            "r": 1415,
+            "b": 2630
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Interest expense for corporate  ",
+          "Region": {
+            "l": 1440,
+            "t": 2601,
+            "r": 1850,
+            "b": 2630
+          }
+        },
+        {
+          "Name": null,
+          "Value": "B ",
+          "Region": {
+            "l": 224,
+            "t": 2605,
+            "r": 253,
+            "b": 2635
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Low-income housing credit ",
+          "Region": {
+            "l": 270,
+            "t": 2611,
+            "r": 634,
+            "b": 2640
+          }
+        },
+        {
+          "Name": null,
+          "Value": "partners ",
+          "Region": {
+            "l": 1440,
+            "t": 2636,
+            "r": 1556,
+            "b": 2665
+          }
+        },
+        {
+          "Name": null,
+          "Value": "(other)  from pre-2008 buildings ",
+          "Region": {
+            "l": 270,
+            "t": 2645,
+            "r": 690,
+            "b": 2674
+          }
+        },
+        {
+          "Name": null,
+          "Value": "O ",
+          "Region": {
+            "l": 1384,
+            "t": 2668,
+            "r": 1415,
+            "b": 2698
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Section 453(l)(3) information ",
+          "Region": {
+            "l": 1440,
+            "t": 2668,
+            "r": 1812,
+            "b": 2697
+          }
+        },
+        {
+          "Name": null,
+          "Value": "C ",
+          "Region": {
+            "l": 223,
+            "t": 2671,
+            "r": 253,
+            "b": 2701
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Low-income housing credit ",
+          "Region": {
+            "l": 270,
+            "t": 2676,
+            "r": 634,
+            "b": 2705
+          }
+        },
+        {
+          "Name": null,
+          "Value": "P ",
+          "Region": {
+            "l": 1387,
+            "t": 2700,
+            "r": 1415,
+            "b": 2730
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Section 453A(c) information ",
+          "Region": {
+            "l": 1440,
+            "t": 2701,
+            "r": 1808,
+            "b": 2730
+          }
+        },
+        {
+          "Name": null,
+          "Value": "(section  42(j)(5)) from ",
+          "Region": {
+            "l": 270,
+            "t": 2709,
+            "r": 557,
+            "b": 2738
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Section 1260(b) information ",
+          "Region": {
+            "l": 1386,
+            "t": 2734,
+            "r": 1807,
+            "b": 2764
+          }
+        },
+        {
+          "Name": null,
+          "Value": "See the Partner’s Instructions ",
+          "Region": {
+            "l": 747,
+            "t": 2741,
+            "r": 1141,
+            "b": 2770
+          }
+        },
+        {
+          "Name": null,
+          "Value": "post-2007 buildings ",
+          "Region": {
+            "l": 270,
+            "t": 2743,
+            "r": 538,
+            "b": 2772
+          }
+        },
+        {
+          "Name": null,
+          "Value": "R ",
+          "Region": {
+            "l": 1388,
+            "t": 2767,
+            "r": 1862,
+            "b": 2797
+          }
+        },
+        {
+          "Name": null,
+          "Value": "D ",
+          "Region": {
+            "l": 223,
+            "t": 2772,
+            "r": 253,
+            "b": 2802
+          }
+        },
+        {
+          "Name": null,
+          "Value": "See the Partner’s ",
+          "Region": {
+            "l": 1920,
+            "t": 2778,
+            "r": 2153,
+            "b": 2807
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Low-income housing credit ",
+          "Region": {
+            "l": 270,
+            "t": 2780,
+            "r": 634,
+            "b": 2809
+          }
+        },
+        {
+          "Name": null,
+          "Value": "expenditures ",
+          "Region": {
+            "l": 1440,
+            "t": 2803,
+            "r": 1617,
+            "b": 2832
+          }
+        },
+        {
+          "Name": null,
+          "Value": "(other)  from post-2007 ",
+          "Region": {
+            "l": 270,
+            "t": 2811,
+            "r": 579,
+            "b": 2840
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Instructions ",
+          "Region": {
+            "l": 1920,
+            "t": 2813,
+            "r": 2080,
+            "b": 2842
+          }
+        },
+        {
+          "Name": null,
+          "Value": "S ",
+          "Region": {
+            "l": 1388,
+            "t": 2834,
+            "r": 1415,
+            "b": 2864
+          }
+        },
+        {
+          "Name": null,
+          "Value": "CCF nonqualified withdrawals ",
+          "Region": {
+            "l": 1440,
+            "t": 2835,
+            "r": 1838,
+            "b": 2864
+          }
+        },
+        {
+          "Name": null,
+          "Value": "buildings ",
+          "Region": {
+            "l": 270,
+            "t": 2842,
+            "r": 396,
+            "b": 2871
+          }
+        },
+        {
+          "Name": null,
+          "Value": "T ",
+          "Region": {
+            "l": 1389,
+            "t": 2867,
+            "r": 1415,
+            "b": 2897
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Depletion information—oil and gas ",
+          "Region": {
+            "l": 1440,
+            "t": 2868,
+            "r": 1862,
+            "b": 2897
+          }
+        },
+        {
+          "Name": null,
+          "Value": "E ",
+          "Region": {
+            "l": 226,
+            "t": 2871,
+            "r": 569,
+            "b": 2901
+          }
+        },
+        {
+          "Name": null,
+          "Value": "U ",
+          "Region": {
+            "l": 1389,
+            "t": 2900,
+            "r": 1419,
+            "b": 2930
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Amortization of reforestation costs",
+          "Region": {
+            "l": 1440,
+            "t": 2901,
+            "r": 1862,
+            "b": 2930
+          }
+        },
+        {
+          "Name": null,
+          "Value": "expenditures (rental real estate) ",
+          "Region": {
+            "l": 270,
+            "t": 2908,
+            "r": 687,
+            "b": 2937
+          }
+        },
+        {
+          "Name": null,
+          "Value": "V ",
+          "Region": {
+            "l": 1390,
+            "t": 2934,
+            "r": 1416,
+            "b": 2964
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Unrelated business taxable income",
+          "Region": {
+            "l": 1440,
+            "t": 2934,
+            "r": 1861,
+            "b": 2963
+          }
+        },
+        {
+          "Name": null,
+          "Value": "F ",
+          "Region": {
+            "l": 228,
+            "t": 2938,
+            "r": 673,
+            "b": 2968
+          }
+        },
+        {
+          "Name": null,
+          "Value": "W ",
+          "Region": {
+            "l": 1383,
+            "t": 2967,
+            "r": 1419,
+            "b": 2997
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Precontribution gain (loss) ",
+          "Region": {
+            "l": 1440,
+            "t": 2968,
+            "r": 1772,
+            "b": 2996
+          }
+        },
+        {
+          "Name": null,
+          "Value": "G ",
+          "Region": {
+            "l": 223,
+            "t": 2972,
+            "r": 529,
+            "b": 3002
+          }
+        },
+        {
+          "Name": null,
+          "Value": "X ",
+          "Region": {
+            "l": 1389,
+            "t": 3000,
+            "r": 1417,
+            "b": 3030
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Section 108(i) information",
+          "Region": {
+            "l": 1440,
+            "t": 3002,
+            "r": 1758,
+            "b": 3030
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Undistributed capital gains credit ",
+          "Region": {
+            "l": 223,
+            "t": 3005,
+            "r": 709,
+            "b": 3035
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Form 1040, line 71; check box a ",
+          "Region": {
+            "l": 750,
+            "t": 3005,
+            "r": 1176,
+            "b": 3034
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Y",
+          "Region": {
+            "l": 1389,
+            "t": 3034,
+            "r": 1408,
+            "b": 3064
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Net investment income",
+          "Region": {
+            "l": 1440,
+            "t": 3035,
+            "r": 1728,
+            "b": 3063
+          }
+        },
+        {
+          "Name": null,
+          "Value": "I ",
+          "Region": {
+            "l": 228,
+            "t": 3038,
+            "r": 245,
+            "b": 3068
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Biofuel producer credit ",
+          "Region": {
+            "l": 270,
+            "t": 3039,
+            "r": 577,
+            "b": 3068
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Z",
+          "Region": {
+            "l": 1392,
+            "t": 3066,
+            "r": 1411,
+            "b": 3096
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Other information",
+          "Region": {
+            "l": 1442,
+            "t": 3067,
+            "r": 1660,
+            "b": 3095
+          }
+        },
+        {
+          "Name": null,
+          "Value": "J ",
+          "Region": {
+            "l": 220,
+            "t": 3072,
+            "r": 244,
+            "b": 3102
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Work opportunity credit ",
+          "Region": {
+            "l": 272,
+            "t": 3073,
+            "r": 589,
+            "b": 3102
+          }
+        },
+        {
+          "Name": null,
+          "Value": "See the Partner's Instructions",
+          "Region": {
+            "l": 750,
+            "t": 3089,
+            "r": 1136,
+            "b": 3118
+          }
+        },
+        {
+          "Name": null,
+          "Value": "Disabled access credit ",
+          "Region": {
+            "l": 220,
+            "t": 3106,
+            "r": 574,
+            "b": 3136
+          }
+        }
+      ]
+    }
+  ]
+}
