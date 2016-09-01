@@ -938,7 +938,7 @@ int TreeFormNodeProcessor::findTextWithMinimumEditDistance(std::vector<TextualDa
     return minIndex;
 }
 
-int TreeFormNodeProcessor::findTextWithMinimumEditDistance(std::vector<TextualData> data, std::string textToFind,
+    int TreeFormNodeProcessor::findTextWithMinimumEditDistance(std::vector<TextualData> data, std::string textToFind,
                                                            cv::Rect region) {
     // TODO: FUNCTION PERFORMANCE OPTIMIZATION NEEDED
     int minDistance = 99999999;

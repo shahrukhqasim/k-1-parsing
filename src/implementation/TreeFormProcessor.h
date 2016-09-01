@@ -14,7 +14,7 @@ class TreeFormProcessor : public FormProcessorInterface<Json::Value>{
     std::shared_ptr<RawFormInterface> form;
     std::shared_ptr<TreeFormNodeProcessor> processor= nullptr;
 public:
-    const std::shared_ptr<TreeFormNodeProcessorInterface> &getProcessor() const;
+    const std::shared_ptr<TreeFormNodeProcessorInterface> getProcessor() const;
 
 public:
     void setProcessor(const std::shared_ptr<TreeFormNodeProcessor> &processor);
