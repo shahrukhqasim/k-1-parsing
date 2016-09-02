@@ -50,11 +50,6 @@ private:
     int findTextWithMinimumEditDistance(std::vector<TextualData>&text,std::string textToFind);
     int findTextWithMinimumEditDistance(std::vector<TextualData>&text,std::string textToFind, cv::Rect region);
 
-    bool integralImageComputed=false;
-    cv::Mat integralImage;
-    void computeIntegralImage();
-
-
     /**
      * Merges words from words into elemBoxes
      *

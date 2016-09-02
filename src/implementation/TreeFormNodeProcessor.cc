@@ -21,25 +21,12 @@ namespace std {
     };
 }
 
-std::shared_ptr<cv::Mat> TreeFormNodeProcessor::getIterationOutputImage(std::string key) {
-    auto iteratorImageFinder = images.find(key);
-    std::shared_ptr<cv::Mat> theImage;
-    if (iteratorImageFinder == images.end()) {
-        std::cout << "Making new copy of " << key << std::endl;
-        images[key] = theImage = std::shared_ptr<cv::Mat>(new cv::Mat(image.clone()));
-    } else {
-        theImage = iteratorImageFinder->second;
-    }
-    return theImage;
-}
-
 bool TreeFormNodeProcessor::process(std::shared_ptr<TreeFormNodeInterface> ptr,
                                     std::shared_ptr<TreeFormModelInterface> model, int iteration,
                                     bool &childrenDone) {
     childrenDone = false;
     // Pre-processing iteration
     if (iteration == 0) {
-//        computeIntegralImage();
         mergeWordBoxes(unmergedText, text);
 
         CDetectCheckBoxes checkboxesDetector;
@@ -67,7 +54,7 @@ bool TreeFormNodeProcessor::process(std::shared_ptr<TreeFormNodeInterface> ptr,
 
         std::shared_ptr<cv::Mat> drawImage = getIterationOutputImage("division");
         for (size_t i = 0; i < text.size(); i++) {
-            cv::rectangle(*drawImage, text[i].getRect(), cv::Scalar(0, 255, 255), 3, 8, 0);
+            cv::rectangle(*drawImage, text[i].getRect(), cv::Scalar(255, 0, 0), 1, 8, 0);
         }
 
         std::shared_ptr<BasicTreeFormNode> bNode = std::dynamic_pointer_cast<BasicTreeFormNode>(ptr);
@@ -109,7 +96,7 @@ bool TreeFormNodeProcessor::process(std::shared_ptr<TreeFormNodeInterface> ptr,
 
                 std::shared_ptr<cv::Mat> drawImage = getIterationOutputImage("division");
                 for (int i = 0; i < vProjection.cols; i++) {
-                    line(*drawImage, cv::Point(i, 0), cv::Point(i, vProjection.at<short>(0, i)), cv::Scalar(255, 0, 0));
+//                    line(*drawImage, cv::Point(i, 0), cv::Point(i, vProjection.at<short>(0, i)), cv::Scalar(255, 0, 0));
                 }
 
 
@@ -1166,40 +1153,47 @@ cv::Mat TreeFormNodeProcessor::getInputImage() {
     return getIterationOutputImage("inputs")->clone();
 }
 
-void TreeFormNodeProcessor::computeIntegralImage() {
-    cv::Mat binaryImage;//=image.clone();
-    Preprocessor::binarizeShafait(image, binaryImage, 100, 0.5);
+std::shared_ptr<cv::Mat> TreeFormNodeProcessor::getIterationOutputImage(std::string key) {
+    auto iteratorImageFinder = images.find(key);
+    std::shared_ptr<cv::Mat> theImage;
+    if (iteratorImageFinder == images.end()) {
+        std::cout << "Making new copy of " << key << std::endl;
+        if(key=="division") {
+            cv::Mat binaryImage;
+//            Preprocessor::binarizeShafait(image,binaryImage,100,0.5);
+            cv::Mat image2;
+            cv::cvtColor(image,image2,CV_BGR2GRAY);
+            cv::threshold(image2, binaryImage, 0, 255, cv::THRESH_BINARY | cv::THRESH_OTSU);
 
-    cv::Mat dottedImage(image.rows,image.cols,CV_8UC1);
+            cv::Mat image3;
+            cv::cvtColor(binaryImage,image3,CV_GRAY2BGR);
 
-    for (int i = 0; i < binaryImage.rows; i++) {
-        for (int j = 0; j < binaryImage.cols; j++) {
-            dottedImage.at<uchar>(i, j) = (binaryImage.at<uchar>(i, j) ? 0 : 1);
+            images[key] = theImage = std::shared_ptr<cv::Mat>(new cv::Mat(image3.clone()));
         }
-    }
-
-//    integralImage=cv::Mat(image.rows+1,image.cols+1,CV_32SC1);
-
-    cv::integral(dottedImage, integralImage,CV_32SC1);
-
-    for (int i = 0; i < integralImage.rows; i++) {
-        for (int j = 0; j < integralImage.cols; j++) {
-            std::cout<<(int)integralImage.at<int>(i,j)<<" ";
+        else {
+            images[key] = theImage = std::shared_ptr<cv::Mat>(new cv::Mat(image.clone()));
         }
+    } else {
+        theImage = iteratorImageFinder->second;
     }
-
-//    std::cout<<integralImage<<std::endl;f
-    integralImageComputed = true;
+    return theImage;
 }
 
 void TreeFormNodeProcessor::mergeWordBoxes(const std::vector<TextualData> &words, std::vector<TextualData> &elemBoxes) {
     // Merge the words extracted from Tesseract to obtain text-lines. The logic used for text-line extraction
     // is to merge two consecutive words if they overlap along the y-axis, and the gap between them is smaller
     // than the height of the shorter word.
+    std::shared_ptr<cv::Mat> drawImage = getIterationOutputImage("division");
     int nRects = words.size();
     bool newElem = true;
     TextualData elem, prevWord;
-    for (int i = 0; i < nRects; i++) {
+    cv::Mat binaryImage,image2;
+    cv::cvtColor(image,image2,CV_BGR2GRAY);
+    cv::threshold(image2, binaryImage, 0, 255, cv::THRESH_BINARY | cv::THRESH_OTSU);
+
+    cv::Mat testMat=image.clone();
+    testMat=255;
+    for (int i = 0  ; i < nRects; i++) {
         TextualData currWord = words[i];
         if (!newElem) {
             int hGap = currWord.getRect().x - prevWord.getRect().x - prevWord.getRect().width;
@@ -1212,15 +1206,25 @@ void TreeFormNodeProcessor::mergeWordBoxes(const std::vector<TextualData> &words
                 vOverlap = true;
             bool hasSeparation = false;
 
-//            if (integralImageComputed) {
-//                int topLeft=(int)integralImage.at<int>(prevWord.getRect().y+1,prevWord.getRect().x+prevWord.getRect().width+1);
-//                int bottomRight=(int)integralImage.at<int>(currWord.getRect().y+currWord.getRect().height-1,currWord.getRect().x-1);
-//                std::cout<<"CHECKa: "<<topLeft<<":"<<bottomRight<<std::endl;
-//                if(topLeft!=bottomRight) {
-//                    hasSeparation=true;
-//                    std::cout<<"CHECK"<<std::endl;
-//                }
-//            }
+            {
+                int x1 = prevWord.getRect().x + prevWord.getRect().width + 2;
+                int y1 = prevWord.getRect().y + 2;
+
+                int x2 = currWord.getRect().x - 2;
+                int y2 = currWord.getRect().y + currWord.getRect().height - 2;
+
+                // TODO: Add conditions, if +2 and -2 goes beyond image bounds
+                if (x1 < x2 && y1 < y2) {
+                    for (int i = x1; i <= x2; i++) {
+                        for (int j = y1; j <= y2; j++) {
+                            if (binaryImage.at<uchar>(j, i) == 0) {
+                                hasSeparation = true;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
 
             if (vOverlap && (hGap > 0) && (hGap < hGapThresh) && !hasSeparation) {
                 elem = elem | currWord;
