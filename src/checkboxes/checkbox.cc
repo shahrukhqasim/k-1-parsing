@@ -354,6 +354,7 @@ bool CDetectCheckBoxes::detectCheckBoxes(string &inFileName, vector<CCheckBox> &
             org = Point (cb.innerBBox.x + cb.innerBBox.width, cb.innerBBox.y + cb.innerBBox.height );
 
         //putText(imgMAT, str, org, FONT_HERSHEY_SIMPLEX, 0.5, Scalar(255,0,0), 2);
+        //
 
     }
 
