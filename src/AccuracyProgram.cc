@@ -80,7 +80,7 @@ float AccuracyProgram::testAccuracy() {
     else
         return 0;
 }
-
+//
 
 AccuracyProgram::AccuracyProgram(string programOutputFile, string expectedOutputFilename, string inputFile,
                                  string comparisonFile) {
