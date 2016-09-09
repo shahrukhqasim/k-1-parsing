@@ -61,6 +61,7 @@ void CDetectCheckBoxes::mergeHoles(vector<Rect> &holes){
     }
     swap(merged, holes);
 }
+//)
 
 double CDetectCheckBoxes::computeFillRatio(Mat &imgBin, Rect &bbox){
     double fr = 0.0;
