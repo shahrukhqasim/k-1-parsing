@@ -74,8 +74,11 @@ void batchProcess(std::string parentPath, bool evaluate) {
     std::shared_ptr<TreeFormModelInterface> model = TreeFormModel::constructFormModel(ifstream(modelFilePath));
     TreeFormProcessor processor(model);
 
+
     Json::Value bindingsFile;
     readJson(parentPath+"groundTruthBindings.json",bindingsFile);
+
+
 
     float accuracySum = 0;
     int num = 0;
