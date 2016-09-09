@@ -49,6 +49,7 @@ inline bool readJson(const std::string& path, Json::Value&output) {
 }
 
 void batchProcess(std::string parentPath, bool evaluate) {
+
     if (parentPath[parentPath.length() - 1] != '/')
         parentPath = parentPath + "/";
 
