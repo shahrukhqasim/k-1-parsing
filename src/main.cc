@@ -184,11 +184,17 @@ void printHelp() {
  * @return insignificant. Will return 0 in most cases.
  */
 int main(int argc, char**argv) {
+
     if(argc!=3) {
         cout<<"Error in arguments."<<endl;
         printHelp();
         exit(0);
     }
+//    OcrProgram temp("f1040-2.png","/Users/talha/Desktop/input","/Users/talha/Desktop/output2");
+//    temp.run();
+//
+//
+//    return 0;
 
     // Firt argument is always -o or -a. If it is -o, we have to run OCR Job+Accuracy Job
     string job=argv[1];

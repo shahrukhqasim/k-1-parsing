@@ -73,7 +73,6 @@ void OcrProgram::run() {
     // Load the binary image from the path provided
     loadBinaryImage(originalImage, inputFolder + "/" + inputFileName, 0);
 
-	
 	// Then compute its segmentation
     doSegmentation(originalImage, segments);
 
@@ -162,7 +161,7 @@ vector<OcrResult> OcrProgram::CleanResults(std::vector<OcrResult>& results)
 
 
 void OcrProgram::runOcr() {
-   
+
 	// First run OCR on the segments
 	TesseractFinder finder1(outputFolder + "/" + cleanedImageFileName);
 	finder1.run();

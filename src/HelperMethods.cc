@@ -1,6 +1,7 @@
 #include "HelperMethods.h"
 #include <iostream>
 #include <regex>
+
 using namespace cv;
 using namespace std;
 
@@ -55,6 +56,28 @@ bool HelperMethods::nearEqualComparison(const string&a,const string&b) {
     }
 
 	return c==d;
+
+}
+
+void HelperMethods::convertPdfs() {
+        ifstream inputStream("/Users/talha/Desktop/files/files.txt");
+        std::string str;
+        while (getline(inputStream, str)) {
+            std::string withoutExtension=HelperMethods::removeFileExtension(str);
+
+            std::string inputFileName="\"/Users/talha/Desktop/input/";
+            inputFileName+=str;
+            inputFileName+='"';
+
+            std::string outputFileName="\"/Users/talha/Desktop/input/";
+            outputFileName+=withoutExtension;
+            outputFileName+=".png\"";
+            std::string command="convert -density 300 "+inputFileName;
+            command+=" -quality 100 ";
+            command+=outputFileName;
+            system(command.c_str());
+        }
+
 
 }
 

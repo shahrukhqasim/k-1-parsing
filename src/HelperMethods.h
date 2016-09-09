@@ -2,6 +2,7 @@
 #include "opencv2/highgui/highgui.hpp"
 #include "opencv2/imgproc/imgproc.hpp"
 #include <string>
+#include "fstream"
 
 #ifndef HELPERMETHODS_H_
 #define HELPERMETHODS_H_
@@ -67,6 +68,9 @@ public:
      * @param[in] rgx_str represents the regular expression. Default is whitespace
      *
      * */
+
+    static void convertPdfs();
+
     static std::vector<std::string> regexSplit(const std::string & s, std::string rgx_str = "\\s+");
 };
 
