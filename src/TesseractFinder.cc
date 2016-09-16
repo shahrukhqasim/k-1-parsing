@@ -38,31 +38,46 @@ void TesseractFinder::run(const unsigned char* imagedata, int width, int height,
 }
 
 
-void TesseractFinder::iterate(tesseract::TessBaseAPI *api) {
+void TesseractFinder::iterate(tesseract::TessBaseAPI *api) 
+{
     tesseract::ResultIterator *ri = api->GetIterator();
-    tesseract::PageIteratorLevel level=tesseract::RIL_WORD;
-//    tesseract::PageIteratorLevel level = iteratorLevel;
+    tesseract::PageIteratorLevel level=tesseract::RIL_WORD;	   
 
-    string recognizedText;
-
-    if (ri != 0) {
-        do {
+    if (ri != 0) 
+	{
+        do 
+		{
             const char *word = ri->GetUTF8Text(level);
 			if (word != NULL)
-			{
-			//	float conf = ri->Confidence(level);
-				int x1, y1, x2, y2;
+			{	
+				OcrResult result;
+				result.confidence = ri->Confidence(level);
+				ri->BoundingBox(level, &result.word.left, &result.word.top, &result.word.right, &result.word.bottom);
 
-				ri->BoundingBox(level, &x1, &y1, &x2, &y2);
+				result.word.text = word;
+				delete[] word;
 
-				data.push_back({Point(x1, y1), Point(x2, y2), word});
+				do
+				{	
+					auto character = ri->GetUTF8Text(tesseract::RIL_SYMBOL);
+					
+					if (character != NULL)
+					{
+						TextAndLocation textAndLocation;
+						textAndLocation.text = character;
+						ri->BoundingBox(tesseract::RIL_SYMBOL, &textAndLocation.left, &textAndLocation.top, &textAndLocation.right, &textAndLocation.bottom);
+						result.characters.push_back(textAndLocation);
 
-          
-#ifdef TESSERACT_DEBUG_ON
-                cout << text << std::endl;
-#endif
-                recognizedText += word;
-                recognizedText += " ";
+						delete[] character;
+					}
+					if (ri->IsAtFinalElement(tesseract::RIL_WORD, tesseract::RIL_SYMBOL))
+					{
+						break;
+					}
+
+				} while (ri->Next(tesseract::RIL_SYMBOL));
+
+				data.push_back(result);          
             }
         } while (ri->Next(level));
     }
@@ -78,13 +93,17 @@ void TesseractFinder::recognizeText(const unsigned char* imagedata, int width, i
 
 	if (!api->SetVariable("textord_no_rejects", "1"))
 		printf("Setting variable failed!!!\n");
+	
+	
+	const char *configs[] = { "alphanumeric" };
+	int configs_size = 1;
 
-	if (api->Init(NULL, "eng"))
+	if (api->Init(NULL, "eng", tesseract::OEM_DEFAULT,const_cast<char**>(configs),configs_size,NULL,NULL,false))
 	{
 		fprintf(stderr, "Could not initialize tesseract.\n");
 		exit(1);
 	}
-
+	
 	api->SetPageSegMode(tesseract::PSM_SPARSE_TEXT);
 	api->SetImage(imagedata, width, height, bytes_per_pixel, bytes_per_line);
 
@@ -125,7 +144,13 @@ void TesseractFinder::recognizeText(Pix* image) {
     if (!api->SetVariable("textord_no_rejects", "1"))
         printf("Setting variable failed!!!\n");
 
-    if (api->Init(NULL, "eng")) {
+
+	const char *configs[] = { "alphanumeric" };
+	int configs_size = 1;
+
+
+	if (api->Init(NULL, "eng", tesseract::OEM_DEFAULT, const_cast<char**>(configs), configs_size, NULL, NULL, false))   
+	{
         fprintf(stderr, "Could not initialize tesseract.\n");
         exit(1);
     }

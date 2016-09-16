@@ -22,7 +22,7 @@ void OcrProgram::loadBinaryImage(cv::Mat &image, string fileName, int mode) {
 
 }
 
-
+//Only used by the managed wrapper.
 vector<OcrResult> OcrProgram::PerformOCR(std::vector<unsigned char> data)
 {
 	auto image2 = imdecode(data, 0);
@@ -62,8 +62,8 @@ vector<OcrResult> OcrProgram::PerformOCR(std::vector<unsigned char> data)
 	results.reserve(segmentedData.size() + unsegmentedData.size()); // preallocate memory
 	results.insert(results.end(), segmentedData.begin(), segmentedData.end());
 	results.insert(results.end(), unsegmentedData.begin(), unsegmentedData.end());
-
-	return CleanResults(results);
+		
+	return results;
 
 }
 
@@ -127,25 +127,25 @@ vector<OcrResult> OcrProgram::CleanResults(std::vector<OcrResult>& results)
 	// Remove leading and trailing whitespaces
 	for (OcrResult& result : results)
 	{
-		result.text = regex_replace(result.text, regex("(^\\s+)|(\\s|\\\\n)+$"), "");
-		vector<string>elements = HelperMethods::regexSplit(result.text);
+		result.word.text = regex_replace(result.word.text, regex("(^\\s+)|(\\s|\\\\n)+$"), "");
+		vector<string>elements = HelperMethods::regexSplit(result.word.text);
 		if (elements.size()>1)
 		{
 			
 			//vector<Rect> subRectangles;
 			//double percentage = 0;
-			double single = 1.0*(result.p2.x - result.p1.x) / result.text.length();
-			double startingX = result.p1.x;
+			double single = 1.0*(result.word.right - result.word.left) / result.word.text.length();
+			double startingX = result.word.left;
 			for (size_t i = 0;i<elements.size();i++)
 			{
 				OcrResult subElement;
-				subElement.text = elements[i];
-				subElement.p1.y = result.p1.y;
-				subElement.p2.y = result.p2.y;
+				subElement.word.text = elements[i];
+				subElement.word.top = result.word.top;
+				subElement.word.bottom = result.word.bottom;
 
-				subElement.p1.x = (int) startingX;
+				subElement.word.left = (int) startingX;
 				startingX += single*elements[i].length();
-				subElement.p2.x = (int) startingX;
+				subElement.word.right = (int) startingX;
 				startingX += single;
 
 				data3.push_back(subElement);
@@ -249,13 +249,13 @@ void OcrProgram::outputToJson() {
 
     for(size_t i=0;i<data.size();i++) {
         OcrResult wordEntry=data[i];
-        string s=wordEntry.text;
+        string s=wordEntry.word.text;
         Json::Value word;
         Json::Value rectangle;
-        rectangle["l"]=wordEntry.p1.x;
-        rectangle["t"]=wordEntry.p1.y;
-        rectangle["r"]=wordEntry.p2.x;
-        rectangle["b"]=wordEntry.p2.y;
+        rectangle["l"]=wordEntry.word.left;
+        rectangle["t"]=wordEntry.word.top;
+        rectangle["r"]=wordEntry.word.right;
+        rectangle["b"]=wordEntry.word.bottom;
         word["Value"]=s;
         word["Region"]=rectangle;
 
@@ -275,8 +275,10 @@ void OcrProgram::outputResult() {
 
     for (size_t i = 0; i < data.size(); i++) {
 
-        Point p1 = data[i].p1;
-        Point p2 = data[i].p2;
+		Point p1 = Point(data[i].word.left, data[i].word.top);
+		Point p2 = Point(data[i].word.right, data[i].word.bottom);
+			
+        
         Scalar color = Scalar(rng.uniform(0, 255), rng.uniform(0, 255),
                               rng.uniform(0, 255));
 

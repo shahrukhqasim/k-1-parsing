@@ -15,16 +15,7 @@
 #include "opencv2/imgproc/imgproc.hpp"
 #include <vector>
 
-
-/**
- * Contains an OCR result entry.
- * TODO: change it to TextualData class
- */
-struct OcrResult {
-    cv::Point p1;
-    cv::Point p2;
-    std::string text;
-};
+#include "TesseractFinderInterface.h"
 
 /**
  * This class represents a tesseract OCR job

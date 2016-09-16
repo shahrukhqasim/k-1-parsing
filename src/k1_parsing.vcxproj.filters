@@ -16,34 +16,7 @@
     <ClCompile Include="..\json\jsoncpp.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Mapper.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Model\MappingJob.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Model\ModelParser.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Model\Node.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Preprocessor.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Processor.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Processor2.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Model\RepeatInputNode.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Model\TableNode.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Model\TextNode.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="TextualData.cc">
@@ -61,8 +34,65 @@
     <ClCompile Include="TesseractFinder.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="LineBreaker.cc">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="implementation\BasicForm.cc">
+      <Filter>implementation</Filter>
+    </ClCompile>
+    <ClCompile Include="implementation\BasicTreeFormNode.cc">
+      <Filter>implementation</Filter>
+    </ClCompile>
+    <ClCompile Include="implementation\DivisionRule.cc">
+      <Filter>implementation</Filter>
+    </ClCompile>
+    <ClCompile Include="implementation\DivisionRuleWithReference.cc">
+      <Filter>implementation</Filter>
+    </ClCompile>
+    <ClCompile Include="implementation\InputTreeFormNode.cc">
+      <Filter>implementation</Filter>
+    </ClCompile>
+    <ClCompile Include="implementation\RepeatInputTreeFormNode.cc">
+      <Filter>implementation</Filter>
+    </ClCompile>
+    <ClCompile Include="implementation\TableTreeFormNode.cc">
+      <Filter>implementation</Filter>
+    </ClCompile>
+    <ClCompile Include="implementation\TextTreeFormNode.cc">
+      <Filter>implementation</Filter>
+    </ClCompile>
+    <ClCompile Include="implementation\TreeFormModel.cc">
+      <Filter>implementation</Filter>
+    </ClCompile>
+    <ClCompile Include="implementation\TreeFormNodeProcessor.cc">
+      <Filter>implementation</Filter>
+    </ClCompile>
+    <ClCompile Include="implementation\TreeFormProcessor.cc">
+      <Filter>implementation</Filter>
+    </ClCompile>
+    <ClCompile Include="checkboxes\checkbox.cc">
+      <Filter>checkboxes</Filter>
+    </ClCompile>
+    <ClCompile Include="checkboxes\main-detect-checkboxes.cc">
+      <Filter>checkboxes</Filter>
+    </ClCompile>
+    <ClCompile Include="accuracy_test\InputFieldsAccuracyTest.cc">
+      <Filter>accuracy_test</Filter>
+    </ClCompile>
+    <ClCompile Include="Model\MappingJob.cc">
+      <Filter>model</Filter>
+    </ClCompile>
+    <ClCompile Include="Model\ModelParser.cc">
+      <Filter>model</Filter>
+    </ClCompile>
+    <ClCompile Include="Model\Node.cc">
+      <Filter>model</Filter>
+    </ClCompile>
+    <ClCompile Include="Model\RepeatInputNode.cc">
+      <Filter>model</Filter>
+    </ClCompile>
+    <ClCompile Include="Model\TableNode.cc">
+      <Filter>model</Filter>
+    </ClCompile>
+    <ClCompile Include="Model\TextNode.cc">
+      <Filter>model</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -126,8 +156,77 @@
     <ClInclude Include="Model\Node.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Processor.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="interfaces\FormModelInterface.h">
+      <Filter>interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="interfaces\FormProcessorInterface.h">
+      <Filter>interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="interfaces\LabelledTreeNodeInterface.h">
+      <Filter>interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="interfaces\RawFormInterface.h">
+      <Filter>interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="interfaces\RuleInterface.h">
+      <Filter>interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="interfaces\TreeFormModelInterface.h">
+      <Filter>interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="interfaces\TreeFormNodeInterface.h">
+      <Filter>interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="interfaces\TreeFormNodeProcessorInterface.h">
+      <Filter>interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="implementation\BasicForm.h">
+      <Filter>implementation</Filter>
+    </ClInclude>
+    <ClInclude Include="implementation\BasicTreeFormNode.h">
+      <Filter>implementation</Filter>
+    </ClInclude>
+    <ClInclude Include="implementation\DivisionRule.h">
+      <Filter>implementation</Filter>
+    </ClInclude>
+    <ClInclude Include="implementation\DivisionRuleWithReference.h">
+      <Filter>implementation</Filter>
+    </ClInclude>
+    <ClInclude Include="implementation\InputTreeFormNode.h">
+      <Filter>implementation</Filter>
+    </ClInclude>
+    <ClInclude Include="implementation\RepeatInputTreeFormNode.h">
+      <Filter>implementation</Filter>
+    </ClInclude>
+    <ClInclude Include="implementation\TableTreeFormNode.h">
+      <Filter>implementation</Filter>
+    </ClInclude>
+    <ClInclude Include="implementation\TextTreeFormNode.h">
+      <Filter>implementation</Filter>
+    </ClInclude>
+    <ClInclude Include="implementation\TreeFormModel.h">
+      <Filter>implementation</Filter>
+    </ClInclude>
+    <ClInclude Include="implementation\TreeFormNodeProcessor.h">
+      <Filter>implementation</Filter>
+    </ClInclude>
+    <ClInclude Include="implementation\TreeFormProcessor.h">
+      <Filter>implementation</Filter>
+    </ClInclude>
+    <ClInclude Include="checkboxes\checkbox.h">
+      <Filter>checkboxes</Filter>
+    </ClInclude>
+    <ClInclude Include="checkboxes\concomp.h">
+      <Filter>checkboxes</Filter>
+    </ClInclude>
+    <ClInclude Include="checkboxes\union-find.h">
+      <Filter>checkboxes</Filter>
+    </ClInclude>
+    <ClInclude Include="accuracy_test\InputFieldsAccuracyTest.h">
+      <Filter>accuracy_test</Filter>
+    </ClInclude>
+    <ClInclude Include="TesseractFinderInterface.h">
+      <Filter>interfaces</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -136,6 +235,21 @@
     </Filter>
     <Filter Include="Header Files">
       <UniqueIdentifier>{273098F1-7DE3-34BE-8716-9F76C8BDDD7B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="interfaces">
+      <UniqueIdentifier>{4fa724a6-4def-4f90-b4c3-356287b4fbc0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="implementation">
+      <UniqueIdentifier>{3e6770b9-da9d-494c-afa7-05f7d3c048d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="checkboxes">
+      <UniqueIdentifier>{33c1f39c-6780-43c1-91e2-e055afa8e52b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="accuracy_test">
+      <UniqueIdentifier>{83aef112-9463-4df0-b972-52ea97732141}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="model">
+      <UniqueIdentifier>{9a76a8ce-23aa-44c1-8e71-a0242a4a62f2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

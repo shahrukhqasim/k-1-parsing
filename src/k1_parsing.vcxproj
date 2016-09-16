@@ -63,7 +63,7 @@
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>_WIN64;WIN32;_WINDOWS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NOMINMAX;_WIN64;WIN32;_WINDOWS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
     </ClCompile>
     <ResourceCompile>
@@ -109,7 +109,7 @@ copy /Y ..\..\Externals\bin\liblept172.dll $(OutDir)</Command>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NOMINMAX;WIN32;_WINDOWS;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <DebugInformationFormat>
       </DebugInformationFormat>
@@ -149,15 +149,38 @@ copy /Y ..\..\Externals\bin\liblept172.dll $(OutDir)</Command>
     <ClInclude Include="..\csv\CSVparser.h" />
     <ClInclude Include="..\json\json\json.h" />
     <ClInclude Include="..\json\json\json-forwards.h" />
+    <ClInclude Include="accuracy_test\InputFieldsAccuracyTest.h" />
+    <ClInclude Include="checkboxes\checkbox.h" />
+    <ClInclude Include="checkboxes\concomp.h" />
+    <ClInclude Include="checkboxes\union-find.h" />
     <ClInclude Include="EditDistance.h" />
     <ClInclude Include="HelperMethods.h" />
+    <ClInclude Include="implementation\BasicForm.h" />
+    <ClInclude Include="implementation\BasicTreeFormNode.h" />
+    <ClInclude Include="implementation\DivisionRule.h" />
+    <ClInclude Include="implementation\DivisionRuleWithReference.h" />
+    <ClInclude Include="implementation\InputTreeFormNode.h" />
+    <ClInclude Include="implementation\RepeatInputTreeFormNode.h" />
+    <ClInclude Include="implementation\TableTreeFormNode.h" />
+    <ClInclude Include="implementation\TextTreeFormNode.h" />
+    <ClInclude Include="implementation\TreeFormModel.h" />
+    <ClInclude Include="implementation\TreeFormNodeProcessor.h" />
+    <ClInclude Include="implementation\TreeFormProcessor.h" />
+    <ClInclude Include="interfaces\FormModelInterface.h" />
+    <ClInclude Include="interfaces\FormProcessorInterface.h" />
+    <ClInclude Include="interfaces\LabelledTreeNodeInterface.h" />
+    <ClInclude Include="interfaces\RawFormInterface.h" />
+    <ClInclude Include="interfaces\RuleInterface.h" />
+    <ClInclude Include="interfaces\TreeFormModelInterface.h" />
+    <ClInclude Include="interfaces\TreeFormNodeInterface.h" />
+    <ClInclude Include="interfaces\TreeFormNodeProcessorInterface.h" />
+    <ClInclude Include="TesseractFinderInterface.h" />
     <ClInclude Include="TesseractFinder.h" />
     <ClInclude Include="UnionFind.h" />
     <ClInclude Include="Preprocessor.h" />
     <ClInclude Include="OcrProgram.h" />
     <ClInclude Include="TextualData.h" />
     <ClInclude Include="AccuracyProgram.h" />
-    <ClInclude Include="Processor.h" />
     <ClInclude Include="Processor2.h" />
     <ClInclude Include="Mapper.h" />
     <ClInclude Include="Model\ModelParser.h" />
@@ -169,25 +192,35 @@ copy /Y ..\..\Externals\bin\liblept172.dll $(OutDir)</Command>
     <ClInclude Include="Model\MappingJob.h" />
     <ClCompile Include="..\csv\CSVparser.cc" />
     <ClCompile Include="..\json\jsoncpp.cc" />
+    <ClCompile Include="accuracy_test\InputFieldsAccuracyTest.cc" />
+    <ClCompile Include="checkboxes\checkbox.cc" />
+    <ClCompile Include="checkboxes\main-detect-checkboxes.cc" />
     <ClCompile Include="EditDistance.cc" />
     <ClCompile Include="HelperMethods.cc" />
-    <ClCompile Include="LineBreaker.cc" />
+    <ClCompile Include="implementation\BasicForm.cc" />
+    <ClCompile Include="implementation\BasicTreeFormNode.cc" />
+    <ClCompile Include="implementation\DivisionRule.cc" />
+    <ClCompile Include="implementation\DivisionRuleWithReference.cc" />
+    <ClCompile Include="implementation\InputTreeFormNode.cc" />
+    <ClCompile Include="implementation\RepeatInputTreeFormNode.cc" />
+    <ClCompile Include="implementation\TableTreeFormNode.cc" />
+    <ClCompile Include="implementation\TextTreeFormNode.cc" />
+    <ClCompile Include="implementation\TreeFormModel.cc" />
+    <ClCompile Include="implementation\TreeFormNodeProcessor.cc" />
+    <ClCompile Include="implementation\TreeFormProcessor.cc" />
     <ClCompile Include="main.cc" />
+    <ClCompile Include="Model\MappingJob.cc" />
+    <ClCompile Include="Model\ModelParser.cc" />
+    <ClCompile Include="Model\Node.cc" />
+    <ClCompile Include="Model\RepeatInputNode.cc" />
+    <ClCompile Include="Model\TableNode.cc" />
+    <ClCompile Include="Model\TextNode.cc" />
     <ClCompile Include="OcrProgram.cc" />
     <ClCompile Include="Preprocessor.cc" />
     <ClCompile Include="TesseractFinder.cc" />
     <ClCompile Include="TextualData.cc" />
     <ClCompile Include="AccuracyProgram.cc" />
-    <ClCompile Include="Processor.cc" />
-    <ClCompile Include="Processor2.cc" />
-    <ClCompile Include="Mapper.cc" />
-    <ClCompile Include="Model\ModelParser.cc" />
-    <ClCompile Include="Model\Node.cc" />
-    <ClCompile Include="Model\TextNode.cc" />
     <ClCompile Include="Model\InputNode.cc" />
-    <ClCompile Include="Model\TableNode.cc" />
-    <ClCompile Include="Model\RepeatInputNode.cc" />
-    <ClCompile Include="Model\MappingJob.cc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

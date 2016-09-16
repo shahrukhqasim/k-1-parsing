@@ -4,6 +4,10 @@ VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "k1_parsing", "k1_parsing.vcxproj", "{31B8AC2F-2D07-38C7-AAEF-CC2EA6957746}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TesseractWrapperTest", "TesseractWrapperTest\TesseractWrapperTest.csproj", "{C9122A61-2978-49CC-8E47-02C3629465D1}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TesseractWrapper", "TesseractWrapper\TesseractWrapper.vcxproj", "{37D07290-02D1-40BF-8B4C-BB4E0F76F5AB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -14,6 +18,14 @@ Global
 		{31B8AC2F-2D07-38C7-AAEF-CC2EA6957746}.Debug|x64.Build.0 = Debug|x64
 		{31B8AC2F-2D07-38C7-AAEF-CC2EA6957746}.Release|x64.ActiveCfg = Release|x64
 		{31B8AC2F-2D07-38C7-AAEF-CC2EA6957746}.Release|x64.Build.0 = Release|x64
+		{C9122A61-2978-49CC-8E47-02C3629465D1}.Debug|x64.ActiveCfg = Debug|x64
+		{C9122A61-2978-49CC-8E47-02C3629465D1}.Debug|x64.Build.0 = Debug|x64
+		{C9122A61-2978-49CC-8E47-02C3629465D1}.Release|x64.ActiveCfg = Release|x64
+		{C9122A61-2978-49CC-8E47-02C3629465D1}.Release|x64.Build.0 = Release|x64
+		{37D07290-02D1-40BF-8B4C-BB4E0F76F5AB}.Debug|x64.ActiveCfg = Debug|x64
+		{37D07290-02D1-40BF-8B4C-BB4E0F76F5AB}.Debug|x64.Build.0 = Debug|x64
+		{37D07290-02D1-40BF-8B4C-BB4E0F76F5AB}.Release|x64.ActiveCfg = Release|x64
+		{37D07290-02D1-40BF-8B4C-BB4E0F76F5AB}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

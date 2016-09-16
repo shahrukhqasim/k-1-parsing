@@ -3,7 +3,7 @@
 #ifndef K1_PARSING_TREEFORMNODEPROCESSOR_H
 #define K1_PARSING_TREEFORMNODEPROCESSOR_H
 
-
+#include <functional>
 #include "../interfaces/TreeFormNodeProcessorInterface.h"
 #include "../interfaces/RawFormInterface.h"
 #include "BasicTreeFormNode.h"
