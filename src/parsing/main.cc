@@ -11,8 +11,6 @@ using namespace std;
 using namespace tesseract;
 using namespace cv;
 
-#include "ocr/AccuracyProgram.h"
-
 //#include <iostream>
 #include "interfaces/TreeFormModelInterface.h"
 #include "implementation/TreeFormModel.h"
@@ -155,13 +153,7 @@ void batchProcess(std::string parentPath, bool evaluate) {
  * This function prints arguments help
  */
 void printHelp() {
-    cout<<"Argument 1 should either be -a, -o, -e, or -p to run only accuracy test, OCR+accuracy test, processing evaluation program or processing programrespectively respectively."<<endl<<endl;
-    cout<<" * In case of -a or -o you need to give path of a directory as second argument which must contin these folders:\n"
-                  "\t * 1. programInput - should contain input images and files.txt which must contains names (not path) of input images files\n"
-                  "\t * 2. expectedOutput - should contain the JSON files of expected output and files.txt which must contain names (not paths) of these JSON files. The order should match with (1)\n"
-                  "\t * 3. programOutput - empty for OCR+Accuracy test. And for accuracy test, should contain JSON files containing output of OCR. There should also be a ocrJsonFiles.txt file in the folder hich specifies the JSON output files.\n"
-                  "\t * 4. plottedDataComparison - an empty folder. Output is written to it. The files that are already there will be overwritten.\n\n";
-    cout<<" * In case of -m, you must give path of mdl file as second argument"<<endl<<endl;
+    cout<<"Argument 1 should either be -e, or -p to run only  processing evaluation program or processing program respectively."<<endl<<endl;
     cout<<" * In case of -p, you must give path as second argument of a folder which contains these directories:\n";
     cout<<"\t * 1. images - should contain png files of the document images along with files.txt which must contain names (not path) of the image files"<<endl;
     cout<<"\t * 2. output - an empty folder which will get the output. Existing files will be overwritten"<<endl;
@@ -196,16 +188,7 @@ int main(int argc, char**argv) {
     string path=argv[2];
 
 
-    // Compare the job and run the program accordingly
-    if(job==string("-a")) {
-        AccuracyProgram::runAccuracyTest(path);
-    }
-    else if(job==string("-o")) {
-
-        OcrProgram::runOcrProgram(path);
-
-    }
-    else if(job==string("-p")) {
+    if(job==string("-p")) {
         batchProcess(path,false);
     }
     else if(job==string("-e")) {
