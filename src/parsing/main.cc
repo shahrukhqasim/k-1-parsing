@@ -11,7 +11,7 @@ using namespace std;
 using namespace tesseract;
 using namespace cv;
 
-#include "AccuracyProgram.h"
+#include "ocr/AccuracyProgram.h"
 
 //#include <iostream>
 #include "interfaces/TreeFormModelInterface.h"

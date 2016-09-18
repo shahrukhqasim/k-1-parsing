@@ -1,5 +1,5 @@
 #include "OcrProgram.h"
-#include "TextualData.h"
+#include "common/TextualData.h"
 
 
 #ifndef K_1_PARSING2_ACCURACYPROGRAM_H
