@@ -1,8 +1,9 @@
-#include "../checkboxes/checkbox.h"
+
 
 #ifndef K1_PARSING_TREEFORMNODEPROCESSOR_H
 #define K1_PARSING_TREEFORMNODEPROCESSOR_H
 
+#include "../checkboxes/checkbox.h"
 #include <functional>
 #include "../interfaces/TreeFormNodeProcessorInterface.h"
 #include "../interfaces/RawFormInterface.h"
@@ -39,8 +40,15 @@ public:
     cv::Mat getCheckboxesImage();
     cv::Mat getDivisionImage();
     cv::Mat getInputImage();
+
 private:
+    std::shared_ptr<TextDistanceInterface> textDistanceFinder;
     virtual int findTextWithMinimumEditDistance(std::string textToFind);
+
+public:
+    void setTextDistanceFinder(const std::shared_ptr<TextDistanceInterface> &textDistanceFinder);
+
+private:
     void convertRulesToFunctions(std::shared_ptr<BasicTreeFormNode> theNode,
                                  std::shared_ptr<TreeFormModel> model,
                                  std::shared_ptr<BasicTreeFormNode> root,

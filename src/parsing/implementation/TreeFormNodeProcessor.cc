@@ -921,8 +921,7 @@ int TreeFormNodeProcessor::findTextWithMinimumEditDistance(std::vector<TextualDa
                 dataCurrent2 += dataCurrent[i];
         }
 
-        BasicLevenshteinDistance editDistance;
-        int newDistance = editDistance.calcualteDistance(dataCurrent2.c_str(),
+        int newDistance = textDistanceFinder->calcualteDistance(dataCurrent2.c_str(),
                                                          textToFind.c_str());
         if (newDistance < minDistance) {
             minDistance = newDistance;
@@ -951,8 +950,7 @@ int TreeFormNodeProcessor::findTextWithMinimumEditDistance(std::vector<TextualDa
                 dataCurrent2 += dataCurrent[i];
         }
 
-        BasicLevenshteinDistance editDistance;
-        int newDistance = editDistance.calcualteDistance(dataCurrent2.c_str(),
+        int newDistance = textDistanceFinder->calcualteDistance(dataCurrent2.c_str(),
                                                          textToFind.c_str());
         if (newDistance < minDistance) {
             minDistance = newDistance;
@@ -1139,6 +1137,7 @@ TreeFormNodeProcessor::TreeFormNodeProcessor(const cv::Mat &image, const std::ve
     TreeFormNodeProcessor::image = image;
     TreeFormNodeProcessor::unmergedText = nonMergedWords;
     TreeFormNodeProcessor::root = root;
+    textDistanceFinder=std::shared_ptr<TextDistanceInterface>(new BasicLevenshteinDistance()); // Here we are making an concrete class without interface.
 }
 
 cv::Mat TreeFormNodeProcessor::getCheckboxesImage() {
@@ -1244,4 +1243,8 @@ void TreeFormNodeProcessor::mergeWordBoxes(const std::vector<TextualData> &words
         }
     }
     elemBoxes.push_back(elem);
+}
+
+void TreeFormNodeProcessor::setTextDistanceFinder(const std::shared_ptr<TextDistanceInterface> &textDistanceFinder) {
+    TreeFormNodeProcessor::textDistanceFinder = textDistanceFinder;
 }
