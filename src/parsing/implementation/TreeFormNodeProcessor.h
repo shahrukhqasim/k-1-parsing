@@ -9,6 +9,7 @@
 #include "../interfaces/RawFormInterface.h"
 #include "BasicTreeFormNode.h"
 #include "TreeFormModel.h"
+#include <regex>
 
 class TreeFormNodeProcessor : public TreeFormNodeProcessorInterface{
 private:
@@ -57,6 +58,7 @@ private:
     std::vector<TextualData> findVectorizedTextFromFunctionalRules(std::vector<std::function<bool(const TextualData &n)>> functionalRules);
     int findTextWithMinimumEditDistance(std::vector<TextualData>&text,std::string textToFind);
     int findTextWithMinimumEditDistance(std::vector<TextualData>&text,std::string textToFind, cv::Rect region);
+    std::pair<int,int> getCartesianCoordinateOfTableNode(const std::string &fullNodeId);
 
     /**
      * Merges words from words into elemBoxes

@@ -129,9 +129,7 @@ bool TreeFormNodeProcessor::process(std::shared_ptr<TreeFormNodeInterface> ptr,
             }
 
             for (auto i:bNode->divisionRules) {
-                std::cout << i->getRuleKeyword() << std::endl;
                 if (std::dynamic_pointer_cast<DivisionRuleWithReference>(i) != nullptr) {
-                    std::cout << "Reference" << std::endl;
                     std::shared_ptr<DivisionRuleWithReference> castedRule = std::dynamic_pointer_cast<DivisionRuleWithReference>(
                             i);
 
@@ -179,9 +177,6 @@ bool TreeFormNodeProcessor::process(std::shared_ptr<TreeFormNodeInterface> ptr,
 
             textDividedRegion[bNode->getId()] = cv::Rect(left, top, right - left, bottom - top);
             std::shared_ptr<cv::Mat> drawImage = getIterationOutputImage("division");
-
-            std::cout << "Division rect " << bNode->getId() << ": " << cv::Rect(left, top, right - left, bottom - top)
-                      << std::endl;
 
             cv::Scalar color(0, 0, 255);
             if (colorBucket.size() != 0) {
@@ -701,173 +696,160 @@ bool TreeFormNodeProcessor::process(std::shared_ptr<TreeFormNodeInterface> ptr,
                 }
             }
 
-
-//        cout << left << " " << top << " " << right << " " << bottom << endl;
-//        cout << width << " " << height << endl;
             cv::Rect r(left, top, right - left, bottom - top);
 
 
             if (divisionRegionIdentified) {
                 r = r & dividedTextRegion;
             }
-            {
-                std::shared_ptr<cv::Mat> theImage = getIterationOutputImage("inputs");
-                cv::Scalar randomColor(255, 0, 0);// = randomColors[((unsigned int) rng) % 5];
-                //   rectangle(*theImage, r, randomColor, 3, 8, 0);
-            }
-
-//        cout << "R=" << r << endl;
 
             std::regex hasAnAlphaNumericCharacter(".*([0-9-]|[A-Z]|[a-z]).*");
 
-            std::vector<TextualData> croppedTextualData;
+            std::unordered_map<TextualData, std::pair<int, int>> croppedTextualData;
+            std::vector<TextualData> croppedTextualDataB;
             std::for_each(text.begin(), text.end(), [&](TextualData &d) {
                 if ((r & d.getRect()).area() != 0 && std::regex_match(d.getText(), hasAnAlphaNumericCharacter)) {
-//                cout << d.getText() << endl;
-                    croppedTextualData.push_back(d);
-                    std::cout << "Cropped : " << d.getText() << std::endl;
+                    croppedTextualData[d] = std::pair<int, int>(-1, -1);
+                    croppedTextualDataB.push_back(d);
                 }
             });
 
-            std::cout << "Cropped size: " << croppedTextualData.size() << std::endl;
-
-            // Sort wrt y co-ordinates
-            sort(croppedTextualData.begin(), croppedTextualData.end(),
-                 [&](const TextualData &d1, const TextualData &d2) -> bool {
-                     return (d1.getRect().y < d2.getRect().y);
-                 });
-
-            std::unordered_map<TextualData, std::pair<int, int>> dataX;
-            for_each(croppedTextualData.begin(), croppedTextualData.end(), [&](TextualData &d) {
-                dataX[d] = std::pair<int, int>(-1, -1);
-            });
+            // Collect all the children into a vector
+            std::vector<std::shared_ptr<TreeFormNodeInterface>> tableChildrenNodes;
+            tModel->getChildren(tableChildrenNodes);
 
 
-            int rowValue = 0;
-            for_each(croppedTextualData.begin(), croppedTextualData.end(), [&](TextualData alpha) {
-                if (dataX[alpha].second == -1) {
-//                cout << "Data " << alpha.getText() << endl;
-                    dataX[alpha].second = rowValue;
-                    // Both of the coordinates are defined, find all matching columns
-                    std::for_each(dataX.begin(), dataX.end(), [&](std::pair<TextualData, std::pair<int, int>> beta) {
-                        if ((cv::Rect(beta.first.getRect().y, 0, beta.first.getRect().height, 10) &
-                             cv::Rect(alpha.getRect().y, 0, alpha.getRect().height, 10)).area() != 0) {
-//                        cout << "Merging " << beta.first.getText() << " with " << alpha.getText() << endl;
-                            dataX[beta.first].second = rowValue;
+            auto pairHash = [](std::pair<int, int> const & foo) {
+                return foo.first+foo.second*997;
+            };
+
+            std::unordered_set<std::pair<int, int>,decltype(pairHash)> takenCoordinates(0,pairHash);
+
+            // Assign text to text nodes in the table (row and column headers)
+            for (auto i:tableChildrenNodes) {
+                if (std::dynamic_pointer_cast<TextTreeFormNode>(i) != nullptr) {
+                    std::shared_ptr<TextTreeFormNode> textNode = std::dynamic_pointer_cast<TextTreeFormNode>(i);
+                    int minIndex = findTextWithMinimumEditDistance(croppedTextualDataB, textNode->getText());
+                    if (minIndex != -1) {
+                        std::pair<int, int> coordinates = getCartesianCoordinateOfTableNode(i->getId());
+                        if (coordinates.first != -1) {
+                            croppedTextualData[croppedTextualDataB[minIndex]] = coordinates;
+                            takenCoordinates.insert(coordinates);
+                            textNode->setTextAssigned(croppedTextualDataB[minIndex].getText());
+                            textNode->setRegion(croppedTextualDataB[minIndex].getRect());
+                            textNode->setRegionDefined(true);
                         }
-                    });
-                    rowValue++;
-                }
-            });
-
-
-            // Sort wrt x co-ordinates
-            sort(croppedTextualData.begin(), croppedTextualData.end(),
-                 [&](const TextualData &d1, const TextualData &d2) -> bool {
-                     return (d1.getRect().x < d2.getRect().x);
-                 });
-
-            int colValue = 0;
-            for_each(croppedTextualData.begin(), croppedTextualData.end(), [&](TextualData alpha) {
-                if (dataX[alpha].first == -1) {
-//                cout << "Data " << alpha.getText() << endl;
-                    dataX[alpha].first = colValue;
-                    // Both of the coordinates are defined, find all matching columns
-                    for_each(dataX.begin(), dataX.end(), [&](std::pair<TextualData, std::pair<int, int>> beta) {
-                        if ((cv::Rect(beta.first.getRect().x, 0, beta.first.getRect().width, 10) &
-                             cv::Rect(alpha.getRect().x, 0, alpha.getRect().width, 10)).area() != 0) {
-//                        cout << "Merging " << beta.first.getText() << " with " << alpha.getText() << endl;
-                            dataX[beta.first].first = colValue;
-                        }
-                    });
-                    colValue++;
-                }
-            });
-            std::for_each(dataX.begin(), dataX.end(), [&](std::pair<TextualData, std::pair<int, int>> beta) {
-                std::cout << beta.first.getText() << ": (" << beta.second.first << "," << beta.second.second << ")"
-                          << std::endl;
-            });
-
-            std::for_each(tModel->getStartIterator(), tModel->getEndIterator(),
-                          [&](std::pair<std::string, std::shared_ptr<TreeFormNodeInterface>> alpha) {
-                              if (std::dynamic_pointer_cast<TextTreeFormNode>(alpha.second) != nullptr) {
-                                  std::vector<std::string> splits = HelperMethods::regexSplit(
-                                          alpha.first.substr(1, alpha.first.length() - 2), ",");
-                                  int x = std::stoi(splits[0]);
-                                  int y = std::stoi(splits[1]);
-
-                                  int pos = findTextWithMinimumEditDistance(croppedTextualData,
-                                                                            std::dynamic_pointer_cast<TextTreeFormNode>(
-                                                                                    alpha.second)->getText());
-                                  if (pos != -1) {
-                                      TextualData ddd = croppedTextualData[pos];
-
-                                      dataX[ddd].first = x;
-                                      dataX[ddd].second = y;
-                                  }
-                              }
-                          });
-
-            for_each(dataX.begin(), dataX.end(), [&](std::pair<TextualData, std::pair<int, int>> alpha) {
-                if (alpha.second.first != -1 && alpha.second.second != -1) {
-                    // Both of the coordinates are defined, find all matching columns
-                    for_each(dataX.begin(), dataX.end(), [&](std::pair<TextualData, std::pair<int, int>> beta) {
-                        if ((cv::Rect(beta.first.getRect().x, 0, beta.first.getRect().width, 10) &
-                             cv::Rect(alpha.first.getRect().x, 0, alpha.first.getRect().width, 10)).area() != 0)
-                            dataX[beta.first].first = alpha.second.first;
-                    });
-                }
-            });
-
-//            for_each(dataX.begin(), dataX.end(), [&](std::pair<TextualData, std::pair<int, int>> alpha) {
-//            cout << "Assigned to " << alpha.first.getText() << " value " << alpha.second.first << ","
-//                 << alpha.second.second << endl;
-//            });
-
-
-            std::string dx = "";
-
-            std::for_each(dataX.begin(), dataX.end(), [&](std::pair<TextualData, std::pair<int, int>> alpha) {
-//            cout << "Assigned to " << alpha.first.getText() << " value " << alpha.second.first << ","
-//                 << alpha.second.second << endl;
-                std::string coordinateString;
-
-                coordinateString += std::string("(");
-                coordinateString += std::to_string(alpha.second.first);
-                coordinateString += std::string(",");
-                coordinateString += std::to_string(alpha.second.second);
-                coordinateString += std::string(")");
-
-                dx += std::string("(");
-                dx += std::to_string(alpha.second.first);
-                dx += std::string(",");
-                dx += std::to_string(alpha.second.second);
-                dx += std::string(")");
-                dx += std::string("=>");
-                dx += alpha.first.getText() + "\n";
-
-//            cout<<"Finding "<<coordinateString<<endl;
-                if (tModel->getChild(coordinateString) != nullptr) {
-                    std::shared_ptr<TreeFormNodeInterface> nx = tModel->getChild(coordinateString);
-                    if (std::dynamic_pointer_cast<InputTreeFormNode>(nx) != nullptr) {
-                        std::shared_ptr<InputTreeFormNode> nx2 = std::dynamic_pointer_cast<InputTreeFormNode>(nx);
-//                    cout<<"SETTING "<<coordinateString<<" to "<<alpha.first.getText()<<endl;
-                        nx2->setData(nx2->getData() + alpha.first.getText());
-                        nx2->setRegion(alpha.first.getRect());
-                        nx2->setRegionDefined(true);
-
-
-                        std::shared_ptr<cv::Mat> theImage = getIterationOutputImage("inputs");
-                        cv::Scalar randomColor = randomColors[((unsigned int) rng) % 5];
-                        rectangle(*theImage, nx2->getRegion(), randomColor, 3, 8, 0);
-                        putText(*theImage, nx2->getData(), nx2->getRegion().br(), 1, 2, randomColor, 2);
                     }
                 }
+            }
 
-            });
+            // Assign row numbers wrt to textual nodes
+            {
+                std::unordered_set<TextualData> done;
+                for (auto &i : croppedTextualData) {
+                    if (done.find(i.first) != done.end())
+                        continue;
+                    if (i.second.first == -1 || i.second.second == -1)
+                        continue;
+                    done.insert(i.first);
+                    for (auto &j:croppedTextualData) {
+                        if (done.find(j.first) != done.end())
+                            continue;
+                        if (j.second.second != -1)
+                            continue;
+                        cv::Rect a = i.first.getRect();
+                        cv::Rect b = j.first.getRect();
+                        if (std::max(0, std::min(a.y + a.height, b.y + b.height) - std::max(a.y, b.y)) > 0) {
+                            j.second.second = i.second.second;
+                            done.insert(j.first);
+                        }
+                    }
+                }
+            }
+
+            // Assign column numbers wrt to textual nodes
+            {
+                std::unordered_set<TextualData> done;
+                for (auto &i : croppedTextualData) {
+                    if (done.find(i.first) != done.end())
+                        continue;
+                    if (i.second.first == -1 || i.second.second == -1)
+                        continue;
+                    done.insert(i.first);
+                    for (auto &j:croppedTextualData) {
+                        if (done.find(j.first) != done.end())
+                            continue;
+                        if (j.second.first != -1)
+                            continue;
+                        cv::Rect a = i.first.getRect();
+                        cv::Rect b = j.first.getRect();
+                        if (std::max(0, std::min(a.x + a.width, b.x + b.width) - std::max(a.x, b.x)) > 0) {
+                            j.second.first = i.second.first;
+
+                            // If both coordinates are assigned
+                            if (j.second.second != -1) {
+                                takenCoordinates.insert(j.second);
+                            }
+
+                            done.insert(j.first);
+                        }
+                    }
+                }
+            }
+
+            // TODO: Making one small assumption: every cell will have a row number assigned here (true for all K-1 forms) might have to modify later
+
+            // Now give them column numbers (they shouldn't have been taken)
+            {
+                // Sort wrt x-coordinates
+                std::vector<TextualData> xSorted;
+                for (auto i:croppedTextualData) {
+                    xSorted.push_back(i.first);
+                }
+                for (auto i:xSorted) {
+                    if (croppedTextualData[i].first != -1)
+                        continue;
+                    for (int j = 0; j < tModel->getNumCols(); ++j) {
+                        if (takenCoordinates.find(std::pair<int, int>(j, croppedTextualData[i].second)) !=
+                            takenCoordinates.end())
+                            continue;
+//                        std::cout<<"Here"<<std::endl;
+                        croppedTextualData[i].first = j;
+                        takenCoordinates.insert(std::pair<int, int>(j, croppedTextualData[i].second));
+                        break;
+
+                    }
+                }
+            }
+
+            // In the last stage, put the data in the table pointer
+            for(auto i:croppedTextualData) {
+                std::string coordinateString;
+
+                coordinateString+="(";
+                coordinateString+=std::to_string(i.second.first);
+                coordinateString+=",";
+                coordinateString+=std::to_string(i.second.second);
+                coordinateString+=")";
+
+                if (tModel->getChild(coordinateString) != nullptr) {
+                    std::shared_ptr<TreeFormNodeInterface> tableChild = tModel->getChild(coordinateString);
 
 
-//            tModel->data = dx;
+                    if (std::dynamic_pointer_cast<InputTreeFormNode>(tableChild) != nullptr) {
+                        std::shared_ptr<InputTreeFormNode> inputTableChild = std::dynamic_pointer_cast<InputTreeFormNode>(tableChild);
+
+                        inputTableChild->setData(inputTableChild->getData() + i.first.getText());
+                        inputTableChild->setRegion(i.first.getRect());
+                        inputTableChild->setRegionDefined(true);
+                        std::shared_ptr<cv::Mat> theImage = getIterationOutputImage("inputs");
+                        cv::Scalar randomColor = randomColors[((unsigned int) rng) % 5];
+                        rectangle(*theImage, inputTableChild->getRegion(), randomColor, 3, 8, 0);
+                        putText(*theImage, inputTableChild->getData(), inputTableChild->getRegion().br(), 1, 2, randomColor, 2);
+                    }
+                }
+            }
+
             childrenDone = true;
         }
     } else if (iteration == 4) {
@@ -908,7 +890,7 @@ int TreeFormNodeProcessor::findTextWithMinimumEditDistance(std::string textToFin
     return minIndex;
 }
 
-int TreeFormNodeProcessor::findTextWithMinimumEditDistance(std::vector<TextualData>& text, std::string textToFind) {
+int TreeFormNodeProcessor::findTextWithMinimumEditDistance(std::vector<TextualData> &text, std::string textToFind) {
     // TODO: FUNCTION PERFORMANCE OPTIMIZATION NEEDED
     int minDistance = 99999999;
     int minIndex = -1;
@@ -922,7 +904,7 @@ int TreeFormNodeProcessor::findTextWithMinimumEditDistance(std::vector<TextualDa
         }
 
         int newDistance = textDistanceFinder->calcualteDistance(dataCurrent2.c_str(),
-                                                         textToFind.c_str());
+                                                                textToFind.c_str());
         if (newDistance < minDistance) {
             minDistance = newDistance;
             minIndex = i;
@@ -932,7 +914,7 @@ int TreeFormNodeProcessor::findTextWithMinimumEditDistance(std::vector<TextualDa
     return minIndex;
 }
 
-int TreeFormNodeProcessor::findTextWithMinimumEditDistance(std::vector<TextualData>&text, std::string textToFind,
+int TreeFormNodeProcessor::findTextWithMinimumEditDistance(std::vector<TextualData> &text, std::string textToFind,
                                                            cv::Rect region) {
     // TODO: FUNCTION PERFORMANCE OPTIMIZATION NEEDED
     int minDistance = 99999999;
@@ -951,7 +933,7 @@ int TreeFormNodeProcessor::findTextWithMinimumEditDistance(std::vector<TextualDa
         }
 
         int newDistance = textDistanceFinder->calcualteDistance(dataCurrent2.c_str(),
-                                                         textToFind.c_str());
+                                                                textToFind.c_str());
         if (newDistance < minDistance) {
             minDistance = newDistance;
             minIndex = i;
@@ -1137,7 +1119,8 @@ TreeFormNodeProcessor::TreeFormNodeProcessor(const cv::Mat &image, const std::ve
     TreeFormNodeProcessor::image = image;
     TreeFormNodeProcessor::unmergedText = nonMergedWords;
     TreeFormNodeProcessor::root = root;
-    textDistanceFinder=std::shared_ptr<TextDistanceInterface>(new BasicLevenshteinDistance()); // Here we are making an concrete class without interface.
+    textDistanceFinder = std::shared_ptr<TextDistanceInterface>(
+            new BasicLevenshteinDistance()); // Here we are making an concrete class without interface.
 }
 
 cv::Mat TreeFormNodeProcessor::getCheckboxesImage() {
@@ -1157,19 +1140,18 @@ std::shared_ptr<cv::Mat> TreeFormNodeProcessor::getIterationOutputImage(std::str
     std::shared_ptr<cv::Mat> theImage;
     if (iteratorImageFinder == images.end()) {
         std::cout << "Making new copy of " << key << std::endl;
-        if(key=="division") {
+        if (key == "division") {
             cv::Mat binaryImage;
 //            Preprocessor::binarizeShafait(image,binaryImage,100,0.5);
             cv::Mat image2;
-            cv::cvtColor(image,image2,CV_BGR2GRAY);
+            cv::cvtColor(image, image2, CV_BGR2GRAY);
             cv::threshold(image2, binaryImage, 0, 255, cv::THRESH_BINARY | cv::THRESH_OTSU);
 
             cv::Mat image3;
-            cv::cvtColor(binaryImage,image3,CV_GRAY2BGR);
+            cv::cvtColor(binaryImage, image3, CV_GRAY2BGR);
 
             images[key] = theImage = std::shared_ptr<cv::Mat>(new cv::Mat(image3.clone()));
-        }
-        else {
+        } else {
             images[key] = theImage = std::shared_ptr<cv::Mat>(new cv::Mat(image.clone()));
         }
     } else {
@@ -1186,13 +1168,13 @@ void TreeFormNodeProcessor::mergeWordBoxes(const std::vector<TextualData> &words
     int nRects = words.size();
     bool newElem = true;
     TextualData elem, prevWord;
-    cv::Mat binaryImage,image2;
-    cv::cvtColor(image,image2,CV_BGR2GRAY);
+    cv::Mat binaryImage, image2;
+    cv::cvtColor(image, image2, CV_BGR2GRAY);
     cv::threshold(image2, binaryImage, 0, 255, cv::THRESH_BINARY | cv::THRESH_OTSU);
 
-    cv::Mat testMat=image.clone();
-    testMat=255;
-    for (int i = 0  ; i < nRects; i++) {
+    cv::Mat testMat = image.clone();
+    testMat = 255;
+    for (int i = 0; i < nRects; i++) {
         TextualData currWord = words[i];
         if (!newElem) {
             int hGap = currWord.getRect().x - prevWord.getRect().x - prevWord.getRect().width;
@@ -1247,4 +1229,19 @@ void TreeFormNodeProcessor::mergeWordBoxes(const std::vector<TextualData> &words
 
 void TreeFormNodeProcessor::setTextDistanceFinder(const std::shared_ptr<TextDistanceInterface> &textDistanceFinder) {
     TreeFormNodeProcessor::textDistanceFinder = textDistanceFinder;
+}
+
+std::pair<int, int> TreeFormNodeProcessor::getCartesianCoordinateOfTableNode(const std::string &fullNodeId) {
+    std::string testString = fullNodeId;
+    size_t myNameSeparator = testString.find_last_of(':');
+    std::string b = testString.substr(myNameSeparator + 1, testString.size() - myNameSeparator - 1);
+    std::regex pieces_regex("[(](\\d+)[,](\\d+)[)]");
+    std::smatch pieces_match;
+    int x = -1;
+    int y = -1;
+    if (std::regex_match(b, pieces_match, pieces_regex)) {
+        x = std::stoi(pieces_match[1].str());
+        y = std::stoi(pieces_match[2].str());
+    }
+    return std::pair<int, int>(x, y);
 }
