@@ -2,7 +2,7 @@
 #include "opencv2/highgui/highgui.hpp"
 #include "opencv2/imgproc/imgproc.hpp"
 #include <string>
-#include "common/UnionFind.h"
+#include "UnionFind.h"
 
 
 #ifndef K_1_PARSING2_PREPROCESSOR_H

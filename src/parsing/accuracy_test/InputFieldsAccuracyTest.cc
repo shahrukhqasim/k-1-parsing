@@ -1,6 +1,6 @@
 
 #include "InputFieldsAccuracyTest.h"
-#include "../HelperMethods.h"
+#include "../../common/HelperMethods.h"
 #include <regex>
 
 

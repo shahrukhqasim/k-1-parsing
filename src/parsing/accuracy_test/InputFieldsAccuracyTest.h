@@ -6,7 +6,7 @@
 #include <opencv2/core/mat.hpp>
 #include <unordered_map>
 #include <iostream>
-#include "../../json/json/json.h"
+#include "../../../json/json/json.h"
 #include <string>
 
 class InputFieldsAccuracyTest {

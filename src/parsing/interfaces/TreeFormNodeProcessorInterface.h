@@ -8,7 +8,7 @@
 #include <memory>
 #include <vector>
 #include "TreeFormModelInterface.h"
-#include "../TextualData.h"
+#include "../../common/TextualData.h"
 #include "TreeFormNodeInterface.h"
 class TreeFormNodeInterface;
 class TreeFormModelInterface;
