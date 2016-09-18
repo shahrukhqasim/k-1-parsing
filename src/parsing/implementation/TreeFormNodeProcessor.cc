@@ -896,9 +896,9 @@ int TreeFormNodeProcessor::findTextWithMinimumEditDistance(std::string textToFin
                 dataCurrent2 += dataCurrent[i];
         }
 
-        EditDistance editDistance;
-        int newDistance = editDistance.lDistance(dataCurrent2.c_str(),
-                                                 textToFind.c_str());
+        BasicLevenshteinDistance editDistance;
+        int newDistance = editDistance.calcualteDistance(dataCurrent2.c_str(),
+                                                         textToFind.c_str());
         if (newDistance < minDistance) {
             minDistance = newDistance;
             minIndex = i;
@@ -921,9 +921,9 @@ int TreeFormNodeProcessor::findTextWithMinimumEditDistance(std::vector<TextualDa
                 dataCurrent2 += dataCurrent[i];
         }
 
-        EditDistance editDistance;
-        int newDistance = editDistance.lDistance(dataCurrent2.c_str(),
-                                                 textToFind.c_str());
+        BasicLevenshteinDistance editDistance;
+        int newDistance = editDistance.calcualteDistance(dataCurrent2.c_str(),
+                                                         textToFind.c_str());
         if (newDistance < minDistance) {
             minDistance = newDistance;
             minIndex = i;
@@ -951,9 +951,9 @@ int TreeFormNodeProcessor::findTextWithMinimumEditDistance(std::vector<TextualDa
                 dataCurrent2 += dataCurrent[i];
         }
 
-        EditDistance editDistance;
-        int newDistance = editDistance.lDistance(dataCurrent2.c_str(),
-                                                 textToFind.c_str());
+        BasicLevenshteinDistance editDistance;
+        int newDistance = editDistance.calcualteDistance(dataCurrent2.c_str(),
+                                                         textToFind.c_str());
         if (newDistance < minDistance) {
             minDistance = newDistance;
             minIndex = i;

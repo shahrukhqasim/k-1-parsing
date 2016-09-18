@@ -14,7 +14,7 @@
 #include <leptonica/allheaders.h>
 
 #include "TesseractFinder.h"
-#include "../common/EditDistance.h"
+#include "../common/BasicLevenshteinDistance.h"
 
 #include "../../csv/CSVparser.h"
 #include "../common/HelperMethods.h"
