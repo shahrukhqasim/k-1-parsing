@@ -1,10 +1,12 @@
 #ifndef EDIT_DISTANCE_
 #define EDIT_DISTANCE_
 
-class EditDistance
+#include "TextDistanceInterface.h"
+
+class BasicLevenshteinDistance : public TextDistanceInterface
 {
   public:
-    int lDistance (char const *s, char const *t);
+    virtual int calcualteDistance (char const *s, char const *t);
   private:
     int minimum (int a, int b, int c);
     int *getCellPointer (int *pOrigin, int col, int row, int nCols);
