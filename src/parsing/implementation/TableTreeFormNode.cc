@@ -11,3 +11,11 @@ TableTreeFormNode::getStartIterator() {
 std::unordered_map<std::string, std::shared_ptr<TreeFormNodeInterface>>::iterator TableTreeFormNode::getEndIterator() {
     return subNodes.end();
 }
+
+int TableTreeFormNode::getNumCols() const {
+    return numCols;
+}
+
+int TableTreeFormNode::getNumRows() const {
+    return numRows;
+}
