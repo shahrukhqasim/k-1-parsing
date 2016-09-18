@@ -7,65 +7,67 @@ link_directories(/usr/local/lib/ /usr/lib/)
 include_directories(/usr/local/include/)
 
 set(SOURCE_FILES
-        src/main.cc
         csv/CSVparser.cc
         csv/CSVparser.h
         json/jsoncpp.cc
         json/json/json.h
         json/json/json-forwards.h
-        src/EditDistance.cc
-        src/EditDistance.h
-        src/HelperMethods.cc
-        src/HelperMethods.h
-        src/TesseractFinder.cc
-        src/TesseractFinder.h
-        src/UnionFind.h
-        src/Preprocessor.cc
-        src/Preprocessor.h
-        src/OcrProgram.cc
-        src/OcrProgram.h
-        src/TextualData.cc
-        src/TextualData.h
-        src/AccuracyProgram.cc
-        src/AccuracyProgram.h
-        src/interfaces/FormProcessorInterface.h
-        src/interfaces/RawFormInterface.h
-        src/interfaces/FormModelInterface.h
-        src/interfaces/LabelledTreeNodeInterface.h
-        src/interfaces/TreeFormNodeInterface.h
-        src/interfaces/TreeFormModelInterface.h
-        src/implementation/TreeFormProcessor.cc
-        src/implementation/TreeFormProcessor.h
-        src/implementation/TreeFormModel.cc
-        src/implementation/TreeFormModel.h
-        src/interfaces/TreeFormNodeProcessorInterface.h
-        src/implementation/BasicTreeFormNode.cc
-        src/implementation/BasicTreeFormNode.h
-        src/implementation/TextTreeFormNode.cc
-        src/implementation/TextTreeFormNode.h
-        src/implementation/InputTreeFormNode.cc
-        src/implementation/InputTreeFormNode.h
-        src/implementation/RepeatInputTreeFormNode.cc
-        src/implementation/RepeatInputTreeFormNode.h
-        src/implementation/TableTreeFormNode.cc
-        src/implementation/TableTreeFormNode.h
-        src/implementation
-        src/implementation/TreeFormNodeProcessor.cc
-        src/implementation/TreeFormNodeProcessor.h
-        src/interfaces/RuleInterface.h
-        src/implementation/DivisionRule.cc
-        src/implementation/DivisionRule.h
-        src/implementation/DivisionRuleWithReference.cc
-        src/implementation/DivisionRuleWithReference.h
-        src/checkboxes/checkbox.cc
-        src/checkboxes/checkbox.h
-        src/implementation/BasicForm.cc
-        src/implementation/BasicForm.h
-        src/accuracy_test/InputFieldsAccuracyTest.cc
-        src/accuracy_test/InputFieldsAccuracyTest.h)
+        src/common/EditDistance.cc
+        src/common/EditDistance.h
+        src/common/HelperMethods.cc
+        src/common/HelperMethods.h
+        src/ocr/TesseractFinder.cc
+        src/ocr/TesseractFinder.h
+        src/common/UnionFind.h
+        src/common/Preprocessor.cc
+        src/common/Preprocessor.h
+        src/ocr/OcrProgram.cc
+        src/ocr/OcrProgram.h
+        src/common/TextualData.cc
+        src/common/TextualData.h
+        src/ocr/AccuracyProgram.cc
+        src/ocr/AccuracyProgram.h
+        src/parsing/interfaces/FormProcessorInterface.h
+        src/parsing/interfaces/RawFormInterface.h
+        src/parsing/interfaces/FormModelInterface.h
+        src/parsing/interfaces/LabelledTreeNodeInterface.h
+        src/parsing/interfaces/TreeFormNodeInterface.h
+        src/parsing/interfaces/TreeFormModelInterface.h
+        src/parsing/implementation/TreeFormProcessor.cc
+        src/parsing/implementation/TreeFormProcessor.h
+        src/parsing/implementation/TreeFormModel.cc
+        src/parsing/implementation/TreeFormModel.h
+        src/parsing/interfaces/TreeFormNodeProcessorInterface.h
+        src/parsing/implementation/BasicTreeFormNode.cc
+        src/parsing/implementation/BasicTreeFormNode.h
+        src/parsing/implementation/TextTreeFormNode.cc
+        src/parsing/implementation/TextTreeFormNode.h
+        src/parsing/implementation/InputTreeFormNode.cc
+        src/parsing/implementation/InputTreeFormNode.h
+        src/parsing/implementation/RepeatInputTreeFormNode.cc
+        src/parsing/implementation/RepeatInputTreeFormNode.h
+        src/parsing/implementation/TableTreeFormNode.cc
+        src/parsing/implementation/TableTreeFormNode.h
+        src/parsing/implementation
+        src/parsing/implementation/TreeFormNodeProcessor.cc
+        src/parsing/implementation/TreeFormNodeProcessor.h
+        src/parsing/interfaces/RuleInterface.h
+        src/parsing/implementation/DivisionRule.cc
+        src/parsing/implementation/DivisionRule.h
+        src/parsing/implementation/DivisionRuleWithReference.cc
+        src/parsing/implementation/DivisionRuleWithReference.h
+        src/parsing/checkboxes/checkbox.cc
+        src/parsing/checkboxes/checkbox.h
+        src/parsing/implementation/BasicForm.cc
+        src/parsing/implementation/BasicForm.h
+        src/parsing/accuracy_test/InputFieldsAccuracyTest.cc
+        src/parsing/accuracy_test/InputFieldsAccuracyTest.h)
 
 set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra")
 
 
-add_executable(k1_parsing ${SOURCE_FILES})
+add_executable(k1_parsing src/parsing/main.cc ${SOURCE_FILES})
+add_executable(k1_parsing_ocr src/ocr/main.cc ${SOURCE_FILES})
+
 target_link_libraries(k1_parsing lept tesseract opencv_core opencv_imgproc opencv_highgui opencv_imgcodecs)
+target_link_libraries(k1_parsing_ocr lept tesseract opencv_core opencv_imgproc opencv_highgui opencv_imgcodecs)
