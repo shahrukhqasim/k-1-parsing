@@ -1183,6 +1183,7 @@ void TreeFormNodeProcessor::mergeWordBoxes(const std::vector<TextualData> &words
     // Merge the words extracted from Tesseract to obtain text-lines. The logic used for text-line extraction
     // is to merge two consecutive words if they overlap along the y-axis, and the gap between them is smaller
     // than the height of the shorter word.
+
     std::shared_ptr<cv::Mat> drawImage = getIterationOutputImage("division");
     int nRects = words.size();
     bool newElem = true;
