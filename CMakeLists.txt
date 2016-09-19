@@ -12,8 +12,8 @@ set(SOURCE_FILES
         json/jsoncpp.cc
         json/json/json.h
         json/json/json-forwards.h
-        src/common/EditDistance.cc
-        src/common/EditDistance.h
+        src/common/BasicLevenshteinDistance.cc
+        src/common/BasicLevenshteinDistance.h
         src/common/HelperMethods.cc
         src/common/HelperMethods.h
         src/ocr/TesseractFinder.cc
@@ -61,7 +61,7 @@ set(SOURCE_FILES
         src/parsing/implementation/BasicForm.cc
         src/parsing/implementation/BasicForm.h
         src/parsing/accuracy_test/InputFieldsAccuracyTest.cc
-        src/parsing/accuracy_test/InputFieldsAccuracyTest.h)
+        src/parsing/accuracy_test/InputFieldsAccuracyTest.h src/common/TextDistanceInterface.h)
 
 set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra")
 
