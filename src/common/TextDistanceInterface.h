@@ -1,7 +1,3 @@
-//
-// Created by shahrukhqasim on 9/18/16.
-//
-
 #ifndef K1_PARSING_TEXTDISTANCEINTERFACE_H
 #define K1_PARSING_TEXTDISTANCEINTERFACE_H
 

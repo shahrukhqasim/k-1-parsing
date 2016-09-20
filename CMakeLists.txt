@@ -16,15 +16,16 @@ set(SOURCE_FILES
         src/common/BasicLevenshteinDistance.h
         src/common/HelperMethods.cc
         src/common/HelperMethods.h
-        src/ocr/TesseractFinder.cc
-        src/ocr/TesseractFinder.h
         src/common/UnionFind.h
         src/common/Preprocessor.cc
         src/common/Preprocessor.h
-        src/ocr/OcrProgram.cc
-        src/ocr/OcrProgram.h
         src/common/TextualData.cc
         src/common/TextualData.h
+        src/common/TextDistanceInterface.h
+        src/ocr/TesseractFinder.cc
+        src/ocr/TesseractFinder.h
+        src/ocr/OcrProgram.cc
+        src/ocr/OcrProgram.h
         src/ocr/AccuracyProgram.cc
         src/ocr/AccuracyProgram.h
         src/parsing/interfaces/FormProcessorInterface.h
@@ -61,7 +62,7 @@ set(SOURCE_FILES
         src/parsing/implementation/BasicForm.cc
         src/parsing/implementation/BasicForm.h
         src/parsing/accuracy_test/InputFieldsAccuracyTest.cc
-        src/parsing/accuracy_test/InputFieldsAccuracyTest.h src/common/TextDistanceInterface.h)
+        src/parsing/accuracy_test/InputFieldsAccuracyTest.h)
 
 set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra")
 
