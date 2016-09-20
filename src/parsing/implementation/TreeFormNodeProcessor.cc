@@ -600,7 +600,7 @@ bool TreeFormNodeProcessor::process(std::shared_ptr<TreeFormNodeInterface> ptr,
                 }
 
                 for (auto i:checkboxes) {
-                    if ((i.outerBBox & rect).area() != 0) {
+                    if ((i.outerBBox & rect).area() == i.outerBBox.area()) {
                         if (done) {
                             std::cout << "Warning: multiple checkboxes in region of " << iModel->getId() << std::endl;
                         }
@@ -1225,6 +1225,11 @@ void TreeFormNodeProcessor::mergeWordBoxes(const std::vector<TextualData> &words
         }
     }
     elemBoxes.push_back(elem);
+
+    std::cout<<"Merged data"<<std::endl;
+    for(auto i:elemBoxes) {
+        std::cout<<i.getText()<<std::endl;
+    }
 }
 
 void TreeFormNodeProcessor::setTextDistanceFinder(const std::shared_ptr<TextDistanceInterface> &textDistanceFinder) {
