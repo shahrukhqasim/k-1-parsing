@@ -346,7 +346,7 @@ bool CDetectCheckBoxes::detectCheckBoxes(string &inFileName, vector<CCheckBox> &
         Point org;
 //                if(cb.validOuterBBox)
 //                    org = Point (cb.outerBBox.y + cb.outerBBox.height, cb.outerBBox.x + cb.outerBBox.width + 5);
-//                else
+//    //            else
 //                    org = Point (cb.innerBBox.y + cb.innerBBox.height, cb.innerBBox.x + cb.innerBBox.width + 15);
 
         if(cb.validOuterBBox)
