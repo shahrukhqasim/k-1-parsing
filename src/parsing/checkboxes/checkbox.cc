@@ -2,6 +2,7 @@
 #include <string>
 #include "checkbox.h"
 #include "../../common/Preprocessor.h"
+#include "iostream"
 
 using namespace std;
 using namespace cv;
@@ -14,7 +15,7 @@ using namespace cv;
  * @param[out]    binary Output image binarized using Otsu's method.
  */
 void CDetectCheckBoxes::binarizeOtsu(Mat &gray, Mat &binary){
-    threshold(gray, binary, 0, 255, THRESH_BINARY | THRESH_OTSU);
+    threshold(gray, binary, 50, 255, THRESH_BINARY | THRESH_OTSU);
 }
 
 /**
@@ -25,7 +26,7 @@ void CDetectCheckBoxes::binarizeOtsu(Mat &gray, Mat &binary){
  * @return    True if the input rectangle appears like a square, False otherwise.
  */
 bool CDetectCheckBoxes::isAlmostSquare(Rect &r){
-    float factor = 0.3;
+    float factor = 0.4;
     float hmin = (float) (r.height * (1.0 - factor));
     float hmax = (float) (r.height * (1.0 + factor));
 
@@ -112,9 +113,15 @@ void CDetectCheckBoxes::fillRatioFilter(Mat &imgBin, vector<CCheckBox> &cBoxes){
 
 bool CDetectCheckBoxes::detectCheckBoxes(Mat &imgMATgray, vector<CCheckBox> &cBoxes){
 
+    static int alpha=0;
+
     Mat imgMATbin, imgMATbinInv, imgMATbinMorph, imgMATbinH, imgMATbinV;
     binarizeOtsu(imgMATgray, imgMATbin);
+
+   // std::cout<<imgMATbin;
+
     imgMATbinInv = 255 - imgMATbin;
+
     Mat elementH(2, 20, CV_8U, cv::Scalar(1));
     Mat elementV(20, 2, CV_8U, cv::Scalar(1));
     erode(imgMATbinInv, imgMATbinH, elementH);
@@ -122,6 +129,8 @@ bool CDetectCheckBoxes::detectCheckBoxes(Mat &imgMATgray, vector<CCheckBox> &cBo
     dilate(imgMATbinH, imgMATbinH, elementH);
     dilate(imgMATbinV, imgMATbinV, elementV);
     imgMATbinMorph = imgMATbinH | imgMATbinV;
+
+    imgMATbinMorph=imgMATbinInv;
 
 //	ifstream infile("coords.csv");
 //	if (!infile.is_open()){
@@ -132,10 +141,14 @@ bool CDetectCheckBoxes::detectCheckBoxes(Mat &imgMATgray, vector<CCheckBox> &cBo
     vector<Rect> holes;
 //	for (size_t i = 0; i < x.size(); i++){
     Mat new_mat = imgMATbinMorph;//(Rect(x[i], y[i], width[i], height[i]));
-    /*imshow("out", new_mat);
-    waitKey(0);
-    destroyWindow("out");*/
+
+
+//    string path="/Users/talha/Desktop/output"+ to_string(alpha) + ".png";
+//    alpha++;
+//    imwrite(path,255-imgMATbin);
+
     Preprocessor::conCompFast(new_mat, holes, 2, 2, 200, 4);
+
 //		for (int k = ex_size; k < holes.size(); k++){
 //			holes[k].x += x[i];
 //			holes[k].y += y[i];
@@ -146,14 +159,20 @@ bool CDetectCheckBoxes::detectCheckBoxes(Mat &imgMATgray, vector<CCheckBox> &cBo
 
     imgMATbinMorph = 255 - imgMATbinMorph;
     vector<Rect> rboxes;
+
 //	fprintf(stderr, "%s\n", "done!");
 
 //	for (size_t i = 0; i < x.size(); i++){
+
     new_mat = imgMATbinMorph;//(Rect(x[i], y[i], width[i], height[i]));
+
+
     /*imshow("out", new_mat);
     waitKey(0);
     destroyWindow("out");*/
+
     Preprocessor::conCompFast(new_mat, rboxes, 2, 2, 200, 4);
+
 //		for (int k = ex_size; k < rboxes.size(); k++){
 //			rboxes[k].x += x[i];
 //			rboxes[k].y += y[i];
@@ -195,6 +214,8 @@ bool CDetectCheckBoxes::detectCheckBoxes(Mat &imgMATgray, vector<CCheckBox> &cBo
 
     return true;
 }
+
+
 
 bool CDetectCheckBoxes::detectCheckBoxes(string &inFileName, vector<CCheckBox> &cBoxes){
 
@@ -291,6 +312,7 @@ bool CDetectCheckBoxes::detectCheckBoxes(string &inFileName, vector<CCheckBox> &
     fprintf(stderr, "%s\n", "done!");
 
     vector<bool> usedInner(holes.size(), false);
+
     for(size_t i=0; i<rboxes.size(); i++){
         if(isAlmostSquare(rboxes[i])){
             CCheckBox cb;
