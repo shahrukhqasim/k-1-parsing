@@ -75,7 +75,7 @@
         },
         {
           "Name": "topmostSubform[0].Page1[0].HeaderAndLeftCol[0].LeftCol[0].p1-t6[0]",
-          "Value": "OGDEN, UT",
+          "Value": "OGDEN",
           "Region": {
             "l": 150,
             "t": 1051,
@@ -175,7 +175,7 @@
         },
         {
           "Name": "topmostSubform[0].Page1[0].HeaderAndLeftCol[0].LeftCol[0].p1-t16[0]",
-          "Value": "7,420",
+          "Value": "",
           "Region": {
             "l": 787,
             "t": 2301,
@@ -195,7 +195,7 @@
         },
         {
           "Name": "topmostSubform[0].Page1[0].HeaderAndLeftCol[0].LeftCol[0].p1-t18[0]",
-          "Value": "",
+          "Value": "3,171.",
           "Region": {
             "l": 787,
             "t": 2401,
@@ -205,7 +205,7 @@
         },
         {
           "Name": "topmostSubform[0].Page1[0].HeaderAndLeftCol[0].LeftCol[0].p1-t19[0]",
-          "Value": "52,545",
+          "Value": "2,618,879.",
           "Region": {
             "l": 787,
             "t": 2551,
@@ -215,7 +215,7 @@
         },
         {
           "Name": "topmostSubform[0].Page1[0].HeaderAndLeftCol[0].LeftCol[0].p1-t20[0]",
-          "Value": "111",
+          "Value": "750,000.",
           "Region": {
             "l": 787,
             "t": 2601,
@@ -225,7 +225,7 @@
         },
         {
           "Name": "topmostSubform[0].Page1[0].HeaderAndLeftCol[0].LeftCol[0].p1-t21[0]",
-          "Value": "11,438",
+          "Value": "1,652,183.",
           "Region": {
             "l": 787,
             "t": 2651,
@@ -235,7 +235,7 @@
         },
         {
           "Name": "topmostSubform[0].Page1[0].HeaderAndLeftCol[0].LeftCol[0].p1-t7[1]",
-          "Value": "20,374",
+          "Value": "2,454,777.",
           "Region": {
             "l": 806,
             "t": 2701,
@@ -245,7 +245,7 @@
         },
         {
           "Name": "topmostSubform[0].Page1[0].HeaderAndLeftCol[0].LeftCol[0].p1-t23[0]",
-          "Value": "43,720",
+          "Value": "2,566,285.",
           "Region": {
             "l": 787,
             "t": 2751,
@@ -255,7 +255,7 @@
         },
         {
           "Name": "topmostSubform[0].Page1[0].HeaderAndLeftCol[0].LeftCol[0].c1_07_0_[0]",
-          "Value": "True",
+          "Value": "False",
           "Region": {
             "l": 240,
             "t": 2859,
@@ -265,7 +265,7 @@
         },
         {
           "Name": "topmostSubform[0].Page1[0].HeaderAndLeftCol[0].LeftCol[0].c1_07_0_[1]",
-          "Value": "False",
+          "Value": "True",
           "Region": {
             "l": 540,
             "t": 2859,
@@ -325,7 +325,7 @@
         },
         {
           "Name": "topmostSubform[0].Page1[0].HeaderAndLeftCol[0].LeftCol[0].LineJTable[0].Profit[0].p1-t10[0]",
-          "Value": "0.0049",
+          "Value": "4.716981",
           "Region": {
             "l": 330,
             "t": 2051,
@@ -335,7 +335,7 @@
         },
         {
           "Name": "topmostSubform[0].Page1[0].HeaderAndLeftCol[0].LeftCol[0].LineJTable[0].Profit[0].p1-t11[0]",
-          "Value": "0.0049",
+          "Value": "4.716981",
           "Region": {
             "l": 810,
             "t": 2051,
@@ -345,7 +345,7 @@
         },
         {
           "Name": "topmostSubform[0].Page1[0].HeaderAndLeftCol[0].LeftCol[0].LineJTable[0].Loss[0].p1-t12[0]",
-          "Value": "0.0049",
+          "Value": "4.716981",
           "Region": {
             "l": 330,
             "t": 2101,
@@ -355,7 +355,7 @@
         },
         {
           "Name": "topmostSubform[0].Page1[0].HeaderAndLeftCol[0].LeftCol[0].LineJTable[0].Loss[0].p1-t13[0]",
-          "Value": "0.0049",
+          "Value": "4.716981",
           "Region": {
             "l": 810,
             "t": 2101,
@@ -365,7 +365,7 @@
         },
         {
           "Name": "topmostSubform[0].Page1[0].HeaderAndLeftCol[0].LeftCol[0].LineJTable[0].Capital[0].p1-t14[0]",
-          "Value": "0.0049",
+          "Value": "4.716981",
           "Region": {
             "l": 330,
             "t": 2151,
@@ -375,7 +375,7 @@
         },
         {
           "Name": "topmostSubform[0].Page1[0].HeaderAndLeftCol[0].LeftCol[0].LineJTable[0].Capital[0].p1-t15[0]",
-          "Value": "0.0049",
+          "Value": "3.927338",
           "Region": {
             "l": 810,
             "t": 2151,
@@ -465,7 +465,7 @@
         },
         {
           "Name": "topmostSubform[0].Page1[0].RightCol[0].RightCol1[0].Line5[0]",
-          "Value": "",
+          "Value": "*",
           "Region": {
             "l": 1290,
             "t": 742,
@@ -475,7 +475,7 @@
         },
         {
           "Name": "topmostSubform[0].Page1[0].RightCol[0].RightCol1[0].p1-t29[0]",
-          "Value": "1,046",
+          "Value": "3,912.",
           "Region": {
             "l": 1380,
             "t": 742,
@@ -545,7 +545,7 @@
         },
         {
           "Name": "topmostSubform[0].Page1[0].RightCol[0].RightCol1[0].Line8[0]",
-          "Value": "",
+          "Value": "*",
           "Region": {
             "l": 1290,
             "t": 1142,
@@ -555,7 +555,7 @@
         },
         {
           "Name": "topmostSubform[0].Page1[0].RightCol[0].RightCol1[0].p1-t33[0]",
-          "Value": "",
+          "Value": "187,333.",
           "Region": {
             "l": 1380,
             "t": 1142,
@@ -565,7 +565,7 @@
         },
         {
           "Name": "topmostSubform[0].Page1[0].RightCol[0].RightCol1[0].Line9a[0]",
-          "Value": "",
+          "Value": "*",
           "Region": {
             "l": 1290,
             "t": 1242,
@@ -575,7 +575,7 @@
         },
         {
           "Name": "topmostSubform[0].Page1[0].RightCol[0].RightCol1[0].p1-t34[0]",
-          "Value": "11,475",
+          "Value": "1,477,631.",
           "Region": {
             "l": 1380,
             "t": 1242,
@@ -725,7 +725,7 @@
         },
         {
           "Name": "topmostSubform[0].Page1[0].RightCol[0].RightCol1[0].p1-t42a[0]",
-          "Value": "H",
+          "Value": "*",
           "Region": {
             "l": 1290,
             "t": 2042,
@@ -735,7 +735,7 @@
         },
         {
           "Name": "topmostSubform[0].Page1[0].RightCol[0].RightCol1[0].p1-t42[0]",
-          "Value": "1,045",
+          "Value": "90,158.",
           "Region": {
             "l": 1380,
             "t": 2039,
@@ -745,7 +745,7 @@
         },
         {
           "Name": "topmostSubform[0].Page1[0].RightCol[0].RightCol1[0].p1-t42b[0]",
-          "Value": "K",
+          "Value": "",
           "Region": {
             "l": 1290,
             "t": 2100,
@@ -755,7 +755,7 @@
         },
         {
           "Name": "topmostSubform[0].Page1[0].RightCol[0].RightCol1[0].p1-t43[0]",
-          "Value": "37",
+          "Value": "",
           "Region": {
             "l": 1380,
             "t": 2100,
@@ -875,7 +875,7 @@
         },
         {
           "Name": "topmostSubform[0].Page1[0].RightCol[0].RightCol2[0].p1-t49[0]",
-          "Value": "12,521",
+          "Value": "1,668,876.",
           "Region": {
             "l": 1950,
             "t": 542,
@@ -895,7 +895,7 @@
         },
         {
           "Name": "topmostSubform[0].Page1[0].RightCol[0].RightCol2[0].p1-t50[0]",
-          "Value": "11,475",
+          "Value": "1,664,964.",
           "Region": {
             "l": 1950,
             "t": 600,
@@ -915,7 +915,7 @@
         },
         {
           "Name": "topmostSubform[0].Page1[0].RightCol[0].RightCol2[0].p1-t51[0]",
-          "Value": "1,046",
+          "Value": "2,576.",
           "Region": {
             "l": 1950,
             "t": 700,
@@ -925,7 +925,7 @@
         },
         {
           "Name": "topmostSubform[0].Page1[0].RightCol[0].RightCol2[0].p1-t52a[0]",
-          "Value": "G",
+          "Value": "H",
           "Region": {
             "l": 1860,
             "t": 800,
@@ -935,7 +935,7 @@
         },
         {
           "Name": "topmostSubform[0].Page1[0].RightCol[0].RightCol2[0].p1-t52[0]",
-          "Value": "37",
+          "Value": "89,947.",
           "Region": {
             "l": 1950,
             "t": 800,
@@ -945,7 +945,7 @@
         },
         {
           "Name": "topmostSubform[0].Page1[0].RightCol[0].RightCol2[0].p1-t53a[0]",
-          "Value": "H",
+          "Value": "I",
           "Region": {
             "l": 1860,
             "t": 900,
@@ -955,7 +955,7 @@
         },
         {
           "Name": "topmostSubform[0].Page1[0].RightCol[0].RightCol2[0].p1-t53[0]",
-          "Value": "",
+          "Value": "139.",
           "Region": {
             "l": 1950,
             "t": 900,
@@ -1135,7 +1135,7 @@
         },
         {
           "Name": "topmostSubform[0].Page1[0].RightCol[0].RightCol2[0].p1-t62[0]",
-          "Value": "",
+          "Value": "2,454,777.",
           "Region": {
             "l": 1950,
             "t": 1892,
@@ -1175,7 +1175,7 @@
         },
         {
           "Name": "topmostSubform[0].Page1[0].RightCol[0].RightCol2[0].p1-t64[0]",
-          "Value": "1,046",
+          "Value": "3,912.",
           "Region": {
             "l": 1950,
             "t": 2092,
@@ -1195,7 +1195,7 @@
         },
         {
           "Name": "topmostSubform[0].Page1[0].RightCol[0].RightCol2[0].p1-t65[0]",
-          "Value": "37",
+          "Value": "90,158.",
           "Region": {
             "l": 1950,
             "t": 2200,
@@ -1205,7 +1205,7 @@
         },
         {
           "Name": "topmostSubform[0].Page1[0].RightCol[0].RightCol2[0].p1-t66a[0]",
-          "Value": "N",
+          "Value": "",
           "Region": {
             "l": 1860,
             "t": 2300,
@@ -1215,7 +1215,7 @@
         },
         {
           "Name": "topmostSubform[0].Page1[0].RightCol[0].RightCol2[0].p1-t66[0]",
-          "Value": "1,045",
+          "Value": "",
           "Region": {
             "l": 1950,
             "t": 2300,
@@ -1225,7 +1225,7 @@
         },
         {
           "Name": "topmostSubform[0].Page1[0].RightCol[0].RightCol2[0].p1-t67a[0]",
-          "Value": "Y",
+          "Value": "",
           "Region": {
             "l": 1860,
             "t": 2400,
@@ -1235,7 +1235,7 @@
         },
         {
           "Name": "topmostSubform[0].Page1[0].RightCol[0].RightCol2[0].p1-t67[0]",
-          "Value": "STMT",
+          "Value": "",
           "Region": {
             "l": 1950,
             "t": 2400,
