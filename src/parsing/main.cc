@@ -83,7 +83,6 @@ void batchProcess(std::string parentPath, bool evaluate) {
         if (evaluate)
             getline(streamGroundTruthFilesList, groundTruthFile);
 
-        std::cout << imageFile << std::endl;
         if (groundTruthFile.length() == 0 && evaluate) {
             std::cerr << "Ground truth not found" << std::endl;
         }
@@ -94,6 +93,9 @@ void batchProcess(std::string parentPath, bool evaluate) {
         ocrTextFile = parentPath + "text/" + ocrTextFile;
         if (groundTruthFile.length() != 0)
             groundTruthFile = parentPath + "groundTruth/" + groundTruthFile;
+        std::cout << imageFile << std::endl;
+        std::cout << ocrTextFile << std::endl;
+        std::cout << groundTruthFile << std::endl;
 
 
         //float x = Processor2(imageFile, ocrTextFile, groundTruthFile, modelFilePath, outputFolder, workFile).execute();
