@@ -117,6 +117,7 @@ void TreeFormProcessor::mergeWordBoxes(const std::vector<TextualData> &words, st
 bool TreeFormProcessor::getResult(Json::Value& result) {
     lastIndexJson=0;
     if(processed) {
+        fieldsResult=Json::Value();
         recursiveResultConvert(root);
         result = fieldsResult;
         return true;
