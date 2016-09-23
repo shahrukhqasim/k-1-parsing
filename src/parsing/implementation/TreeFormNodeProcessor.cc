@@ -214,6 +214,8 @@ bool TreeFormNodeProcessor::process(std::shared_ptr<TreeFormNodeInterface> ptr,
             }
 
 
+
+
             if (minIndex != -1) {
                 tNode->setRegion(TreeFormNodeProcessor::text[minIndex].getRect());
                 tNode->setTextAssigned(TreeFormNodeProcessor::text[minIndex].getText());
@@ -1226,10 +1228,10 @@ void TreeFormNodeProcessor::mergeWordBoxes(const std::vector<TextualData> &words
     }
     elemBoxes.push_back(elem);
 
-    std::cout<<"Merged data"<<std::endl;
-    for(auto i:elemBoxes) {
-        std::cout<<i.getText()<<std::endl;
-    }
+//    std::cout<<"Merged data"<<std::endl;
+//    for(auto i:elemBoxes) {
+//        std::cout<<i.getText()<<std::endl;
+//    }
 }
 
 void TreeFormNodeProcessor::setTextDistanceFinder(const std::shared_ptr<TextDistanceInterface> &textDistanceFinder) {
