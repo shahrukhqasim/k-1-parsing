@@ -204,15 +204,15 @@
     "Binded": "topmostSubform[0].Page1[0].RightCol[0].RightCol1[0].p1-t37[0]"
   },
   {
-    "Model": "DOCUMENT:PART_3:GROUP_11:OTHER_INCOME:INPUT_CODE:1",
+    "Model": "DOCUMENT:PART_3:GROUP_11:OTHER_INCOME:INPUT:1",
     "Binded": "topmostSubform[0].Page1[0].RightCol[0].RightCol1[0].p1-t38[0]"
   },
   {
-    "Model": "DOCUMENT:PART_3:GROUP_11:OTHER_INCOME:INPUT_CODE:2",
+    "Model": "DOCUMENT:PART_3:GROUP_11:OTHER_INCOME:INPUT:2",
     "Binded": "topmostSubform[0].Page1[0].RightCol[0].RightCol1[0].p1-t40[0]"
   },
   {
-    "Model": "DOCUMENT:PART_3:GROUP_11:OTHER_INCOME:INPUT_CODE:3",
+    "Model": "DOCUMENT:PART_3:GROUP_11:OTHER_INCOME:INPUT:3",
     "Binded": "topmostSubform[0].Page1[0].RightCol[0].RightCol1[0].p1-t40[1]"
   },
   {
@@ -377,7 +377,7 @@
   },
   {
     "Model": "DOCUMENT:PART_3:GROUP_17:ALTERNATIVE_MINIMUM:INPUT_CODE:2",
-    "Binded": "topmostSubform[0].Page1[0].HeaderAndLeftCol[0].HeaderPg1[0].c1_01_0_[0]"
+    "Binded": "topmostSubform[0].Page1[0].RightCol[0].RightCol2[0].p1-t57a[0]"
   },
   {
     "Model": "DOCUMENT:PART_3:GROUP_17:ALTERNATIVE_MINIMUM:INPUT_CODE:3",
