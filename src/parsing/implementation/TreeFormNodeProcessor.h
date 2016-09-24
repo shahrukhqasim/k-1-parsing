@@ -9,6 +9,7 @@
 #include "../interfaces/RawFormInterface.h"
 #include "BasicTreeFormNode.h"
 #include "TreeFormModel.h"
+#include "TextTreeFormNode.h"
 #include <regex>
 
 class TreeFormNodeProcessor : public TreeFormNodeProcessorInterface{
@@ -29,6 +30,9 @@ private:
     cv::RNG rng;
     cv::Scalar randomColors[5]={cv::Scalar(0,168,102),cv::Scalar(0,0,255),cv::Scalar(255,0,0),cv::Scalar(255,0,102),cv::Scalar(128,0,255)};
 
+    std::vector<std::shared_ptr<TextTreeFormNode>>onlyTextNodes;
+    std::unordered_map<std::shared_ptr<TextTreeFormNode>,std::vector<TextualData>>problemNodes;
+
 public:
     TreeFormNodeProcessor(const cv::Mat& image,const std::vector<TextualData> &nonMergedWords,
                           const std::shared_ptr<BasicTreeFormNode> &root);
@@ -44,7 +48,6 @@ public:
 
 private:
     std::shared_ptr<TextDistanceInterface> textDistanceFinder;
-    virtual int findTextWithMinimumEditDistance(std::string textToFind);
 
 public:
     void setTextDistanceFinder(const std::shared_ptr<TextDistanceInterface> &textDistanceFinder);
@@ -57,7 +60,10 @@ private:
     std::pair<std::string, cv::Rect> findTextFromFunctionalRules(std::vector<std::function<bool(const TextualData &n)>> functionalRules);
     std::vector<TextualData> findVectorizedTextFromFunctionalRules(std::vector<std::function<bool(const TextualData &n)>> functionalRules);
     int findTextWithMinimumEditDistance(std::vector<TextualData>&text,std::string textToFind);
+    int findTextWithMinimumEditDistance(std::vector<TextualData>&text,std::string textToFind, int& numMatches);
     int findTextWithMinimumEditDistance(std::vector<TextualData>&text,std::string textToFind, cv::Rect region);
+    int findTextWithMinimumEditDistance(std::vector<TextualData>&text,std::string textToFind, cv::Rect region, int& numMatches);
+    bool findTextWithMinimumEditDistanceMulti(std::vector<TextualData>&text,std::string textToFind, cv::Rect region, std::vector<TextualData>&result);
     std::pair<int,int> getCartesianCoordinateOfTableNode(const std::string &fullNodeId);
 
     /**

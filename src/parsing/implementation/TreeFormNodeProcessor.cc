@@ -207,13 +207,13 @@ bool TreeFormNodeProcessor::process(std::shared_ptr<TreeFormNodeInterface> ptr,
             std::string text = tNode->getText();
 
             int minIndex;
+            int numMatches;
             if (divisionRegionIdentified) {
-                minIndex = findTextWithMinimumEditDistance(TreeFormNodeProcessor::text, text, dividedTextRegion);
+                minIndex = findTextWithMinimumEditDistance(TreeFormNodeProcessor::text, text, dividedTextRegion,
+                                                           numMatches);
             } else {
-                minIndex = findTextWithMinimumEditDistance(TreeFormNodeProcessor::text, text);
+                minIndex = findTextWithMinimumEditDistance(TreeFormNodeProcessor::text, text, numMatches);
             }
-
-
 
 
             if (minIndex != -1) {
@@ -222,15 +222,205 @@ bool TreeFormNodeProcessor::process(std::shared_ptr<TreeFormNodeInterface> ptr,
                 rectangle = tNode->getRegion();
                 std::cout << tNode->getText() << " - " << tNode->getTextAssigned() << std::endl;
                 tNode->setRegionDefined(true);
-                takenText.push_back(TreeFormNodeProcessor::text[minIndex]);
-                TreeFormNodeProcessor::text.erase(TreeFormNodeProcessor::text.begin() + minIndex);
+
+                if (numMatches == 1) {
+                    takenText.push_back(TreeFormNodeProcessor::text[minIndex]);
+                    TreeFormNodeProcessor::text.erase(TreeFormNodeProcessor::text.begin() + minIndex);
+                } else {
+                    std::vector<TextualData> possibleMatches;
+                    findTextWithMinimumEditDistanceMulti(TreeFormNodeProcessor::text, text, divisionRegionIdentified?dividedTextRegion:cv::Rect(0,0,image.cols,image.rows),
+                                                               possibleMatches);
+                    problemNodes[tNode]=possibleMatches;
+
+                    std::cout<<"Possible matches are: "<<std::endl;
+                    for(auto i:possibleMatches) {
+                        std::cout<<tNode->getId()<<": "<<i.getText()<<std::endl;
+                    }
+
+                }
+
+                onlyTextNodes.push_back(tNode);
             }
         } else if (std::dynamic_pointer_cast<TableTreeFormNode>(ptr) != nullptr) {
             childrenDone = true;
         }
     }
+    else if(iteration==3) {
+        // Resolve problem nodes using dynamic programming
+        std::cout<<"Problem size: "<<problemNodes.size()<<std::endl;
+
+        if(problemNodes.size()!=0) {
+
+            std::vector<int> selectedEntries(problemNodes.size(), 0);
+            std::vector<int> minSelectedEntries(problemNodes.size(), 0);
+
+            std::vector<std::function<bool()>> rules;
+
+            std::vector<std::pair<std::shared_ptr<TextTreeFormNode>, std::vector<TextualData>>> problemNodesB;
+
+            for (auto i:problemNodes) {
+                problemNodesB.push_back(i);
+
+                std::vector<std::function<bool()>> functionalRules;
+                {
+                    std::shared_ptr<TreeFormModel> model2 = std::dynamic_pointer_cast<TreeFormModel>(model);
+                    std::shared_ptr<TextTreeFormNode> theNode = i.first;
+                    std::for_each(theNode->rulesModel.begin(), theNode->rulesModel.end(),
+                                  [&](std::pair<std::string, std::unordered_set<std::string>> thePair) {
+                                      if (thePair.first == "is_below") {
+                                          std::unordered_set<std::string> value = thePair.second;
+                                          std::for_each(value.begin(), value.end(), [&](const std::string &x) {
+                                              std::vector<std::string> hierarchy = HelperMethods::regexSplit(x, "[:]");
+                                              std::shared_ptr<BasicTreeFormNode> second = std::dynamic_pointer_cast<BasicTreeFormNode>(
+                                                      model2->getNode(root, hierarchy));
+                                              if (second->isRegionDefined()) {
+                                                  functionalRules.push_back([=]() -> bool {
+                                                      cv::Rect a = theNode->getRegion();
+                                                      cv::Rect b = second->getRegion();
+                                                      if (a.y > b.y + b.height) {
+                                                          return true;
+                                                      }
+                                                      return false;
+                                                  });
+                                              }
+                                          });
+
+                                      } else if (thePair.first == "is_above") {
+                                          std::unordered_set<std::string> value = thePair.second;
+                                          std::for_each(value.begin(), value.end(), [&](const std::string &x) {
+                                              std::vector<std::string> hierarchy = HelperMethods::regexSplit(x, "[:]");
+                                              std::shared_ptr<BasicTreeFormNode> second = std::dynamic_pointer_cast<BasicTreeFormNode>(
+                                                      model2->getNode(root, hierarchy));
+                                              if (second->isRegionDefined()) {
+                                                  functionalRules.push_back([=]() -> bool {
+                                                      cv::Rect a = theNode->getRegion();
+                                                      cv::Rect b = second->getRegion();
+                                                      if (a.y + a.height < b.y) {
+                                                          return true;
+                                                      }
+                                                      return false;
+                                                  });
+                                              }
+                                          });
+
+                                      } else if (thePair.first == "is_left_to") {
+                                          std::unordered_set<std::string> value = thePair.second;
+                                          std::for_each(value.begin(), value.end(), [&](const std::string &x) {
+                                              std::vector<std::string> hierarchy = HelperMethods::regexSplit(x, "[:]");
+                                              std::shared_ptr<BasicTreeFormNode> second = std::dynamic_pointer_cast<BasicTreeFormNode>(
+                                                      model2->getNode(root, hierarchy));
+                                              if (second->isRegionDefined()) {
+                                                  functionalRules.push_back([=]() -> bool {
+                                                      cv::Rect a = theNode->getRegion();
+                                                      cv::Rect b = second->getRegion();
+                                                      if (a.x + a.width < b.x) {
+                                                          return true;
+                                                      }
+                                                      return false;
+                                                  });
+                                              }
+                                          });
+
+                                      }
+                                      if (thePair.first == "is_right_to") {
+                                          std::unordered_set<std::string> value = thePair.second;
+                                          std::for_each(value.begin(), value.end(), [&](const std::string &x) {
+                                              std::vector<std::string> hierarchy = HelperMethods::regexSplit(x, "[:]");
+                                              std::shared_ptr<BasicTreeFormNode> second = std::dynamic_pointer_cast<BasicTreeFormNode>(
+                                                      model2->getNode(root, hierarchy));
+                                              if (second->isRegionDefined()) {
+                                                  functionalRules.push_back([=]() -> bool {
+                                                      cv::Rect a = theNode->getRegion();
+                                                      cv::Rect b = second->getRegion();
+                                                      if (a.x > b.x + b.width) {
+                                                          return true;
+                                                      }
+                                                      return false;
+                                                  });
+                                              }
+                                          });
+
+                                      }
+                                      if (thePair.first == "has_vertical_overlap_with") {
+                                          std::unordered_set<std::string> value = thePair.second;
+                                          std::for_each(value.begin(), value.end(), [&](const std::string &x) {
+                                              std::vector<std::string> hierarchy = HelperMethods::regexSplit(x, "[:]");
+                                              std::shared_ptr<BasicTreeFormNode> second = std::dynamic_pointer_cast<BasicTreeFormNode>(
+                                                      model2->getNode(root, hierarchy));
+                                              if (second->isRegionDefined()) {
+                                                  functionalRules.push_back([=]() -> bool {
+                                                      cv::Rect a = theNode->getRegion();
+                                                      cv::Rect b = second->getRegion();
+                                                      return std::max(0, std::min(a.x + a.width, b.x + b.width) -
+                                                                         std::max(a.x, b.x)) >
+                                                             0;
+                                                  });
+                                              }
+                                          });
+
+                                      } else if (thePair.first == "has_horizontal_overlap_with") {
+                                          std::unordered_set<std::string> value = thePair.second;
+                                          std::for_each(value.begin(), value.end(), [&](const std::string &x) {
+                                              std::vector<std::string> hierarchy = HelperMethods::regexSplit(x, "[:]");
+                                              std::shared_ptr<BasicTreeFormNode> second = std::dynamic_pointer_cast<BasicTreeFormNode>(
+                                                      model2->getNode(root, hierarchy));
+                                              if (second->isRegionDefined()) {
+                                                  functionalRules.push_back([=]() -> bool {
+                                                      cv::Rect a = theNode->getRegion();
+                                                      cv::Rect b = second->getRegion();
+                                                      return std::max(0,
+                                                                      std::min(a.y + a.height, b.y + b.height) -
+                                                                      std::max(a.y, b.y)) >
+                                                             0;
+                                                  });
+                                              }
+                                          });
+
+                                      }
+                                  });
+                }
+                rules.insert(rules.begin(), functionalRules.begin(), functionalRules.end());
+            }
+
+            std::function<int()> calculateCost = [&]() {
+                int newCost = 0;
+                for (auto i:rules) {
+                    if (!i())
+                        newCost++;
+                }
+                return newCost;
+            };
+
+            int cost = calculateCost();
+
+            std::function<void(int level)> recursive = [&](int level) {
+                for (int i = 0; i < problemNodesB[level].second.size(); i++) {
+                    selectedEntries[level] = i;
+                    problemNodesB[level].first->setText(problemNodesB[level].second[i].getText());
+                    problemNodesB[level].first->setRegion(problemNodesB[level].second[i].getRect());
+                    int newCost = calculateCost();
+                    if (newCost < cost) {
+                        minSelectedEntries = selectedEntries;
+                    }
+                    if (level + 1 < problemNodesB.size())
+                        recursive(level + 1);
+                    std::cout << "Hello" << std::endl;
+                }
+            };
+
+            recursive(0);
+
+            for (int i = 0; i < minSelectedEntries.size(); i++) {
+                problemNodesB[i].first->setText(problemNodesB[i].second[minSelectedEntries[i]].getText());
+                problemNodesB[i].first->setRegion(problemNodesB[i].second[minSelectedEntries[i]].getRect());
+
+            }
+        }
+
+        childrenDone=true;
+    }
         // Input node iteration
-    else if (iteration == 3) {
+    else if (iteration == 4) {
         if (std::dynamic_pointer_cast<RepeatInputTreeFormNode>(ptr) != nullptr) {
             std::shared_ptr<RepeatInputTreeFormNode> rModel = std::dynamic_pointer_cast<RepeatInputTreeFormNode>(ptr);
 
@@ -721,11 +911,11 @@ bool TreeFormNodeProcessor::process(std::shared_ptr<TreeFormNodeInterface> ptr,
             tModel->getChildren(tableChildrenNodes);
 
 
-            auto pairHash = [](std::pair<int, int> const & foo) {
-                return foo.first+foo.second*997;
+            auto pairHash = [](std::pair<int, int> const &foo) {
+                return foo.first + foo.second * 997;
             };
 
-            std::unordered_set<std::pair<int, int>,decltype(pairHash)> takenCoordinates(0,pairHash);
+            std::unordered_set<std::pair<int, int>, decltype(pairHash)> takenCoordinates(0, pairHash);
 
             // Assign text to text nodes in the table (row and column headers)
             for (auto i:tableChildrenNodes) {
@@ -825,21 +1015,22 @@ bool TreeFormNodeProcessor::process(std::shared_ptr<TreeFormNodeInterface> ptr,
             }
 
             // In the last stage, put the data in the table pointer
-            for(auto i:croppedTextualData) {
+            for (auto i:croppedTextualData) {
                 std::string coordinateString;
 
-                coordinateString+="(";
-                coordinateString+=std::to_string(i.second.first);
-                coordinateString+=",";
-                coordinateString+=std::to_string(i.second.second);
-                coordinateString+=")";
+                coordinateString += "(";
+                coordinateString += std::to_string(i.second.first);
+                coordinateString += ",";
+                coordinateString += std::to_string(i.second.second);
+                coordinateString += ")";
 
                 if (tModel->getChild(coordinateString) != nullptr) {
                     std::shared_ptr<TreeFormNodeInterface> tableChild = tModel->getChild(coordinateString);
 
 
                     if (std::dynamic_pointer_cast<InputTreeFormNode>(tableChild) != nullptr) {
-                        std::shared_ptr<InputTreeFormNode> inputTableChild = std::dynamic_pointer_cast<InputTreeFormNode>(tableChild);
+                        std::shared_ptr<InputTreeFormNode> inputTableChild = std::dynamic_pointer_cast<InputTreeFormNode>(
+                                tableChild);
 
                         inputTableChild->setData(inputTableChild->getData() + i.first.getText());
                         inputTableChild->setRegion(i.first.getRect());
@@ -847,14 +1038,121 @@ bool TreeFormNodeProcessor::process(std::shared_ptr<TreeFormNodeInterface> ptr,
                         std::shared_ptr<cv::Mat> theImage = getIterationOutputImage("inputs");
                         cv::Scalar randomColor = randomColors[((unsigned int) rng) % 5];
                         rectangle(*theImage, inputTableChild->getRegion(), randomColor, 3, 8, 0);
-                        putText(*theImage, inputTableChild->getData(), inputTableChild->getRegion().br(), 1, 2, randomColor, 2);
+                        putText(*theImage, inputTableChild->getData(), inputTableChild->getRegion().br(), 1, 2,
+                                randomColor, 2);
                     }
                 }
             }
 
             childrenDone = true;
         }
-    } else if (iteration == 4) {
+    } else if (iteration == 5) {
+        if (false) {
+            std::function<float(cv::Rect a, cv::Rect b)> getDistanceSquared = [](cv::Rect a, cv::Rect b) -> float {
+                cv::Point p1 = {(a.x + a.width / 2), (a.y + a.height / 2)};
+
+
+                cv::Point p2 = {(b.x + b.width / 2), (b.y + b.height / 2)};
+
+                return (p1.x - p2.x) * (p1.x - p2.x) + (p1.y - p2.y) * (p1.y - p2.y);
+            };
+
+            std::function<bool(std::shared_ptr<TextTreeFormNode> &left, std::shared_ptr<TextTreeFormNode> &right,
+                               std::shared_ptr<TextTreeFormNode> &top, std::shared_ptr<TextTreeFormNode> &bottom,
+                               const std::shared_ptr<TextTreeFormNode> &input)> findNeighbors = [&](
+                    std::shared_ptr<TextTreeFormNode> &left, std::shared_ptr<TextTreeFormNode> &right,
+                    std::shared_ptr<TextTreeFormNode> &bottom, std::shared_ptr<TextTreeFormNode> &top,
+                    const std::shared_ptr<TextTreeFormNode> &input) -> bool {
+
+//            std::shared_ptr<TextTreeFormNode> leftSmallest;
+//            std::shared_ptr<TextTreeFormNode> leftSmallest;
+//            std::shared_ptr<TextTreeFormNode> topNodes;
+//            std::shared_ptr<TextTreeFormNode> bottomNodes;
+
+                left = right = top = bottom = nullptr;
+
+                float leftDistance;
+                float rightDistance;
+                float topDistance;
+                float bottomDistance;
+                cv::Rect b = input->getRegion();
+
+                for (auto i:onlyTextNodes) {
+                    if (i == input) {
+                        continue;
+                    }
+
+                    cv::Rect a = i->getRegion();
+
+                    float newDistance = getDistanceSquared(a, b);
+
+                    if (b.width + b.x < a.x) {
+                        if (left == nullptr) {
+                            left = i;
+                            leftDistance = getDistanceSquared(a, b);
+                        } else if (newDistance < leftDistance) {
+                            left = i;
+                            leftDistance = newDistance;
+                        }
+                    }
+                    if (b.x > a.x + a.width) {
+                        if (right == nullptr) {
+                            right = i;
+                            rightDistance = getDistanceSquared(a, b);
+                        } else if (newDistance < rightDistance) {
+                            right = i;
+                            rightDistance = newDistance;
+                        }
+                    }
+
+                    if (b.height + b.y < a.y) {
+                        if (top == nullptr) {
+                            top = i;
+                            topDistance = getDistanceSquared(a, b);
+                        } else if (newDistance < topDistance) {
+                            top = i;
+                            topDistance = newDistance;
+                        }
+                    }
+
+                    if (b.y > a.y + a.height) {
+                        if (bottom == nullptr) {
+                            bottom = i;
+                            bottomDistance = getDistanceSquared(a, b);
+                        } else if (newDistance < bottomDistance) {
+                            bottom = i;
+                            bottomDistance = newDistance;
+                        }
+                    }
+
+                }
+
+                return false;
+            };
+
+
+            for (auto i:onlyTextNodes) {
+                std::shared_ptr<TextTreeFormNode> left;
+                std::shared_ptr<TextTreeFormNode> right;
+                std::shared_ptr<TextTreeFormNode> bottom;
+                std::shared_ptr<TextTreeFormNode> top;
+
+                findNeighbors(left, right, top, bottom, i);
+
+                if (left != nullptr) {
+                    std::cout << "RULE " << i->getId() << " IS_LEFT_TO " << left->getId() << std::endl;
+                }
+                if (right != nullptr) {
+                    std::cout << "RULE " << i->getId() << " IS_RIGHT_TO " << right->getId() << std::endl;
+                }
+                if (top != nullptr) {
+                    std::cout << "RULE " << i->getId() << " IS_BELOW " << top->getId() << std::endl;
+                }
+                if (bottom != nullptr) {
+                    std::cout << "RULE " << i->getId() << " IS_ABOVE " << bottom->getId() << std::endl;
+                }
+            }
+        }
 
         childrenDone = true;
     }
@@ -867,30 +1165,39 @@ void TreeFormNodeProcessor::setForm(const std::shared_ptr<RawFormInterface> &for
     form->getRasterImage(image);
 }
 
-int TreeFormNodeProcessor::findTextWithMinimumEditDistance(std::string textToFind) {
+
+bool TreeFormNodeProcessor::findTextWithMinimumEditDistanceMulti(std::vector<TextualData> &text, std::string textToFind,
+                                                                 cv::Rect region, std::vector<TextualData> &result) {
+
     // TODO: FUNCTION PERFORMANCE OPTIMIZATION NEEDED
     int minDistance = 99999999;
-    int minIndex = -1;
     for (size_t i = 0; i < text.size(); i++) {
+        if ((region & text[i].getRect()).area() == 0)
+            continue;
+
         std::string dataCurrent = text[i].getText();
         std::string dataCurrent2;
+
 
         for (size_t i = 0; i < dataCurrent.size(); i++) {
             if (HelperMethods::isAlphaNumericNotSpace(dataCurrent[i]))
                 dataCurrent2 += dataCurrent[i];
         }
 
-        BasicLevenshteinDistance editDistance;
-        int newDistance = editDistance.calcualteDistance(dataCurrent2.c_str(),
-                                                         textToFind.c_str());
+        int newDistance = textDistanceFinder->calcualteDistance(dataCurrent2.c_str(),
+                                                                textToFind.c_str());
         if (newDistance < minDistance) {
             minDistance = newDistance;
-            minIndex = i;
+            result.clear();
+            result.push_back(text[i]);
+        } else if (newDistance == minDistance) {
+            result.push_back(text[i]);
         }
     }
 
-    return minIndex;
+    return result.size() == 0 ? false : true;
 }
+
 
 int TreeFormNodeProcessor::findTextWithMinimumEditDistance(std::vector<TextualData> &text, std::string textToFind) {
     // TODO: FUNCTION PERFORMANCE OPTIMIZATION NEEDED
@@ -915,6 +1222,70 @@ int TreeFormNodeProcessor::findTextWithMinimumEditDistance(std::vector<TextualDa
 
     return minIndex;
 }
+
+
+int TreeFormNodeProcessor::findTextWithMinimumEditDistance(std::vector<TextualData> &text, std::string textToFind,
+                                                           int &numMatches) {
+    // TODO: FUNCTION PERFORMANCE OPTIMIZATION NEEDED
+    int minDistance = 99999999;
+    int minIndex = -1;
+    numMatches = 0;
+    for (size_t i = 0; i < text.size(); i++) {
+        std::string dataCurrent = text[i].getText();
+        std::string dataCurrent2;
+
+        for (size_t i = 0; i < dataCurrent.size(); i++) {
+            if (HelperMethods::isAlphaNumericNotSpace(dataCurrent[i]))
+                dataCurrent2 += dataCurrent[i];
+        }
+
+        int newDistance = textDistanceFinder->calcualteDistance(dataCurrent2.c_str(),
+                                                                textToFind.c_str());
+        if (newDistance < minDistance) {
+            minDistance = newDistance;
+            minIndex = i;
+            numMatches = 1;
+        } else if (newDistance == minDistance) {
+            ++numMatches;
+        }
+    }
+
+    return minIndex;
+}
+
+int TreeFormNodeProcessor::findTextWithMinimumEditDistance(std::vector<TextualData> &text, std::string textToFind,
+                                                           cv::Rect region, int &numMatches) {
+    // TODO: FUNCTION PERFORMANCE OPTIMIZATION NEEDED
+    int minDistance = 99999999;
+    int minIndex = -1;
+    numMatches = 0;
+    for (size_t i = 0; i < text.size(); i++) {
+        if ((region & text[i].getRect()).area() == 0)
+            continue;
+
+        std::string dataCurrent = text[i].getText();
+        std::string dataCurrent2;
+
+
+        for (size_t i = 0; i < dataCurrent.size(); i++) {
+            if (HelperMethods::isAlphaNumericNotSpace(dataCurrent[i]))
+                dataCurrent2 += dataCurrent[i];
+        }
+
+        int newDistance = textDistanceFinder->calcualteDistance(dataCurrent2.c_str(),
+                                                                textToFind.c_str());
+        if (newDistance < minDistance) {
+            minDistance = newDistance;
+            minIndex = i;
+            numMatches = 1;
+        } else if (newDistance == minDistance) {
+            ++numMatches;
+        }
+    }
+
+    return minIndex;
+}
+
 
 int TreeFormNodeProcessor::findTextWithMinimumEditDistance(std::vector<TextualData> &text, std::string textToFind,
                                                            cv::Rect region) {
