@@ -404,7 +404,6 @@ bool TreeFormNodeProcessor::process(std::shared_ptr<TreeFormNodeInterface> ptr,
                     }
                     if (level + 1 < problemNodesB.size())
                         recursive(level + 1);
-                    std::cout << "Hello" << std::endl;
                 }
             };
 
@@ -1545,10 +1544,13 @@ void TreeFormNodeProcessor::mergeWordBoxes(const std::vector<TextualData> &words
     cv::cvtColor(image, image2, CV_BGR2GRAY);
     cv::threshold(image2, binaryImage, 0, 255, cv::THRESH_BINARY | cv::THRESH_OTSU);
 
+    float totalHeight=0;
+
     cv::Mat testMat = image.clone();
     testMat = 255;
     for (int i = 0; i < nRects; i++) {
         TextualData currWord = words[i];
+        totalHeight+=words[i].getRect().height;
         if (!newElem) {
             int hGap = currWord.getRect().x - prevWord.getRect().x - prevWord.getRect().width;
             int hGapThresh = std::min(currWord.getRect().height, prevWord.getRect().height);
@@ -1598,6 +1600,15 @@ void TreeFormNodeProcessor::mergeWordBoxes(const std::vector<TextualData> &words
         }
     }
     elemBoxes.push_back(elem);
+
+    float averageHeight=totalHeight/nRects;
+
+    for(auto &i:elemBoxes) {
+        cv::Rect rec=i.getRect();
+        rec.x-=averageHeight;
+        rec.width+=averageHeight;
+        i.setRect(rec);
+    }
 
 //    std::cout<<"Merged data"<<std::endl;
 //    for(auto i:elemBoxes) {
