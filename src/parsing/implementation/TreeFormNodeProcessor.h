@@ -63,7 +63,7 @@ private:
     int findTextWithMinimumEditDistance(std::vector<TextualData>&text,std::string textToFind, int& numMatches);
     int findTextWithMinimumEditDistance(std::vector<TextualData>&text,std::string textToFind, cv::Rect region);
     int findTextWithMinimumEditDistance(std::vector<TextualData>&text,std::string textToFind, cv::Rect region, int& numMatches);
-    bool findTextWithMinimumEditDistanceMulti(std::vector<TextualData>&text,std::string textToFind, cv::Rect region, std::vector<TextualData>&result);
+    int findTextWithMinimumEditDistanceMulti(std::vector<TextualData>&text,std::string textToFind, cv::Rect region, std::vector<TextualData>&result);
     std::pair<int,int> getCartesianCoordinateOfTableNode(const std::string &fullNodeId);
 
     /**

@@ -31,7 +31,7 @@ string HelperMethods::removeFileExtension(const string &fileName) {
 }
 
 bool HelperMethods::isAlphaNumericNotSpace(char a) {
-	return (a >= '0') && ((a <= '9') || (a >= 'A')) && ((a <= 'Z') || (a >= 'a')) && (a <= 'z');
+	return ((a >= '0') && (a <= '9')) || ((a >= 'A') && (a <= 'Z')) || ((a >= 'a') && (a <= 'z'));
 
 }
 

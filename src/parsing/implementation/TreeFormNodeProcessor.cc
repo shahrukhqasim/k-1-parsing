@@ -89,8 +89,12 @@ bool TreeFormNodeProcessor::process(std::shared_ptr<TreeFormNodeInterface> ptr,
                 vProjection = 0;
                 for (size_t i = 0; i < text.size(); i++) {
                     cv::Rect r = text[i].getRect();
-                    for (int j = r.x; j < r.x + r.width; j++)
-                        vProjection.at<short>(0, j) += r.height;
+                    for (int j = r.x; j < r.x + r.width; j++) {
+                        if(j>=0&&j<image.cols) {
+                            vProjection.at<short>(0, j) += r.height;
+                        }
+                    }
+                    std::cout<<std::endl;
                 }
 
 
@@ -228,15 +232,16 @@ bool TreeFormNodeProcessor::process(std::shared_ptr<TreeFormNodeInterface> ptr,
                     TreeFormNodeProcessor::text.erase(TreeFormNodeProcessor::text.begin() + minIndex);
                 } else {
                     std::vector<TextualData> possibleMatches;
-                    findTextWithMinimumEditDistanceMulti(TreeFormNodeProcessor::text, text, divisionRegionIdentified?dividedTextRegion:cv::Rect(0,0,image.cols,image.rows),
+                    float min=findTextWithMinimumEditDistanceMulti(TreeFormNodeProcessor::text, text, divisionRegionIdentified?dividedTextRegion:cv::Rect(0,0,image.cols,image.rows),
                                                                possibleMatches);
-                    problemNodes[tNode]=possibleMatches;
+                    if(min/text.size()<0.5) {
+                        problemNodes[tNode] = possibleMatches;
 
-                    std::cout<<"Possible matches are: "<<std::endl;
-                    for(auto i:possibleMatches) {
-                        std::cout<<tNode->getId()<<": "<<i.getText()<<std::endl;
+                        std::cout << "Possible matches are: " << std::endl;
+                        for (auto i:possibleMatches) {
+                            std::cout << tNode->getId() << ": " << i.getText() << std::endl;
+                        }
                     }
-
                 }
 
                 onlyTextNodes.push_back(tNode);
@@ -1165,7 +1170,7 @@ void TreeFormNodeProcessor::setForm(const std::shared_ptr<RawFormInterface> &for
 }
 
 
-bool TreeFormNodeProcessor::findTextWithMinimumEditDistanceMulti(std::vector<TextualData> &text, std::string textToFind,
+int TreeFormNodeProcessor::findTextWithMinimumEditDistanceMulti(std::vector<TextualData> &text, std::string textToFind,
                                                                  cv::Rect region, std::vector<TextualData> &result) {
 
     // TODO: FUNCTION PERFORMANCE OPTIMIZATION NEEDED
@@ -1194,7 +1199,7 @@ bool TreeFormNodeProcessor::findTextWithMinimumEditDistanceMulti(std::vector<Tex
         }
     }
 
-    return result.size() == 0 ? false : true;
+    return minDistance;
 }
 
 

@@ -109,6 +109,7 @@ void batchProcess(std::string parentPath, bool evaluate) {
 
         std::vector<TextualData>text;
         getWords(textJson,text);
+        std::cout<<"Text length: "<<text.size()<<std::endl;
 
 
         std::shared_ptr<BasicForm> basicForm=std::shared_ptr<BasicForm> (new BasicForm(image,text));

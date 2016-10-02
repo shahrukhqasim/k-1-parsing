@@ -153,7 +153,7 @@ copy /Y ..\..\Externals\bin\liblept172.dll $(OutDir)</Command>
     <ClInclude Include="checkboxes\checkbox.h" />
     <ClInclude Include="checkboxes\concomp.h" />
     <ClInclude Include="checkboxes\union-find.h" />
-    <ClInclude Include="EditDistance.h" />
+    <ClInclude Include="BasicLevenshteinDistance.h" />
     <ClInclude Include="HelperMethods.h" />
     <ClInclude Include="implementation\BasicForm.h" />
     <ClInclude Include="implementation\BasicTreeFormNode.h" />
@@ -195,7 +195,7 @@ copy /Y ..\..\Externals\bin\liblept172.dll $(OutDir)</Command>
     <ClCompile Include="accuracy_test\InputFieldsAccuracyTest.cc" />
     <ClCompile Include="checkboxes\checkbox.cc" />
     <ClCompile Include="checkboxes\main-detect-checkboxes.cc" />
-    <ClCompile Include="EditDistance.cc" />
+    <ClCompile Include="BasicLevenshteinDistance.cc" />
     <ClCompile Include="HelperMethods.cc" />
     <ClCompile Include="implementation\BasicForm.cc" />
     <ClCompile Include="implementation\BasicTreeFormNode.cc" />

@@ -4,7 +4,7 @@
     <ClCompile Include="..\csv\CSVparser.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="EditDistance.cc">
+    <ClCompile Include="BasicLevenshteinDistance.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="HelperMethods.cc">
@@ -102,7 +102,7 @@
     <ClInclude Include="..\csv\CSVparser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="EditDistance.h">
+    <ClInclude Include="BasicLevenshteinDistance.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Model\InputNode.h">
