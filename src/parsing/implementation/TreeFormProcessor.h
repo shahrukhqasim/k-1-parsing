@@ -32,6 +32,7 @@ private:
     int lastIndexJson=0;
     std::shared_ptr<TreeFormNodeInterface> root;
 
+    bool foundItem;
     void recursiveResultConvert(std::shared_ptr<TreeFormNodeInterface>currentNode);
 
     bool recursiveCall(std::shared_ptr<TreeFormNodeInterface>node);

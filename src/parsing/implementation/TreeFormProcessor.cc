@@ -116,10 +116,16 @@ void TreeFormProcessor::mergeWordBoxes(const std::vector<TextualData> &words, st
 
 bool TreeFormProcessor::getResult(Json::Value& result) {
     lastIndexJson=0;
+    foundItem= false;
     if(processed) {
         fieldsResult=Json::Value();
         recursiveResultConvert(root);
         result = fieldsResult;
+
+        if(!foundItem) {
+            std::cout<<"WARNING: Forms seems to be empty"<<std::endl;
+        }
+
         return true;
     } else
         return false;
@@ -142,6 +148,8 @@ void TreeFormProcessor::recursiveResultConvert(std::shared_ptr<TreeFormNodeInter
         region["t"] = iModel->isRegionDefined() ? iModel->getRegion().y : -1;
         region["r"] = iModel->isRegionDefined() ? iModel->getRegion().x + iModel->getRegion().width : -1;
         region["b"] = iModel->isRegionDefined() ? iModel->getRegion().y + iModel->getRegion().height : -1;
+
+        foundItem=foundItem|iModel->isRegionDefined();
 
         value["Region"] = region;
 
