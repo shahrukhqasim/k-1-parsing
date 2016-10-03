@@ -32,13 +32,10 @@ bool TreeFormProcessor::processForm(std::shared_ptr<RawFormInterface> anInterfac
     bool error=false;
     for(int i=0;i<formModel->getIterations();i++) {
         currentIteration=i;
-        std::cout<<"Running iteration "<<i<<std::endl;
         if(!recursiveCall(rootNode)) {
             error=true;
-            std::cout<<"Error in iteration "<<i<<std::endl;
             break;
         }
-        std::cout<<"Success in iteration "<<i<<std::endl;
     }
     processed=!error;
     return !error;
