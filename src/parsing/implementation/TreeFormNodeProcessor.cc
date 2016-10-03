@@ -96,7 +96,6 @@ bool TreeFormNodeProcessor::process(std::shared_ptr<TreeFormNodeInterface> ptr,
                             vProjection.at<short>(0, j) += r.height;
                         }
                     }
-                    std::cout<<std::endl;
                 }
 
 
@@ -226,7 +225,7 @@ bool TreeFormNodeProcessor::process(std::shared_ptr<TreeFormNodeInterface> ptr,
                 tNode->setRegion(TreeFormNodeProcessor::text[minIndex].getRect());
                 tNode->setTextAssigned(TreeFormNodeProcessor::text[minIndex].getText());
                 rectangle = tNode->getRegion();
-                std::cout << tNode->getText() << " - " << tNode->getTextAssigned() << std::endl;
+//                std::cout << tNode->getText() << " - " << tNode->getTextAssigned() << std::endl;
                 tNode->setRegionDefined(true);
 
                 if (numMatches == 1) {
@@ -239,10 +238,10 @@ bool TreeFormNodeProcessor::process(std::shared_ptr<TreeFormNodeInterface> ptr,
                     if(min/text.size()<0.5) {
                         problemNodes[tNode] = possibleMatches;
 
-                        std::cout << "Possible matches are: " << std::endl;
-                        for (auto i:possibleMatches) {
-                            std::cout << tNode->getId() << ": " << i.getText() << std::endl;
-                        }
+//                        std::cout << "Possible matches are: " << std::endl;
+//                        for (auto i:possibleMatches) {
+//                            std::cout << tNode->getId() << ": " << i.getText() << std::endl;
+//                        }
                     }
                 }
 
@@ -257,7 +256,7 @@ bool TreeFormNodeProcessor::process(std::shared_ptr<TreeFormNodeInterface> ptr,
     }
     else if(iteration==3) {
         // Resolve problem nodes using dynamic programming
-        std::cout<<"Problem size: "<<problemNodes.size()<<std::endl;
+//        std::cout<<"Problem size: "<<problemNodes.size()<<std::endl;
 
         if(problemNodes.size()!=0) {
 
@@ -419,7 +418,7 @@ bool TreeFormNodeProcessor::process(std::shared_ptr<TreeFormNodeInterface> ptr,
 
             recursive(0);
 
-            for (int i = 0; i < minSelectedEntries.size(); i++) {
+            for (size_t i = 0; i < minSelectedEntries.size(); i++) {
                 problemNodesB[i].first->setText(problemNodesB[i].second[minSelectedEntries[i]].getText());
                 problemNodesB[i].first->setRegion(problemNodesB[i].second[minSelectedEntries[i]].getRect());
 
@@ -781,9 +780,6 @@ bool TreeFormNodeProcessor::process(std::shared_ptr<TreeFormNodeInterface> ptr,
                                             iModel->setData(i.isFilled ? "True" : "False");
                                             iModel->setRegion(i.outerBBox);
                                             iModel->setRegionDefined(true);
-                                            std::cout << "Found a region from parent" << iModel->getId()
-                                                      << " for checkbox " << iModel->getRegion() << " "
-                                                      << iModel->isRegionDefined() << std::endl;
 
                                             std::shared_ptr<cv::Mat> theImage = getIterationOutputImage("inputs");
                                             cv::Scalar randomColor = randomColors[((unsigned int) rng) % 5];
@@ -1525,7 +1521,7 @@ std::shared_ptr<cv::Mat> TreeFormNodeProcessor::getIterationOutputImage(std::str
     auto iteratorImageFinder = images.find(key);
     std::shared_ptr<cv::Mat> theImage;
     if (iteratorImageFinder == images.end()) {
-        std::cout << "Making new copy of " << key << std::endl;
+//        std::cout << "Making new copy of " << key << std::endl;
         if (key == "division") {
             cv::Mat binaryImage;
 //            Preprocessor::binarizeShafait(image,binaryImage,100,0.5);
