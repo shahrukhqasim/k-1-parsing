@@ -33,6 +33,8 @@ private:
     std::vector<std::shared_ptr<TextTreeFormNode>>onlyTextNodes;
     std::unordered_map<std::shared_ptr<TextTreeFormNode>,std::vector<TextualData>>problemNodes;
 
+    int numNotFoundTextNodes;
+
 public:
     TreeFormNodeProcessor(const cv::Mat& image,const std::vector<TextualData> &nonMergedWords,
                           const std::shared_ptr<BasicTreeFormNode> &root);

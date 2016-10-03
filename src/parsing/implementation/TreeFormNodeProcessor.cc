@@ -27,6 +27,8 @@ bool TreeFormNodeProcessor::process(std::shared_ptr<TreeFormNodeInterface> ptr,
     childrenDone = false;
     // Pre-processing iteration
     if (iteration == 0) {
+        numNotFoundTextNodes=0;
+
         mergeWordBoxes(unmergedText, text);
 
         CDetectCheckBoxes checkboxesDetector;
@@ -245,6 +247,9 @@ bool TreeFormNodeProcessor::process(std::shared_ptr<TreeFormNodeInterface> ptr,
                 }
 
                 onlyTextNodes.push_back(tNode);
+            }
+            else {
+                numNotFoundTextNodes++;
             }
         } else if (std::dynamic_pointer_cast<TableTreeFormNode>(ptr) != nullptr) {
             childrenDone = true;
@@ -1051,6 +1056,10 @@ bool TreeFormNodeProcessor::process(std::shared_ptr<TreeFormNodeInterface> ptr,
             childrenDone = true;
         }
     } else if (iteration == 5) {
+        if(numNotFoundTextNodes>3) {
+            std::cout<<"Problem identifying text: Please send it for inspection"<<std::endl;
+        }
+
         if (false) {
             std::function<float(cv::Rect a, cv::Rect b)> getDistanceSquared = [](cv::Rect a, cv::Rect b) -> float {
                 cv::Point p1 = {(a.x + a.width / 2), (a.y + a.height / 2)};
