@@ -540,21 +540,27 @@ bool TreeFormNodeProcessor::process(std::shared_ptr<TreeFormNodeInterface> ptr,
 
             std::vector<TextualData> dataVector;
 
+            std::vector<std::vector<TextualData>>dataVector2d;
+
             std::unordered_set<TextualData> done;
 
             for_each(dataX.begin(), dataX.end(), [&](std::pair<TextualData, std::pair<int, int>> alpha) {
                 if (done.find(alpha.first) == done.end()) {
                     done.insert(alpha.first);
                     TextualData t = alpha.first;
+                    std::vector<TextualData> t2d;
+                    t2d.push_back(t);
                     for_each(dataX.begin(), dataX.end(), [&](std::pair<TextualData, std::pair<int, int>> beta) {
                         if ((cv::Rect(beta.first.getRect().y, 0, beta.first.getRect().height, 10) &
                              cv::Rect(alpha.first.getRect().y, 0, alpha.first.getRect().height, 10)).area() != 0 &&
                             !(alpha.first == beta.first)) {
                             t = t | beta.first;
+                            t2d.push_back(beta.first);
                             done.insert(beta.first);
                         }
                     });
-                    dataVector.push_back(t);
+                    dataVector2d.push_back(t2d);
+//                    dataVector.push_back(t);
 //            cout << "Assigned to " << alpha.first.getText() << " value " << alpha.second.first << ","
 //                 << alpha.second.second << endl;
                     //dx2 += alpha.first.getText() + "|";
@@ -567,6 +573,20 @@ bool TreeFormNodeProcessor::process(std::shared_ptr<TreeFormNodeInterface> ptr,
                     }
                 }
             });
+
+            for(auto& i:dataVector2d) {
+                std::sort(i.begin(),i.end(),
+                          [&](const TextualData &d1, const TextualData &d2) -> bool {
+                              return (d1.getRect().x < d2.getRect().x);
+                          });
+                TextualData t;
+                bool iterationZero=true;
+                for(auto&j:i) {
+                    t=iterationZero?j:t|j;
+                    iterationZero=false;
+                }
+                dataVector.push_back(t);
+            }
 
             sort(dataVector.begin(), dataVector.end(),
                  [](const TextualData &a, const TextualData &b) -> bool {
@@ -1460,7 +1480,7 @@ std::pair<std::string, cv::Rect> TreeFormNodeProcessor::findTextFromFunctionalRu
 
                                });
                       if (ruleMatched) {
-                          text += " " + currentData.getText();
+                          text += (text.length()!=0?" ":"") + currentData.getText();
 
                           if (!regionDefined) {
                               regionDefined = true;
