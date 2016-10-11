@@ -1470,6 +1470,9 @@ std::pair<std::string, cv::Rect> TreeFormNodeProcessor::findTextFromFunctionalRu
     std::string text = "";
     cv::Rect regionFound;
     bool regionDefined = false;
+
+    std::vector<std::pair<cv::Rect,std::vector<TextualData>>>matchedData;
+
     std::for_each(TreeFormNodeProcessor::text.begin(), TreeFormNodeProcessor::text.end(),
                   [&](const TextualData &currentData) {
                       bool ruleMatched = true;
@@ -1480,6 +1483,32 @@ std::pair<std::string, cv::Rect> TreeFormNodeProcessor::findTextFromFunctionalRu
 
                                });
                       if (ruleMatched) {
+                          if(matchedData.size()==0) {
+                              std::vector<TextualData> textualDataA;
+                              textualDataA.push_back(currentData);
+                              matchedData.push_back(std::pair<cv::Rect,std::vector<TextualData>>(currentData.getRect(),textualDataA));
+                          }
+                          else {
+                              bool done=false;
+                              for(auto& i:matchedData) {
+                                  cv::Rect a = i.first;
+                                  cv::Rect b = currentData.getRect();
+                                  if(std::max(0,
+                                                  std::min(a.y + a.height, b.y + b.height) -
+                                                  std::max(a.y, b.y)) >
+                                         0) {
+                                      i.second.push_back(currentData);
+                                      done=true;
+                                      break;
+                                  }
+                              }
+                              if(!done) {
+                                  std::vector<TextualData> textualDataA;
+                                  textualDataA.push_back(currentData);
+                                  matchedData.push_back(std::pair<cv::Rect,std::vector<TextualData>>(currentData.getRect(),textualDataA));
+                              }
+                          }
+
                           text += (text.length()!=0?" ":"") + currentData.getText();
 
                           if (!regionDefined) {
@@ -1492,7 +1521,26 @@ std::pair<std::string, cv::Rect> TreeFormNodeProcessor::findTextFromFunctionalRu
                       }
                   });
 
-    return std::pair<std::string, cv::Rect>(text, regionFound);
+    if(matchedData.size()==0) {
+        return std::pair<std::string, cv::Rect>("", cv::Rect(0,0,0,0));
+    }
+
+    bool firstDone=false;
+    cv::Rect resultantRect;
+    std::string resultantString;
+    for(auto &i:matchedData) {
+        std::sort(i.second.begin(), i.second.end(),
+                  [&](const TextualData &d1, const TextualData &d2) -> bool {
+                      return (d1.getRect().x < d2.getRect().x);
+                  });
+        for(auto &j:i.second) {
+            resultantRect=firstDone?resultantRect|j.getRect():j.getRect();
+            resultantString+=(firstDone?" ":"")+j.getText();
+            firstDone=true;
+        }
+    }
+
+    return std::pair<std::string, cv::Rect>(resultantString, resultantRect);
 }
 
 std::vector<TextualData> TreeFormNodeProcessor::findVectorizedTextFromFunctionalRules(
