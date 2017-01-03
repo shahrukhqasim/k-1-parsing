@@ -922,12 +922,20 @@ bool TreeFormNodeProcessor::process(std::shared_ptr<TreeFormNodeInterface> ptr,
 
             std::regex hasAnAlphaNumericCharacter(".*([0-9-]|[A-Z]|[a-z]).*");
 
+            std::vector<TextualData>quarantined;
+
             std::unordered_map<TextualData, std::pair<int, int>> croppedTextualData;
             std::vector<TextualData> croppedTextualDataB;
             std::for_each(text.begin(), text.end(), [&](TextualData &d) {
-                if ((r & d.getRect()).area() != 0 && std::regex_match(d.getText(), hasAnAlphaNumericCharacter)) {
-                    croppedTextualData[d] = std::pair<int, int>(-1, -1);
-                    croppedTextualDataB.push_back(d);
+                if ((r & d.getRect()).area() != 0) {
+                    if(std::regex_match(d.getText(), hasAnAlphaNumericCharacter)) {
+                        croppedTextualData[d] = std::pair<int, int>(-1, -1);
+                        croppedTextualDataB.push_back(d);
+                    }
+                    else {
+                        quarantined.push_back(d);
+
+                    }
                 }
             });
 
@@ -1043,6 +1051,36 @@ bool TreeFormNodeProcessor::process(std::shared_ptr<TreeFormNodeInterface> ptr,
             for (auto i:croppedTextualData) {
                 std::string coordinateString;
 
+                int minDist=999999;
+                int index=-1;
+
+                int indexQ=0;
+                for(auto& j:quarantined) {
+                    if(j.getText()!="%")
+                        continue;
+                    cv::Rect a = i.first.getRect();
+                    cv::Rect b = j.getRect();
+                    if(std::max(0,
+                                    std::min(a.y + a.height, b.y + b.height) - std::max(a.y, b.y)) >
+                           0) {
+                        int newDistance=b.x-a.x-a.width;
+                        if(newDistance>0 && (index==-1||minDist>newDistance)) {
+                            minDist=newDistance;
+                            index=indexQ;
+                        }
+                    }
+                    indexQ++;
+                }
+
+                std::string ttext=i.first.getText();
+                cv::Rect trect=i.first.getRect();
+
+                if(index!=-1) {
+                    ttext=ttext+quarantined[index].getText();
+                    trect=trect|quarantined[index].getRect();
+                    quarantined.erase(quarantined.begin()+index);
+                }
+
                 coordinateString += "(";
                 coordinateString += std::to_string(i.second.first);
                 coordinateString += ",";
@@ -1057,8 +1095,8 @@ bool TreeFormNodeProcessor::process(std::shared_ptr<TreeFormNodeInterface> ptr,
                         std::shared_ptr<InputTreeFormNode> inputTableChild = std::dynamic_pointer_cast<InputTreeFormNode>(
                                 tableChild);
 
-                        inputTableChild->setData(inputTableChild->getData() + i.first.getText());
-                        inputTableChild->setRegion(i.first.getRect());
+                        inputTableChild->setData(inputTableChild->getData() + ttext);
+                        inputTableChild->setRegion(trect);
                         inputTableChild->setRegionDefined(true);
                         std::shared_ptr<cv::Mat> theImage = getIterationOutputImage("inputs");
                         cv::Scalar randomColor = randomColors[((unsigned int) rng) % 5];
