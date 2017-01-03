@@ -110,7 +110,7 @@ class OcrProgram {
     
 	static void doSegmentation(const cv::Mat& original, std::vector<cv::Rect> &rboxes);
 
-	static cv::Mat RemoveSegments(const cv::Mat& image, std::vector<cv::Rect>& segmentsToRemove);
+	static cv::Mat removeSegments(const cv::Mat &image, std::vector<cv::Rect> &segmentsToRemove);
 
 	/**
 	 * This function cleans the image from rulings and store the resultant data to disk
@@ -140,7 +140,7 @@ class OcrProgram {
 //    void oneToOneMatch();
 
 
-	static std::vector<OcrResult> CleanResults(std::vector<OcrResult>& results);
+	static std::vector<OcrResult> cleanResults(std::vector<OcrResult> &results);
 
 	static cv::Mat cleanImage(cv::Mat &img);
 

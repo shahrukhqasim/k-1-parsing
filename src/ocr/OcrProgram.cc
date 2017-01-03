@@ -49,7 +49,7 @@ vector<OcrResult> OcrProgram::PerformOCR(std::vector<unsigned char> data)
 	auto segmentedData = finder.getRecognizedData();
 
 	// Then remove the segments
-	auto imageWithoutSegments = RemoveSegments(cleanedImage, rboxes);
+	auto imageWithoutSegments = removeSegments(cleanedImage, rboxes);
 	//HelperMethods::outputImage(imageWithoutSegments, "withoutsegments.png");
 
 	TesseractFinder finder2(string(), rboxes);
@@ -103,7 +103,7 @@ void OcrProgram::doSegmentation(const cv::Mat& original, std::vector<cv::Rect> &
 }
 
 
-cv::Mat OcrProgram::RemoveSegments(const cv::Mat& image, std::vector<cv::Rect>& segmentsToRemove)
+cv::Mat OcrProgram::removeSegments(const cv::Mat &image, std::vector<cv::Rect> &segmentsToRemove)
 {
 	
 	Mat imageWithoutSegments = image.clone();
@@ -117,7 +117,7 @@ cv::Mat OcrProgram::RemoveSegments(const cv::Mat& image, std::vector<cv::Rect>& 
 }
 
 
-vector<OcrResult> OcrProgram::CleanResults(std::vector<OcrResult>& results)
+vector<OcrResult> OcrProgram::cleanResults(std::vector<OcrResult> &results)
 {
 	// This will segment any missing sentences and remove leading and training white
 	// spaces using regular expressions. It will also remove any leading or trailing "\n"
@@ -169,7 +169,7 @@ void OcrProgram::runOcr() {
 
 	
 	// Then remove the segments
-	Mat imageWithoutSegments = RemoveSegments(cleanedImage, segments);		
+	Mat imageWithoutSegments = removeSegments(cleanedImage, segments);
 
 	// and output to a file
 	string withoutSegmentsImageFileName = HelperMethods::removeFileExtension(inputFileName) + "_withoutSegments.png";
@@ -185,7 +185,7 @@ void OcrProgram::runOcr() {
     vector<OcrResult>data2=finder2.getRecognizedData();
     data.insert(data.end(), data2.begin(), data2.end());
 
-	data = CleanResults(data);
+	data = cleanResults(data);
   
     
 }
