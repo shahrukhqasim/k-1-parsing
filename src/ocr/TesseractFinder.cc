@@ -95,16 +95,16 @@ void TesseractFinder::recognizeText(const unsigned char* imagedata, int width, i
 		printf("Setting variable failed!!!\n");
 	
 	
-	const char *configs[] = { "alphanumeric" };
-	int configs_size = 1;
+	//const char *configs[] = { "alphanumeric" };
+	//int configs_size = 1;
 
-	if (api->Init(NULL, "eng", tesseract::OEM_DEFAULT,const_cast<char**>(configs),configs_size,NULL,NULL,false))
+	if (api->Init(NULL, "eng", tesseract::OEM_LSTM_ONLY))
 	{
 		fprintf(stderr, "Could not initialize tesseract.\n");
 		exit(1);
 	}
 	
-	api->SetPageSegMode(tesseract::PSM_SPARSE_TEXT);
+	api->SetPageSegMode(tesseract::PSM_SINGLE_CHAR);
 	api->SetImage(imagedata, width, height, bytes_per_pixel, bytes_per_line);
 
 	if (mode == MODE_FULL)
@@ -145,17 +145,18 @@ void TesseractFinder::recognizeText(Pix* image) {
         printf("Setting variable failed!!!\n");
 
 
-	const char *configs[] = { "alphanumeric" };
-	int configs_size = 1;
+	//const char *configs[] = { "alphanumeric" };
+	//int configs_size = 1;
 
+    std::cout<<"Hello!\n";
 
-	if (api->Init(NULL, "eng", tesseract::OEM_DEFAULT, const_cast<char**>(configs), configs_size, NULL, NULL, false))   
+	if (api->Init(NULL, "eng", tesseract::OEM_TESSERACT_LSTM_COMBINED))
 	{
         fprintf(stderr, "Could not initialize tesseract.\n");
         exit(1);
     }
 
-    api->SetPageSegMode(tesseract::PSM_SPARSE_TEXT);
+    api->SetPageSegMode(tesseract::PSM_AUTO);
     api->SetImage(image);
 
     if(mode==MODE_FULL) {
