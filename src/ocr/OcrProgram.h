@@ -151,7 +151,7 @@ class OcrProgram {
 public:
     void run();
 	
-	static std::vector<OcrResult> PerformOCR(std::vector<unsigned char> data);
+	static std::vector<OcrResult> performOCR(std::vector<unsigned char> data);
 
 	/**
 	 * Constructor for the OCR job

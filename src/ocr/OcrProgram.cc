@@ -23,7 +23,7 @@ void OcrProgram::loadBinaryImage(cv::Mat &image, string fileName, int mode) {
 }
 
 //Only used by the managed wrapper.
-vector<OcrResult> OcrProgram::PerformOCR(std::vector<unsigned char> data)
+vector<OcrResult> OcrProgram::performOCR(std::vector<unsigned char> data)
 {
 	auto image2 = imdecode(data, 0);
 
